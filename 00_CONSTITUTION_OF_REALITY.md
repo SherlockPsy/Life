@@ -97,6 +97,8 @@ Thought is non-linear. The input "Popcorn" triggers the memory "First Date." Con
 
 Agents are Prediction Engines. They do not see the world; they see their **Prior Expectation** of it. They only update their worldview when a "Prediction Error" (Surprise) occurs.
 
+* **Salience Filters:** Agents ignore 99% of sensory input. They only "notice" objects or events that are relevant to their current Goal or Biological State (e.g., a hungry agent notices food; a scared agent notices exits).
+
 ### 14. The Law of Defense Mechanisms (The Ego Firewall)
 
 Agents distort reality to protect their self-esteem.
