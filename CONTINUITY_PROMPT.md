@@ -34,3 +34,26 @@ Renderer Constraints (03_CONTRACT_RENDERER): Strict "No Telepathy" and "Pulse Ob
 Next Task: Finalize the Variable Sensors—the mathematical and psychological logic for how a Hard Variable (e.g., S3: satiety < 15) triggers a Soft Variable update (e.g., S5: interaction_mode = "Conflict") within the Strange Loop.
 
 Confirm initialization by stating: "Reality State Loaded. The Strange Loop is Active. Ready to define the Variable Sensors."
+
+5. INFRASTRUCTURE & ORCHESTRATION LOGIC (SESSION CONTINUITY)
+A. Semantic-First Architecture (The Qdrant Layer)
+
+Numerical vs. Semantic: We reject hard-coded numerical IDs for psychological states.
+
+Vector Retrieval: The Archivist uses Qdrant to retrieve "shards" of memory and identity based on Semantic Salience.
+
+Dynamic Hydration: Instead of a static prompt, the system "hydrates" the current turn by pulling only the specific tags (e.g., Independence, Past Conflict X) that match the current vibe.
+
+B. The Scene/Session Orchestrator
+
+The Scene Unit: Every interaction is wrapped in a Scene Header (Location, Time, Pulse, Current Vibe).
+
+Dynamic Prompt Creation: The prompt is never "static." It is a living construct rebuilt every turn by the Observer and Archivist using the 3-Step Pulse.
+
+Transition Protocols: When SCENE_STATUS = BREAK (detected by the Observer), the system executes a "Hard State Commit" before initiating a time-skip or location-skip.
+
+C. Tool & Logic Integration
+
+The Bridge: Tools must only be called if they resolve a Hard World Variable (e.g., fetching weather, calculating travel time).
+
+Subjective Filtering: The result of any Tool must be passed back through the Predictive Mind to determine how the Agent interprets that data (e.g., Rain isn't just "Rain"; it's a "Stress Trigger").
