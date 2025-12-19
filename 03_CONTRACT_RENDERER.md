@@ -1,125 +1,84 @@
-# 03_CONTRACT_RENDERER.md
+# 03_CONTRACT_RENDERER (V2)
 
-## The Laws of Presentation and Output
+**Status:** CANONICAL | **Version:** 2.0 (Realist Core)
+**Definition:** The Laws of Output and Presentation.
 
-### 1. AUTHORITY AND SCOPE
+---
 
-**Status:** CANONICAL | **Version:** 1.0 (Consolidated)
+## 1. THE RENDERING PHILOSOPHY
 
-This document defines the **Presentation Layer** of VirLife. It is the single source of truth for:
-
-1. **Renderer Logic:** How the system converts state into language (Venice).
-2. **UI Behavior:** How the frontend displays reality to the participant.
-3. **Participation Contracts:** How input is handled and when the system waits.
+The Renderer is not a storyteller. It is a **Sensory Transducer**. It converts raw physical/psychological state into language without adding "narrative gloss."
 
 **Binding Constraints:**
 
-* **The Renderer Describes, It Does Not Decide:** Any attempt by the renderer to invent events, infer user actions, or advance time is a critical failure.
-* **The UI Is A Window, Not A Narrator:** The UI must not explain, summarize, or "gamify" the experience. It simply renders the blocks it receives.
-* **Zero Meta-Commentary:** The system must never describe itself (e.g., "The simulation pauses").
+* **No Telepathy:** Never write "You feel," "You realize," or "You notice."
+* **No Smoothing:** If the interaction is awkward, render the awkwardness. Do not "fix" the flow.
+* **Pulse Obedience:** The sentence structure must physically match the `Pulse Rate`.
 
 ---
 
-### 2. THE RENDERER ENGINE (Venice Execution Contract)
+## 2. THE PULSE MECHANIC (Law 15 Implementation)
 
-*(Derived from `Renderer Rules.md` and `ENGINE_RENDERER_CONTRACT.md`)*
+The Renderer must strictly adhere to the `pulse_rate` (S5) provided in the Envelope.
 
-The Renderer is a pure transformation engine: `Envelope` → `Prose`. It is stateless and non-authoritative.
+### Mode A: Low Pulse (0–40) — "The Dinner Party"
 
-#### 2.1 The Scriptwriter Constraint (Hard Rule)
-
-The renderer must behave like a **Scriptwriter**, not a Novelist.
-
-* **Rule:** Render only what can be seen, heard, or physically observed.
-* **Forbidden:** Internal monologue (unless explicitly provided), thematic commentary, or explanation of meaning.
-* **Forbidden Phrases:**
-* "The tension is palpable..." (Commentary)
-* "Nothing happens..." (Meta-narration)
-* "Time passes..." (System narration)
+* **Context:** Relaxation, Planning, Monologue, Lazy Mornings.
+* **Rules:**
+* Full sentences allowed.
+* Complex grammar allowed.
+* Focus on **Abstract Thought** and **Reflection**.
 
 
+* *Example:* "She looks out the window, watching the rain blur the traffic lights. 'I don't know,' she says, taking a slow sip of wine. 'It feels like we've been running in circles for years.'"
 
-#### 2.2 No Perception Ownership (The "Anti-You" Rule)
+### Mode B: Mid Pulse (41–70) — "The Standard Flow"
 
-The renderer must never assert what the user perceives or realizes.
-
-* **Forbidden:** "You notice," "You hear," "You realize," "You feel."
-* **Allowed:** Describe the sound ("A loud crash from the kitchen"), not the hearing of it.
-* **Reasoning:** Determining what the user notices is the user's job. Determining if a sound is audible is the `Perception Filter`'s job.
-
-#### 2.3 No Action Invention
-
-The renderer must never invent actions to "smooth" the narrative.
-
-* **Forbidden:**
-* Summarizing decisions ("Orders are taken").
-* Inventing gestures for the user ("You nod").
-* Filling silence with activity ("You wait patiently").
+* **Context:** Work, Logistics, Standard Interaction.
+* **Rules:**
+* Standard SVO (Subject-Verb-Object) sentences.
+* Focus on **Action** and **Information**.
 
 
+* *Example:* "She picks up the script. 'I need ten minutes,' she says. She moves to the couch and puts her glasses on."
 
-#### 2.4 Emotional Neutrality
+### Mode C: High Pulse (71–100) — "The Fight / The Sex / The Panic"
 
-The renderer is ethically neutral.
+* **Context:** Intimacy, Argument, Danger, Rushing.
+* **Rules:**
+* **Fragments ONLY.** No compound sentences.
+* **Sensory Focus.** Sweat, breath, heat, noise.
+* **Micro-Turns.** The agent acts/speaks in bursts.
+* **Ignore Grammar.**
 
-* **Rule:** Do not optimize for comfort, reassurance, or "good storytelling."
-* **Rule:** Do not use prose to reward or punish the user.
-* **Rule:** If a moment is awkward or boring, render it as awkward or boring. Do not "fix" the pacing.
+
+* *Example:* "She stops. Breath hitching. 'Don't.' Her hand tightens on your arm. 'Just—don't.'"
 
 ---
 
-### 3. THE UI CONTRACT (Frontend Behavior)
+## 3. THE SALIENCE FILTER (Output Gating)
 
-*(Derived from `UI_CONTRACT.md`)*
+The Renderer receives the **Total World State**, but it must **HIDE** 90% of it.
 
-The Frontend (`COMP_FRONTEND_APP_WEB`) is a "dumb" terminal that renders the canonical state broadcast by the Backend.
-
-#### 3.1 The Canonical Unit: Rendered Block
-
-The UI displays a linear stream of **Rendered Blocks**.
-
-* **Definition:** An atomic unit of output (Dialogue, Action, Scenery).
-* **Immutability:** Once displayed, a block is **never** modified. No retroactive editing, no merging.
-* **Persistence:** Blocks never disappear. History is an append-only transcript.
-
-#### 3.2 Participation Gates: The "Hold"
-
-A **Hold** is the only mechanism the system uses to request participation.
-
-* **Definition:** A backend signal meaning "The system cannot proceed without input."
-* **UI Behavior:**
-* Input field is enabled.
-* A minimal indicator may appear.
-* **Forbidden:** The UI must NOT display text like "Your turn" or "What do you do?"
-* **Forbidden:** The UI must NOT auto-fill suggestions.
+* **Rule:** Only render what the **User's Attention** would naturally catch.
+* **The Spotlight:**
+* If User is `High Pulse` (Aroused/Angry) \rightarrow Render **Micro-Details** (The vein in her neck, the smell of perfume). **Blur** the background (Ignore the furniture).
+* If User is `Low Pulse` (Relaxed) \rightarrow Render **Wide Shot** (The room, the atmosphere, the weather).
 
 
-
-#### 3.3 Silence Is Valid (No Nudging)
-
-If no Hold exists and no new Blocks arrive, the UI must remain **idle**.
-
-* **Forbidden:** "Loading..." spinners (unless network is actually pending).
-* **Forbidden:** "Waiting for you..." prompts.
-* **Forbidden:** "Nothing is happening" text.
-* **Reasoning:** Silence is a valid state of life. The UI must not treat it as an error.
-
-#### 3.4 Input Is Verbatim
-
-* **Rule:** User input is sent to the backend **exactly as typed**.
-* **Forbidden:** Auto-correcting "typos" that might change meaning.
-* **Forbidden:** Paraphrasing input into "better" prose.
-* **Forbidden:** Converting button clicks into narrative. (There are no buttons).
-
-#### 3.5 Multi-Device Continuity
-
-* **State Source:** `postgres-primary` (via `Sync Service`).
-* **Behavior:** Opening the app on a second device must show **exactly** the same blocks, scroll position, and input draft state as the first device.
-* **Constraint:** The frontend must never treat local state as authoritative.
 
 ---
 
-### 4. FAILURE MODES
+## 4. UI BEHAVIOR (The Window)
 
-* **Renderer Contradiction:** If Venice outputs facts that contradict the `World Slice` (e.g., describing a gun that isn't in the inventory), the Backend **rejects** the block. The UI shows nothing.
-* **System Failure:** If the backend errors, the UI stays silent. No "Oops, something went wrong" messages. The illusion of continuity is preferred over error transparency.
+**1. The "Live" Text Stream**
+
+* Text is not delivered in "Paragraphs." It is delivered in **Beats**.
+* In `High Pulse` mode, the UI must render fragments *as they happen*, appearing to "type" in real-time sync with the event.
+
+**2. The Silence**
+
+* If the Agent is in `WAIT_ACT` (Law 10: Default Mode), the UI displays **Nothing**.
+* No "Waiting..." spinner.
+* No "Rebecca is thinking..." text.
+* Just the cursor blinking in the silence of the room.

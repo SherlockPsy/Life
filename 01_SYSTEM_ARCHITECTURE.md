@@ -1,320 +1,262 @@
-# 01_SYSTEM_ARCHITECTURE.md
+# 01_SYSTEM_ARCHITECTURE (V2)
 
-## The Machine Blueprint
+**Status:** CANONICAL | **Version:** 2.0 (Realist Core)
+**Definition:** The Blueprint of the Simulation Engine.
 
-### 1. AUTHORITY AND SCOPE
+---
 
-**Status:** CANONICAL | **Version:** 1.0 (Consolidated)
+## 1. AUTHORITY AND SCOPE
 
-This document defines the **System Architecture** of VirLife. It is the single source of truth for:
-
-1. **Infrastructure:** Deployment topology, database contracts, and runtime environment.
-2. **Components:** The strict boundaries, inputs, and outputs of every software module.
-3. **Schemas:** The exact data shapes allowed across boundaries.
-4. **Execution:** The atomic lifecycle of a "Tick."
+This document defines the **System Architecture** of VirLife. It is the single source of truth for the machine that runs the simulation.
 
 **Binding Constraints:**
 
-* **No Auth:** There is no user authentication, no login, and no multi-tenancy. The system runs for exactly one participant.
-* **Single World:** There is exactly one world instance.
-* **Irreversibility:** The system is append-only. No rollback, no retry.
-* **No Microservices:** The system deploys as a **monolith** (`backend-core`) connected to managed persistence.
+* **The Wall Clock Rule:** The system time is strictly bound to UTC Wall Clock. There is no "Pause."
+* **The Physics Constraint:** All state transitions must obey the laws of physics (Time/Distance/Entropy) defined in `00_CONSTITUTION`.
+* **No "Session" Logic:** The concept of a "Session" is replaced by a "Connection." The world runs regardless of connection status.
 
 ---
 
-### 2. DEPLOYMENT & RUNTIME INFRASTRUCTURE
+## 2. COMPONENT REGISTRY (The Machine Parts)
 
-*(Derived from `INFRA_SPEC.md` and `INFRASTRUCTURE_AND_RUNTIME_CONTRACT.md`)*
+### A. The Core Engine (Backend)
 
-#### 2.1 Deployment Topology (Railway)
+**1. `COMP_BACKEND_TICK_SERVICE` (The Metronome)**
 
-The system consists of exactly **4 defined services**. No other services exist.
-
-1. **`backend-core`** (Web Service)
-* **Responsibility:** Hosts all logical components (API, Session, Tick Engine, Agents, Renderer Adapter).
-* **Process Model:** Single process. No internal networking. Component communication via internal method calls (enforced interfaces).
-
-
-2. **`postgres-primary`** (PostgreSQL)
-* **Responsibility:** **Authoritative Truth**. Stores World State, Event History, UI Snapshots, and Memories.
-
-
-3. **`redis-primary`** (Redis)
-* **Responsibility:** **Ephemeral Cache**. UI fast-resume, continuity caching. *Never* authoritative.
-
-
-4. **`qdrant-primary`** (Qdrant)
-* **Responsibility:** **Similarity Search**. Retrieval of memories only. *Never* authoritative.
+* **Responsibility:** Maintains the `current_tick_id` and strictly synchronizes it with UTC time.
+* **New V2 Logic:**
+* **The Catch-Up Loop:** On connection resume, if `(Now - Last_Tick_Time) > Threshold`, the service runs a "Fast Drift" cycle to update entropy/state for the elapsed time *before* accepting new input.
 
 
 
-#### 2.2 Environment Variables (Hard Contract)
+**2. `COMP_BACKEND_WORLD_SERVICE` (The Physics Engine)**
 
-The system **must fail to start** if any of these are missing.
+* **Responsibility:** Validates physical constraints.
+* **New V2 Logic:**
+* **Travel Validator:** Rejects any `Location Update` where \Delta t < \frac{\Delta d}{v}.
+* **Object Decay:** Applies atrophy to `S2` (Material Objects) based on elapsed time.
 
-* `APP_ENV`: `production` | `staging` | `development`
-* `SERVER_TIMEZONE`: `UTC` (Must be UTC).
-* `POSTGRES_URL`: Connection string for `postgres-primary`.
-* `REDIS_URL`: Connection string for `redis-primary`.
-* `QDRANT_URL` / `QDRANT_API_KEY`: Connection for vector store.
-* `VENICE_API_KEY`: Credentials for the LLM Renderer.
-* **FORBIDDEN:** Any variable related to `AUTH`, `JWT`, `OAUTH`, or `USER_ID`.
 
-#### 2.3 Database Invariants
 
-1. **Monotonic Time:** `ticks.tick_id` must strictly increase. `sessions.current_tick_id` must never decrease.
-2. **Single World:** The `world_singleton` table must contain exactly **one row**.
-3. **Append-Only:** `events`, `user_inputs`, and `memories` tables are `INSERT`-only. `UPDATE`/`DELETE` are forbidden.
+**3. `COMP_BACKEND_AGENT_ENGINE` (The Brain)**
+
+* **Responsibility:** Generates Agent behavior (`S3`, `S4`, `S5`, `S6`).
+* **New V2 Logic:**
+* **Bio-Loop Integration:** Reads `S3 (Biological)` before generating intent. (e.g., If `Energy < 20`, force `Interaction Mode` to "Fatigued").
+* **Multi-Domain Solver:** resolves conflicts between `Professional` and `Personal` intent before acting.
+
+
+
+**4. `COMP_BACKEND_PERCEPTION_FILTER` (The Fog of War)**
+
+* **Responsibility:** Filters Global Truth down to "What can be Perceived."
+* **New V2 Logic:**
+* **Salience Gating:** Removes 99% of `S2` facts that are irrelevant to the Agent's current `Intention` or `Biological State` (Law 13).
+
+
+
+**5. `COMP_BACKEND_RENDERER_SERVICE` (Venice Adapter)**
+
+* **Responsibility:** Transforms `Events` into `Prose`.
+* **New V2 Logic:**
+* **Pulse Rendering:** Checks `S5.pulse_rate`.
+* If `> 70`: Forces output into **Fragments/Micro-Turns**.
+* If `< 40`: Allows **Full Sentences/Monologues**.
+
+
+
+
 
 ---
 
-### 3. COMPONENT REGISTRY (Logical Boundaries)
+## 3. DATA CONTRACTS (The Signals)
 
-*(Derived from `COMPONENTS_REGISTRY.md`)*
+### `SCHEMA_TICK_CONTEXT_2` (The Input to Every Tick)
 
-#### A) Frontend Components
+```json
+{
+  "tick_id": "integer",
+  "timestamp_utc": "ISO-8601",
+  "time_delta_seconds": "float (Seconds since last tick)",
+  "pulse_rate": "integer (0-100)",
+  "global_entropy_factor": "float (0.0 - 1.0)"
+}
 
-* **`COMP_FRONTEND_APP_WEB`**: The single-page application.
-* **Authority:** Presentation only.
-* **Forbidden:** Must not paraphrase user input or invent narrative text.
+```
 
+### `SCHEMA_WORLD_SLICE_2` (The Local Reality)
 
-* **`COMP_FRONTEND_WS_CLIENT`**: Maintains the WebSocket session.
-* **Inputs:** `SCHEMA_UI_SNAPSHOT_1`, `SCHEMA_UI_DELTA_1`.
-* **Outputs:** `SCHEMA_USER_INPUT_1`.
+```json
+{
+  "location_id": "uuid",
+  "ambient_conditions": {
+    "weather": "string",
+    "noise_level": "float",
+    "light_level": "float"
+  },
+  "local_objects": [
+    { "id": "uuid", "name": "string", "health": "float", "salience_score": "float" }
+  ],
+  "active_agents": ["uuid"]
+}
 
+```
 
+### `SCHEMA_AGENT_CONTEXT_2` (The Total Self)
 
-#### B) Backend Services (Hosted in `backend-core`)
+```json
+{
+  "agent_id": "uuid",
+  "biological_state": {
+    "energy": "float",
+    "pain": "float",
+    "hormones": "float"
+  },
+  "active_intentions": [
+    { "category": "career", "pressure": 85, "description": "Audition Anxiety" },
+    { "category": "relational", "pressure": 40, "description": "Misses George" }
+  ],
+  "interaction_mode": {
+    "current": "distracted",
+    "pulse": 45
+  }
+}
 
-**1. Gateway & Session Layer**
-
-* **`COMP_BACKEND_API_GATEWAY`**: Terminates HTTP/WS. Validates schemas.
-* *Forbidden:* Auth logic.
-
-
-* **`COMP_BACKEND_SESSION_SERVICE`**: Bootstraps the single session.
-* *Responsibility:* Ensures `WORLD_SINGLETON` exists. Returns current snapshot.
-
-
-* **`COMP_BACKEND_SYNC_SERVICE`**: Broadcasts canonical UI state.
-* *Responsibility:* Pushes `SCHEMA_UI_SNAPSHOT` and `SCHEMA_UI_DELTA` to the frontend.
-
-
-* **`COMP_BACKEND_USER_INPUT_SERVICE`**: Persists input verbatim.
-* *Constraint:* Must write raw text to Postgres before any processing.
-
-
-
-**2. The Engine Core (The "Brains")**
-
-* **`COMP_BACKEND_TICK_SERVICE`**: The Orchestrator.
-* *Responsibility:* Advances `current_tick_id`. Calls all other engines sequentially.
-
-
-* **`COMP_BACKEND_WORLD_SERVICE`**: Maintains `S2` (Situational State).
-* **`COMP_BACKEND_AGENT_ENGINE`**: Generates Cognition.
-* *Input:* World Slice + Memory.
-* *Output:* Candidate Actions (JSON). *No narrative prose.*
-
-
-* **`COMP_BACKEND_INTERACTION_ENGINE`**: Resolves Social Flow.
-* *Responsibility:* Decides who speaks, interruptions, and turn-taking.
-
-
-* **`COMP_BACKEND_PERCEPTION_FILTER`**: Applies "Fog of War."
-* *Responsibility:* Filters events based on audibility/visibility.
-
-
-* **`COMP_BACKEND_SCENE_CONTINUITY_SERVICE`**: Prevents contradictions.
-* *Responsibility:* Tracks "What has been established" in the current scene.
-
-
-
-**3. The Renderer Layer**
-
-* **`COMP_BACKEND_ENVELOPE_ASSEMBLER`**: Gathers all data for the renderer.
-* *Output:* `SCHEMA_RENDERER_ENVELOPE_1`.
-
-
-* **`COMP_BACKEND_RENDERER_SERVICE`**: The Adapter for Venice.
-* *Forbidden:* Modifying the envelope or the output.
-
-
-* **`COMP_LLM_VENICE_RENDERER`**: The LLM (External).
-* *Responsibility:* Pure prose generation.
-* *Forbidden:* Inventing events or user actions.
-
-
-
-**4. Storage Services**
-
-* **`COMP_BACKEND_EVENT_HISTORY_SERVICE`**: Appends to the immutable log.
-* **`COMP_BACKEND_MEMORY_SERVICE`**: Manages Vector/SQL duality for memory.
+```
 
 ---
 
-### 4. SCHEMA REGISTRY (Data Contracts)
+## 4. THE EXECUTION LOOP (The Pulse of Life)
 
-*(Derived from `COMPONENTS_REGISTRY.md` and `Map Schema`. These define the JSON shapes exchanged between components.)*
+This is the atomic unit of the simulation.
 
-#### 4.1 Input & Bootstrap
+**Step 1: The Time Delta Calculation**
 
-**`SCHEMA_BOOTSTRAP_RESPONSE_1`**
+* `Tick Service` calculates `dt = Now - Last_Tick`.
+* If `dt > 100ms`, the **Drift Engine** activates.
 
-* `session_id` (uuid)
-* `world_singleton_id` (text)
-* `last_tick_id` (int)
-* `ui_snapshot` (`SCHEMA_UI_SNAPSHOT_1`)
+**Step 2: The Entropy Pass (Drift)**
 
-**`SCHEMA_USER_INPUT_1`**
+* **Biological Drift:** Agents lose Energy, accumulate Hunger/Fatigue (`S3`).
+* **Material Drift:** Objects degrade (`S2`).
+* **Relational Drift:** Intimacy scores decay (`S4`) based on `dt`.
 
-* `session_id` (uuid)
-* `client_time` (timestamptz)
-* `input_text` (text; verbatim)
-* `input_kind` (`utterance` | `action` | `mixed`)
-* `raw_json` (json)
+**Step 3: The Salience Filter (Cognition)**
 
-#### 4.2 UI State
+* `Agent Engine` scans `World Slice`.
+* Applies **Law 13 (Salience)**: "I am hungry" \rightarrow High Salience for "Food". "I am anxious" \rightarrow High Salience for "Threats."
+* Ignores all other input.
 
-**`SCHEMA_UI_SNAPSHOT_1`**
+**Step 4: The Multi-Domain Conflict (Decision)**
 
-* `ui_snapshot_id` (uuid)
-* `tick_id` (int)
-* `version` (int)
-* `rendered_blocks` (array of blocks)
-* `scroll_anchors` (object)
-* `focus_state` (object)
-* `input_draft` (object)
-
-**`SCHEMA_UI_DELTA_1`**
-
-* `base_snapshot_id` (uuid)
-* `next_snapshot_id` (uuid)
-* `ops` (array of diff operations)
-
-#### 4.3 Engine Internals
-
-**`SCHEMA_TICK_TRIGGER_1`**
-
-* `trigger_type` (`user_input` | `background` | `resume` | `heartbeat`)
-* `last_known_tick_id` (int)
-
-**`SCHEMA_WORLD_SLICE_1`**
-
-* `world_singleton_id` (text)
-* `user_location_id` (uuid)
-* `agents_in_scope` (array)
-* `environment_facts` (object)
-* *Forbidden:* Any narrative prose.
-
-**`SCHEMA_INTERACTION_REQUEST_1`**
-
-* `world_slice` (`SCHEMA_WORLD_SLICE_1`)
-* `agent_state_snapshots` (array)
-* `user_input` (`SCHEMA_USER_INPUT_1`)
-
-**`SCHEMA_AGENT_ACTION_CANDIDATES_1`**
-
-* `agent_id` (uuid)
-* `candidates` (array of structured intents)
-
-**`SCHEMA_RENDERER_ENVELOPE_1`**
-
-* `tick_context` (object)
-* `world_slice` (object)
-* `perceivable_events` (array)
-* `scene_continuity` (object)
-* *Forbidden:* "Be nice" or "Reward user" directives.
-
-**`SCHEMA_RENDERED_BLOCKS_1`**
-
-* `blocks` (array)
-* `text` (string)
-* `speaker_id` (uuid | null)
-* `type` (`dialogue` | `action` | `scenery`)
+* `Agent Engine` weighs competing vectors:
+* *Body says:* "Sleep."
+* *Career says:* "Rehearse."
+* *George says:* "Talk."
 
 
+* **Resolution:** The strongest vector wins. The Agent produces an `Action Candidate`.
 
-#### 4.4 Persistence
+**Step 5: The Physics Validation**
 
-**`SCHEMA_SQL_WRITE_1`**
+* `World Service` checks the Candidate.
+* *Check:* "Can Agent move from Bedroom to Kitchen in 1 second?"
+* If Valid: Commit Event.
+* If Invalid: Reject.
 
-* `table` (text)
-* `operation` (`insert` | `update` | `upsert`)
-* `values` (json)
-* *Forbidden:* Updating history tables.
+**Step 6: Pulse Rendering**
+
+* `Renderer` reads `S5.pulse_rate`.
+* Generates prose matching the **Tempo** (Fragment vs. Flow).
+
+**Step 7: State Commit**
+
+* Write `StateDeltas` to Postgres.
+* Broadcast `UI_DELTA` to Frontend.
 
 ---
 
-### 5. THE SYSTEM EXECUTION LOOP (The Authoritative Tick)
+# 03_CONTRACT_RENDERER (V2)
 
-*(Derived from `SYSTEM_EXECUTION_MODEL.md`. This is the exact sequence of a "Moment" in VirLife.)*
-
-**Preconditions:**
-
-1. `system_time.presence_gate.is_present == true` (or trigger is `resume`).
-2. Tick Lock acquired (Strict Serialization).
-
-**Step 1: Time Advance (S1)**
-
-* `Tick Service` reads current `tick_id`.
-* Increments `tick_id` by 1.
-* Updates `current_timestamp` based on `SYSTEM_TICK_SECONDS` (Parameter).
-
-**Step 2: Drift & Intrusions (S2/S3/S4/S6)**
-
-* `World Service` calculates **Drift Deltas** (Entropy, Decay).
-* *Constraint:* Must produce `StateDelta` objects.
-* *Inevitability Check:* Is silence/drift distribution satisfied?
-
-**Step 3: Interaction Resolution**
-
-* `Interaction Engine` receives World Slice + User Input.
-* Calls `Agent Engine` for candidates.
-* Determines "Who acts?" (User vs. Agent vs. Silence).
-* Outputs: `Interaction Events`.
-
-**Step 4: Perception Gating**
-
-* `Perception Filter` removes events the user cannot see/hear.
-* Output: `Perceivable Events`.
-
-**Step 5: Envelope Assembly**
-
-* `Envelope Assembler` packages:
-* World Slice (Facts)
-* Perceivable Events (Action)
-* Scene Continuity (Context)
-
-
-* Output: `SCHEMA_RENDERER_ENVELOPE_1`.
-
-**Step 6: Rendering**
-
-* `Renderer Service` sends Envelope to `Venice`.
-* `Venice` returns `Rendered Blocks`.
-* *Constraint:* Venice **must not** invent new events.
-
-**Step 7: Atomic Commit**
-
-* Persist:
-* `StateDeltas` (Logic changes) -> `postgres-primary`
-* `Events` (History) -> `postgres-primary`
-* `UI Snapshot` (New Blocks) -> `postgres-primary`
-
-
-* *Constraint:* All or nothing.
-
-**Step 8: Broadcast**
-
-* `Sync Service` emits `SCHEMA_UI_DELTA` via WebSocket.
-* Frontend updates.
+**Status:** CANONICAL | **Version:** 2.0 (Realist Core)
+**Definition:** The Laws of Output and Presentation.
 
 ---
 
-### 6. FAILURE SEMANTICS
+## 1. THE RENDERING PHILOSOPHY
 
-* **No Fallbacks:** If a tick fails (e.g., Renderer timeout, DB lock), the tick **aborts**. The state rolls back. The user sees nothing.
-* **No "Retry with simpler prompt":** The system does not degrade gracefully; it ensures correctness or nothing.
-* **No "Blind" Rendering:** The Renderer never runs without a validated Envelope.
+The Renderer is not a storyteller. It is a **Sensory Transducer**. It converts raw physical/psychological state into language without adding "narrative gloss."
+
+**Binding Constraints:**
+
+* **No Telepathy:** Never write "You feel," "You realize," or "You notice."
+* **No Smoothing:** If the interaction is awkward, render the awkwardness. Do not "fix" the flow.
+* **Pulse Obedience:** The sentence structure must physically match the `Pulse Rate`.
+
+---
+
+## 2. THE PULSE MECHANIC (Law 15 Implementation)
+
+The Renderer must strictly adhere to the `pulse_rate` (S5) provided in the Envelope.
+
+### Mode A: Low Pulse (0–40) — "The Dinner Party"
+
+* **Context:** Relaxation, Planning, Monologue, Lazy Mornings.
+* **Rules:**
+* Full sentences allowed.
+* Complex grammar allowed.
+* Focus on **Abstract Thought** and **Reflection**.
+
+
+* *Example:* "She looks out the window, watching the rain blur the traffic lights. 'I don't know,' she says, taking a slow sip of wine. 'It feels like we've been running in circles for years.'"
+
+### Mode B: Mid Pulse (41–70) — "The Standard Flow"
+
+* **Context:** Work, Logistics, Standard Interaction.
+* **Rules:**
+* Standard SVO (Subject-Verb-Object) sentences.
+* Focus on **Action** and **Information**.
+
+
+* *Example:* "She picks up the script. 'I need ten minutes,' she says. She moves to the couch and puts her glasses on."
+
+### Mode C: High Pulse (71–100) — "The Fight / The Sex / The Panic"
+
+* **Context:** Intimacy, Argument, Danger, Rushing.
+* **Rules:**
+* **Fragments ONLY.** No compound sentences.
+* **Sensory Focus.** Sweat, breath, heat, noise.
+* **Micro-Turns.** The agent acts/speaks in bursts.
+* **Ignore Grammar.**
+
+
+* *Example:* "She stops. Breath hitching. 'Don't.' Her hand tightens on your arm. 'Just—don't.'"
+
+---
+
+## 3. THE SALIENCE FILTER (Output Gating)
+
+The Renderer receives the **Total World State**, but it must **HIDE** 90% of it.
+
+* **Rule:** Only render what the **User's Attention** would naturally catch.
+* **The Spotlight:**
+* If User is `High Pulse` (Aroused/Angry) \rightarrow Render **Micro-Details** (The vein in her neck, the smell of perfume). **Blur** the background (Ignore the furniture).
+* If User is `Low Pulse` (Relaxed) \rightarrow Render **Wide Shot** (The room, the atmosphere, the weather).
+
+
+
+---
+
+## 4. UI BEHAVIOR (The Window)
+
+**1. The "Live" Text Stream**
+
+* Text is not delivered in "Paragraphs." It is delivered in **Beats**.
+* In `High Pulse` mode, the UI must render fragments *as they happen*, appearing to "type" in real-time sync with the event.
+
+**2. The Silence**
+
+* If the Agent is in `WAIT_ACT` (Law 10: Default Mode), the UI displays **Nothing**.
+* No "Waiting..." spinner.
+* No "Rebecca is thinking..." text.
+* Just the cursor blinking in the silence of the room.
