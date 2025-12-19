@@ -1,6 +1,6 @@
-# 01_SYSTEM_ARCHITECTURE (V2)
+# 01_SYSTEM_ARCHITECTURE (V2.1)
 
-**Status:** CANONICAL | **Version:** 2.0 (Realist Core)
+**Status:** CANONICAL | **Version:** 2.1 (Contextual Realist Core)
 **Definition:** The Blueprint of the Simulation Engine.
 
 ---
@@ -20,30 +20,37 @@ This document defines the **System Architecture** of VirLife. It is the single s
 
 ### A. The Core Engine (Backend)
 
-**1. `COMP_BACKEND_TICK_SERVICE` (The Metronome)**
+**1. `COMP_BACKEND_OBSERVER_SERVICE` (The Universal Translator)**
+* **Responsibility:** The Input/Output Gatekeeper. Decouples the "User" from the simulation and enforces Contextual Understanding.
+* **New V2 Logic:**
+    * **Diegetic Decoupling:** Intercepts raw user text, strips "User" metadata, and converts it into a Diegetic Event (e.g., "George performs Speech Act").
+    * **The Context Detective:** Queries `S3` (State) and `S4` (Relational) *before* translation. It distinguishes between "Literal Truth" (Physics) and "Emotional Truth" (Metaphor) based on the User's current context (e.g., Drunk vs. Happy vs. Delusional).
+    * **Output Watch:** Filters Renderer output to ensure no "Assistant-speak" or telepathy leaks back to the user.
+
+**2. `COMP_BACKEND_TICK_SERVICE` (The Metronome)**
 * **Responsibility:** Maintains the `current_tick_id` and strictly synchronizes it with UTC time.
 * **New V2 Logic:**
     * **The Catch-Up Loop:** On connection resume, the service calculates `Delta_Time = Now - Last_Tick`.
     * **Drift Execution:** If `Delta_Time > Threshold`, the service runs a "Fast Drift" cycle to update entropy, biological state, and world events for the elapsed time *before* accepting new input. This enforces Law 1 (Persistence).
 
-**2. `COMP_BACKEND_WORLD_SERVICE` (The Physics Engine)**
+**3. `COMP_BACKEND_WORLD_SERVICE` (The Physics Engine)**
 * **Responsibility:** Validates physical constraints for all state changes.
 * **New V2 Logic:**
     * **Travel Validator:** Rejects any `Location Update` where $\Delta t < \frac{\Delta d}{v}$. It strictly enforces travel time between nodes (e.g., Leeds to LA takes 11 hours).
     * **Object Decay:** Applies atrophy to `S2` (Material Objects) based on elapsed time (e.g., `car_battery_charge` decreases).
 
-**3. `COMP_BACKEND_AGENT_ENGINE` (The Brain)**
+**4. `COMP_BACKEND_AGENT_ENGINE` (The Brain)**
 * **Responsibility:** Generates Agent behavior (`S3`, `S4`, `S5`, `S6`).
 * **New V2 Logic:**
     * **Bio-Loop Integration:** Reads `S3 (Biological)` before generating intent. It applies the **Somatic Marker**: If `Energy < 20`, it forces `Interaction Mode` to "Fatigued/Irritable" and dampens cognitive complexity.
-    * **Multi-Domain Solver:** Resolves conflicts between `Professional` (Career), `Social` (Family), and `Personal` (User) intent vectors before acting. The strongest pressure wins.
+    * **Multi-Domain Solver:** Resolves conflicts between `Professional` (Career), `Social` (Family), and `Personal` (User/George) intent vectors before acting. The strongest pressure wins.
 
-**4. `COMP_BACKEND_PERCEPTION_FILTER` (The Fog of War)**
+**5. `COMP_BACKEND_PERCEPTION_FILTER` (The Fog of War)**
 * **Responsibility:** Filters Global Truth down to "What can be Perceived."
 * **New V2 Logic:**
     * **Salience Gating:** Removes 99% of `S2` facts that are irrelevant to the Agent's current `Intention` or `Biological State` (Enforcing Law 13). An Agent only "sees" what matters to their survival or goal.
 
-**5. `COMP_BACKEND_RENDERER_SERVICE` (Venice Adapter)**
+**6. `COMP_BACKEND_RENDERER_SERVICE` (Venice Adapter)**
 * **Responsibility:** Transforms `Events` into `Prose`.
 * **New V2 Logic:**
     * **Pulse Rendering:** Checks `S5.pulse_rate` to determine sentence structure. It forces fragments for high-pulse states and allows flow for low-pulse states.
@@ -68,6 +75,11 @@ To prevent constant, eager narration—which destroys realism—the system must 
 
 This is the atomic unit of the simulation. It runs every tick.
 
+**Step 0: The Observer Pass (Input Injection)**
+* `Observer Service` intercepts incoming User Text.
+* Checks Context (S3/S4) and translates Text $\rightarrow$ `Semantic Intent` (e.g., "George is Metaphorical").
+* Injects the translated Event into the World Queue.
+
 **Step 1: The Time Delta Calculation**
 * `Tick Service` calculates `dt = Now - Last_Tick`.
 * If `dt > 100ms`, the **Drift Engine** activates to fill the gap.
@@ -78,7 +90,7 @@ This is the atomic unit of the simulation. It runs every tick.
 * **Relational Drift:** Intimacy scores decay (`S4`) based on `dt`.
 
 **Step 3: The Salience Filter (Cognition)**
-* `Agent Engine` scans the `World Slice` (S2).
+* `Agent Engine` scans the `World Slice` (S2) and the new `Semantic Intent` (Step 0).
 * Applies **Law 13 (Salience)**:
     * "I am hungry" $\rightarrow$ High Salience for "Food".
     * "I am anxious" $\rightarrow$ High Salience for "Threats".
