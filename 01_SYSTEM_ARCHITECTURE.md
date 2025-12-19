@@ -1,6 +1,6 @@
-# 01_SYSTEM_ARCHITECTURE (V2.1)
+# 01_SYSTEM_ARCHITECTURE (V2.2)
 
-**Status:** CANONICAL | **Version:** 2.1 (Contextual Realist Core)
+**Status:** CANONICAL | **Version:** 2.2 (Orchestration Core)
 **Definition:** The Blueprint of the Simulation Engine.
 
 ---
@@ -116,3 +116,31 @@ This is the atomic unit of the simulation. It runs every tick.
 **Step 7: State Commit**
 * Write `StateDeltas` to Postgres.
 * Broadcast `UI_DELTA` to Frontend.
+
+---
+
+## 5. INFRASTRUCTURE & ORCHESTRATION LOGIC (SESSION CONTINUITY)
+
+This section governs how the system maintains continuity and constructs the prompt context.
+
+### A. Semantic-First Architecture (The Qdrant Layer)
+* **Numerical vs. Semantic:** The system rejects hard-coded numerical IDs for psychological states in the prompt.
+* **Vector Retrieval:** The `COMP_BACKEND_PERCEPTION_FILTER` must use Qdrant to retrieve "shards" of memory and identity based on **Semantic Salience**.
+* **Dynamic Hydration:**
+    * **Forbidden:** Using a static "System Prompt" or "Character Card."
+    * **Mandatory:** The prompt must be rebuilt ("hydrated") on every turn.
+    * **Logic:** Pull only the specific Identity Tags (e.g., "Independence," "Past Conflict X") that match the embedding of the current `Semantic Intent` (Step 0).
+
+### B. The Scene/Session Orchestrator
+* **The Scene Unit:** Every interaction is wrapped in a dynamic `Scene Header` containing:
+    * `Location_State` (S2)
+    * `Time_State` (S1)
+    * `Pulse_State` (S5)
+    * `Current_Vibe` (Semantic Tag from Observer)
+* **Transition Protocols:**
+    * If the Observer detects a `SCENE_BREAK` (e.g., "See you tomorrow"), the system executes a **Hard State Commit** to the database before initiating any time-skip or location-skip logic.
+
+### C. Tool & Logic Integration
+* **The Bridge:** Tools (e.g., `get_weather`, `calculate_travel_time`) are strictly for resolving Hard World Variables.
+* **Subjective Filtering:** The raw output of a Tool (e.g., "Temperature: 12°C, Rain") **MUST NOT** be fed directly to the Renderer.
+* **The Filter Path:** `Tool Output` $\rightarrow$ `Agent Engine (Predictive Mind)` $\rightarrow$ `Subjective Interpretation` ("It is freezing and miserable") $\rightarrow$ `Renderer`.
