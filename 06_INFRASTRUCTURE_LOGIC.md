@@ -14,7 +14,7 @@
 The Recorder captures the **Narrative Stream**. It does not try to interpret "Intent" or "Truth" at the moment of capture. It simply records the "Film."
 
 **Storage Schema (The Reel):**
-Instead of complex JSON objects with "Meta Tags," we store **Time-Stamped Prose**.
+We store **Time-Stamped Prose**.
 * **Format:** `[TIMESTAMP] [ENTITY] [CONTENT]`
 * **Example:** `[2025-12-20 09:15:00] [USER]: "I'm not hungry."`
 * **Example:** `[2025-12-20 09:15:05] [AGENT]: She looks at your full plate. "Liar."`
@@ -34,37 +34,20 @@ The Engine does not run a "Game Loop" every second. It runs a **Gap Check** only
 **The Workflow:**
 1.  **Trigger:** User Input arrives.
 2.  **Calculate Gap:** `Current_Time - Last_Interaction_Time`.
-3.  **Apply Decay:**
-    * If `Gap > 4 Hours`: Inject `[Somatic: Hunger]` into the Palimpsest.
-    * If `Gap > 16 Hours`: Inject `[Somatic: Sleep_Pressure]` into the Palimpsest.
-    * If `Gap > 1 Week`: Inject `[Cord: Distance]` (Downgrade Intimacy).
-    * If `Gap > 1 Month`: Inject `[Environment: Dust/Stale]` into the Location.
+3.  **Apply Decay (The Drift):**
+    * If `Gap > 4 Hours`: Inject `[Somatic: Hunger]` + `[Atmosphere: Stale]` into the Palimpsest.
+    * If `Gap > 16 Hours`: Inject `[Somatic: Sleep_Pressure]` + `[Atmosphere: Dark]` into the Palimpsest.
+    * If `Gap > 1 Week`: Inject `[Cord: Distance]` (Downgrade Intimacy) into the Palimpsest.
+    * If `Gap > 1 Month`: Inject `[Environment: Dust/Decay]` into the Location.
 
 **The Output:**
-This process does not write text. It updates the **Palimpsest (S1, S2, S3)** so the Viewer *sees* the decay in the Scene Header.
+This process does not write text. It updates the **Palimpsest (S1, S2, S3)** so the Viewer *sees* the decay in the Scene Header before writing the next line.
 
 ---
 
-## 3. THE ARCHIVE (The Echo Chamber)
+## 3. THE SEDIMENTATION LOOP (Writing the Palimpsest)
 
-*Objective: To retrieve "Sensory Shards" rather than "Facts."*
-
-**The Philosophy:**
-We do not store facts like `Helen_Hates_Sausages = True`.
-We store the **Scene** where Helen spat out the sausage.
-
-**Retrieval Logic (The Cinema):**
-1.  **Input:** User offers food.
-2.  **Search:** Vector Search for "Food" + "Disgust" + "Helen".
-3.  **Hit:** Retrieving Log #405: *"She pushes the plate away. 'It tastes like wet wool,' she says."*
-4.  **Projection:** This raw text is shown to the Viewer in the Montage.
-5.  **Inference:** The Viewer deduces: *Helen hates this food.* (No boolean variable required).
-
----
-
-## 4. THE SEDIMENTATION LOOP (Writing the Palimpsest)
-
-*Objective: To compress the Stream into Status.*
+*Objective: To compress the Stream into Status (Handling Deep Time).*
 
 The Viewer writes the Narrative. The **Sedimentation Process** reads the Narrative and updates the "Hard Truths."
 
@@ -82,14 +65,14 @@ Once written to the Palimpsest, the shard stays on the floor until a new Narrati
 
 ---
 
-## 5. THE PHYSICS OF INTERACTION (Verbs)
+## 4. THE PHYSICS OF INTERACTION (Verbs & Cost)
 
 *Objective: To handle Agency without "Functions."*
 
 **The Narrative Declaration:**
 The Agent does not call `MoveTo(Kitchen)`. The Agent declares: *"She walks to the kitchen."*
 
-**The Consequence Check:**
+**The Consequence Check (The Cost):**
 1.  **The Viewer** generates the prose: "She walks to the kitchen."
 2.  **The System** calculates the **Cost**:
     * Is the Kitchen connected to the current room? (Yes).
