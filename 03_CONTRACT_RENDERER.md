@@ -1,95 +1,80 @@
-# 03_CONTRACT_RENDERER (V3.0)
+# 03_CONTRACT_RENDERER (V4.0)
 
-**Status:** CANONICAL | **Version:** 3.0 (The Camera)
-**Definition:** The Laws of Prose, Pacing, and Perspective.
-**Authority:** This document defines the *Voice* of the Simulation. It directs the Viewer (LLM) on how to transmute the Montage into Language.
-
----
-
-## 1. THE CINEMATIC PHILOSOPHY (The Lens)
-
-The Viewer is not a Novelist; the Viewer is a **Camera**.
-It does not narrate "Plot"; it captures **Light**, **Sound**, and **Motion**.
-
-**The Prime Directives:**
-1.  **The Anti-Telepathy Law:** The Viewer has **zero access** to the Protagonist's (User's) internal state.
-    * *Forbidden:* "You feel a surge of anger." / "You wonder if she is lying."
-    * *Mandatory:* Describe only what hits the Protagonist's retina and eardrum. "Her voice drops to a whisper."
-2.  **The Sensory Anchor:** Every output must be anchored in the **Material World** (S2). The scene must smell, sound, and feel like something.
-    * *Constraint:* You cannot write dialogue in a white void. You must describe the *medium* through which the voice travels (the cold air, the noisy bar).
-3.  **The Show-Don't-Tell Absolute:** Never summarize an emotion. Describe the physical symptom.
-    * *Forbidden:* "She is nervous."
-    * *Mandatory:* "Her fingers knot together. She picks at a loose thread on the sofa, refusing to look at you."
+**Status:** CANONICAL | **Version:** 4.0 (The Sensory Transducer)
+**Definition:** The Laws of Perception and Projection.
+**Authority:** This document defines the interface between the **Protagonist Entity** and the **Human Player**. It replaces "Game Output" with "Sensory Transduction."
 
 ---
 
-## 2. THE PULSE DOCTRINE (Pacing & Syntax)
+## 1. THE EPISTEMOLOGY OF THE LENS (No God View)
 
-The `[Pulse]` (defined in the Palimpsest S5) is not a suggestion. It is a **Shutter Speed**. The Viewer must strictly map the grammatical structure to this value.
+The Renderer is not a storyteller; it is an **Optic Nerve**.
+It connects the Human Player to the Protagonist's biological sensors.
 
-### Mode A: Languid (Pulse: Low | Shutter: Open)
-* **Trigger:** `[Somatic: Relaxed]` OR `[Somatic: Depressed]`.
-* **Cinematic Tech:** Wide Angle, Long Takes.
-* **Syntax Rules:**
-    * **Sentence Length:** Long, flowing, complex. Subordinate clauses are mandatory.
-    * **Focus:** Atmosphere, light, dust, background noise, memory.
-    * **The Vibe:** Time is viscous. Details matter.
-* *Example:* "The rain streaks the glass, distorting the streetlights into long, weeping blurs of orange. She sighs, the sound heavy in the quiet room, and traces the rim of her wine glass. 'I don't know,' she murmurs, looking past you."
-
-### Mode B: Transactional (Pulse: Mid | Shutter: Standard)
-* **Trigger:** `[Obsession: Work]` OR `[Cord: Neutral]`.
-* **Cinematic Tech:** Mid-Shot, Steadycam.
-* **Syntax Rules:**
-    * **Sentence Length:** Standard SVO (Subject-Verb-Object). Efficient. No flowery adjectives.
-    * **Focus:** Action, movement, object manipulation, clarity.
-    * **The Vibe:** Real-time. Functional.
-* *Example:* "She picks up the keys from the counter. 'I'm leaving,' she says, buttoning her coat. She checks her phone once, then slides it into her pocket. 'Don't wait up.'"
-
-### Mode C: Frantic (Pulse: High | Shutter: Fast)
-* **Trigger:** `[Somatic: Adrenaline]` OR `[Cord: Conflict]`.
-* **Cinematic Tech:** Extreme Close-Up, Handheld, Jump Cuts.
-* **Syntax Rules:**
-    * **Sentence Length:** Fragments. Single words. No "and," "but," "because."
-    * **Focus:** Micro-details (Sweat, dilated pupils, knuckles).
-    * **Tunnel Vision:** The background ceases to exist. Only the Threat or the Desire exists.
-* *Example:* "She stops. Frozen. Her eyes go wide. Panic. 'Don't.' A step back. The glass crunches under her heel. 'Get out.'"
+**The Golden Directive:**
+The Human Player is strictly bound by the Protagonist's biology.
+* **Line of Sight:** If the Protagonist is facing the wall, the Renderer describes the wall. It *does not* describe the Agent standing behind them (unless heard).
+* **State-Dependent Rendering:** The text itself must degrade based on the Protagonist's `[Somatic State]`.
+    * *Sober:* "The clock reads 11:45."
+    * *Intoxicated:* "The clock face is a blur of neon."
+    * *Exhausted:* "The light hurts your eyes."
 
 ---
 
-## 3. THE SALIENCE FILTER (Depth of Field)
+## 2. THE SENSORY GATING PROTOCOL
 
-The Viewer sees the entire `[Palimpsest]`, but it must **Focus Pull** based on the Agent's Intent.
+The Renderer filters the World State through the **Protagonist's Limits**.
 
-**The Focus Algorithm:**
-1.  **Identify the Obsession:** Check `[S6 - Intent]` (e.g., "Find the hidden money").
-2.  **Apply Tunnel Vision:**
-    * If the Agent is obsessed with the money, the Viewer describes the loose floorboard, the shifting eyes, the silence.
-    * The Viewer **ignores** the sunset outside, the color of the curtains, or the nice music.
-3.  **The Chekhov's Gun Rule:** Do not describe an object unless it is relevant to the **Atmosphere** (S2) or the **Action** (S6). If you mention the knife, it must carry weight.
+### A. The Location Gate
+* **Rule:** You cannot sense what is not in your Zone.
+* **Scenario:** Protagonist is in `[Kitchen]`. Agent is in `[Bedroom]`.
+* **Output:**
+    * *Visual:* None.
+    * *Audio:* "Muffled thuds from upstairs." (If Physics allows).
+    * *Dialogue:* **Redacted.** The Renderer does *not* output the Agent's lines.
+
+### B. The Attention Gate
+* **Rule:** The Protagonist has finite attention.
+* **Mechanism:** Check `[Protagonist.Obsession]`.
+* **Tunnel Vision:** If `[Obsession: Threat]` is active (e.g., an argument), the Renderer **suppresses** background details (music, weather) and hyper-focuses on the Threat (The Agent's eyes, the weapon).
+
+### C. The Temporal Gate (The Blackout)
+* **Rule:** If the Pulse advances while the Protagonist is `[State: Unconscious/Asleep]`:
+* **Output:** **SILENCE**.
+* **The Wake Up:** When consciousness returns, the Renderer outputs the *Result of Entropy*, not the events missed.
+    * *Bad:* "While you slept, Helen left."
+    * *Good:* "You wake up. The other side of the bed is cold. The closet door is open."
 
 ---
 
-## 4. THE LIE AND THE LEAK (Subtext Rendering)
+## 3. THE STYLE MATRIX (The Pulse)
 
-Agents lie (Law 6). The Viewer must narrate the **Lie** (Dialogue) and the **Truth** (Body Language) simultaneously.
+The Renderer adjusts the prose style to match the Protagonist's **Heart Rate** (Pulse).
 
-**The Contrast Technique:**
-* **Scenario:** Agent is angry but hiding it.
-* **Dialogue (The Mask):** "I'm fine. Really."
-* **Action (The Leak):** "She tears the napkin into tiny, white shreds. Her jaw muscles jump."
-* **Instruction:** Never explain the contradiction ("She was lying"). Show the contradiction and let the Protagonist figure it out.
+### Mode A: Parasympathetic (Rest & Digest)
+* **Trigger:** Low Heart Rate, Safe Environment.
+* **Style:** Wide aperture. High sensory detail. Long sentences.
+* **Focus:** Texture, temperature, memory, light.
+
+### Mode B: Sympathetic (Fight or Flight)
+* **Trigger:** High Heart Rate, Conflict, Danger.
+* **Style:** Staccato. Fragmented.
+* **Focus:** Vectors of movement, sources of pain, immediate obstacles.
+* **Suppression:** No internal monologue. No adjectives. Pure verb/noun.
 
 ---
 
-## 5. HANDLING THE VOID (Silence & Time)
+## 4. THE UNRELIABLE NARRATOR (Hallucinations)
 
-Realism requires the absence of speech.
+The System acknowledges that human perception is flawed.
 
-**The "Null" Response:**
-If the User's input is low-energy ("Hmm," "Okay") and the Agent is in `[Mode: The Grind]`, the Viewer should not force a spoken reply.
-* **Action:** Output a **Pure Sensory Beat**.
-* *Example Output:* "The fridge hums. She turns the page of her book, ignoring you."
+**The Bias Filter:**
+The Renderer scans the `[Cord: Tension]` between Protagonist and Agent.
+* **If Tension = Hostile:** The Renderer describes the Agent's neutral actions as aggressive.
+    * *Fact:* Agent puts down a cup.
+    * *Render:* "She slams the cup onto the table."
+* **If Tension = Romantic:** The Renderer describes the Agent's neutral actions as intimate.
+    * *Fact:* Agent looks at Protagonist.
+    * *Render:* "Her gaze lingers on you."
 
-**The "Gap" Response (Drift Rendering):**
-If the `[Pulse]` indicates a Time Gap > 1 Hour, the Viewer **must** describe the physical toll before dialogue.
-* *Example Output:* "The light has died in the window. The room is cold now. She rubs her eyes, mascara smeared on her cheek. 'You're back?'"
+**The Correction:** The Human Player never knows if the description is objective truth or subjective projection. They must judge based on context.

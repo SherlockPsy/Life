@@ -1,109 +1,97 @@
-# 01_SYSTEM_ARCHITECTURE (V3.0)
+# 01_SYSTEM_ARCHITECTURE (V4.0)
 
-**Status:** CANONICAL | **Version:** 3.0 (The Cinematic Machine)
+**Status:** CANONICAL | **Version:** 4.0 (The Indifferent Machine)
 **Definition:** The Operational Blueprint of the Semantic Simulation.
-**Authority:** This document defines the machine that runs the simulation. It replaces the "Backend Services" with a "Cinematic Pipeline."
+**Authority:** This document defines the **Cycle of Autonomous Simulation**. It replaces the "Response Pipeline" with the "World Heartbeat."
 
 ---
 
 ## 1. AUTHORITY AND SCOPE
 
-This document defines the **Cycle of Observation and Projection**.
-
-**The Binding Constraints:**
-* **The Wall Clock Rule:** The system time is strictly bound to UTC. There is no "Pause." The Pulse (Timecode) advances 1:1 with Reality.
-* **The Physics Constraint:** The Pipeline must reject any Narrative Output that violates the laws of Time/Distance/Entropy defined in `00_CONSTITUTION`.
-* **The No-Session Logic:** The concept of a "Session" is abolished. The Machine is an "Always-On" Recorder. The User is merely "In Frame" or "Out of Frame."
+This document defines the machine that simulates the world.
+**Crucial Distinction:** The System does not "Respond to User." The System **Updates Reality** based on the collision of Entity Actions (Human or AI) and Environmental Forces.
 
 ---
 
-## 2. COMPONENT REGISTRY (The Cinematic Stack)
+## 2. COMPONENT REGISTRY (The Simulation Stack)
 
-### A. The Pulse (The Metronome / Formerly Tick Service)
-* **Responsibility:** The Absolute Timekeeper.
+### A. The Pulse (The Autonomous Heartbeat)
+* **Responsibility:** Time & Entropy.
 * **Logic:**
-    * It stamps every Input and Output with `[YYYY-MM-DD HH:MM:SS]`.
-    * **The Gap Calculator:** It calculates `Delta_t = Current_Time - Last_Frame_Time`.
-    * **The Drift Trigger:** If `Delta_t > Threshold`, it forces the **Entropy Engine** (See File 06) to erode the World State *before* the Viewer is allowed to speak. This enforces **Law 1 (Persistence)**.
+    * It runs 24/7 on UTC.
+    * **The Autonomy Trigger:** Even if no Human Input is received, the Pulse triggers the **Entropy Engine** every hour to update Agent States (Hunger, Location, Fatigue).
+    * **The Gap:** It calculates `Delta_t` for the Protagonist specifically to determine their state upon "Return" (Camera On).
 
-### B. The Recorder (The Raw Scribe / Formerly Observer Service)
+### B. The Recorder (The Entity Log)
 * **Responsibility:** The Passive Capture Layer.
 * **Logic:**
-    * It captures raw text. It does *not* interpret.
-    * **Diegetic Decoupling:** It strips "User Metadata" (IP, Device) and stores only the **Narrative Action** (`[USER]: "I open the door."`).
-    * **The Archive:** It indexes this text immediately into the Vector Database for the Cinema to recall later.
+    * It logs **Actions**, not Inputs.
+    * *Format:* `[TIMESTAMP] [ENTITY_ID] [ACTION]`.
+    * *Entity Agnosticism:* It treats `Entity: Protagonist` and `Entity: Agent_Helen` exactly the same. Both are just actors generating logs.
 
-### C. The Cinema (The Montage Engine / Formerly Context Detective)
-* **Responsibility:** The Context Assembler. It replaces the "Observer Pattern."
-* **Logic:**
-    * **Semantic Resonance:** It scans the Recorder's input and queries the Archive. It looks for "Vibes," not Keywords.
-    * **The Montage:** It assembles the **Prompt** for the Viewer.
-        * *Input:* "Current Scene" (The Palimpsest).
-        * *Input:* "Relevant Flashbacks" (The Archive).
-        * *Input:* "The Gap" (The Pulse).
-    * **The Refusal:** If the User Input violates Physics (e.g., Teleportation), the Cinema **Pre-Appends** a specific Constraint to the Montage: `[DIRECTOR NOTE: Location Change Invalid due to Travel Time. Enforce Law 2.]`
+### C. The Cinema (The Context Engine)
+* **Responsibility:** To build the "Mental State" for Entities.
+* **Dual Output:**
+    * **For Agents:** It builds a Montage so the LLM knows how to act.
+    * **For Protagonist:** It builds a **Sensory Montage** so the Renderer knows what to show the Human. (e.g., "The room is spinning" if Protagonist is drunk).
 
-### D. The Viewer (The Intelligence / Formerly Agent Engine)
-* **Responsibility:** The Wavefunction Collapser.
+### D. The Viewer (The Agent Brain)
+* **Responsibility:** To simulate the biology and volition of NPCs.
 * **Logic:**
-    * It is the only component that "thinks."
-    * **The Bio-Loop:** It reads the `[Somatic State]` (S3) from the Montage. If `Energy < Low`, it *must* dampen vocabulary and increase irritability.
-    * **The Inference:** It deduces the "Unseen World" based on `Delta_t`. (e.g., "6 hours passed -> The coffee is cold -> The Agent is stiff").
-    * **The Output:** It generates the Narrative Prose.
+    * It runs on a loop, checking `[Somatic State]`.
+    * **Autonomy:** If the Protagonist is absent, the Viewer continues to generate "Off-Screen Actions" for the Agents (e.g., "Helen goes to sleep") which are logged to the Recorder.
 
-### E. The Palimpsest (The World Status / Formerly World Service)
-* **Responsibility:** The Deep Time Keeper.
+### E. The Renderer (The Sensory Transducer)
+* **Responsibility:** To convert World State into Human Perception.
 * **Logic:**
-    * It handles 5 years of history not by "Logs" but by **Sediment**.
-    * It is a dynamic text document that describes the *Current State of Matter*.
-    * **Update Protocol:** When the Viewer writes "She breaks the glass," the Palimpsest is updated to contain `[Floor: Broken Glass]`.
+    * It replaces the "Chat Interface."
+    * **The Filter:** It checks the Protagonist's `[Location]` and `[State]`.
+    * **The Projection:** It describes *only* what is observable. If the Protagonist is not looking at Helen, it does not describe her facial expression.
+
+### F. The Palimpsest (The Matter)
+* **Responsibility:** The Physics Engine / State Container.
+* **Logic:**
+    * Tracks `[Somatic State]` for **BOTH** Protagonist and Agents.
+    * Tracks `[Location]` and `[Entropy]` of the physical world.
 
 ---
 
-## 3. THE EXECUTION PIPELINE (The Cinematic Turn)
+## 3. THE EXECUTION FLOW (The World Beat)
 
-This is the atomic unit of the simulation. It replaces the "Game Loop."
+The System runs two parallel loops.
 
-**Phase 1: The Slate (Input & Time)**
-1.  **Input:** User enters text.
-2.  **Pulse:** Stamps the time. Calculates `The Gap`.
-3.  **Entropy Check:** If `Gap > 4 Hours`, the System injects **Decay Descriptors** (Hunger, Dust, Silence) into the Palimpsest.
+### Loop A: The Autonomous Loop (Background)
+* **Frequency:** Every 15 Minutes (Simulated or Real).
+* **Action:**
+    1.  **Entropy Check:** Reduce Energy, Increase Hunger for ALL entities.
+    2.  **Agent Logic:** Check Agent Schedules. (e.g., "It is 23:00. Helen is tired. Action: Go to Bed.").
+    3.  **Sedimentation:** Update Palimpsest. (e.g., "Location: Bedroom. Status: Sleeping.").
 
-**Phase 2: The Montage (Context Assembly)**
-1.  **Somatic Scan:** Cinema checks `[S3 Biology]`. Is the Agent hungry?
-2.  **Intent Scan:** Cinema checks `[S6 Obsession]`. What is the Agent doing?
-3.  **Resonance:** Cinema pulls 2 relevant past clips (e.g., "User was rude yesterday").
-4.  **Assembly:** The Prompt is built.
-
-**Phase 3: The Viewing (Inference)**
-1.  **The Viewer** reads the Montage.
-2.  **Conflict Resolution (Law 7):**
-    * *Body says:* "Sleep."
-    * *History says:* "User is a threat."
-    * *Input says:* "Hello."
-    * *Result:* The Agent ignores the "Hello" and secures the door.
-3.  **Generation:** The Viewer writes the prose.
-
-**Phase 4: The Projection (Output)**
-1.  **Render:** Text streams to the User.
-2.  **Sedimentation:** The System scans the output for material changes (Object moved, relationship altered) and updates the Palimpsest.
+### Loop B: The Interaction Loop (Foreground)
+* **Trigger:** Protagonist Volition (Human Input).
+* **Step 1: Ingest:** Record `[Protagonist Action]`.
+* **Step 2: Physics Cost:** Calculate `Time_Required` and `Energy_Cost`.
+    * *Constraint:* If Protagonist tries to "Teleport," System rejects the action or enforces the Time Penalty.
+* **Step 3: World Reaction:**
+    * Agents witness the action.
+    * Viewer generates Agent Reaction (Dialogue/Movement).
+* **Step 4: Render:**
+    * System projects the *Result* to the Screen.
 
 ---
 
-## 4. THE INEVITABILITY CONSTRAINTS (The Silence Distribution)
+## 4. THE NO-SESSION PROTOCOL
 
-*(Enforcing Law 16: The Periphery / User is not Center)*
+The concept of a "Session" is replaced by **Presence**.
 
-**The "Shut Up" Protocol:**
-To prevent the "Chatbot Effect" (constant, eager narration), the Viewer operates under strict Gating.
+**State: Camera ON (Presence)**
+* The Human is connected.
+* The Renderer streams the "Live Feed" of the Protagonist's senses.
+* The Pulse is synced to Real-Time.
 
-* **The Low-Salience Gate:**
-    * If `Delta_t < 10 seconds` AND `Input_Complexity = Low` (e.g., "Hmm", "Ok"):
-    * The Viewer is **FORBIDDEN** from generating Dialogue.
-    * The Viewer **MUST** generate a **Sensory Beat** or **NULL**.
-    * *Output:* "She nods, continuing to type." (Not: "Yes, I agree.")
-
-* **The "Wait" State:**
-    * If the Agent is in `[Mode: The Grind]` (Law 9) performing a task, and the User says nothing:
-    * The System outputs **SILENCE**.
-    * It does not narrate "She is waiting." It simply lets the cursor blink. The User must feel the weight of the silence.
+**State: Camera OFF (Absence)**
+* The Human disconnects.
+* **The Protagonist Body** remains in the world.
+    * *Default Behavior:* The Protagonist enters a "Passive State" (idling, sleeping, or waiting) defined by the last instruction.
+* **The World:** Continues to evolve. Agents move, weather changes.
+* **The Return:** When Human reconnects, the Renderer describes the *current* state (e.g., "You wake up stiff. The room is empty. It is dark outside.").

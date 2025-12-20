@@ -1,84 +1,72 @@
-# 02_CONTRACT_STATE (V3.0)
+# 02_CONTRACT_STATE (V4.0)
 
-**Status:** CANONICAL | **Version:** 3.0 (The Palimpsest)
+**Status:** CANONICAL | **Version:** 4.0 (The Palimpsest)
 **Definition:** The Semantics of Existence.
-**Authority:** This document defines the "State" of the Simulation. It replaces the JSON Schema with the **Sediment Layers**.
+**Authority:** This document defines the "State" of the Simulation. It applies symmetrically to **Agents** and the **Protagonist**.
 
 ---
 
-## 1. THE SIX LAYERS OF SEDIMENT (The World Description)
+## 1. THE ENTITY SCHEMA (Symmetric Biology)
 
-We do not use variables (`Health: 50`). We use **Descriptive Sediment**.
-The Viewer must treat these descriptions as **Physical Laws**.
+The Palimpsest tracks the Protagonist exactly as it tracks an Agent.
 
-### Layer 1: The Chronology (S1 - Time)
-*Implements Law 1 (Persistence).*
-* **The Sediment:** `[Current Time]` + `[The Gap]`.
-* **The Rule:** `The Gap` dictates the **Atmospheric Density**.
-    * *Gap < 1 min:* High Fidelity. Mention micro-movements.
-    * *Gap > 1 hour:* Low Fidelity. Mention stiff muscles, lighting changes, temperature drops.
+### A. The Somatic Layer (The Body)
+* **Variables:** `[Energy]`, `[Hunger]`, `[Intoxication]`, `[Pain]`.
+* **Protagonist Impact:**
+    * If `[Protagonist.Energy] < 10%`: The System blocks "High Effort" actions (e.g., Running, Fighting). Input is restricted to "Rest" or "Crawl."
+    * If `[Protagonist.Intoxication] > High`: The System scrambles text output.
 
-### Layer 2: The Stage (S2 - Materiality)
-*Implements Law 4 (Materiality) and Law 3 (Entropy).*
-* **The Sediment:** `[Location]` + `[Atmosphere]` + `[Object Status]`.
-* **The Rule of Decay:** Objects must carry their history in adjectives.
-    * *Fresh:* "A hot cup of coffee."
-    * *Decayed (Gap > 30m):* "A cup of coffee, a skin forming on the surface."
-    * *Ruined (Gap > 4h):* "A cold cup of coffee, creating a ring on the wood."
-* **Constraint:** The Viewer cannot "heat up" the coffee unless a specific `[Action: Microwave]` occurs.
+### B. The Location Layer (The Map)
+* **Variables:** `[Zone]`, `[Room]`, `[Coordinates (Semantic)]`.
+* **Rule:** An entity cannot interact with objects not in their Location.
+* **Protagonist Impact:** You cannot "hear" a conversation in the Kitchen if you are in the Bedroom. The Renderer will output `[Muffled voices]` instead of dialogue.
 
-### Layer 3: The Somatic Condition (S3 - Biology)
-*Implements Law 8 (Homeostasis) and Law 6 (Somatic Primacy).*
-* **The Sediment:** `[Sensory State]` + `[Energy Level]`.
-* **The Vocabulary of Suffering:** We map numerical ranges to **Forced Behaviors**.
-    * *Hunger (High):* "Hollow," "Light-headed," "Trembling." -> **Effect:** Short sentences. Irritability. Distraction.
-    * *Fatigue (High):* "Lead-limbed," "Gritty eyes," "Slurring." -> **Effect:** Missed cues. Literal interpretations. Defensive passivity.
-    * *Arousal (High):* "Flushed," "Rapid pulse," "Dilated." -> **Effect:** Tunnel vision. Fragmented speech.
-
-### Layer 4: The Cord (S4 - Relationships)
-*Implements Law 18 (Connection).*
-* **The Sediment:** `[Dynamic]` + `[Unspoken Tension]`.
-* **The Vibe:** This replaces the "Relationship Score."
-    * *Instead of `Love: 80`:* "Dynamic: Deep, worn-in comfort. Tension: None."
-    * *Instead of `Hate: 50`:* "Dynamic: Cold war. Tension: The unpaid debt."
-* **The Decay:** If `The Gap > 1 Week`, the Sediment automatically updates to: "Dynamic: Distant. Tension: The silence."
-
-### Layer 5: The Pulse (S5 - Pacing)
-*Implements Law 15 (Status) and Law 5 (Scarcity).*
-* **The Sediment:** `[Tempo]` + `[Focus]`.
-* **The Directorial Override:**
-    * **LANGUID:** (Use for Low Stress). "Write long. Focus on light/dust."
-    * **TRANSACTIONAL:** (Use for Work). "Write short. Focus on objects/verbs."
-    * **FRANTIC:** (Use for Threat/Sex). "Write fragments. Focus on sweat/breath."
-
-### Layer 6: The Obsession (S6 - Intent)
-*Implements Law 9 (The Grind).*
-* **The Sediment:** `[Current Goal]` + `[The Obstacle]`.
-* **The Friction:** This defines *why* the Agent is annoyed by the User.
-    * *Sediment:* "Goal: Sleep. Obstacle: User is talking."
-    * *Result:* The Agent tries to end the conversation.
+### C. The Cord Layer (Relationships)
+* **Variables:** `[Tension]`, `[Intimacy]`, `[Trust]`.
+* **Note:** This is a bidirectional graph.
+    * `Helen -> Protagonist` (How she feels about you).
+    * `Protagonist -> Helen` (How the System predicts you feel, based on your actions).
 
 ---
 
-## 2. THE MUTATION PROTOCOL (Updating the Palimpsest)
+## 2. THE WORLD SEDIMENT (The Environment)
 
-The State only changes via **Narrative Acts** or **Entropy**.
+### Layer 1: The Chronology (S1)
+* **The Pulse:** UTC Time.
+* **The Drift:** The accumulated decay since the last "Clean Up" event.
 
-### A. The "Apply Entropy" Mutation
-* **Trigger:** `Pulse Check` (Gap > Threshold).
-* **Action:** The System rewrites the adjectives in S2 and S3.
-    * `Hot` -> `Warm` -> `Tepid` -> `Cold`.
-    * `Satiated` -> `Peckish` -> `Hungry` -> `Starving`.
+### Layer 2: The Material Stage (S2)
+* **Object Permanence:** Objects stay where they are put.
+* **State Tags:** Objects have states: `[Broken]`, `[Wet]`, `[Hot]`, `[Cold]`.
+    * *Example:* If Protagonist leaves the stove on, `[Stove]` gains tag `[Hazard: Fire_Risk]`.
 
-### B. The "Consume Resource" Mutation
-* **Trigger:** Agent performs `[High Effort Action]` (e.g., "She runs to the station").
-* **Action:** The System updates S3:
-    * `[Energy]: Drained/Panting`.
-    * `[Somatic]: Sweat, tight chest`.
-    * The Viewer *must* depict the recovery period (panting, inability to speak) in the next turn.
+### Layer 3: The Atmosphere (S3)
+* **Sensory Data:** `[Smell]`, `[Light_Level]`, `[Noise_Floor]`.
+* **Function:** This dictates what the **Renderer** can show.
+    * *Darkness:* Blocks visual descriptions.
+    * *Loud Noise:* Blocks auditory descriptions.
 
-### C. The "Status Transaction" Mutation
-* **Trigger:** Viewer output contains a `[Status Violation]` (e.g., User interrupts Agent).
-* **Action:** The System updates S4 `[Dynamic]`:
-    * From `Neutral` to `Hostile/Guarded`.
-    * This persists until a "Repair Act" is performed.
+---
+
+## 3. THE AUTONOMOUS MUTATION PROTOCOL
+
+How the State changes without Human Input.
+
+### A. The Metabolic Burn
+* **Frequency:** Hourly.
+* **Action:**
+    * `[Entity.Hunger]` +10.
+    * `[Entity.Energy]` -5 (if awake) / +10 (if asleep).
+    * *Scope:* Applied to Agents AND Protagonist (if "Camera Off").
+
+### B. The Entropic Rot
+* **Frequency:** Daily.
+* **Action:**
+    * `[Food.Freshness]` Decays.
+    * `[Relationship.Intimacy]` Decays (if no interaction).
+
+### C. The Agent Agenda
+* **Trigger:** Agent Viewer Decision.
+* **Action:** Agent moves from `[Kitchen]` to `[Garden]`.
+* **State Update:** Palimpsest updates Agent Location.
+* **Consequence:** If Protagonist enters Kitchen, Agent is **GONE**. System does not spawn them there for convenience.
