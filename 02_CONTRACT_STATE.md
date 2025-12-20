@@ -1,202 +1,104 @@
-### File 3: `02_CONTRACT_STATE.md`
+# 02_CONTRACT_STATE (V3.0)
 
-```markdown
-# 02_CONTRACT_STATE (V2)
-
-**Status:** ALIGNED | **Version:** 2.0
-**Definition:** The Physics of Data and Change.
+**Status:** CANONICAL | **Version:** 3.0 (The Palimpsest)
+**Definition:** The Semantics of Existence.
+**Authority:** This document defines how "Reality" is stored, retrieved, and updated. It replaces all JSON variable schemas.
 
 ---
 
-## 1. AUTHORITY AND SCOPE
+## 1. THE PHILOSOPHY OF THE PALIMPSEST
 
-This document defines the **Application State** of VirLife. It is the single source of truth for the 6 Substrates that comprise the simulation.
+We do not track the world using numbers (`health: 50`). We track the world using **Sediment**.
+The "State" is a living text document—a **Palimpsest**—that is overwritten, scratched out, and annotated as the story progresses.
 
-**Binding Constraint:**
-The state defined here must be sufficient to simulate the **Bio-Loop**, **Entropy**, and **Continuous Time** mandated by the Constitution. If a phenomenon cannot be described by these JSON schemas, it does not exist in the simulation.
-
----
-
-## 2. THE SIX SUBSTRATES (V2 Schema)
-
-### S1 — Temporal State (The Absolute Clock)
-*Implements Law 1 (Persistence) and Law 2 (Continuity).*
-
-**Storage:** `postgres-primary.ticks`
-
-```json
-{
-  "system_time": {
-    "current_timestamp": "UTC ISO-8601 (Wall Clock)",
-    "current_tick_id": "integer (Monotonic)",
-    "time_dilation_factor": "float (Strictly 1.0 = Realtime)",
-    "user_presence": {
-      "is_present": "boolean",
-      "last_interaction_at": "UTC ISO-8601",
-      "accumulated_absence_seconds": "integer"
-    }
-  }
-}
-
-```
-
-* **Critical Logic:** The `accumulated_absence_seconds` field is the fuel for the Drift Engine. When the user returns, this value dictates how much entropy (decay) must be applied to the world to bring it up to "Now."
-
-### S2 — Situational State (The Material World)
-
-*Implements Law 4 (Materiality) and Law 16 (The Periphery).*
-
-**Storage:** `postgres-primary.facts`
-
-```json
-{
-  "situational_fact": {
-    "fact_id": "uuid",
-    "type": "enum (material_object | ambient_condition | location_state)",
-    "content": "string",
-    "location_id": "uuid",
-    "health_state": "float (0.00 - 100.00)", 
-    "maintenance_required": "boolean",
-    "physical_properties": {
-      "mass_kg": "float",
-      "is_movable": "boolean",
-      "decay_rate": "float (Health loss per hour)"
-    }
-  }
-}
-
-```
-
-* **Critical Logic:** `health_state` tracks the inevitable decay of objects. A car with `health_state: 15.0` will fail to start (Physics Constraint). `decay_rate` ensures this happens automatically over time.
-
-### S3 — Internal State (The Bio-Machine)
-
-*Implements Law 7 (Concurrent Domains) and Law 8 (Homeostasis).*
-
-**Storage:** `postgres-primary.agent_state`
-
-```json
-{
-  "internal_state": {
-    "core_affect": {
-      "valence": "float (-100.0 to +100.0)", 
-      "arousal": "float (0.0 to 100.0)",
-      "dominance": "float (-100.0 to +100.0)"
-    },
-    "biological_drivers": {
-      "energy": "float (0.0 to 100.0)",
-      "satiety": "float (0.0 to 100.0)", 
-      "sleep_pressure": "float (0.0 to 100.0)",
-      "pain_level": "float (0.0 to 100.0)",
-      "hormonal_cycle_day": "integer (1-28)"
-    },
-    "cognitive_load": "float (0.0 to 100.0)"
-  }
-}
-
-```
-
-* **Critical Logic:** The split between **Affect** (Psychology) and **Biological Drivers** (Physiology) is mandatory. The system must calculate `Energy` and `Satiety` *before* it calculates `Valence`. (e.g., Low Energy causes Negative Valence).
-
-### S4 — Relational State (The Connection)
-
-*Implements Law 3 (Entropy) and Law 18 (Connection).*
-
-**Storage:** `postgres-primary.relationships`
-
-```json
-{
-  "relational_state": {
-    "target_agent_id": "uuid",
-    "intimacy_score": "float (0.0 to 100.0)",
-    "trust_score": "float (0.0 to 100.0)",
-    "tension_score": "float (0.0 to 100.0)",
-    "history_summary": "vector_embedding",
-    "last_contact_at": "tick_id",
-    "dynamics": {
-      "attraction": "float",
-      "resentment": "float"
-    }
-  }
-}
-
-```
-
-* **Critical Logic:** `last_contact_at` is used by the Drift Engine to calculate **Relationship Decay**. If `(Now - last_contact_at) > 7_days`, `intimacy_score` begins to drop automatically.
-
-### S5 — Interaction Mode (The Social Physics)
-
-*Implements Law 15 (Status) and Law 10 (Default Mode).*
-
-**Storage:** `postgres-primary.agent_state`
-
-```json
-{
-  "interaction_mode": {
-    "current_mode": "enum (default_mode | high_salience | intimacy | conflict | ritual)",
-    "pulse_rate": "integer (0–100)",
-    "status_stance": "enum (high_status | low_status | neutral)",
-    "social_mask": "enum (professional | vulnerable | guarded | mother | lover)"
-  }
-}
-
-```
-
-* **Critical Logic:** `pulse_rate` drives the Renderer.
-* **0-30:** Slow, monologues, abstract thought.
-* **31-70:** Standard dialogue, information exchange.
-* **71-100:** Fragments, micro-turns, interruption, high arousal.
-
-
-
-### S6 — Intentional State (The Grind)
-
-*Implements Law 9 (The Grind) and Law 5 (Scarcity).*
-
-**Storage:** `postgres-primary.intentions`
-
-```json
-{
-  "intention": {
-    "id": "uuid",
-    "category": "enum (maintenance | ambition | obligation | leisure | social)",
-    "description": "string",
-    "resource_cost": {
-      "time_minutes": "integer",
-      "energy_cost": "float",
-      "financial_cost": "float"
-    },
-    "pressure": "float (0.0 to 100.0)",
-    "is_active": "boolean"
-  }
-}
-
-```
-
-* **Critical Logic:** `resource_cost` forces **Opportunity Cost**. Every plan (e.g., "Go to Cinema") has a defined cost in Time, Energy, and Money. The Agent *cannot* execute an intention if they lack the resources in S3 (Energy) or S2 (Money).
+**The Golden Rule:**
+If a fact is written in the Palimpsest, it is **Absolute Truth**. The Viewer (LLM) must narrate the world consistent with these facts.
+* *Palimpsest:* "The window is broken."
+* *Viewer:* Must describe the draft, the noise of the street, or the cardboard taped over it. It cannot imply the window is whole.
 
 ---
 
-## 3. THE MUTATION RULES (StateDelta V2)
+## 2. THE SIX LAYERS OF SEDIMENT (The Description)
 
-To ensure **Physics Compliance**, the Delta Protocol is updated. Any state change must occur via one of these atomic operations:
+Instead of database columns, we utilize six **Descriptive Dimensions**. These form the "Scene Header" presented to the Viewer.
 
-1. **`APPLY_ENTROPY` Operation:**
-* **Input:** `TimeDelta`
-* **Effect:** Decreases S2 `health_state`, decreases S4 `intimacy_score`, increases S3 `sleep_pressure`.
+### Layer 1: The Chronology (S1 - Time)
+*Implements Law 1 (Persistence).*
+* **Format:** `[Timestamp] + [The Gap]`
+* **Definition:** The precise UTC time and the *Narrative Distance* from the last interaction.
+* **The Directive:** The Viewer must use "The Gap" to calculate Entropy.
+    * *Input:* `Gap: 6 Hours`.
+    * *Inference:* Light has changed. Bodies are stiffer. Hunger has increased.
 
+### Layer 2: The Stage (S2 - Materiality)
+*Implements Law 4 (Materiality) and Law 3 (Entropy).*
+* **Format:** `[Location] + [Atmosphere] + [Relevant Objects]`
+* **Definition:** The physical container of the scene.
+* **Sedimentation Rule:** Objects obey **Object Permanence**. If "Keys" were placed on the "Table" in Scene 40, they remain there until moved.
+* **The Decay:** The Palimpsest records the *state of wear*.
+    * *Example:* "A 2004 Volvo (Rusted wheel arch, smells of damp dog)."
 
-2. **`CONSUME_RESOURCE` Operation:**
-* **Input:** `ActionID`
-* **Effect:** Atomically reduces Energy (S3) and Money (S2) derived from the `resource_cost` of the intention.
+### Layer 3: The Somatic Condition (S3 - Biology)
+*Implements Law 8 (Homeostasis).*
+* **Format:** `[Physical Sensation] + [Energy Level]`
+* **Definition:** The biological constraints acting on the Agent's mind.
+* **Vocabulary:** We replace numbers with **Sensory Tags**.
+    * *Instead of `Hunger: 90`:* "Hollow stomach, light-headed, trembling hands."
+    * *Instead of `Energy: 10`:* "Lead-limbed, eyes burning, cognitive fog."
 
+### Layer 4: The Cord (S4 - Relationships)
+*Implements Law 18 (Connection).*
+* **Format:** `[Dynamic] + [Unspoken Tension] + [Shared History]`
+* **Definition:** The invisible wire between the Protagonist and the Agent.
+* **The Vibe:** This tracks the *immediate* emotional resonance, not a long-term "Love Score."
+    * *Example:* "Dynamic: Estranged. Tension: The unpaid loan. History: Lovers (2020-2022)."
 
-3. **`TRAVEL_UPDATE` Operation:**
-* **Input:** `Origin`, `Destination`, `TransportMethod`
-* **Effect:** Validates `Distance / Velocity <= TimeDelta`. If invalid, throws `PHYSICS_VIOLATION`. If valid, updates Location and consumes massive Time/Energy.
+### Layer 5: The Pulse (S5 - Pacing)
+*Implements Law 5 (Scarcity) and Law 15 (Status).*
+* **Format:** `[Tempo] + [Focus]`
+* **Definition:** The cinematic direction for the Viewer's prose style.
+* **States:**
+    * **Languid:** Long sentences, sensory details, introspection. (Low Pulse).
+    * **Transactional:** Clear, short, efficient. (Mid Pulse).
+    * **Frantic:** Fragments, blurred details, sensory overload. (High Pulse).
 
+### Layer 6: The Obsession (S6 - Intent)
+*Implements Law 9 (The Grind).*
+* **Format:** `[Current Goal] + [Obstacle]`
+* **Definition:** What the Agent is *actually* trying to do while the Protagonist is talking to them.
+* **The Conflict:** This creates the friction.
+    * *Example:* "Goal: Finish the tax return. Obstacle: The Protagonist is distracting me."
 
-4. **`STATUS_TRANSACTION` Operation:**
-* **Input:** `InteractionEvent`
-* **Effect:** Adjusts `status_stance` (S5) based on the outcome of a dialogue turn (e.g., being interrupted forces a shift to `low_status`).
+---
 
+## 3. THE DYNAMIC SCENE HEADER (The Output)
+
+The Cinema Engine compiles the Sediment into this **Context Block** for the Viewer. This is the only "State" the LLM sees.
+
+> **[SCENE HEADER]**
+> **Time:** 2025-12-20 23:15 (Late Night). **Gap:** 45 minutes.
+> **Location:** The Kitchen. **Atmosphere:** Cold, fluorescent hum, smell of burnt toast.
+> **Object Focus:** The shattered plate on the floor (Sharp, dangerous).
+> **Somatic State:** Adrenaline crash. Shaking. Nausea.
+> **The Cord:** Fear. The argument is unresolved.
+> **The Pulse:** FRANTIC. (Write in bursts. No internal monologue).
+> **The Obsession:** Clean up the glass before he steps on it.
+
+---
+
+## 4. THE MUTATION PROTOCOL (Updating the Palimpsest)
+
+The State is not static. It is rewritten by **Narrative Consequence**.
+
+### A. The Scribe's Update
+When the Viewer outputs a response, the Cinema scans it for **State Changes**.
+* *Viewer Output:* "She throws the ring into the river."
+* *Update:* The Palimpsest entry for `[Object: Ring]` is updated from `Location: Hand` to `Location: River (Lost)`.
+
+### B. The Entropic Drift
+If `The Gap` is significant, the Cinema injects **Decay Descriptors** into the next header.
+* *Gap:* 2 Weeks.
+* *Update:* `[Atmosphere]` gains "Dusty," "Stale air." `[Somatic]` gains "Rested" or "Atrophied."
+
+### C. The Erasure
+Details that are not interacted with for long periods fade from the Palimpsest. They return to the "Deep Archive" (The Cinema) and are only recalled if relevant. This keeps the Context Window clean.

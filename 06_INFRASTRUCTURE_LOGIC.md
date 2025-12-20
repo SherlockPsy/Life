@@ -1,151 +1,106 @@
-### File 6: `06_INFRASTRUCTURE_LOGIC.md`
-
-```markdown
 # 06_INFRASTRUCTURE_LOGIC (V3.0)
 
-**Status:** CANONICAL | **Version:** 3.0 (Pure Semantic Core)
-**Definition:** The Operational Logic of the Semantic Physics Engine.
-**Authority:** This file overrides any previous references to numerical state or mathematical decay formulas.
+**Status:** CANONICAL | **Version:** 3.0 (The Tools)
+**Definition:** The Mechanics of Storage, Retrieval, and Consequence.
+**Authority:** This document defines the background processes that support the Cinematic Architecture. It replaces "The Scribe" and "The Watchman" with **The Recorder** and **The Entropy Engine**.
 
 ---
 
-## 1. THE SCRIBE (Input & Event Logging)
-*Objective: The Objective Witness. To record Reality without immediate judgment.*
+## 1. THE RECORDER (The Immutable Log)
+
+*Objective: To capture the raw footage of reality without judgment.*
 
 **The Protocol:**
-The Scribe receives all inputs (User Text, System Signals) and transcribes them into the **Immutable Event Log** (The Ledger).
+The Recorder captures the **Narrative Stream**. It does not try to interpret "Intent" or "Truth" at the moment of capture. It simply records the "Film."
 
-**Data Structure (The Event Record):**
-```json
-{
-  "event_id": "uuid",
-  "timestamp": "ISO-8601 (UTC)",
-  "source_entity": "User (George) | System | Agent (Helen)",
-  "semantic_content": "User declared: 'I am flying to the moon!'",
-  "meta_tags": ["High_Arousal", "Exclamation"]
-}
+**Storage Schema (The Reel):**
+Instead of complex JSON objects with "Meta Tags," we store **Time-Stamped Prose**.
+* **Format:** `[TIMESTAMP] [ENTITY] [CONTENT]`
+* **Example:** `[2025-12-20 09:15:00] [USER]: "I'm not hungry."`
+* **Example:** `[2025-12-20 09:15:05] [AGENT]: She looks at your full plate. "Liar."`
 
-```
-
-* **Constraint:** The Scribe *never* interprets "Intent" (e.g., Metaphor vs. Lie). It only records the *Action*. Interpretation is the job of the Briefing.
+**The Index:**
+The Recorder generates a **Vector Embedding** for every block of text immediately upon storage. This allows the Cinema to retrieve this moment later based on "Vibe" (Semantic Resonance) rather than Keywords.
 
 ---
 
-## 2. THE WATCHMAN (Time & Entropy)
+## 2. THE ENTROPY ENGINE (The Decay Calculator)
 
-*Objective: The Continuity Engine. To detect 'Absence' and 'Duration' without math.*
+*Objective: To enforce the cost of Time (Laws 1 & 3).*
 
-**The Negative Query Algorithm:**
-Instead of calculating `Energy -= 1`, the Watchman queries the Ledger for the *absence* of maintenance.
+**The Negative Query:**
+The Engine does not run a "Game Loop" every second. It runs a **Gap Check** only when interaction occurs.
 
-**The Logic Flow:**
+**The Workflow:**
+1.  **Trigger:** User Input arrives.
+2.  **Calculate Gap:** `Current_Time - Last_Interaction_Time`.
+3.  **Apply Decay:**
+    * If `Gap > 4 Hours`: Inject `[Somatic: Hunger]` into the Palimpsest.
+    * If `Gap > 16 Hours`: Inject `[Somatic: Sleep_Pressure]` into the Palimpsest.
+    * If `Gap > 1 Week`: Inject `[Cord: Distance]` (Downgrade Intimacy).
+    * If `Gap > 1 Month`: Inject `[Environment: Dust/Stale]` into the Location.
 
-1. **Trigger:** Every Tick.
-2. **Query:** "Find last event where `Action == Consumed_Food`."
-3. **Result:** `Last_Meal_Time = 08:00`. `Current_Time = 16:00`.
-4. **Generation:** If `Duration > Threshold`, Generate **Semantic Fact**:
-* `[FACT]: "It has been 8 hours since the Agent last ate."`
-
-
-5. **Injection:** This Fact is passed to the Briefing.
-
-* **Scope:** Monitors Food, Sleep, Social Contact, and Hygiene using pure time-deltas.
-
----
-
-## 3. THE VAULT (Semantic Memory)
-
-*Objective: The Propositional Store. To store Atomic Truths, not Summaries.*
-
-**The Schema:**
-We store memory as **Semantic Triples** or **Qualitative Shards**, enabling associative recall by *meaning*.
-
-**Storage Format:**
-
-```json
-{
-  "shard_id": "uuid",
-  "embedding": "[vector]",
-  "proposition": {
-    "subject": "Helen",
-    "relation": "Loathes",
-    "object": "Sausages",
-    "context": "Flavor/Texture"
-  },
-  "narrative_form": "Helen hates sausages."
-}
-
-```
-
-**Retrieval Logic:**
-
-* **Query:** "Food Preferences" + "Current Scene (Cafe)".
-* **Result:** Retrieves the specific shard: "Helen hates sausages."
-* **Conflict Detection:** The system places this shard next to the Watchman's fact ("Helen is starving") in the Briefing, allowing the Agent to resolve the conflict (Disgust vs. Hunger).
+**The Output:**
+This process does not write text. It updates the **Palimpsest (S1, S2, S3)** so the Viewer *sees* the decay in the Scene Header.
 
 ---
 
-## 4. THE STAGE (Scene & State)
+## 3. THE ARCHIVE (The Echo Chamber)
 
-*Objective: Environmental Grounding. To describe the 'Now' in natural language.*
+*Objective: To retrieve "Sensory Shards" rather than "Facts."*
 
-**The Descriptive Block:**
-The "State" is a dynamic paragraph, updated by events, not a JSON of variables.
+**The Philosophy:**
+We do not store facts like `Helen_Hates_Sausages = True`.
+We store the **Scene** where Helen spat out the sausage.
 
-**The Structure:**
-
-> **CURRENT SCENE:**
-> **Location:** A cramped cafe in Leeds.
-> **Atmosphere:** Noisy, smelling of wet wool and grease.
-> **Weather:** Heavy rain against the glass.
-> **Objects Present:**
-> * A plate of sausage rolls (untouched).
-> * Two coffees (cooling).
-> **Social Dynamic:** Tension. Silence duration: 45 seconds.
-> 
-> 
-
-* **Update Rule:** If Agent `[Pushes plate]`, the text updates to: `A plate of sausage rolls (pushed away).`
+**Retrieval Logic (The Cinema):**
+1.  **Input:** User offers food.
+2.  **Search:** Vector Search for "Food" + "Disgust" + "Helen".
+3.  **Hit:** Retrieving Log #405: *"She pushes the plate away. 'It tastes like wet wool,' she says."*
+4.  **Projection:** This raw text is shown to the Viewer in the Montage.
+5.  **Inference:** The Viewer deduces: *Helen hates this food.* (No boolean variable required).
 
 ---
 
-## 5. THE BRIEFING (The Hydration/Context)
+## 4. THE SEDIMENTATION LOOP (Writing the Palimpsest)
 
-*Objective: The Case File. To curate Evidence for the Intelligence.*
+*Objective: To compress the Stream into Status.*
 
-**The Assembly Pipeline:**
-We do not tell the Agent "You are angry." We present the evidence that *makes* them angry.
+The Viewer writes the Narrative. The **Sedimentation Process** reads the Narrative and updates the "Hard Truths."
 
-**The Prompt Construction:**
+**The Extraction Protocol:**
+After every Scene (or every 10 turns), a lightweight "Scribe Model" reads the transcript and updates the **Palimpsest Markdown**.
 
-1. **The Stage:** (Insert Descriptive Block).
-2. **The Watchman's Report:** (Insert Facts: "8 hours since food", "User hasn't spoken in 10 mins").
-3. **The Vault's Evidence:** (Insert Shards: "Helen hates sausages", "Helen is worried about rent").
-4. **The Scribe's Transcript:** (Insert last 10 lines of dialogue).
-5. **The Directive:** "Based on the evidence above, generate the Agent's next Narrative Action."
+* *Transcript:* "She smashes the vase against the wall."
+* *Scribe Action:*
+    * **REMOVE:** `[Object: Vase]` from `[Location: Table]`.
+    * **ADD:** `[Object: Ceramic Shards]` to `[Location: Floor]`.
+    * **UPDATE:** `[Atmosphere]` to "Tense, sharp smell of ozone."
+
+**The Rule of Permanence:**
+Once written to the Palimpsest, the shard stays on the floor until a new Narrative Action cleans it up. The Viewer *must* see the shards in the next Scene Header.
 
 ---
 
-## 6. THE VERBS (Capabilities)
+## 5. THE PHYSICS OF INTERACTION (Verbs)
 
-*Objective: Interaction. To allow Agency through Narrative Declaration.*
+*Objective: To handle Agency without "Functions."*
 
-**The Protocol:**
-The Agent does not call Python functions. It declares **Narrative Intent**.
+**The Narrative Declaration:**
+The Agent does not call `MoveTo(Kitchen)`. The Agent declares: *"She walks to the kitchen."*
 
-**The Loop:**
+**The Consequence Check:**
+1.  **The Viewer** generates the prose: "She walks to the kitchen."
+2.  **The System** calculates the **Cost**:
+    * Is the Kitchen connected to the current room? (Yes).
+    * How far is it? (10 meters -> 5 seconds).
+3.  **The Commit:**
+    * The System updates `[Location]` in the Palimpsest.
+    * The System advances the Pulse by 5 seconds.
 
-1. **Agent Output:** `[ACTION]: She pushes the plate away. "I'm not eating that."`
-2. **The Semantic Validator (Physics Check):**
-* *Input:* Action="Push plate". Context="Plate is on table."
-* *Logic:* Is this physically possible? **YES.**
-
-
-3. **The Commit:** The action is written to the Ledger (Scribe) and updates the Stage (Plate is now 'pushed away').
-
-**The Safety Valve:**
-If Agent outputs: `[ACTION]: She flies out the window.`
-
-* *Validator:* Is this possible? **NO.**
-* *Result:* Action Rejected. System injects `[Guidance]: "You cannot fly. Rewrite."`
-
+**The Impossible Act:**
+If the Viewer attempts to violate physics (e.g., "She teleports to London"):
+1.  **The Constraint:** The Palimpsest shows `Location: Leeds`.
+2.  **The Cost:** London is 200 miles away.
+3.  **The Correction:** The System refuses to update the Location *unless* the Viewer also writes a "Time Skip" narrative (e.g., "The train ride is long...").
+4.  **Result:** If the Viewer tries to cheat (teleport without time), the System **Rejects the Output** and prompts the Viewer: *[DIRECTOR NOTE: Travel requires time. Rewrite with time transition or stay in location.]*

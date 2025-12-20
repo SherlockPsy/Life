@@ -1,146 +1,136 @@
-# 01_SYSTEM_ARCHITECTURE (V2.2)
+# 01_SYSTEM_ARCHITECTURE (V3.0)
 
-**Status:** CANONICAL | **Version:** 2.2 (Orchestration Core)
-**Definition:** The Blueprint of the Simulation Engine.
+**Status:** CANONICAL | **Version:** 3.0 (The Cinematic Machine)
+**Definition:** The Operational Blueprint of the Semantic Simulation.
+**Authority:** This document supersedes all previous "Backend" or "Middleware" specifications.
 
 ---
 
 ## 1. AUTHORITY AND SCOPE
 
-This document defines the **System Architecture** of VirLife. It is the single source of truth for the machine that runs the simulation.
+This document defines the **Machine** that runs the simulation. It replaces the "Video Game Engine" (Variables, Ticks, State Managers) with a **Cinematic Pipeline** (Recording, Montage, Projection).
 
-**Binding Constraints:**
-* **The Wall Clock Rule:** The system time is strictly bound to UTC Wall Clock. There is no "Pause." The engine must account for every second of real-time passed.
-* **The Physics Constraint:** All state transitions must obey the laws of physics (Time/Distance/Entropy) defined in `00_CONSTITUTION`. No event can occur without the requisite time and energy cost.
-* **No "Session" Logic:** The concept of a "Session" is replaced by a "Connection." The world runs regardless of whether the User is connected or disconnected.
+**The Core Directive:**
+The Machine does not "calculate" the world. It **curates** the context (The Cinema) and **observes** the result (The Viewer).
 
 ---
 
-## 2. COMPONENT REGISTRY (The Machine Parts)
+## 2. COMPONENT REGISTRY (The Cinematic Stack)
 
-### A. The Core Engine (Backend)
+### A. The Pulse (The Metronome)
+* **Definition:** The absolute, unblinking timecode.
+* **Responsibility:** It stamps every frame of input and output with UTC Wall Clock time.
+* **Mechanism:**
+    * It does not "wait" for the user.
+    * It calculates the `Delta_t` (Time passed since last frame) explicitly.
+    * It forces the **Law of Entropy**: If `Delta_t > Threshold`, the Viewer is forced to acknowledge decay, hunger, or silence in the narrative.
 
-**1. `COMP_BACKEND_OBSERVER_SERVICE` (The Universal Translator)**
-* **Responsibility:** The Input/Output Gatekeeper. Decouples the "User" from the simulation and enforces Contextual Understanding.
-* **New V2 Logic:**
-    * **Diegetic Decoupling:** Intercepts raw user text, strips "User" metadata, and converts it into a Diegetic Event (e.g., "George performs Speech Act").
-    * **The Context Detective:** Queries `S3` (State) and `S4` (Relational) *before* translation. It distinguishes between "Literal Truth" (Physics) and "Emotional Truth" (Metaphor) based on the User's current context (e.g., Drunk vs. Happy vs. Delusional).
-    * **Output Watch:** Filters Renderer output to ensure no "Assistant-speak" or telepathy leaks back to the user.
+### B. The Recorder (The Raw Log)
+* **Definition:** The Passive Capture Layer.
+* **Responsibility:** To store the "Raw Footage" of reality without interpretation.
+* **Mechanism:**
+    * It accepts User Input (Dialogue, Action) and System Signals (Time).
+    * It appends them to the **Immutable Log** (The Ledger).
+    * *Constraint:* It never summarizes. It keeps the "grain" of the text—the typos, the tone, the exact phrasing.
 
-**2. `COMP_BACKEND_TICK_SERVICE` (The Metronome)**
-* **Responsibility:** Maintains the `current_tick_id` and strictly synchronizes it with UTC time.
-* **New V2 Logic:**
-    * **The Catch-Up Loop:** On connection resume, the service calculates `Delta_Time = Now - Last_Tick`.
-    * **Drift Execution:** If `Delta_Time > Threshold`, the service runs a "Fast Drift" cycle to update entropy, biological state, and world events for the elapsed time *before* accepting new input. This enforces Law 1 (Persistence).
+### C. The Cinema (The Montage Engine)
+* **Definition:** The Context Assembler (formerly "The Observer" or "Retrieval Layer").
+* **Responsibility:** To construct the "Viewing Experience" for the Intelligence.
+* **Mechanism (Semantic Resonance):**
+    * Instead of "checking variables," the Cinema scans the current input (The Trigger) and searches the **Archive** for "Resonant Clips."
+    * *Trigger:* "User touches Helen's arm."
+    * *Retrieval:* The Cinema pulls past clips where "Touch" = "Threat" or "Touch" = "Comfort."
+    * **The Montage:** It splices these past clips alongside the current input to create the **Prompt Context**.
 
-**3. `COMP_BACKEND_WORLD_SERVICE` (The Physics Engine)**
-* **Responsibility:** Validates physical constraints for all state changes.
-* **New V2 Logic:**
-    * **Travel Validator:** Rejects any `Location Update` where $\Delta t < \frac{\Delta d}{v}$. It strictly enforces travel time between nodes (e.g., Leeds to LA takes 11 hours).
-    * **Object Decay:** Applies atrophy to `S2` (Material Objects) based on elapsed time (e.g., `car_battery_charge` decreases).
+### D. The Viewer (The Intelligence)
+* **Definition:** The Large Language Model (LLM).
+* **Responsibility:** The Sole Active Agent. It is the Actor, the Narrator, and the Physicist.
+* **Mechanism:**
+    * It watches the **Montage** (Current Input + Resonant Past + World Status).
+    * It **Deduced Reality:** It sees the timestamp gap and "simulates" the off-screen time (e.g., "It has been 4 hours; she is tired").
+    * It **Collapses the Wavefunction:** It generates the narrative response (Dialogue + Action) and the internal thought process.
 
-**4. `COMP_BACKEND_AGENT_ENGINE` (The Brain)**
-* **Responsibility:** Generates Agent behavior (`S3`, `S4`, `S5`, `S6`).
-* **New V2 Logic:**
-    * **Bio-Loop Integration:** Reads `S3 (Biological)` before generating intent. It applies the **Somatic Marker**: If `Energy < 20`, it forces `Interaction Mode` to "Fatigued/Irritable" and dampens cognitive complexity.
-    * **Multi-Domain Solver:** Resolves conflicts between `Professional` (Career), `Social` (Family), and `Personal` (User/George) intent vectors before acting. The strongest pressure wins.
-
-**5. `COMP_BACKEND_PERCEPTION_FILTER` (The Fog of War)**
-* **Responsibility:** Filters Global Truth down to "What can be Perceived."
-* **New V2 Logic:**
-    * **Salience Gating:** Removes 99% of `S2` facts that are irrelevant to the Agent's current `Intention` or `Biological State` (Enforcing Law 13). An Agent only "sees" what matters to their survival or goal.
-
-**6. `COMP_BACKEND_RENDERER_SERVICE` (Venice Adapter)**
-* **Responsibility:** Transforms `Events` into `Prose`.
-* **New V2 Logic:**
-    * **Pulse Rendering:** Checks `S5.pulse_rate` to determine sentence structure. It forces fragments for high-pulse states and allows flow for low-pulse states.
-
----
-
-## 3. THE INEVITABILITY CONSTRAINTS (The Silence Distribution)
-
-*(Enforcing Law 16: The Periphery / User is not Center)*
-
-**The "Shut Up" Rule:**
-To prevent constant, eager narration—which destroys realism—the system must enforce silence.
-
-* **Window Size:** `50 ticks` (Rolling Window)
-* **Minimum Silence:** In any 50-tick window, there must be at least **8 ticks** where *nothing is rendered* (Silent Ticks).
-* **Anti-Constant-Surfacing:** It is **INVALID** to render text on every tick for more than **12 consecutive ticks** (unless `Pulse > 70` indicating a high-intensity conflict).
-* **The "Wait" State:** If the Agent is in `Default Mode` (Law 10) performing mundane tasks, the output should be Silence, not a description of the mundane task, unless the User interrupts.
+### E. The Palimpsest (The World Status)
+* **Definition:** The Compressed State Document.
+* **Responsibility:** To handle Deep Time without infinite token usage.
+* **Mechanism:**
+    * It does not store "Events." It stores **Sediment** (Facts/Traits).
+    * *Event:* "User broke the window in 2023."
+    * *Sediment:* `[Location_Damage]: The living room window is taped up with cardboard.`
+    * The Viewer reads this document to ensure long-term consistency (Laws 1 & 8).
 
 ---
 
-## 4. THE EXECUTION LOOP (The Pulse of Life)
+## 3. THE EXECUTION FLOW (The Cinematic Turn)
 
-This is the atomic unit of the simulation. It runs every tick.
+This is the atomic unit of the simulation. It replaces the "Game Loop."
 
-**Step 0: The Observer Pass (Input Injection)**
-* `Observer Service` intercepts incoming User Text.
-* Checks Context (S3/S4) and translates Text $\rightarrow$ `Semantic Intent` (e.g., "George is Metaphorical").
-* Injects the translated Event into the World Queue.
+**Phase 1: The Slate (Input)**
+1.  **Input:** User enters text ("I open the door").
+2.  **Timestamp:** The Pulse stamps the input: `[2025-12-20 09:00:00]`.
+3.  **The Gap Check:** The System calculates `Delta_t` since the last System Output.
+    * If `Delta_t > 6 hours`: Flag **HIGH ENTROPY**.
 
-**Step 1: The Time Delta Calculation**
-* `Tick Service` calculates `dt = Now - Last_Tick`.
-* If `dt > 100ms`, the **Drift Engine** activates to fill the gap.
+**Phase 2: The Montage (Context Construction)**
+1.  **State Retrieval:** The Cinema pulls the **Palimpsest** (Current World Status: Location, Weather, Health).
+2.  **Semantic Search:** The Cinema uses vector embedding on the Input ("Open Door") to find relevant history.
+    * *Result:* Finds clip "Argument at the Door (2 days ago)."
+3.  **Assembly:** The Cinema builds the **Prompt**:
+    * `[CURRENT STATUS]`: (The Palimpsest)
+    * `[RELEVANT MEMORY]`: (The Clip of the Argument)
+    * `[TIME GAP]`: "6 Hours have passed."
+    * `[ACTION]`: "I open the door."
 
-**Step 2: The Entropy Pass (Drift)**
-* **Biological Drift:** Agents lose Energy, accumulate Hunger/Fatigue (`S3`).
-* **Material Drift:** Objects degrade, weather changes (`S2`).
-* **Relational Drift:** Intimacy scores decay (`S4`) based on `dt`.
+**Phase 3: The Viewing (Inference)**
+1.  **The Viewer watches the Montage.**
+2.  **Physics Check (Internal):** The Viewer notes the 6-hour gap. It deduces: "The Agent has been waiting. The room is dark."
+3.  **Psychological Check (Internal):** The Viewer sees the "Argument" clip. It deduces: "The Agent is defensive because of the previous fight."
+4.  **Generation:** The Viewer writes the output.
 
-**Step 3: The Salience Filter (Cognition)**
-* `Agent Engine` scans the `World Slice` (S2) and the new `Semantic Intent` (Step 0).
-* Applies **Law 13 (Salience)**:
-    * "I am hungry" $\rightarrow$ High Salience for "Food".
-    * "I am anxious" $\rightarrow$ High Salience for "Threats".
-* Ignores all other input data.
-
-**Step 4: The Multi-Domain Conflict (Decision)**
-* `Agent Engine` weighs competing vectors:
-    * *Body says:* "Sleep."
-    * *Career says:* "Rehearse."
-    * *George says:* "Talk."
-* **Resolution:** The strongest vector wins. The Agent produces an `Action Candidate`.
-
-**Step 5: The Physics Validation**
-* `World Service` checks the Candidate against Law 2.
-* *Check:* "Can Agent move from Bedroom to Kitchen in 1 second?"
-* If Valid: Commit Event.
-* If Invalid: Reject Event and trigger "Failure" state.
-
-**Step 6: Pulse Rendering**
-* `Renderer` reads `S5.pulse_rate`.
-* Generates prose matching the **Tempo** (Fragment vs. Flow).
-
-**Step 7: State Commit**
-* Write `StateDeltas` to Postgres.
-* Broadcast `UI_DELTA` to Frontend.
+**Phase 4: The Projection (Output)**
+1.  **Narrative:** The System streams the text to the user.
+    * *"The room is pitch black. She jumps as the door handle turns, dropping her phone."*
+2.  **Sedimentation:** The Viewer updates the Palimpsest if a major change occurred (e.g., "Phone is dropped/broken").
 
 ---
 
-## 5. INFRASTRUCTURE & ORCHESTRATION LOGIC (SESSION CONTINUITY)
+## 4. THE INEVITABILITY CONSTRAINTS (Viewer Directives)
 
-This section governs how the system maintains continuity and constructs the prompt context.
+These are instructions to the Viewer to ensure the simulation feels "Real" and not "Game-like."
 
-### A. Semantic-First Architecture (The Qdrant Layer)
-* **Numerical vs. Semantic:** The system rejects hard-coded numerical IDs for psychological states in the prompt.
-* **Vector Retrieval:** The `COMP_BACKEND_PERCEPTION_FILTER` must use Qdrant to retrieve "shards" of memory and identity based on **Semantic Salience**.
-* **Dynamic Hydration:**
-    * **Forbidden:** Using a static "System Prompt" or "Character Card."
-    * **Mandatory:** The prompt must be rebuilt ("hydrated") on every turn.
-    * **Logic:** Pull only the specific Identity Tags (e.g., "Independence," "Past Conflict X") that match the embedding of the current `Semantic Intent` (Step 0).
+### A. The "Shut Up" Protocol
+* **Rule:** If the `Delta_t` is short (< 10 seconds) and the input is low-salience, the Viewer is permitted to output **SILENCE**.
+* **Reasoning:** Real people do not reply to every grunt or glance.
+* **Execution:** The Viewer outputs a "Null Response" or a simple ambient descriptor ("The clock ticks") rather than forced dialogue.
 
-### B. The Scene/Session Orchestrator
-* **The Scene Unit:** Every interaction is wrapped in a dynamic `Scene Header` containing:
-    * `Location_State` (S2)
-    * `Time_State` (S1)
-    * `Pulse_State` (S5)
-    * `Current_Vibe` (Semantic Tag from Observer)
-* **Transition Protocols:**
-    * If the Observer detects a `SCENE_BREAK` (e.g., "See you tomorrow"), the system executes a **Hard State Commit** to the database before initiating any time-skip or location-skip logic.
+### B. The Drift Directive (Entropy)
+* **Rule:** When `Delta_t` indicates a gap, the Viewer **must** describe the physical toll of that time *before* addressing the User's input.
+* **Example:**
+    * *User:* "I'm back." (After 8 hours).
+    * *Bad Output:* "Welcome back!"
+    * *Correct Output:* "The coffee on the desk has formed a skin. She rubs her eyes, looking at you blindly for a second, disoriented by the sudden noise."
 
-### C. Tool & Logic Integration
-* **The Bridge:** Tools (e.g., `get_weather`, `calculate_travel_time`) are strictly for resolving Hard World Variables.
-* **Subjective Filtering:** The raw output of a Tool (e.g., "Temperature: 12°C, Rain") **MUST NOT** be fed directly to the Renderer.
-* **The Filter Path:** `Tool Output` $\rightarrow$ `Agent Engine (Predictive Mind)` $\rightarrow$ `Subjective Interpretation` ("It is freezing and miserable") $\rightarrow$ `Renderer`.
+### C. The Fidelity of Friction
+* **Rule:** The Viewer must reject "Video Game Logic" inputs by describing the **failure of physics**, not by sending an error message.
+* **Input:** "I fly to the roof."
+* **Response:** "You jump, but gravity drags you back down. You land heavily on the concrete, looking ridiculous." (Narrative correction, not System correction).
+
+---
+
+## 5. INFRASTRUCTURE LOGIC (Memory Architecture)
+
+### A. The Sedimentation Process
+History is handled in two layers:
+1.  **The Reel (Raw):** Stored in `Postgres/Logs`. Accessible via Semantic Search. Used for *Vibes* and *Specific Flashbacks*.
+2.  **The Status (Sediment):** Stored in `Markdown/Palimpsest`. Updated via "Overwrite." Used for *Hard Truths* (Location, Injuries, Objects).
+
+### B. The Scene Header (Dynamic Context)
+Every Turn is preceded by a "Mini-Paragraph" generated by the Cinema (Direction), replacing the JSON State.
+* **Format:**
+    > **[SCENE START]**
+    > **Location:** A cramped kitchen. **Time:** 04:00 AM (Pre-Dawn).
+    > **Somatic State:** Shivering, sleep-deprived.
+    > **Atmosphere:** The hum of the fridge is the only sound.
+    > **Active Tension:** The unresolved question about the money.
+
+This header forces the Viewer to align with the physical reality before writing a single word of dialogue.
