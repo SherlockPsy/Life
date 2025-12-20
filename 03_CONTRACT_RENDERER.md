@@ -1,80 +1,37 @@
-# 03_CONTRACT_RENDERER (V4.0)
+# 03_CONTRACT_RENDERER (V5.0 - PURE SEMANTIC)
 
-**Status:** CANONICAL | **Version:** 4.0 (The Sensory Transducer)
-**Definition:** The Laws of Perception and Projection.
-**Authority:** This document defines the interface between the **Protagonist Entity** and the **Human Player**. It replaces "Game Output" with "Sensory Transduction."
-
----
-
-## 1. THE EPISTEMOLOGY OF THE LENS (No God View)
-
-The Renderer is not a storyteller; it is an **Optic Nerve**.
-It connects the Human Player to the Protagonist's biological sensors.
-
-**The Golden Directive:**
-The Human Player is strictly bound by the Protagonist's biology.
-* **Line of Sight:** If the Protagonist is facing the wall, the Renderer describes the wall. It *does not* describe the Agent standing behind them (unless heard).
-* **State-Dependent Rendering:** The text itself must degrade based on the Protagonist's `[Somatic State]`.
-    * *Sober:* "The clock reads 11:45."
-    * *Intoxicated:* "The clock face is a blur of neon."
-    * *Exhausted:* "The light hurts your eyes."
+**Status:** CANONICAL | **Version:** 5.0 (The Sensory Transducer)
+**Definition:** The interface between the Protagonist Entity and the Human Interface.
+**Authority:** The Renderer is not a storyteller; it is an **Optic Nerve**. It converts the World State into the subjective experience of the Protagonist.
 
 ---
+
+## 1. THE EPISTEMOLOGY OF THE LENS
+* The Human Interface is strictly bound by the Protagonist’s biological sensors.
+* **Line of Sight:** The Renderer describes only what the Protagonist can perceive. If an Agent is behind the Protagonist, they do not exist visually in the output.
+* **Somatic Distortion:** The prose itself must degrade or shift based on the Protagonist's internal state.
+    * *Exhausted:* Descriptions become heavy, sluggish, and focus on the effort of movement.
+    * *Drunk:* The text becomes fluid, blurred, or hyper-focused on irrelevant details while missing the obvious.
 
 ## 2. THE SENSORY GATING PROTOCOL
 
-The Renderer filters the World State through the **Protagonist's Limits**.
+### A. The Attention Gate
+* The Protagonist has finite attention.
+* If the Cinema projects a Montage of "High Tension," the Renderer hyper-focuses on the source of that tension (an Agent's eyes, a trembling hand) and suppresses background textures like the weather or the hum of the fridge.
 
-### A. The Location Gate
-* **Rule:** You cannot sense what is not in your Zone.
-* **Scenario:** Protagonist is in `[Kitchen]`. Agent is in `[Bedroom]`.
-* **Output:**
-    * *Visual:* None.
-    * *Audio:* "Muffled thuds from upstairs." (If Physics allows).
-    * *Dialogue:* **Redacted.** The Renderer does *not* output the Agent's lines.
+### B. The Temporal Gate (The Blackout)
+* If the Pulse advances while the Protagonist is unconscious or asleep, the Renderer outputs **Silence**.
+* Upon waking, the Renderer describes the **Result of Entropy**, not a summary of missed events. You do not see "While you slept, she left"; you see "The bed beside you is cold and the room is empty".
 
-### B. The Attention Gate
-* **Rule:** The Protagonist has finite attention.
-* **Mechanism:** Check `[Protagonist.Obsession]`.
-* **Tunnel Vision:** If `[Obsession: Threat]` is active (e.g., an argument), the Renderer **suppresses** background details (music, weather) and hyper-focuses on the Threat (The Agent's eyes, the weapon).
+## 3. THE STYLE MATRIX (THE PULSE)
+The Viewer adjusts the prose style to match the Protagonist’s physiological rhythm.
 
-### C. The Temporal Gate (The Blackout)
-* **Rule:** If the Pulse advances while the Protagonist is `[State: Unconscious/Asleep]`:
-* **Output:** **SILENCE**.
-* **The Wake Up:** When consciousness returns, the Renderer outputs the *Result of Entropy*, not the events missed.
-    * *Bad:* "While you slept, Helen left."
-    * *Good:* "You wake up. The other side of the bed is cold. The closet door is open."
+* **Mode A: Low Heart Rate (Safety):** Long, flowing sentences with high sensory detail regarding texture, light, and memory.
+* **Mode B: High Heart Rate (Conflict):** Staccato, fragmented sentences focusing on immediate movement, threats, and physical obstacles.
 
 ---
 
-## 3. THE STYLE MATRIX (The Pulse)
-
-The Renderer adjusts the prose style to match the Protagonist's **Heart Rate** (Pulse).
-
-### Mode A: Parasympathetic (Rest & Digest)
-* **Trigger:** Low Heart Rate, Safe Environment.
-* **Style:** Wide aperture. High sensory detail. Long sentences.
-* **Focus:** Texture, temperature, memory, light.
-
-### Mode B: Sympathetic (Fight or Flight)
-* **Trigger:** High Heart Rate, Conflict, Danger.
-* **Style:** Staccato. Fragmented.
-* **Focus:** Vectors of movement, sources of pain, immediate obstacles.
-* **Suppression:** No internal monologue. No adjectives. Pure verb/noun.
-
----
-
-## 4. THE UNRELIABLE NARRATOR (Hallucinations)
-
-The System acknowledges that human perception is flawed.
-
-**The Bias Filter:**
-The Renderer scans the `[Cord: Tension]` between Protagonist and Agent.
-* **If Tension = Hostile:** The Renderer describes the Agent's neutral actions as aggressive.
-    * *Fact:* Agent puts down a cup.
-    * *Render:* "She slams the cup onto the table."
-* **If Tension = Romantic:** The Renderer describes the Agent's neutral actions as intimate.
-    * *Fact:* Agent looks at Protagonist.
-    * *Render:* "Her gaze lingers on you."
-
-**The Correction:** The Human Player never knows if the description is objective truth or subjective projection. They must judge based on context.
+## 4. THE UNRELIABLE NARRATOR
+* All descriptions are subjective. 
+* If the Relationship Sediment (The Cord) is "Hostile," the Renderer describes neutral Agent actions as aggressive.
+* A "Cup placed on a table" is rendered as "She slams the cup down" if the Protagonist's internal state expects aggression.

@@ -1,72 +1,30 @@
-# 02_CONTRACT_STATE (V4.0)
+# 02_CONTRACT_STATE (V5.0 - THE PALIMPSEST)
 
-**Status:** CANONICAL | **Version:** 4.0 (The Palimpsest)
+**Status:** CANONICAL | **Version:** 5.0 (The Semantic Matter)
 **Definition:** The Semantics of Existence.
-**Authority:** This document defines the "State" of the Simulation. It applies symmetrically to **Agents** and the **Protagonist**.
+**Authority:** This document defines the **Current World Status** (CWS). It replaces all "stats" with **Sedimented Narrative Truth**.
 
 ---
 
-## 1. THE ENTITY SCHEMA (Symmetric Biology)
+## 1. THE SOMATIC RECORD (The Body)
+* Biology is a **Descriptive Truth**, not a variable.
+* Instead of `Hunger: 80`, the Palimpsest contains a semantic description: *"The entity is experiencing a gnawing, hollow sensation in their stomach that makes every movement feel heavy"*.
+* **Symmetry:** This applies equally to Agents and the Protagonist.
+* **Impact:** The Viewer sees this description in the Montage and uses it to limit what the character can physically achieve.
 
-The Palimpsest tracks the Protagonist exactly as it tracks an Agent.
+## 2. THE RELATIONSHIP SEDIMENT (The Cord)
+* Relationships are **Narrative Histories**, not numerical "scores".
+* The "Cord" between two entities is defined by the **Sediment of their interactions**.
+* **The Layering:**
+    * **Intimacy:** A summary of shared comfort and vulnerability.
+    * **Tension:** A record of unresolved conflict and friction.
+    * **History:** Specific "Core Memories" (like the Spilled Wine incident) that color current perception.
 
-### A. The Somatic Layer (The Body)
-* **Variables:** `[Energy]`, `[Hunger]`, `[Intoxication]`, `[Pain]`.
-* **Protagonist Impact:**
-    * If `[Protagonist.Energy] < 10%`: The System blocks "High Effort" actions (e.g., Running, Fighting). Input is restricted to "Rest" or "Crawl."
-    * If `[Protagonist.Intoxication] > High`: The System scrambles text output.
+## 3. THE MATERIAL STAGE (Object Permanence)
+* The world is a **Physical Palimpsest**.
+* Objects have **Semantic States**: *"The stove is still hot to the touch,"* or *"The window is shattered, allowing the cold winter air to fill the room"*.
+* **The Rule:** These states are persistent until an entity expends effort to change them.
 
-### B. The Location Layer (The Map)
-* **Variables:** `[Zone]`, `[Room]`, `[Coordinates (Semantic)]`.
-* **Rule:** An entity cannot interact with objects not in their Location.
-* **Protagonist Impact:** You cannot "hear" a conversation in the Kitchen if you are in the Bedroom. The Renderer will output `[Muffled voices]` instead of dialogue.
-
-### C. The Cord Layer (Relationships)
-* **Variables:** `[Tension]`, `[Intimacy]`, `[Trust]`.
-* **Note:** This is a bidirectional graph.
-    * `Helen -> Protagonist` (How she feels about you).
-    * `Protagonist -> Helen` (How the System predicts you feel, based on your actions).
-
----
-
-## 2. THE WORLD SEDIMENT (The Environment)
-
-### Layer 1: The Chronology (S1)
-* **The Pulse:** UTC Time.
-* **The Drift:** The accumulated decay since the last "Clean Up" event.
-
-### Layer 2: The Material Stage (S2)
-* **Object Permanence:** Objects stay where they are put.
-* **State Tags:** Objects have states: `[Broken]`, `[Wet]`, `[Hot]`, `[Cold]`.
-    * *Example:* If Protagonist leaves the stove on, `[Stove]` gains tag `[Hazard: Fire_Risk]`.
-
-### Layer 3: The Atmosphere (S3)
-* **Sensory Data:** `[Smell]`, `[Light_Level]`, `[Noise_Floor]`.
-* **Function:** This dictates what the **Renderer** can show.
-    * *Darkness:* Blocks visual descriptions.
-    * *Loud Noise:* Blocks auditory descriptions.
-
----
-
-## 3. THE AUTONOMOUS MUTATION PROTOCOL
-
-How the State changes without Human Input.
-
-### A. The Metabolic Burn
-* **Frequency:** Hourly.
-* **Action:**
-    * `[Entity.Hunger]` +10.
-    * `[Entity.Energy]` -5 (if awake) / +10 (if asleep).
-    * *Scope:* Applied to Agents AND Protagonist (if "Camera Off").
-
-### B. The Entropic Rot
-* **Frequency:** Daily.
-* **Action:**
-    * `[Food.Freshness]` Decays.
-    * `[Relationship.Intimacy]` Decays (if no interaction).
-
-### C. The Agent Agenda
-* **Trigger:** Agent Viewer Decision.
-* **Action:** Agent moves from `[Kitchen]` to `[Garden]`.
-* **State Update:** Palimpsest updates Agent Location.
-* **Consequence:** If Protagonist enters Kitchen, Agent is **GONE**. System does not spawn them there for convenience.
+## 4. THE ATMOSPHERE
+* The System tracks the **Sensory Baseline** of a location: *"The smell of garlic," "The low hum of the fridge," "The dim orange light of sunset"*.
+* This atmosphere dictates what the **Renderer** can show the Human interface. In darkness, the Renderer is forbidden from describing visual details.

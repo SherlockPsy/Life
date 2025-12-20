@@ -1,58 +1,29 @@
-# 05_THE_CINEMA (V4.0)
+# 05_THE_CINEMA (V5.0 - PURE SEMANTIC)
 
-**Status:** CANONICAL | **Version:** 4.0 (The Context Engine)
+**Status:** CANONICAL | **Version:** 5.0 (The Context Engine)
 **Definition:** The Mental State Builder.
-**Authority:** This document defines how the System builds "Context" for **BOTH** the Agent (to act) and the Protagonist (to perceive).
+**Authority:** This document defines how the System builds the **Montage** for the Viewer (LLM).
 
 ---
 
 ## 1. THE DUAL-STREAM MONTAGE
-
-The Cinema runs two parallel retrieval processes.
+The Cinema runs two parallel retrieval processes for every "frame" of reality.
 
 ### Stream A: The Agent Montage (For the Viewer)
-* **Goal:** To simulate the Agent's internal thought process.
-* **Input:** Agent's *Subjective* view of the scene.
-* **Retrieval:** Past interactions with the Protagonist (filtered by current mood).
-* **Output:** Instructions for the Viewer to generate the Agent's next move.
+* **Goal:** To simulate the Agent's internal decision-making.
+* **Retrieval:** Pulls "Clips" of past interactions with the Protagonist and current Somatic sediment (hunger, fatigue).
+* **Output:** A directive for the LLM to generate the Agent's next autonomous act or speech.
 
 ### Stream B: The Sensory Montage (For the Renderer)
 * **Goal:** To simulate the Protagonist's perception.
-* **Input:** Protagonist's *Subjective* view of the scene.
-* **Retrieval:** "Memory Echoes."
-    * *Trigger:* Protagonist looks at the `[Vase]`.
-    * *Cinema:* Retrieves memory of `[Vase: Broken in 2024]`.
-    * *Output:* The Renderer inserts a thought: *"You remember the sound it made when it shattered."*
-* **Function:** This allows the Human Player to "feel" the Protagonist's history without reading a lore document.
+* **Retrieval:** Pulls "Memory Echoes" triggered by the current environment.
+* **Example:** If the Protagonist touches a specific chair, the Cinema pulls the clip of them sitting in it five years ago.
 
----
+## 2. THE GAP HEADER
+Every Montage provided to the Viewer begins with a **Time Delta**.
+* **Content:** "It has been X hours since the last recorded interaction".
+* **Function:** This forces the Viewer to acknowledge the passage of time. It is the prompt for the "cold bed," the "stiff muscles," and the "faded light".
 
-## 2. THE RECORDING LOGIC (Entity Agnostic)
-
-The Recorder captures the "Truth" of the world, distinguishing between **Action** and **Speech**.
-
-**Log Schema:**
-`[TIMESTAMP] [ENTITY_ID] [TYPE] [CONTENT]`
-
-* `[09:00] [PROTAGONIST] [ACTION] "Walks into the kitchen."`
-* `[09:01] [AGENT_HELEN] [ACTION] "Does not look up."`
-* `[09:01] [PROTAGONIST] [SPEECH] "It's cold in here."`
-* `[09:02] [AGENT_HELEN] [SPEECH] "Fix the window then."`
-
-**The Blind Spot:**
-If the Protagonist is not in the room, the Recorder **still logs** the Agent's actions, but the **Renderer** is forbidden from showing them to the Human Player. They exist in the database, waiting to be discovered (e.g., finding the broken plate later).
-
----
-
-## 3. THE CONTEXTUAL DRIFT (Entropy Integration)
-
-The Cinema injects **Time Context** into every Montage.
-
-**The Gap Header:**
-Every Prompt (for Agent or Renderer) begins with:
-`[TIME SINCE LAST CONSCIOUS MOMENT: X Hours]`
-
-* **For the Agent:** "It has been 4 hours. You are bored."
-* **For the Protagonist:** "It has been 4 hours. Your legs are stiff. The light has faded."
-
-This forces both entities to acknowledge the passage of time immediately.
+## 3. SEMANTIC RESONANCE (RELEVANCE)
+* The Cinema does not search for keywords; it searches for **Thematic Vibrations**.
+* If the Protagonist is "Angry," the Cinema retrieves other "Angry Clips" from the 1.3-year history to color the current moment, ensuring emotional continuity.

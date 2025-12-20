@@ -1,97 +1,48 @@
-# 01_SYSTEM_ARCHITECTURE (V4.0)
+# 01_SYSTEM_ARCHITECTURE (V5.0 - PURE SEMANTIC)
 
-**Status:** CANONICAL | **Version:** 4.0 (The Indifferent Machine)
-**Definition:** The Operational Blueprint of the Semantic Simulation.
-**Authority:** This document defines the **Cycle of Autonomous Simulation**. It replaces the "Response Pipeline" with the "World Heartbeat."
-
----
-
-## 1. AUTHORITY AND SCOPE
-
-This document defines the machine that simulates the world.
-**Crucial Distinction:** The System does not "Respond to User." The System **Updates Reality** based on the collision of Entity Actions (Human or AI) and Environmental Forces.
+**Status:** CANONICAL | **Version:** 5.0 (The Cinematic Pipeline)
+**Definition:** The Blueprint of the **Recorder-Cinema-Viewer** loop.
+**Authority:** The system does not "respond" to a user; it **Updates Reality** based on the collision of Entity actions and the passage of time.
 
 ---
 
-## 2. COMPONENT REGISTRY (The Simulation Stack)
+## 1. THE RECORDER (The Hard Drive)
+* **Responsibility:** Passive, lossless capture.
+* **Function:** It acts as a camera that never blinks, recording the **Chronicle**—the raw text of every entity's actions.
+* **Rule:** It never summarizes and never interprets. It stores "what happened" in pure prose.
 
-### A. The Pulse (The Autonomous Heartbeat)
+## 2. THE CINEMA (The Montage Engine)
+* **Responsibility:** The Context Assembler.
+* **Function:** To curate the "Viewing Experience" for the Intelligence (The Viewer).
+* **Mechanism:** When a new action is recorded, the Cinema searches the archives for **Semantic Resonance**.
+* It retrieves relevant "clips" (past memories, somatic states, or history) and projects them alongside the current moment.
+* **Output:** A **Montage** of raw text clips.
+
+## 3. THE VIEWER (The Intelligence / LLM)
+* **Responsibility:** The Interpreter and Actor.
+* **Function:** The LLM "watches" the Montage. It uses human-level reasoning to connect the dots between the past and the present.
+* **Action:** It generates the Agent's reaction or the next sensory beat of the story.
+
+## 4. THE PULSE (The Timecode)
 * **Responsibility:** Time & Entropy.
-* **Logic:**
-    * It runs 24/7 on UTC.
-    * **The Autonomy Trigger:** Even if no Human Input is received, the Pulse triggers the **Entropy Engine** every hour to update Agent States (Hunger, Location, Fatigue).
-    * **The Gap:** It calculates `Delta_t` for the Protagonist specifically to determine their state upon "Return" (Camera On).
-
-### B. The Recorder (The Entity Log)
-* **Responsibility:** The Passive Capture Layer.
-* **Logic:**
-    * It logs **Actions**, not Inputs.
-    * *Format:* `[TIMESTAMP] [ENTITY_ID] [ACTION]`.
-    * *Entity Agnosticism:* It treats `Entity: Protagonist` and `Entity: Agent_Helen` exactly the same. Both are just actors generating logs.
-
-### C. The Cinema (The Context Engine)
-* **Responsibility:** To build the "Mental State" for Entities.
-* **Dual Output:**
-    * **For Agents:** It builds a Montage so the LLM knows how to act.
-    * **For Protagonist:** It builds a **Sensory Montage** so the Renderer knows what to show the Human. (e.g., "The room is spinning" if Protagonist is drunk).
-
-### D. The Viewer (The Agent Brain)
-* **Responsibility:** To simulate the biology and volition of NPCs.
-* **Logic:**
-    * It runs on a loop, checking `[Somatic State]`.
-    * **Autonomy:** If the Protagonist is absent, the Viewer continues to generate "Off-Screen Actions" for the Agents (e.g., "Helen goes to sleep") which are logged to the Recorder.
-
-### E. The Renderer (The Sensory Transducer)
-* **Responsibility:** To convert World State into Human Perception.
-* **Logic:**
-    * It replaces the "Chat Interface."
-    * **The Filter:** It checks the Protagonist's `[Location]` and `[State]`.
-    * **The Projection:** It describes *only* what is observable. If the Protagonist is not looking at Helen, it does not describe her facial expression.
-
-### F. The Palimpsest (The Matter)
-* **Responsibility:** The Physics Engine / State Container.
-* **Logic:**
-    * Tracks `[Somatic State]` for **BOTH** Protagonist and Agents.
-    * Tracks `[Location]` and `[Entropy]` of the physical world.
+* **Function:** An independent metronome that stamps every frame of reality with a UTC timestamp.
+* **Effect:** It is the **Universal Solvent**. It forces the characters to age, the world to decay, and hunger to grow simply by existing between two timestamps.
 
 ---
 
-## 3. THE EXECUTION FLOW (The World Beat)
+## 2. THE EXECUTION FLOW (The World Beat)
 
-The System runs two parallel loops.
+The System runs two parallel loops that merge at the point of interaction.
 
-### Loop A: The Autonomous Loop (Background)
-* **Frequency:** Every 15 Minutes (Simulated or Real).
+### Loop A: The Autonomous Loop (The Background)
+* **Frequency:** Continuous.
 * **Action:**
-    1.  **Entropy Check:** Reduce Energy, Increase Hunger for ALL entities.
-    2.  **Agent Logic:** Check Agent Schedules. (e.g., "It is 23:00. Helen is tired. Action: Go to Bed.").
-    3.  **Sedimentation:** Update Palimpsest. (e.g., "Location: Bedroom. Status: Sleeping.").
+    1. **Entropy Pass:** The Cinema updates the **Current World Status** (CWS) to reflect the passage of time (fatigue, hunger, cooling environments).
+    2. **Agent Logic:** Agents check their internal schedules and needs. If an Agent is tired and it is midnight, they go to sleep, generating a log in the Recorder.
 
-### Loop B: The Interaction Loop (Foreground)
-* **Trigger:** Protagonist Volition (Human Input).
-* **Step 1: Ingest:** Record `[Protagonist Action]`.
-* **Step 2: Physics Cost:** Calculate `Time_Required` and `Energy_Cost`.
-    * *Constraint:* If Protagonist tries to "Teleport," System rejects the action or enforces the Time Penalty.
-* **Step 3: World Reaction:**
-    * Agents witness the action.
-    * Viewer generates Agent Reaction (Dialogue/Movement).
-* **Step 4: Render:**
-    * System projects the *Result* to the Screen.
-
----
-
-## 4. THE NO-SESSION PROTOCOL
-
-The concept of a "Session" is replaced by **Presence**.
-
-**State: Camera ON (Presence)**
-* The Human is connected.
-* The Renderer streams the "Live Feed" of the Protagonist's senses.
-* The Pulse is synced to Real-Time.
-
-**State: Camera OFF (Absence)**
-* The Human disconnects.
-* **The Protagonist Body** remains in the world.
-    * *Default Behavior:* The Protagonist enters a "Passive State" (idling, sleeping, or waiting) defined by the last instruction.
-* **The World:** Continues to evolve. Agents move, weather changes.
-* **The Return:** When Human reconnects, the Renderer describes the *current* state (e.g., "You wake up stiff. The room is empty. It is dark outside.").
+### Loop B: The Interaction Loop (The Foreground)
+* **Trigger:** Entity Action (Protagonist or Agent).
+* **Step 1: Capture:** The Recorder logs the action.
+* **Step 2: Synthesis:** The Cinema gathers resonant clips from the past and the current biological status.
+* **Step 3: Projection:** The Cinema hands this **Montage** to the Viewer.
+* **Step 4: Perception:** The Viewer (LLM) interprets the montage and writes the sensory result to the screen.

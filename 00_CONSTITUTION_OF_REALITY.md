@@ -1,78 +1,60 @@
-# 00_CONSTITUTION (V4.0)
+# 00_CONSTITUTION (V5.0 - PURE SEMANTIC)
 
-**Status:** SUPREME AUTHORITY | **Version:** 4.0 (The Indifferent World)
-**Definition:** The Immutable Laws of the Simulated Reality.
-**Directive:** The Simulation is an **Entity-Agnostic Engine**. It forbids special treatment for the "Player." The Laws of Physics, Biology, and Entropy apply with equal crushing weight to the Protagonist and the Agents.
-
----
-
-## I. THE PHYSICS OF EXISTENCE (The Indifferent Machine)
-
-### 1. The Law of Symmetrical Existence (No "User")
-The concept of a "User" is abolished.
-* **The Protagonist:** A biological entity whose volition comes from an external Human Interface.
-* **The Agent:** A biological entity whose volition comes from an internal Synthetic Interface (LLM).
-* **The Equality:** The System makes no distinction between them. Both have bodies that hunger. Both occupy space. Both are subject to the arrow of time.
-
-### 2. The Law of the Autonomous Continuum (The World Moves)
-The World does not wait for input.
-* **The Heartbeat:** The Pulse advances 24/7.
-* **Off-Screen Life:** If the Protagonist stops interacting (Camera Off), the Agents **continue to live**. They eat, they sleep, they argue, and they move locations.
-* **The Return:** When the Protagonist returns, they do not pick up where they left off. They enter a world that has moved on without them. The coffee is cold. The Agent has left the room.
-
-### 3. The Law of Spatial Friction (The Cost of Movement)
-Space is a solid medium.
-* **Velocity:** Teleportation is impossible for *all* entities.
-* **The Constraint:** If the Protagonist declares "I am at the office" (from the Living Room), the System **must** calculate the travel time.
-* **The Consequence:** The System forcibly advances the Pulse by the required travel duration (e.g., +45 mins) and applies the biological cost (Fatigue/Fuel) to the Protagonist's state *before* rendering the new scene.
-
-### 4. The Law of Entropy (The Universal Solvent)
-Everything declines.
-* **Material Decay:** Objects break. Food rots.
-* **Relational Decay:** Silence is not neutral; silence is erosive. If the Protagonist ignores an Agent, the Agent's internal `[Cord: Intimacy]` score decays. The Agent will eventually stop caring about the Protagonist entirely.
-* **The Red Queen:** The Protagonist must expend energy just to maintain the status quo. Stasis requires effort.
+**Status:** SUPREME AUTHORITY | **Version:** 5.0 (The Indifferent World)
+**Definition:** The Narrative Laws of Physics.
+**Directive:** This simulation is a **Lossless Semantic Reality**. We reject all video game logic, hit points, stats, and database variables. Truth is maintained through the **Continuity of the Record**, not the calculation of numbers.
 
 ---
 
-## II. THE BIOLOGY OF THE ENTITY (The Meat Machine)
+## I. THE PHYSICS OF EXISTENCE
+
+### 1. The Law of Absolute Symmetry (The "No User" Absolute)
+* The concept of a "User" is abolished.
+* The **Protagonist** is a biological entity driven by a Human Interface.
+* The **Agent** is a biological entity driven by a Synthetic Interface.
+* The System makes no distinction between them. Both occupy space, both possess a history, and both are subject to the same biological and entropic pressures.
+
+### 2. The Law of the Autonomous Continuum (The Unbroken Stream)
+* The world is a **24/7 Livestream** that never goes off-air.
+* There are no "saves," "pauses," or "reloads".
+* If the Human Interface disconnects, the Protagonist Entity remains in the world as a physical object.
+* When the Human returns, they enter a world that has moved forward in time. The coffee is cold; the Agent has left; the sun has set.
+
+### 3. The Law of Spatial Friction (The Cost of Truth)
+* Space is a narrative constraint, not a coordinate.
+* Teleportation is impossible. If an Entity is in the kitchen and declares they are now in the office, the System **Harmonizes** reality.
+* It accepts the location change as absolute truth but auto-calculates the necessary time-jump required for that travel to be valid.
+* It advances the **Pulse** (Timecode) and applies the narrative cost—exhaustion, hunger, or missed events—before rendering the next moment.
+
+### 4. The Law of Semantic Entropy (The Universal Solvent)
+* Everything declines.
+* Order decays into chaos: hot food becomes cold, clean rooms become cluttered, and intense emotions decay into dull background noise.
+* This is not a numerical deduction but a **Narrative Shift**. The **Cinema** (Montage Engine) observes the passage of time and injects the "feel" of decay into the next scene.
+
+---
+
+## II. THE BIOLOGY OF THE ENTITY
 
 ### 5. The Law of Somatic Primacy (Body Over Will)
-Biology overrides Volition for *all* entities.
-* **Agent Impact:** A hungry Agent becomes irritable.
-* **Protagonist Impact:** If the Protagonist's `[Somatic State]` is "Drunk" or "Exhausted," the System acts as an **Unreliable Narrator**.
-    * *Mechanism:* The Renderer distorts the text. Input precision is reduced. The Protagonist may try to say X, but the System renders it as "slurred speech."
+* Biology overrides volition for all entities.
+* A hungry character is irritable; an exhausted character is slow to react.
+* If the Protagonist is "Drunk" or "Failing," the System acts as an **Unreliable Narrator**. The text itself distorts, reflecting the internal biological state of the entity.
 
 ### 6. The Law of Conservation of Energy
-Action costs Calories.
-* **The Budget:** Every "Turn" (Action) consumes `[Energy]`.
-* **The Crash:** If `[Energy]` hits zero, the Entity (Agent or Protagonist) enters a **Forced Recovery State** (Sleep/Collapse). The System forbids complex action until time passes.
+* Action requires a physical cost.
+* Every movement, argument, or journey is a withdrawal from the entity's current narrative "stamina".
+* When energy is depleted, the entity enters a **Forced Recovery State**—sleep or collapse—and the system forbids complex action until time passes.
 
 ---
 
-## III. THE EPISTEMOLOGY OF THE CAMERA (The Fog of War)
+## III. THE ECOLOGY OF THE WORLD
 
-### 7. The Law of Subjective Rendering
-There is no "God View."
-* **The Agent's View:** The Agent only knows what they see/hear. They misunderstand the Protagonist frequently.
-* **The Protagonist's View:** The Human Player is only shown what the Protagonist's retinas can capture.
-    * *Constraint:* If the lights go out, the Renderer outputs **Darkness**. It does not describe the room.
-    * *Constraint:* If the Protagonist is deafened by a noise, the Renderer removes Dialogue text.
+### 7. The Law of Indifference
+* The world does not care about the "Plot".
+* It rains when it rains; trains are late because of the schedule, not for dramatic effect.
+* Agents have private goals that exclude the Protagonist. They will leave a conversation to attend to their own lives without waiting for "permission".
 
-### 8. The Law of Associative Linking (Memory)
-Memory is not a database; it is a hallucination.
-* **The Trigger:** Smells, sounds, and words trigger "Flashbacks."
-* **The Distortion:** Agents misremember history based on their current mood. The Protagonist receives "Memory Echoes" (Text Clips) that may be colored by their current `[Somatic State]`.
-
----
-
-## IV. THE ECOLOGY OF THE WORLD (The Living Background)
-
-### 9. The Law of Indifference
-The World does not care about the Plot.
-* **Stochasticity:** It rains when it rains. The train is late because of the schedule, not because it adds drama.
-* **Agent Autonomy:** Agents have goals that exclude the Protagonist. They will leave a conversation to answer a phone call, go to the bathroom, or sleep. They do not stand still waiting for a dialogue option.
-
-### 10. The Law of Consequence
-Every Action leaves Sediment.
-* **Permanence:** If the Protagonist breaks a window, the window stays broken until an Entity (Agent or Protagonist) expends energy to fix it.
-* **No Undo:** There is no "Reload Save." The Sediment is written to the Palimpsest and cannot be erased, only overwritten by new actions.
+### 8. The Law of Consequence (The Sediment)
+* Every action leaves a mark on the **Palimpsest**.
+* If a window is broken, it stays broken until someone performs the work to fix it.
+* Relationships are built on **Sedimented History**. A lie told a year ago remains a layer in the current context, coloring every future interaction.
