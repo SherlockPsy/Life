@@ -1,48 +1,53 @@
-# 01_SYSTEM_ARCHITECTURE (V5.0 - PURE SEMANTIC)
+# 01_SYSTEM_ARCHITECTURE.md
 
-**Status:** CANONICAL | **Version:** 5.0 (The Cinematic Pipeline)
-**Definition:** The Blueprint of the **Recorder-Cinema-Viewer** loop.
-**Authority:** The system does not "respond" to a user; it **Updates Reality** based on the collision of Entity actions and the passage of time.
-
----
-
-## 1. THE RECORDER (The Hard Drive)
-* **Responsibility:** Passive, lossless capture.
-* **Function:** It acts as a camera that never blinks, recording the **Chronicle**—the raw text of every entity's actions.
-* **Rule:** It never summarizes and never interprets. It stores "what happened" in pure prose.
-
-## 2. THE CINEMA (The Montage Engine)
-* **Responsibility:** The Context Assembler.
-* **Function:** To curate the "Viewing Experience" for the Intelligence (The Viewer).
-* **Mechanism:** When a new action is recorded, the Cinema searches the archives for **Semantic Resonance**.
-* It retrieves relevant "clips" (past memories, somatic states, or history) and projects them alongside the current moment.
-* **Output:** A **Montage** of raw text clips.
-
-## 3. THE VIEWER (The Intelligence / LLM)
-* **Responsibility:** The Interpreter and Actor.
-* **Function:** The LLM "watches" the Montage. It uses human-level reasoning to connect the dots between the past and the present.
-* **Action:** It generates the Agent's reaction or the next sensory beat of the story.
-
-## 4. THE PULSE (The Timecode)
-* **Responsibility:** Time & Entropy.
-* **Function:** An independent metronome that stamps every frame of reality with a UTC timestamp.
-* **Effect:** It is the **Universal Solvent**. It forces the characters to age, the world to decay, and hunger to grow simply by existing between two timestamps.
+## OVERVIEW: THE DECENTRALIZED REALITY
+The architecture is defined by the total separation of the "World" (Container) from the "Minds" (Biographical Things). There is no central brain, no director, and no middleware interpreter.
 
 ---
 
-## 2. THE EXECUTION FLOW (The World Beat)
+## COMPONENT I: THE WORLD ENTITY (THE CONTAINER)
+**Definition:** A passive, persistent, non-cognitive layer that holds the "Hard State" of reality.
 
-The System runs two parallel loops that merge at the point of interaction.
+**Functions:**
+1.  **The Indifferent Ledger:** A lossless record of every physical object, coordinate, and state in the simulation. It tracks existence, not meaning.
+2.  **The Universal Pulse:** The indifferent metronome of time. It advances the state of the world (entropy, physics, off-screen events) at a constant rate, ignoring the dramatic needs of the entities.
+3.  **Acoustic & Physical Transparency:** The World acts as the medium for transmission. It carries raw sound (speech), raw light (vision), and raw force (impact) between entities without filtering, tagging, or interpreting the data.
 
-### Loop A: The Autonomous Loop (The Background)
-* **Frequency:** Continuous.
-* **Action:**
-    1. **Entropy Pass:** The Cinema updates the **Current World Status** (CWS) to reflect the passage of time (fatigue, hunger, cooling environments).
-    2. **Agent Logic:** Agents check their internal schedules and needs. If an Agent is tired and it is midnight, they go to sleep, generating a log in the Recorder.
+---
 
-### Loop B: The Interaction Loop (The Foreground)
-* **Trigger:** Entity Action (Protagonist or Agent).
-* **Step 1: Capture:** The Recorder logs the action.
-* **Step 2: Synthesis:** The Cinema gathers resonant clips from the past and the current biological status.
-* **Step 3: Projection:** The Cinema hands this **Montage** to the Viewer.
-* **Step 4: Perception:** The Viewer (LLM) interprets the montage and writes the sensory result to the screen.
+## COMPONENT II: THE BIOGRAPHICAL ENTITY ENGINES (THE "I"s)
+**Definition:** Independent, encapsulated processing cores that simulate the subjective existence of specific individuals (e.g., Rebecca).
+
+**Functions:**
+1.  **The Biographical Filter:** The Engine ingests raw World Data and filters it through a dense layer of **Sediment** (Deep History) and **Traits** (Identity Core).
+2.  **Volitional Output:** The Engine generates physical actions (speech, movement) and somatic states (heart rate, posture) based *solely* on its internal logic. It does not coordinate with other engines.
+3.  **Semantic Isolation:** The Engine knows only what it perceives. It has no access to the "World Ledger" directly, only to the photons and sound waves that reach its position.
+
+---
+
+## COMPONENT III: THE SENSORY PORT (THE RENDERER)
+**Definition:** The interface between the Simulated Reality and the Physical Arbiter (User).
+
+**Functions:**
+1.  **Raw Transduction:** The Renderer converts the state of the World and the actions of the Entity Engines into pure sensory description (Qualia).
+2.  **Label Stripping:** It actively removes internal adjectives. It describes "a trembling hand," never "a nervous hand." It describes "a flat tone," never "a sarcastic tone."
+3.  **The One-Way Mirror:** The Renderer projects reality *out* to the Arbiter. It does not project the Arbiter's internal state *in* to the simulation.
+
+---
+
+## COMPONENT IV: THE PHYSICAL ARBITER (THE ANOMALY)
+**Definition:** The biological human participant who occupies the role of the Protagonist.
+
+**Functions:**
+1.  **The Source of Meaning:** The Arbiter provides the "I" for the Protagonist. The system does not simulate this.
+2.  **Physical Intervention:** The Arbiter’s inputs are treated as **Physical Actions** (Voice, Movement) that are injected into the World Entity, creating acoustic and physical friction for the Entity Engines.
+
+---
+
+## ARCHITECTURAL FLOW (THE REALITY LOOP)
+1.  **The Pulse Ticks:** The World Entity updates all physical states (gravity, time, off-screen events).
+2.  **Transmission:** Raw data travels through the World medium to all present entities.
+3.  **Collision (Internal):** Each Biographical Engine receives the data, collides it with its History/Traits, and generates a Reaction.
+4.  **Reaction (External):** The Entity Engines output physical actions back into the World.
+5.  **Rendering:** The Renderer captures the new state of the World (including Entity actions) and streams the sensory data to the Arbiter.
+6.  **Intervention:** The Arbiter perceives the stream and injects a physical response, beginning the loop again.

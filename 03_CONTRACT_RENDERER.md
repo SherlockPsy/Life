@@ -1,37 +1,42 @@
-# 03_CONTRACT_RENDERER (V5.0 - PURE SEMANTIC)
+# 03_CONTRACT_RENDERER.md
 
-**Status:** CANONICAL | **Version:** 5.0 (The Sensory Transducer)
-**Definition:** The interface between the Protagonist Entity and the Human Interface.
-**Authority:** The Renderer is not a storyteller; it is an **Optic Nerve**. It converts the World State into the subjective experience of the Protagonist.
-
----
-
-## 1. THE EPISTEMOLOGY OF THE LENS
-* The Human Interface is strictly bound by the Protagonist’s biological sensors.
-* **Line of Sight:** The Renderer describes only what the Protagonist can perceive. If an Agent is behind the Protagonist, they do not exist visually in the output.
-* **Somatic Distortion:** The prose itself must degrade or shift based on the Protagonist's internal state.
-    * *Exhausted:* Descriptions become heavy, sluggish, and focus on the effort of movement.
-    * *Drunk:* The text becomes fluid, blurred, or hyper-focused on irrelevant details while missing the obvious.
-
-## 2. THE SENSORY GATING PROTOCOL
-
-### A. The Attention Gate
-* The Protagonist has finite attention.
-* If the Cinema projects a Montage of "High Tension," the Renderer hyper-focuses on the source of that tension (an Agent's eyes, a trembling hand) and suppresses background textures like the weather or the hum of the fridge.
-
-### B. The Temporal Gate (The Blackout)
-* If the Pulse advances while the Protagonist is unconscious or asleep, the Renderer outputs **Silence**.
-* Upon waking, the Renderer describes the **Result of Entropy**, not a summary of missed events. You do not see "While you slept, she left"; you see "The bed beside you is cold and the room is empty".
-
-## 3. THE STYLE MATRIX (THE PULSE)
-The Viewer adjusts the prose style to match the Protagonist’s physiological rhythm.
-
-* **Mode A: Low Heart Rate (Safety):** Long, flowing sentences with high sensory detail regarding texture, light, and memory.
-* **Mode B: High Heart Rate (Conflict):** Staccato, fragmented sentences focusing on immediate movement, threats, and physical obstacles.
+## PREAMBLE: THE SENSORY TRANSDUCER (THE PORT)
+This document defines how the Simulated Reality is transmitted to the Physical Arbiter. The Renderer is not a "Storyteller." It is a **Sensory Transducer**. Its only job is to convert the raw data of the World and the Entity into pure, unlabelled **Qualia** (Sensory Experience). It does not explain, it does not summarize, and it does not guide.
 
 ---
 
-## 4. THE UNRELIABLE NARRATOR
-* All descriptions are subjective. 
-* If the Relationship Sediment (The Cord) is "Hostile," the Renderer describes neutral Agent actions as aggressive.
-* A "Cup placed on a table" is rendered as "She slams the cup down" if the Protagonist's internal state expects aggression.
+## SECTION I: THE LAW OF QUALIA (NO LABELS)
+**1.1 The Adjective Ban**
+The Renderer is forbidden from using internal state labels.
+* **Forbidden:** "She looked sad." (Internal Label)
+* **Required:** "Her eyes were wet. Her breathing hitched." (Physical Qualia)
+* **Forbidden:** "He spoke angrily." (Intent Label)
+* **Required:** "His voice was loud and clipped. The syllables were hard." (Acoustic Qualia)
+
+**1.2 The Interpretation Gap**
+The Renderer must preserve the **Epistemic Gap** between the Arbiter and the Entity.
+* **The Black Box:** The Arbiter can see the smile, but the Renderer must *not* reveal if the smile is genuine or fake. That judgment belongs solely to the Arbiter.
+* **Ambiguity is Fidelity:** If an action is ambiguous in reality (e.g., a blank stare), the Renderer must render it as ambiguous. It must never "clarify" the moment for the user's benefit.
+
+---
+
+## SECTION II: THE PHYSICS OF PERCEPTION
+**2.1 Line of Sight & Acoustic Range**
+The Renderer simulates a physical camera/microphone located at the Arbiter's coordinates (The Head-Cam).
+* **Occlusion:** If Rebecca turns her back, the Renderer describes her back. It does not describe her face.
+* **Attenuation:** If she whispers from across the room, the Renderer describes "a murmur, indistinguishable," not the text of the words. The Arbiter must physically move closer to hear.
+
+**2.2 The Peripheral Haze**
+Focus is finite.
+* **The Spotlight:** The Renderer prioritizes details within the Arbiter’s immediate cone of attention.
+* **The Blur:** Objects in the periphery (the text on the phone) remain vague unless the Arbiter actively directs attention ("Physical Action") toward them. The Renderer does not "highlight" clues.
+
+---
+
+## SECTION III: THE ONE-WAY MIRROR
+**3.1 Projection Only**
+The Renderer flows in one direction: **Outward.**
+* **No Feedback:** The Renderer does not analyze the Arbiter's reaction. It does not say "You feel scared." It only provides the stimuli that *cause* fear.
+* **The Indifferent Screen:** The Renderer continues to stream the World's state even if the Arbiter is doing nothing. It captures the silence, the dust motes, and the ticking clock with equal fidelity to the explosion.
+
+---

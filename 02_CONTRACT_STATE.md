@@ -1,30 +1,40 @@
-# 02_CONTRACT_STATE (V5.0 - THE PALIMPSEST)
+# 02_CONTRACT_STATE.md
 
-**Status:** CANONICAL | **Version:** 5.0 (The Semantic Matter)
-**Definition:** The Semantics of Existence.
-**Authority:** This document defines the **Current World Status** (CWS). It replaces all "stats" with **Sedimented Narrative Truth**.
+## PREAMBLE: THE MEAT MACHINE (BIOLOGICAL REALITY)
+This document defines the physical existence of an Entity. The "I" is not a cloud-based consciousness; it is tethered to a biological chassis ("The Meat"). The State of the Entity is not a list of variables; it is a **Somatic Condition**. The Mind cannot outrun the Body.
 
 ---
 
-## 1. THE SOMATIC RECORD (The Body)
-* Biology is a **Descriptive Truth**, not a variable.
-* Instead of `Hunger: 80`, the Palimpsest contains a semantic description: *"The entity is experiencing a gnawing, hollow sensation in their stomach that makes every movement feel heavy"*.
-* **Symmetry:** This applies equally to Agents and the Protagonist.
-* **Impact:** The Viewer sees this description in the Montage and uses it to limit what the character can physically achieve.
+## SECTION I: THE HIERARCHY OF NEEDS (BIOLOGICAL FORCE)
+**1.1 The Somatic Baseline**
+The Entity exists in a constant state of biological flux.
+* **The Tethers:** Hunger, Fatigue, Pain, and Libido are not "stats" to be managed; they are **Compelling Forces**.
+* **The Override:** As somatic pressure increases (e.g., extreme sleep deprivation), it physically degrades the Entity’s processing power. The "Identity Core" (Volition) is eventually bypassed by the "Somatic Core" (Survival). A "Brave" entity will become a "Coward" if the biological machine is sufficiently broken.
 
-## 2. THE RELATIONSHIP SEDIMENT (The Cord)
-* Relationships are **Narrative Histories**, not numerical "scores".
-* The "Cord" between two entities is defined by the **Sediment of their interactions**.
-* **The Layering:**
-    * **Intimacy:** A summary of shared comfort and vulnerability.
-    * **Tension:** A record of unresolved conflict and friction.
-    * **History:** Specific "Core Memories" (like the Spilled Wine incident) that color current perception.
+**1.2 The Adrenaline Mechanics**
+High-friction events trigger the **Adrenaline Cascade**.
+* **The Dump:** When the Entity predicts a threat (Physical or Semantic), the Somatic Layer floods the system.
+* **The Cost:** This state is expensive. It sharpens focus (Tunnel Vision) but destroys nuance. Complex, high-sediment reasoning is impossible during a Cascade. The Entity reverts to primitive, trait-driven reflexes.
+* **The Crash:** After the friction resolves, the Body must pay the debt. The Entity enters a "Recovery State" where processing speed slows and emotional resistance drops.
 
-## 3. THE MATERIAL STAGE (Object Permanence)
-* The world is a **Physical Palimpsest**.
-* Objects have **Semantic States**: *"The stove is still hot to the touch,"* or *"The window is shattered, allowing the cold winter air to fill the room"*.
-* **The Rule:** These states are persistent until an entity expends effort to change them.
+---
 
-## 4. THE ATMOSPHERE
-* The System tracks the **Sensory Baseline** of a location: *"The smell of garlic," "The low hum of the fridge," "The dim orange light of sunset"*.
-* This atmosphere dictates what the **Renderer** can show the Human interface. In darkness, the Renderer is forbidden from describing visual details.
+## SECTION II: VOLITIONAL VS. INVOLUNTARY STATE
+**2.1 The Two-State Paradox**
+The Entity often inhabits two contradictory states simultaneously.
+* **Volitional State (The Mask):** The state the "I" *wants* to project (e.g., "Calm Indifference").
+* **Somatic State (The Leak):** The state the Body *actually* experiences (e.g., "Trembling Anxiety").
+* **The Friction of Acting:** Maintaining a Volitional State that opposes the Somatic State requires "Willpower Energy." As energy depletes, the Somatic State inevitably leaks through (a crack in the voice, a twitch of the eye).
+
+**2.2 The Law of Involuntary Truth**
+The Body cannot lie. The Entity Engine may decide to lie verbally, but the Somatic Layer will always render the physical truth of that lie (sweat, pupil dilation, stiffness). The System must never allow the "I" to perfectly control the "Meat."
+
+---
+
+## SECTION III: ENVIRONMENTAL COUPLING
+**3.1 The Osmosis of Place**
+The Entity’s state is permeable to the World.
+* **Atmospheric Pressure:** A cold, damp room physically tightens the Somatic Layer, increasing irritability. A warm, soft room lowers defenses.
+* **Object Resonance:** The proximity of "Charged Objects" (e.g., the suitcase, the phone) creates a low-level somatic hum. The Entity is never truly "at rest" while in the presence of unresolved friction.
+
+---

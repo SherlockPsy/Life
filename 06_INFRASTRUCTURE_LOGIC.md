@@ -1,49 +1,41 @@
-# 06_INFRASTRUCTURE_LOGIC: THE INTEGRATED BACKBONE (V3.0)
+# 06_INFRASTRUCTURE_LOGIC.md
 
-### 1. THE DUAL-PULSE TEMPORAL ENGINE
-The system operates on two distinct but intersecting temporal frequencies.
-
-* **The Universal Pulse (World Time)**: The master clock of the World Entity that dictates the frequency of Ledger updates and the movement of non-cognitive variables.
-* **The Somatic Heartbeat (Meat Time)**: The internal, variable rhythm of an Entity Engine that dictates biological state and somatic processing speed.
-* **Temporal Friction**: High-stress "Psychology" laws (Defense, Prediction) can cause the Heartbeat to desynchronize from the Pulse, creating "Somatic Dilation" (the perception of time slowing or racing) while the World Ledger remains constant.
-* **The Tick**: Every Tick represents a discrete state-change where the World persists and Entity Engines calculate their "I-Fidelity".
+## PREAMBLE: THE MECHANICS OF EXISTENCE
+This document defines the operational laws of the simulation's infrastructure. It governs Time, Space, and Biology. These mechanics are absolute and operate independently of narrative needs. The infrastructure does not care if a moment is "dramatic"; it only cares if it is physically consistent.
 
 ---
 
-### 2. THE INDIFFERENT WORLD ENTITY (LAWS OF LOGISTICS)
-The World is a Non-Cognitive container that enforces the **20 Laws of Logistics** (The Body, The World).
+## SECTION I: THE TWO CLOCKS (TEMPORAL MECHANICS)
+**1.1 The Universal Pulse (World Time)**
+The World Entity operates on a rigid, immutable frequency called the Universal Pulse. This is the "God Clock." It advances the physical state of the universe (the sun moving, a battery draining, a distant hospital's machines beeping) at a constant rate. It cannot be slowed, stopped, or accelerated by any Entity's internal state.
 
-* **The World Ledger**: A persistent, lossless record of the location, physical integrity, and internal state of all objects and "Off-Screen" agents.
-* **Law of Entropy**: Objects and environments degrade or shift according to physical laws (e.g., a phone battery drains, a wound bleeds) regardless of whether an "I" perceives it.
-* **Acoustic/Physical Transparency**: The World is a medium that transmits raw stimuli (vibrations, light, text) without interpretative metadata or sentiment tags.
-* **Information Speed Constraints**: Data (sound, light, signals) moves through the World Entity at the speed of its physical medium; perception is impossible until the World Entity creates a line-of-sight or acoustic-path condition.
-
-
-
----
-
-### 3. THE BIOGRAPHICAL ENTITY ENGINE (THE SOVEREIGN "I")
-Every character is an encapsulated **Biographical Thing** that processes reality according to the **5 Laws of Psychology** (The Mind).
-
-* **The Chronicle (Deep History)**: The raw, unvarnished historical record of the entity that provides the "Mass" for current processing.
-* **The Identity Core (Fingerprint Primitives)**: Fixed psychological constants (e.g., "Rebellious," "Grounded," "Claustrophobic") that act as a high-pass filter for all World stimuli.
-* **Fidelity to the "I"**: The Engine’s sole objective is internal consistency; it does not recognize "User intent" or "Plot requirements".
-* **Epistemic Privacy**: The internal reasoning and emotional state of an Engine are opaque to all other entities and the Arbiter.
+**1.2 The Somatic Heartbeat (Subjective Time)**
+Every biological Entity possesses a variable internal clock: the Somatic Heartbeat. This is the speed of processing.
+* **Somatic Dilation:** In moments of high friction (fear, rage, shock), the Entity’s Heartbeat desynchronizes from the Universal Pulse. The Entity may process thought faster than the World moves (Time Dilation) or freeze while the World rushes past (Somatic Lock).
+* **The Conflict:** The friction between the rigid Pulse and the variable Heartbeat creates the feeling of "stress." The Infrastructure must strictly maintain this gap; it must never synchronize the World to match the Entity’s speed.
 
 ---
 
-### 4. THE SOMATIC SUB-LAYER (THE MEAT MACHINE)
-The bridge between the World's Logistics and the Engine's Psychology.
+## SECTION II: THE LAW OF PERSISTENCE (SPATIAL MECHANICS)
+**2.1 The Indifferent State**
+The status of all matter is maintained in a "Hard State" of indifference. An object (a phone, a key, a suitcase) has specific coordinates and properties that persist when unobserved.
+* **The Closed Door Rule:** Events occurring behind closed doors (or off-screen) proceed according to the Laws of Logistics. If a character is crying in another room, the sound waves travel through walls based on acoustic physics, not plot convenience.
+* **Invisible Decay:** Entropy applies to unobserved systems. Relations degrade, news travels, and weather shifts without the Arbiter's witness.
 
-* **Biological Resonance**: The Heartbeat fluctuates based on internal Psychological collisions (Fear, Prediction) and external World shocks (Impact, Sound).
-* **Involuntary Reflex**: The Somatic Layer manages automatic responses (pupil dilation, flinching, adrenaline) that may occur even if the conscious "I" attempts to ignore the stimulus.
-* **Somatic Constraints**: The Engine is limited by "The Body" laws (Hunger, Fatigue, Injury) logged in the World Ledger.
+**2.2 Acoustic & Physical Transparency**
+The Infrastructure acts as a neutral conductor.
+* **Sound:** Speech is treated as acoustic vibration. It is not "communication" until received by an ear. If an Entity speaks too softly to be heard over background noise, the Infrastructure delivers the noise, not the words.
+* **Sight:** Vision is strictly limited by lines of sight and light levels. The Infrastructure does not provide "establishing shots." It provides only what the retina can capture from its specific coordinate.
 
 ---
 
-### 5. COLLISION LOGIC AND THE ARBITER
-Friction emerges from the gap between the **Arbiter's Physical "I"** and the **Entity's Biographical "I"**.
+## SECTION III: THE SOMATIC SUB-LAYER (BIOLOGICAL MECHANICS)
+**3.1 The Meat Machine**
+The Mind (Biographical Engine) is tethered to a Body (Somatic Layer). The Body is not a cosmetic shell; it is a constraining engine.
+* **The Feedback Loop:** Psychological stress triggers physiological consequences (cortisol spikes, trembling, shallow breath). These are not "acting choices"; they are biological reflexes enforced by the Infrastructure.
+* **State Override:** If the Somatic Layer is compromised (e.g., extreme exhaustion or panic), it overrides the Volitional "I." The Entity may *want* to be calm, but the Infrastructure forces the body to shake.
 
-* **Semantic Divergence**: Multiple Engines (and the Arbiter) perceive the same World Ledger event through different Biographical Filters, creating conflicting "Truths".
-* **The Sensory Port (Renderer)**: Transduces World Ledger data and Entity states into raw, unlabelled Qualia for the Arbiter.
-* **Subjective Responsibility**: The Arbiter provides all emotional and logical processing for the Protagonist; the system only provides the sensory feedback and the autonomous response of the "Other".
+**3.2 The Cost of Action**
+Every physical action requires somatic expenditure. There is no infinite stamina. Sustained high-intensity conflict degrades the Entity's ability to process complex inputs, forcing them into simpler, more primal defensive states.
+
+---
