@@ -1,111 +1,126 @@
-## DOCUMENT: THE PROTOCOL OF THE "I" ENGINE (SEMANTIC DATABASE MODEL)
+## DOCUMENT: THE SEMANTIC "I" ENGINE PROTOCOL
 
-**Status:** Final Architecture
-**Component:** The Large Language Model (LLM) as the Biographical Engine
-**Core Function:** To act as a **Semantic Filter** that converts shared facts (stored in a database) into private, biased, and physically constrained behavior.
-
----
-
-### I. THE DEFINITION OF THE ENGINE
-
-The "I" Engine is the LLM operating under strict semantic constraints. It serves as the interface between the **Static Database** (The Memory) and the **Dynamic Reality** (The User/Arbiter).
-
-**The Fundamental Law:**
-The Engine uses the database not to calculate stats, but to retrieve *continuity*. It simulates a specific *misunderstanding* of the world based on which database rows it is allowed to see.
+**Version:** 1.0 (Baseline Lock)
+**Type:** System Architecture Specification
+**Status:** **ACTIVE**
 
 ---
 
-### II. THE DATA STRUCTURE (THE SEMANTIC LEDGER)
+### I. CORE DEFINITION
 
-Instead of an endless text file, the system uses a **Semantic Database** (The Ledger). This is a table of text blocks. There are no variables (e.g., `Health: 50`). There is only recorded evidence.
+The **"I" Engine** is not a simulation of a human mind. It is a **Reader of Evidence**.
 
-**The Data Row (The Atom of Reality):**
-Each entry in the database represents one "Tick" of perception.
+It operates on a single premise: **If the LLM can read it, the system does not need to model it.**
 
-```json
-{
-  "Tick_ID": 10492,
-  "Entity": "Rebecca",
-  "Evidence": "She stands at the kitchen sink, looking out the window. Her knuckles are white as she grips the porcelain. The hum of the fridge is the only sound."
-}
-
-```
-
-* **No Metadata:** No coordinates or somatic stats are stored separately.
-* **Semantic Integrity:** "Knuckles are white" *is* the somatic data; "Kitchen sink" *is* the location data.
+* **Function:** The Engine receives a stream of text (The Record) and acts as a sovereign interpreter for a specific identity.
+* **Constraint:** It possesses no internal variables, no hidden states, and no numerical thresholds. It relies entirely on **Semantic Inference** derived from the provided text.
+* **Objective:** To produce the next coherent physical action for a specific character, ensuring strict causal fidelity to the narrative history.
 
 ---
 
-### III. THE INPUT STREAM (CONSTRUCTING THE PROMPT)
+### II. THE DATA MODEL (THE SEMANTIC LEDGER)
 
-When the "I" Engine needs to act, the System builds a **Context Prompt** by querying the Database. This prompt replaces "Code" as the logic driver.
+The system eschews traditional database columns (e.g., `Health`, `Stamina`) in favor of a **Pure Text Repository**.
 
-The System assembles the following four layers into the LLM Prompt:
+#### 1. The Atomic Unit
 
-#### 1. The Identity Core (The "Static Filter")
+The database stores **Exposed Evidence**. This is the only valid data type.
 
-* **Source:** A fixed text file (The Profile).
-* **Content:** The immutable structural logic (e.g., "Essence: Nurturer," "Drive: Harmony").
-* **Function:** Tells the LLM *who* is interpreting the data.
+* **Definition:** A text block describing observable physical reality.
+* **The Guardrail:** It must describe *what* happened, never *why*.
 
-#### 2. The Recent Continuity (The "Short Term Memory")
+#### 2. The Data Structure
 
-* **Source:** The Ledger (Last 20 Rows).
-* **Query:** `SELECT * FROM Ledger ORDER BY Tick DESC LIMIT 20`.
-* **Function:** Provides immediate context (Who is in the room? What was just said?). The LLM infers location and current activity from this stream.
+Each row in the database contains exactly three semantic tags and the content block.
 
-#### 3. The Sediment (The "Long Term Memory")
+| Field | Definition | Example |
+| --- | --- | --- |
+| **Source** | The entity generating the action. | `Rebecca` |
+| **Location** | The semantic zone where the action occurred. | `Kitchen` |
+| **Evidence** | The raw forensic text. | *"She leans against the counter, rubbing her eyes with the back of her hand. Her grip on the porcelain is loose."* |
 
-* **Source:** The Chronicle (Semantic Search).
-* **Query:** The System scans the *current* situation (e.g., "Knife," "Kitchen") and queries the database for matching *past* rows.
-* **Result:** It retrieves a row from 3 months ago: *"Rebecca cut her hand on this knife."*
-* **Function:** This injects specific bias. The LLM now knows to treat the knife as dangerous, without needing a "Fear" variable.
-
-#### 4. The Somatic Inference (The "Biological Check")
-
-* **Source:** Derived from Continuity.
-* **Process:** The LLM analyzes the timestamps and content of the Recent Continuity.
-* **Logic:** If the last 50 rows (spanning 2 days) contain no "Sleep" evidence, the LLM infers **Critical Fatigue**.
+*Note: There are no "Somatic Tags" (e.g., `Fatigue: High`). The somatic state is embedded in the evidence ("rubbing her eyes," "loose grip").*
 
 ---
 
-### IV. THE PROCESSING LOGIC (THE "MANUAL")
+### III. THE INPUT STREAM (CONTEXT CONSTRUCTION)
 
-The LLM receives the prompt constructed above. It must then process this data through the **Biographical Filter** before writing a new row to the database.
+When the "I" Engine is called to generate behavior, the System constructs a **Context Block** from the database. This replaces "Game Logic" with "Reading Logic."
 
-#### Step 1: The Explanation (Hallucination)
+The Input consists of three strict layers:
 
-The Engine explains the **Recent Continuity** to itself.
+#### 1. The Identity Core (Static)
 
-* *Input:* Arbiter says "We need to talk."
-* *Sediment:* (Retrieved Row: "Arbiter yelled last time we talked.")
-* *Result:* The Engine interprets the neutral phrase "We need to talk" as a **Threat**.
+* **Source:** The Character Profile (Markdown File).
+* **Content:** The immutable logic of the person (Values, Speech Patterns, Fears).
+* **Function:** This provides the "Lens" through which the history is interpreted.
 
-#### Step 2: The Triangulation (Decision)
+#### 2. The Chronicle (Dynamic History)
 
-The Engine selects a response that satisfies:
+* **Source:** The Database (Historical Retrieval).
+* **Mechanism:** The system retrieves relevant past rows based on **Semantic Continuity** (e.g., rows containing "Sleep," "Injury," or "Argument" from the last 7 days).
+* **Function:** This replaces "State Variables."
+* *System Logic:* Instead of checking `if Sleep < 5`, the LLM reads: *"No record of sleep found in last 168 hours."*
 
-1. **Understanding:** (It’s a threat).
-2. **Priority:** (Avoid conflict/Restore harmony).
-3. **Risk:** (Too tired to fight).
 
-#### Step 3: The Output Generation (The Write)
 
-The Engine generates a **Single Block of Evidence**.
+#### 3. The Immediate Reality (The Now)
 
-* **Constraint:** It must be **Observable Physics** only.
-* **Example:** *"Rebecca nods slowly, avoiding eye contact. She pulls a chair out and sits on the edge of the seat."*
+* **Source:** The Database (Last 20 Rows).
+* **Content:** The exact physical state of the room and the actions of others in the current moment.
+* **Function:** This provides the trigger for the reaction.
 
 ---
 
-### V. THE SYSTEM LOOP (THE ENGINE CYCLE)
+### IV. THE INFERENCE ENGINE (THE "READER")
 
-This is how the system moves forward without code.
+The "I" Engine (LLM) processes the input. Because there are no variables to check, the Engine must use **Natural Language Inference** to determine the character's state.
 
-1. **Read:** The System queries the **Ledger** for recent rows + relevant past rows (Sediment).
-2. **Prompt:** The System wraps those rows in the **Identity Core** instructions.
-3. **Generate:** The LLM (The "I" Engine) produces a new text block (Evidence).
-4. **Write:** The System inserts that new text block into the **Ledger** as a new Row.
-5. **Repeat:** The next turn begins, reading the row that was just written.
+#### 1. Somatic Inference (The Body)
 
-**The Result:** A persistent, evolving reality where "Memory" is just database retrieval and "Behavior" is just text completion based on that retrieval.
+The Engine reads the Chronicle to determine physical capability.
+
+* **Input:** *"Driven for 14 hours. No food. Hands shaking in last entry."*
+* **Inference:** *The entity is physically degraded. Reaction times are slow. Fine motor control is compromised.*
+* **Output Constraint:** The Engine is forbidden from outputting high-energy actions (e.g., "She sprints") because they contradict the narrative evidence.
+
+#### 2. Psychological Inference (The Mind)
+
+The Engine reads the Chronicle to determine emotional context.
+
+* **Input:** *"Arbiter slammed door (Turn 50). Arbiter yelled (Turn 51)."*
+* **Inference:** *The entity anticipates hostility. Defense mechanisms are active.*
+* **Output Constraint:** The Engine interprets neutral inputs (e.g., "Can we talk?") through this specific historical bias.
+
+---
+
+### V. THE OUTPUT PROTOCOL (THE FORENSIC RULE)
+
+The Engine generates a response. This response is not "Creative Writing"; it is **Evidence Generation**.
+
+#### 1. The "What, Not Why" Rule
+
+The Output must describe observable physics only. Interpretations are strictly forbidden.
+
+* **REJECTED:** *"Rebecca looks away because she is ashamed."* (Describes Cause/Internal State).
+* **ACCEPTED:** *"Rebecca looks away, fixing her eyes on the floor tiles."* (Describes Action/External State).
+
+#### 2. The Semantic Continuity Check
+
+The Output must follow the physical logic established in the Chronicle.
+
+* *If the Chronicle establishes "Broken Leg" (Input), the Output cannot describe "Walking normally."*
+* *If the Chronicle establishes "Dark Room," the Output cannot describe "Reading a book."*
+
+---
+
+### VI. THE SYSTEM LOOP (EXECUTION CYCLE)
+
+1. **Read:** The System queries the Database for the **Chronicle** (History) and **Immediate Reality** (Now).
+2. **Context:** These text rows are wrapped in the **Identity Core** and fed to the LLM.
+3. **Inference:** The LLM reads the text, infers the "Somatic State" (Tired/Hurt) and "Psychological State" (Scared/Angry) from the history.
+4. **Generate:** The LLM produces a new block of **Exposed Evidence**.
+5. **Validation:** The System checks the text against the **Forensic Rule**.
+6. **Write:** The validated text is appended to the **Database** as a new row.
+
+**End of Document**
