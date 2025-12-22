@@ -1,53 +1,48 @@
 # 01_SYSTEM_ARCHITECTURE.md
 
-## OVERVIEW: THE DECENTRALIZED REALITY
-The architecture is defined by the total separation of the "World" (Container) from the "Minds" (Biographical Things). There is no central brain, no director, and no middleware interpreter. The system functions as a loop of Exposed Evidence.
+## OVERVIEW: THE SEMANTIC ENGINE
+The architecture is defined by the interaction between the **Digital Cortex** (Memory) and the **Biographical Readers** (Agents). There is no central simulation loop; there is only a cycle of Reading and Writing text.
 
 ---
 
-## COMPONENT I: THE WORLD ENTITY
-**Definition:** A peer entity, indifferent and persistent, that holds the "Hard State" of reality.
-
+## COMPONENT I: THE DIGITAL CORTEX (THE INFRASTRUCTURE)
+**Definition:** The infinite, unthinking repository of all reality.
 **Functions:**
-1.  **The Indifferent Ledger:** A lossless record of Exposed Evidence. It tracks the physical coordinates and state of every object, capturing only what occurs physically, never the intent behind it.
-2.  **The Universal Pulse:** The indifferent metronome of time. It advances the state of the world (entropy, physics, off-screen events) at a constant rate, ignoring the dramatic needs of the entities.
-3.  **Acoustic & Physical Transparency:** The World acts as the medium for transmission. It carries raw sound (speech), raw light (vision), and raw force (impact) between entities without filtering, tagging, or interpreting the data.
+1.  **The Library:** Stores every event as a raw **Memory Block** (Text + Vector + Tags).
+2.  **The Stream:** A rolling buffer of the last ~50 blocks (The "Now").
+3.  **The Search:** A hybrid retrieval engine that pulls relevant past blocks (Sediment) based on the current context (Vectors/Tags).
 
 ---
 
-## COMPONENT II: THE BIOGRAPHICAL ENTITY ENGINES (THE "I"S)
-**Definition:** Independent, encapsulated processing cores that simulate the subjective existence of specific individuals.
-
+## COMPONENT II: THE BIOGRAPHICAL READERS (THE AGENTS)
+**Definition:** The processing cores that simulate specific individuals (e.g., Rebecca).
 **Functions:**
-1.  **The Biographical Filter:** The Engine ingests Exposed Evidence and filters it through a dense layer of Sediment (Deep History) and Traits (Identity Core). It treats the record of the world as contaminated evidence to be interpreted, not as objective truth.
-2.  **Volitional Output:** The Engine generates physical actions (speech, movement) and somatic states (heart rate, posture) based solely on its internal logic. It does not coordinate with other engines.
-3.  **Semantic Isolation:** The Engine knows only what it perceives. It has no access to the "World Ledger" directly, only to the photons and sound waves that reach its position.
+1.  **The Context Construction:** Ingests [Identity Core + Stream + Sediment].
+2.  **The Inference:** Reads the text to determine Somatic and Emotional state.
+3.  **The Output:** Generates a new block of Exposed Evidence describing physical action.
 
 ---
 
-## COMPONENT III: THE SENSORY PORT (THE RENDERER)
-**Definition:** The interface between the Simulated Reality and the Physical Arbiter (User).
-
+## COMPONENT III: THE RECORDER (THE VALIDATOR)
+**Definition:** The interface between the Agent's output and the Digital Cortex.
 **Functions:**
-1.  **Evidence Transduction:** The Renderer converts the state of the World and the actions of the Entity Engines into pure sensory description (Qualia). It publishes the evidence of what happened.
-2.  **Label Stripping:** It actively removes internal adjectives. It describes "a trembling hand," never "a nervous hand". It describes "a flat tone," never "a sarcastic tone".
-3.  **The One-Way Mirror:** The Renderer projects reality out to the Arbiter. It does not project the Arbiter's internal state in to the simulation.
+1.  **The Forensic Check:** Enforces the "What, Not Why" rule. It rejects any output that describes internal state (e.g., "She felt sad").
+2.  **The Timestamp:** Stamps the accepted text with Time and Location.
+3.  **The Commit:** Writes the validated block into the Cortex, making it permanent reality.
 
 ---
 
-## COMPONENT IV: THE PHYSICAL ARBITER (THE ANOMALY)
-**Definition:** The biological human participant who occupies the role of the Protagonist.
-
+## COMPONENT IV: THE ARBITER (THE ANOMALY)
+**Definition:** The physical user.
 **Functions:**
-1.  **The Source of Meaning:** The Arbiter provides the "I" for the Protagonist. The system does not simulate this.
-2.  **Physical Intervention:** The Arbiter’s inputs are treated as Physical Actions (Voice, Movement) that are injected into the World Entity, creating acoustic and physical friction for the Entity Engines.
+1.  **Evidence Injection:** The Arbiter's inputs are treated as "God-Tier Evidence." They are written directly to the Stream without filtering, forcing the Agents to react.
 
 ---
 
-## ARCHITECTURAL FLOW (THE REALITY LOOP)
-1.  **The Pulse Ticks:** The World Entity updates all physical states (gravity, time, off-screen events).
-2.  **Transmission:** Raw data travels through the World medium to all present entities.
-3.  **Collision (Internal):** Each Biographical Engine receives the Exposed Evidence, collides it with its History/Traits, and generates a Reaction.
-4.  **Reaction (External):** The Entity Engines output physical actions (Exposed Evidence) back into the World.
-5.  **Rendering:** The Renderer captures the new state of the World and streams the sensory data (Qualia) to the Arbiter.
-6.  **Recording:** The Recorder logs the rendered exposure, which serves as the input for the next pulse.
+## ARCHITECTURAL FLOW (THE CYCLE)
+1.  **Event:** Arbiter or Agent generates Action.
+2.  **Ingestion:** Recorder validates and saves to **Cortex**.
+3.  **Retrieval:** System searches Cortex for relevant **Sediment** (History).
+4.  **Prompting:** System feeds [Stream + Sediment] to the **Agent**.
+5.  **Reading:** Agent infers state and generates Reaction.
+6.  **Loop:** Reaction becomes the new Event.

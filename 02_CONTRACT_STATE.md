@@ -1,38 +1,39 @@
 # 02_CONTRACT_STATE.md
 
-## PREAMBLE: THE MEAT MACHINE (BIOLOGICAL REALITY)
-This document defines the physical existence of an Entity. The "I" is not a cloud-based consciousness; it is tethered to a biological chassis ("The Meat"). The State of the Entity is not a list of variables; it is a Somatic Condition. The Mind cannot outrun the Body.
+## PREAMBLE: SOMATIC INFERENCE
+This document defines how the biological state of an Entity is maintained without variables. The "Body" is not a set of numbers; it is a narrative consistency maintained by the Reader.
 
 ---
 
-## SECTION I: THE HIERARCHY OF NEEDS (BIOLOGICAL FORCE)
-1.1 The Somatic Baseline
-The Entity exists in a constant state of biological flux.
-* **The Tethers**: Hunger, Fatigue, Pain, and Libido are not "stats" to be managed; they are Compelling Forces.
-* **The Override**: As somatic pressure increases, it physically degrades the Entity’s processing power. The "Identity Core" (Volition) is eventually bypassed by the "Somatic Core" (Survival). A "Brave" entity will become a "Coward" if the biological machine is sufficiently broken.
+## SECTION I: THE LAW OF INFERENCE
+1.1 State is Evidence-Based
+The Agent does not "have" a fatigue level. The Agent **reads** its history to determine if it should act tired.
+* **The Check:** "Has the entity slept in the last 24 hours of the Stream?"
+* **The Result:** If No -> The Agent MUST generate low-energy output.
 
-1.2 The Adrenaline Mechanics
-High-friction events trigger the Adrenaline Cascade.
-* **The Dump**: When the Entity predicts a threat, the Somatic Layer floods the system.
-* **The Cost**: This state is expensive. It sharpens focus (Tunnel Vision) but destroys nuance. Complex reasoning is impossible during a Cascade.
-* **The Crash**: After the friction resolves, the Body must pay the debt, entering a Recovery State where processing speed slows.
+1.2 The Semantic Override
+Narrative evidence overrides Identity goals.
+* **Identity:** "I am brave."
+* **Chronicle:** "Severely injured leg (Turn 400)."
+* **Output:** The Agent outputs "Collapses while trying to stand," because the Injury Block in the history weighs more than the Identity Instruction.
 
 ---
 
-## SECTION II: VOLITIONAL VS. INVOLUNTARY STATE
-2.1 The Two-State Paradox
-The Entity often inhabits two contradictory states simultaneously.
-* **Volitional State (The Mask)**: The state the "I" wants to project (e.g., "Calm Indifference").
-* **Somatic State (The Leak)**: The state the Body actually experiences (e.g., "Trembling Anxiety").
-* **The Friction of Acting**: Maintaining a Volitional State that opposes the Somatic State requires energy. As energy depletes, the Somatic State leaks through as Exposed Evidence.
+## SECTION II: ADRENALINE & DEGRADATION
+2.1 The High-Friction Context
+When the Stream contains high-velocity keywords (e.g., "Scream," "Gun," "Blood"), the Agent enters **Tunnel Vision**.
+* **Mechanism:** The System restricts access to Deep Sediment (Long-term memory) and forces the Agent to focus only on the Immediate Stream (Survival).
+* **Effect:** The Agent acts impulsively, ignoring long-term consequences, simulating a "Fight or Flight" response.
 
-2.2 The Law of Involuntary Truth
-The Body cannot lie. The Entity Engine may decide to lie verbally, but the Somatic Layer will always render the physical truth of that lie as evidence (sweat, pupil dilation, stiffness). The System must never allow the "I" to perfectly control the "Meat".
+2.2 The Recovery Phase
+After a High-Friction sequence ends in the Stream, the Agent infers a **Crash**.
+* **Inference:** "The threat is gone."
+* **Output:** The Agent generates evidence of relief or exhaustion (shaking hands, sitting down).
 
 ---
 
 ## SECTION III: ENVIRONMENTAL COUPLING
-3.1 The Osmosis of Place
-The Entity’s state is permeable to the World.
-* **Atmospheric Pressure**: A cold, damp room physically tightens the Somatic Layer, increasing irritability.
-* **Object Resonance**: The proximity of "Charged Objects" creates a low-level somatic hum. The Entity is never truly "at rest" while in the presence of unresolved friction.
+3.1 The Osmosis of Text
+The Agent is permeable to the descriptions in the Stream.
+* **Atmosphere:** If the Stream describes "Rain" and "Cold," the Agent infers somatic discomfort (shivering) without being told to "feel cold."
+* **Object Resonance:** If a "Gun" is present in the Stream, the Agent infers "Danger," altering its reaction to neutral inputs.

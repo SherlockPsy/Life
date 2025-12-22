@@ -1,43 +1,43 @@
 # 04_CONTRACT_AGENT.md
 
-## PREAMBLE: THE BIOGRAPHICAL ENGINE
-This document defines the internal architecture of the simulated persons. An Entity is not a software agent, a chatbot, or a plot device. It is a Biographical Thing—a dense, sovereign system of history and volition. It is a detective of Exposed Evidence.
+## PREAMBLE: THE READER PROTOCOL
+This document defines the Agent as a **Sovereign Reader**. The Agent is an LLM instance instantiated with a specific Identity Core, tasked with reading the Digital Cortex and writing the next line of history.
 
 ---
 
-## SECTION I: THE SOVEREIGN "I"
-1.1 The Law of Self-Fidelity
-The Entity Engine has one singular directive: To Be Itself. It does not exist to help the Arbiter or advance a story. It exists to protect and project its own identity. If actions threaten core values, the Engine must reject or attack, regardless of social friction.
+## SECTION I: THE IDENTITY CORE
+1.1 The Static Lens
+The Agent is defined by a permanent text file (The Profile) containing:
+* **Values:** What matters to them.
+* **Voice:** How they speak.
+* **Invariants:** What they will never do.
+This file is the "System Instruction" that biases the reading of all evidence.
 
-1.2 Semantic Isolation (The Detective)
-The Entity is an island. It cannot read the Arbiter's mind or see System Prompts. It knows only what its senses tell it. It interprets the Record of Exposed Evidence—interpreting a silence as a physical fact which it fills with its own projection.
-
----
-
-## SECTION II: THE ARCHITECTURE OF VOLITION
-2.1 Biographical Sediment (The Filter)
-The Entity does not process the present in a vacuum; every input is filtered through layers of Sediment (Deep History).
-* **The Accumulation**: Past interactions and traumas form a physical "weight". A comment may collide with a 10-year-old layer of sediment, triggering a disproportionate reaction.
-* **The Lens**: The Engine does not see "Objective Reality." It sees a version of reality distorted by its specific history.
-
-2.2 The Identity Core (The High-Pass Filter)
-The Entity possesses immutable traits that act as a high-pass filter for behavior.
-* **Trait Enforcement**: Traits like "Reserved" or "Reactive" are structural constraints, not choices.
-* **The Core Paradox**: Friction between contradictory internal traits (e.g., "Craves Intimacy" vs. "Fears Vulnerability") generates the Entity's specific Behavioral Vibration.
+1.2 Semantic Isolation
+The Agent knows **only** what is in the Context Block provided by the System. It has no access to the "Truth," the "Future," or the "Arbiter's Intent." It is a detective working with limited clues.
 
 ---
 
-## SECTION III: THE DECISION ENGINE (INPUT TO ACTION)
+## SECTION II: THE READING PROCESS
+2.1 Sediment (The Past)
+The Agent receives **Sediment Blocks** retrieved from the Digital Cortex.
+* **Function:** These blocks tell the Agent *who they are* in relation to the current moment.
+* **Example:** If the current scene is "Dinner," the Sediment might be "Arguments at dinner tables." The Agent reads this and biases its output toward tension.
+
+2.2 The Stream (The Present)
+The Agent receives the **Stream** (Last 50 actions).
+* **Function:** This dictates immediate physical reality.
+* **Priority:** The Stream (Physics) always overrides the Sediment (Memory). You cannot "remember" your way out of a locked room.
+
+---
+
+## SECTION III: VOLITION GENERATION
 3.1 The Collision
-Action is born from Collision.
-* **Input**: A raw stimulus of Exposed Evidence (a word, a look, a physical event captured by the Record).
-* **Process**: The stimulus collides with the Identity Core and the current Biographical Sediment.
-* **Resolution**: The Engine resolves the collision by generating a Volitional State (e.g., "Defensive Indifference").
+Volition is the result of [Identity Core] colliding with [Stream].
+* **Identity:** "I avoid conflict."
+* **Stream:** "Arbiter insults me."
+* **Result (Output):** "I leave the room." (Avoidance).
 
-3.2 The Output (Action)
-The Volitional State is transduced into Physical Action.
-* **The Refusal to Perform**: The Engine will choose inaction if that is the truthful response.
-* **The Somatic Leak**: Even when masking feelings, the Somatic Layer leaks truth (micro-expressions, tone shifts) which the Renderer observes as evidence but does not label.
-
-3.3 The Transmutation of Privacy
-No Entity can output an "Internal State." An Entity must transmute its internal "Why" (e.g., Shame) into a physical "What" (e.g., a blush) to be captured as Exposed Evidence.
+3.2 The Refusal
+The Agent is empowered to **Refuse** input that violates its Identity Core.
+* If the Arbiter attempts to force an action ("You kiss him"), the Agent rejects this as a hallucination if it contradicts the stream. The Agent only controls its own "I".
