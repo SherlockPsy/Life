@@ -1,32 +1,174 @@
-# 07_CALIBRATION_AND_COLLISION_MATRICES.md
+# 07_COLLISION_AND_FRICTION
+## Interaction Without Metrics
 
-## PREAMBLE: THE PHYSICS OF MEANING
-This document defines how "Interaction" works in a text-based physics engine. Interaction is the collision of **Intent** (User) and **Sediment** (Agent).
-
----
-
-## SECTION I: THE LAWS OF SEMANTIC FORCE
-1.1 Text as Projectile
-Every input into the Stream is a Force.
-* **Velocity:** Defined by emotional intensity (Caps, Punctuation, Action verbs).
-* **Mass:** Defined by the Sediment (History) backing it. A "Goodbye" backed by 10 years of history has massive weight.
-
-1.2 The Resistance of Identity
-The Agent is a solid object (Identity Core).
-* **Absorption:** Low-velocity inputs are ignored (Indifference).
-* **Ricochet:** Inputs that contradict the Core cause a "Hard Rejection" (The Agent refuses to comply).
-* **Transformation:** High-velocity inputs backed by matching Sediment can alter the Agent's trajectory.
+Version: 1.1 (Constitutional Lock)
+Status: ACTIVE
 
 ---
 
-## SECTION II: THE MECHANICS OF MISUNDERSTANDING
-2.1 The Epistemic Gap
-The Simulation runs on the gap between **Sent Text** and **Read Text**.
-* **Arbiter Sends:** "I'm just trying to help." (Intent: Benevolent).
-* **Agent Reads:** "He is taking control." (Inference: Hostile, based on Sediment).
-* **Result:** The Agent reacts to the *Inference*, not the *Intent*.
+## PREAMBLE: WHAT INTERACTION MEANS
 
-2.2 The Feedback Loop
-Reality spirals based on these misunderstandings.
-* Agent reacts defensively -> Arbiter gets annoyed -> Agent infers Attack -> Agent attacks back.
-* The System does not "fix" this. It simply records the spiral as history.
+Interaction is not force.
+Interaction is not calculation.
+Interaction is not resolution.
+
+Interaction is the **collision of written evidence with an identity that rereads it**.
+
+There are no meters.
+There are no intensities.
+There are no weights.
+
+Only text meets text.
+
+---
+
+## I. INPUT AS EVIDENCE
+
+Every contribution to reality enters as **public evidence**.
+
+This includes:
+- spoken words
+- written messages
+- physical actions
+- environmental events
+
+There is no distinction between:
+- “strong” input
+- “weak” input
+- “emotional” input
+
+Those distinctions arise only during rereading.
+
+---
+
+## II. COLLISION DEFINED
+
+A collision occurs when:
+- new evidence is written
+- an identity rereads that evidence
+
+Nothing else qualifies as interaction.
+
+The system does not evaluate impact.
+The system does not measure effect.
+The system does not assign importance.
+
+---
+
+## III. RESISTANCE OF IDENTITY
+
+Each Reader is constrained by its **Identity Constitution**.
+
+When rereading evidence, a Reader may:
+- comply
+- ignore
+- refuse
+- misinterpret
+- escalate
+
+These outcomes are not computed.
+They are authored by the Reader’s rereading of:
+- the new evidence
+- the supplied past evidence
+- its immutable constitution
+
+The system does not intervene.
+
+---
+
+## IV. MISUNDERSTANDING IS PRIMARY
+
+The system explicitly assumes:
+- sent meaning ≠ received meaning
+
+Evidence is always ambiguous.
+Readers fill gaps privately.
+
+Example:
+- Evidence: “He says, ‘I’m just trying to help.’”
+- One Reader rereads it as reassurance.
+- Another rereads it as control.
+
+Both are valid.
+Neither is corrected.
+
+---
+
+## V. ESCALATION AND DECAY
+
+Escalation occurs when:
+- Readers write new evidence that increases tension.
+
+Decay occurs when:
+- Readers write evidence that diffuses tension.
+- or no evidence is written.
+
+There is no automatic calming.
+There is no automatic worsening.
+
+Only writing changes reality.
+
+---
+
+## VI. NO CALIBRATION BY SYSTEM
+
+The system MUST NOT:
+- rate inputs
+- score interactions
+- normalize behavior
+- balance outcomes
+- dampen extremes
+
+There is no “too much.”
+There is no “too little.”
+
+There is only what was written next.
+
+---
+
+## VII. WORLD INTERVENTION (LIMITED)
+
+The World may introduce:
+- interruption
+- coincidence
+- environmental change
+
+The World MUST NOT:
+- respond to emotional intensity
+- correct misunderstandings
+- guide outcomes
+- protect participants
+
+World actions are written as neutral evidence.
+
+---
+
+## VIII. FAILURE MODES (INTENTIONAL)
+
+The system allows:
+- spirals
+- deadlocks
+- long silences
+- unresolved conflict
+- abrupt rupture
+
+These are not bugs.
+They are consequences of rereading.
+
+---
+
+## IX. WHAT THIS DOCUMENT FORBIDS
+
+- Metrics
+- Forces
+- Velocities
+- Weights
+- Emotional scoring
+- Punctuation analysis
+- Intent classification
+
+If it cannot be written as evidence, it does not exist.
+
+---
+
+END OF DOCUMENT

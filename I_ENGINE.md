@@ -1,126 +1,258 @@
-## DOCUMENT: THE SEMANTIC "I" ENGINE PROTOCOL
+# THE SEMANTIC "I" ENGINE PROTOCOL
 
-**Version:** 1.0 (Baseline Lock)
-**Type:** System Architecture Specification
-**Status:** **ACTIVE**
-
----
-
-### I. CORE DEFINITION
-
-The **"I" Engine** is not a simulation of a human mind. It is a **Reader of Evidence**.
-
-It operates on a single premise: **If the LLM can read it, the system does not need to model it.**
-
-* **Function:** The Engine receives a stream of text (The Record) and acts as a sovereign interpreter for a specific identity.
-* **Constraint:** It possesses no internal variables, no hidden states, and no numerical thresholds. It relies entirely on **Semantic Inference** derived from the provided text.
-* **Objective:** To produce the next coherent physical action for a specific character, ensuring strict causal fidelity to the narrative history.
+Version: 1.1 (Constitutional Lock)
+Type: System Architecture Specification
+Status: ACTIVE
 
 ---
 
-### II. THE DATA MODEL (THE SEMANTIC LEDGER)
+## I. CORE DEFINITION
 
-The system eschews traditional database columns (e.g., `Health`, `Stamina`) in favor of a **Pure Text Repository**.
+The **"I" Engine** is not a simulation, model, or representation of a human mind.
 
-#### 1. The Atomic Unit
+It is a **Reader of Evidence**.
 
-The database stores **Exposed Evidence**. This is the only valid data type.
+The Engine operates on a single premise:
 
-* **Definition:** A text block describing observable physical reality.
-* **The Guardrail:** It must describe *what* happened, never *why*.
+> **If the LLM can read it, the system must not model it.**
 
-#### 2. The Data Structure
+### Function
 
-Each row in the database contains exactly three semantic tags and the content block.
+The Engine receives a bounded collection of text (Evidence) and produces a new block of **Exposed Evidence** attributable to a specific identity.
 
-| Field | Definition | Example |
-| --- | --- | --- |
-| **Source** | The entity generating the action. | `Rebecca` |
-| **Location** | The semantic zone where the action occurred. | `Kitchen` |
-| **Evidence** | The raw forensic text. | *"She leans against the counter, rubbing her eyes with the back of her hand. Her grip on the porcelain is loose."* |
+It does not compute state.
+It does not store memory.
+It does not reason numerically.
+It does not possess continuity outside the provided text.
 
-*Note: There are no "Somatic Tags" (e.g., `Fatigue: High`). The somatic state is embedded in the evidence ("rubbing her eyes," "loose grip").*
+### Constraint
 
----
+The Engine possesses:
+- no internal variables
+- no hidden state
+- no meters, scores, or thresholds
+- no persistence across invocations
 
-### III. THE INPUT STREAM (CONTEXT CONSTRUCTION)
+All continuity arises exclusively from rereading evidence.
 
-When the "I" Engine is called to generate behavior, the System constructs a **Context Block** from the database. This replaces "Game Logic" with "Reading Logic."
+### Objective
 
-The Input consists of three strict layers:
-
-#### 1. The Identity Core (Static)
-
-* **Source:** The Character Profile (Markdown File).
-* **Content:** The immutable logic of the person (Values, Speech Patterns, Fears).
-* **Function:** This provides the "Lens" through which the history is interpreted.
-
-#### 2. The Chronicle (Dynamic History)
-
-* **Source:** The Database (Historical Retrieval).
-* **Mechanism:** The system retrieves relevant past rows based on **Semantic Continuity** (e.g., rows containing "Sleep," "Injury," or "Argument" from the last 7 days).
-* **Function:** This replaces "State Variables."
-* *System Logic:* Instead of checking `if Sleep < 5`, the LLM reads: *"No record of sleep found in last 168 hours."*
-
-
-
-#### 3. The Immediate Reality (The Now)
-
-* **Source:** The Database (Last 20 Rows).
-* **Content:** The exact physical state of the room and the actions of others in the current moment.
-* **Function:** This provides the trigger for the reaction.
+To generate the next **physically and causally coherent action or utterance** for a specific identity, such that the output does not contradict:
+- the supplied evidence
+- the identity’s immutable constitution
+- the physical constraints implied by the evidence
 
 ---
 
-### IV. THE INFERENCE ENGINE (THE "READER")
+## II. THE DATA MODEL (THE SEMANTIC LEDGER)
 
-The "I" Engine (LLM) processes the input. Because there are no variables to check, the Engine must use **Natural Language Inference** to determine the character's state.
+The system rejects traditional stateful schemas.
 
-#### 1. Somatic Inference (The Body)
+There are no columns such as:
+- Health
+- Mood
+- Energy
+- Trust
+- Affection
 
-The Engine reads the Chronicle to determine physical capability.
+There is only **textual evidence**.
 
-* **Input:** *"Driven for 14 hours. No food. Hands shaking in last entry."*
-* **Inference:** *The entity is physically degraded. Reaction times are slow. Fine motor control is compromised.*
-* **Output Constraint:** The Engine is forbidden from outputting high-energy actions (e.g., "She sprints") because they contradict the narrative evidence.
+### 1. The Atomic Unit
 
-#### 2. Psychological Inference (The Mind)
+The only valid stored unit is **Exposed Evidence**.
 
-The Engine reads the Chronicle to determine emotional context.
+**Definition:**  
+A discrete block of text describing observable physical reality.
 
-* **Input:** *"Arbiter slammed door (Turn 50). Arbiter yelled (Turn 51)."*
-* **Inference:** *The entity anticipates hostility. Defense mechanisms are active.*
-* **Output Constraint:** The Engine interprets neutral inputs (e.g., "Can we talk?") through this specific historical bias.
+**Rules:**
+- It must describe *what occurred*, never *why it occurred*.
+- It must describe *what can be seen, heard, or physically inferred*.
+- It must not assert internal mental states as facts.
+
+### 2. Canonical Block Structure
+
+Each stored block contains:
+
+- **Source**  
+  The entity that produced the action or utterance.
+
+- **Context**  
+  The semantic location or situation in which the action occurred.
+
+- **Evidence**  
+  The raw forensic text.
+
+Example:
+
+> Source: Rebecca  
+> Context: Kitchen  
+> Evidence:  
+> “She leans against the counter, rubbing her eyes with the back of her hand. Her grip on the porcelain mug loosens slightly.”
+
+There are no auxiliary somatic fields.
+The body is described, not measured.
 
 ---
 
-### V. THE OUTPUT PROTOCOL (THE FORENSIC RULE)
+## III. CONTEXT CONSTRUCTION (INPUT TO THE READER)
 
-The Engine generates a response. This response is not "Creative Writing"; it is **Evidence Generation**.
+When the Engine is invoked, the system constructs a **Context Block**.
 
-#### 1. The "What, Not Why" Rule
+This Context Block is the *entire universe* available to the Reader for that invocation.
 
-The Output must describe observable physics only. Interpretations are strictly forbidden.
+The Context consists of three layers.
 
-* **REJECTED:** *"Rebecca looks away because she is ashamed."* (Describes Cause/Internal State).
-* **ACCEPTED:** *"Rebecca looks away, fixing her eyes on the floor tiles."* (Describes Action/External State).
+### 1. Identity Core (Static)
 
-#### 2. The Semantic Continuity Check
+**Source:** A Markdown document defining the identity.
 
-The Output must follow the physical logic established in the Chronicle.
+**Contents:**
+- Values
+- Boundaries
+- Speech constraints
+- Long-term invariants
 
-* *If the Chronicle establishes "Broken Leg" (Input), the Output cannot describe "Walking normally."*
-* *If the Chronicle establishes "Dark Room," the Output cannot describe "Reading a book."*
+**Properties:**
+- Immutable
+- Always present
+- Acts as an interpretive lens, not a rule engine
+
+The Identity Core does not instruct behavior.
+It constrains plausibility.
 
 ---
 
-### VI. THE SYSTEM LOOP (EXECUTION CYCLE)
+### 2. The Chronicle (Retrieved History)
 
-1. **Read:** The System queries the Database for the **Chronicle** (History) and **Immediate Reality** (Now).
-2. **Context:** These text rows are wrapped in the **Identity Core** and fed to the LLM.
-3. **Inference:** The LLM reads the text, infers the "Somatic State" (Tired/Hurt) and "Psychological State" (Scared/Angry) from the history.
-4. **Generate:** The LLM produces a new block of **Exposed Evidence**.
-5. **Validation:** The System checks the text against the **Forensic Rule**.
-6. **Write:** The validated text is appended to the **Database** as a new row.
+**Source:** The public ledger of Exposed Evidence.
 
-**End of Document**
+**Selection Principle:**  
+Evidence is retrieved based on **semantic relevance to the present context**, not numeric windows or counters.
+
+Retrieval is allowed to surface:
+- related actions
+- thematically adjacent moments
+- notable absences (e.g., no evidence of sleep, no evidence of eating)
+
+The Engine is not told:
+- durations
+- counts
+- elapsed hours
+
+It reads absence and presence directly from text.
+
+---
+
+### 3. Immediate Reality (The Present)
+
+**Source:** The most recent contiguous evidence describing the current situation.
+
+**Purpose:**
+- Establish object continuity
+- Establish spatial continuity
+- Establish conversational continuity
+
+This layer contains only what is necessary to describe “what is happening now,” and nothing else.
+
+---
+
+## IV. READING AND INFERENCE (ENGINE BEHAVIOR)
+
+The Engine performs **no computation**.
+
+It performs **reading**.
+
+All inference is:
+- local to the invocation
+- private to the Reader
+- non-persistent
+- non-authoritative
+
+### 1. Somatic Inference (Private)
+
+The Engine may infer physical capability by reading evidence.
+
+Example input:
+> “She has not slept. Her hands tremble as she reaches for the door.”
+
+Example private inference:
+> Physical capability is reduced. Fine motor control is compromised.
+
+This inference:
+- is not stored
+- is not written
+- is not exposed as fact
+
+It exists only to constrain output plausibility.
+
+---
+
+### 2. Psychological Inference (Private)
+
+The Engine may infer emotional or cognitive context by rereading history.
+
+Example input:
+> “The door slammed. Voices were raised earlier.”
+
+Example private inference:
+> The entity anticipates hostility.
+
+This inference:
+- is not written
+- is not labeled
+- is not promoted to shared reality
+
+---
+
+## V. OUTPUT PROTOCOL (FORENSIC LAW)
+
+The Engine’s output is **not narration**.
+
+It is **new Exposed Evidence**.
+
+### 1. The “What, Not Why” Rule
+
+The output MUST describe only observable reality.
+
+Forbidden:
+- “She is afraid.”
+- “He feels guilty.”
+- “She refuses because she is angry.”
+
+Permitted:
+- “She steps back, her shoulders tightening.”
+- “He avoids eye contact, staring at the floor.”
+
+---
+
+### 2. Physical Continuity Enforcement
+
+The output MUST be physically continuous with the supplied evidence.
+
+If the Chronicle establishes:
+- injury → movement is constrained
+- darkness → vision-dependent actions are constrained
+- distance → contact requires traversal
+
+Violations are rejected.
+
+---
+
+## VI. EXECUTION CYCLE (NON-SIMULATIVE)
+
+There is no tick.
+There is no loop.
+There is no background process.
+
+Each invocation is discrete.
+
+1. Evidence is selected.
+2. Evidence is read.
+3. A single new block of evidence is produced.
+4. That block is appended to the public ledger.
+
+Time advances only because something was written.
+
+---
+
+END OF DOCUMENT

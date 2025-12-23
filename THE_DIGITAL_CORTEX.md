@@ -1,101 +1,209 @@
-Here is the revised architecture for the **Semantic Library**, updated to reflect the "Smart Reader" principle (Messy Storage, Intelligent Retrieval).
+# THE DIGITAL CORTEX
+## The Public Ledger of Reality
+
+Version: 1.1 (Constitutional Lock)
+Status: ACTIVE
 
 ---
 
-### THE DIGITAL CORTEX (SEMANTIC DATABASE)
+## PREAMBLE: WHAT THIS IS (AND IS NOT)
 
-This database is not a spreadsheet of numbers. It is a **Digital Cortex**.
+The **Digital Cortex** is not a brain.
+It does not think.
+It does not understand.
+It does not interpret.
 
-To achieve the "nuance and richness" of a multi-year life, this database must store **Moments**, not data points. It must preserve the exact phrasing of a whisper from three years ago, and it must be able to find it instantly when the context demands it.
+It is a **ledger**.
 
-### I. The Atomic Unit (The "Memory Block")
+Its sole function is to **store Exposed Evidence exactly as written** and make that evidence retrievable.
 
-Every single interaction—every glance, every sentence, every movement—is stored as a distinct **Block**.
-
-We do not compress these. We do not summarize "She was angry" into a variable. We keep the raw footage. We allow the tags to be specific and varied ("Crimson," "Ruby," "Blood") because we trust the System to understand that these are all "Red."
-
-**The Data Schema (What one row looks like):**
-
-```json
-{
-  "ID": "UUID_v4_Action_8921",
-  "Timestamp": "2025-12-22T17:55:00Z",
-  "Source_Entity": "Rebecca",
-  "Semantic_Location": "Kitchen_Night",
-  
-  // THE RAW EVIDENCE (The Nuance)
-  // This is the most important field. It is immutable.
-  "Content": "She hesitates, her finger tracing the old scar on the wooden table. 'I remember when you did this,' she says, her voice dropping to a whisper.",
-  
-  // THE SEARCH FINGERPRINT (The Vector)
-  // This is a mathematical representation of the *meaning* of the text.
-  // It allows the system to find this memory even if you search for 
-  // "Regret" or "Old Injury", words that aren't in the text.
-  "Vector_Embedding": [0.12, -0.98, 0.45, ...], 
-  
-  // THE META-TAGS (The Anchors)
-  // Auto-generated tags for hard filtering. 
-  // We do NOT normalize these. We store exactly what happened.
-  "Tags": ["Scar", "Table", "Whisper", "Tactile_Memory", "Wood"]
-}
-
-```
-
-### II. The Three Tiers of Storage
-
-To handle a multi-year timeline without crashing, the database is divided into three layers of accessibility. This mimics human cognition.
-
-#### 1. The Stream (The Immediate "Now")
-
-* **Capacity:** The last ~50 Blocks.
-* **Function:** This is the "Working Memory." It holds the current conversation.
-* **Interaction:** The "I" Engine reads *all* of this every single time it generates a response. It ensures the continuity of the scene (e.g., she is still holding the cup).
-
-#### 2. The Vector Index (The Associative Mind)
-
-* **Capacity:** Infinite (All Blocks ever created).
-* **Function:** This enables **Nuance**.
-* **Mechanism:** It organizes by **Meaning** and **Concept**, not just keywords.
-* **The "Smart Retrieval" Capability:**
-* *Scenario:* You ask about "Color."
-* *The Storage:* The memory is tagged `Red`, not `Color`.
-* *The Logic:* The System does not need to change the tag. It expands your query. It knows to look for `Red`, `Blue`, `Green`, or `Paint` automatically.
-* *The Result:* It finds the memory tagged `Red` because the Reader is intelligent enough to bridge the gap.
-
-
-
-#### 3. The Calendar (The Future)
-
-* **Capacity:** Infinite.
-* **Function:** Stores "Future Blocks" that haven't happened yet.
-* **Mechanism:** When the Timestamp matches the `Current_Time`, these blocks are moved into the Stream.
-* **Example:** `{"Time": "2026-01-01", "Content": "It is Rebecca's birthday."}`.
+If a thing is not written here as evidence, it does not exist.
 
 ---
 
-### III. How "Nuance" is Retrieved (The Search)
+## I. THE ATOMIC UNIT: THE EVIDENCE BLOCK
 
-This is the specific mechanic that separates this system from a simple text file. A text file requires exact word matches. This Database uses **Semantic & Concept Search**.
+Every occurrence in reality is recorded as a discrete **Evidence Block**.
 
-**The Example:**
+An Evidence Block represents:
+- a single action
+- a single utterance
+- a single observable moment
 
-1. **Year 1:** You act clumsy and break a vase. The Database stores: *"The blue porcelain shatters on the floor."* (Tags: `Porcelain`, `Shatter`, `Blue`).
-2. **Year 3:** You are holding a delicate wine glass.
-3. **The Trigger:** The System detects the concept "Fragile Object" in the current scene.
-4. **The Smart Query:** The System asks: *"Does Rebecca have any memories related to breaking delicate things?"*
-5. **The Retrieval:**
-* **Vector Match:** The math connects the *concept* of "Delicate" to "Porcelain."
-* **Tag Match:** The System connects "Glass" (Now) to "Porcelain" (Then) as similar materials.
+Nothing more.
 
+### A. Evidence Block Contents
 
-6. **The Output:** The System feeds the "Year 1 Broken Vase" block to the Engine.
-7. **The Nuance:** The Engine writes: *"Rebecca watches your hand on the wine glass stem. Her eyes widen slightly, and she takes a half-step forward, as if ready to catch it."*
+Each Block contains:
 
-**That is nuance.** It is a specific physical reaction in Year 3 caused by a specific raw event in Year 1, connected by a thematic link that the database preserved.
+1. **Ordering Token**  
+   A monotonic append-only ordering marker.
+   - Used only to preserve sequence.
+   - Carries no semantic meaning.
+   - Is never interpreted as duration or elapsed time.
 
-### IV. Summary of the Database
+2. **Source**  
+   The entity responsible for the action or utterance.
 
-* **It is not:** A list of stats (`Love: 50%`) or a sanitized list of perfect keywords.
-* **It is:** A **Library of Video Clips** (Text Blocks) stored in their raw, messy glory.
-* **It works by:** Trusting the "I" Engine (The LLM) to understand that `Red` is a `Color`, removing the need for rigid maintenance.
-* **It connects by:** Mapping the *meaning* of those moments, ensuring that no matter how much time passes, the system can always "remember" the feeling of a moment.
+3. **Context**  
+   A semantic descriptor of where or in what situation the evidence occurred.
+   - This is descriptive, not authoritative.
+
+4. **Evidence Text**  
+   The raw, immutable text describing observable reality.
+
+Example:
+
+> Ordering: 00018492  
+> Source: Rebecca  
+> Context: Kitchen  
+> Evidence:  
+> “She sets the mug down with a soft clink and presses her palm flat against the counter.”
+
+### B. Prohibited Fields
+
+An Evidence Block MUST NOT contain:
+- emotional labels
+- inferred intent
+- mental states
+- numeric measurements of condition
+- summaries
+- future implications
+
+---
+
+## II. IMMUTABILITY AND IRREVERSIBILITY
+
+Once written:
+- Evidence is never edited.
+- Evidence is never deleted.
+- Evidence is never overwritten.
+
+Contradictions are resolved only by **later evidence**, never by modifying earlier blocks.
+
+---
+
+## III. RETRIEVAL IS NOT MEMORY
+
+The Digital Cortex does not “remember.”
+It does not decide what matters.
+
+Retrieval is a **mechanical operation** that selects candidate evidence for rereading.
+
+### A. Retrieval Purpose
+
+Retrieval exists only to:
+- limit prompt size
+- surface potentially relevant past evidence
+
+It does not:
+- assert facts
+- resolve meaning
+- determine truth
+
+---
+
+## IV. RETRIEVAL METADATA (NON-AUTHORITATIVE)
+
+To enable retrieval at scale, the Cortex may store **auxiliary metadata** alongside each Block.
+
+These fields exist solely to assist lookup.
+
+They are not reality.
+
+### A. Semantic Vectors
+
+- Vectors are mathematical fingerprints of text similarity.
+- They are opaque to the system’s meaning layer.
+- They MUST NOT be treated as facts, weights, or truth indicators.
+
+Vectors:
+- select candidates
+- never assert relevance
+
+### B. Tags (Anchors)
+
+- Tags are extracted directly from the evidence text.
+- They describe **objects, locations, and concrete references only**.
+- Tags do not normalize meaning.
+- Tags do not summarize.
+
+Examples:
+- `Mug`
+- `Table`
+- `Door`
+- `Whisper`
+
+Forbidden tags:
+- `Anger`
+- `Trust`
+- `Regret`
+- `Fear`
+
+---
+
+## V. RETRIEVAL CONSTRAINTS
+
+### A. No Global Interpretation
+
+The Cortex MUST NOT:
+- rank memories by importance
+- prioritize “emotional” memories
+- decide what an Agent “should remember”
+
+All interpretation occurs only when a Reader rereads evidence.
+
+### B. No Future Storage
+
+The Cortex MUST NOT store:
+- scheduled events
+- future evidence
+- anticipated actions
+- reminders
+- placeholders
+
+There is no future until it is written.
+
+---
+
+## VI. SCALE AND DURATION
+
+The Cortex may contain:
+- days of evidence
+- years of evidence
+- decades of evidence
+
+Age does not degrade truth.
+
+Older evidence is not weaker.
+Newer evidence is not stronger.
+
+Only rereading creates influence.
+
+---
+
+## VII. ABSENCE AS EVIDENCE
+
+The absence of a type of evidence is itself meaningful.
+
+Example:
+- No evidence of eating
+- No evidence of sleep
+- No evidence of communication
+
+The Cortex does not label this absence.
+Readers may infer it when rereading.
+
+---
+
+## VIII. WHAT THE DIGITAL CORTEX GUARANTEES
+
+- Fidelity: text is preserved exactly
+- Permanence: nothing is lost
+- Neutrality: no meaning is imposed
+
+That is all.
+
+---
+
+END OF DOCUMENT

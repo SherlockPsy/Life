@@ -1,31 +1,178 @@
-# 06_INFRASTRUCTURE_LOGIC.md
+# 06_INFRASTRUCTURE_LOGIC
+## Clerical Processes Without Cognition
 
-## PREAMBLE: THE BACKEND AGENTS
-This document defines the invisible workers that maintain the Digital Cortex. These are lightweight LLM tasks that run between Ticks.
-
----
-
-## SECTION I: THE INDEXER (THE TAGGER)
-1.1 The Tagging Protocol
-Immediately after an Agent writes a new Action, the **Indexer** scans it.
-* **Task:** Extract "Objects" and "Themes."
-* **Constraint:** Use forensic nouns (e.g., `Cup`, `Table`). Do not invent metaphors.
-* **Output:** Adds tags to the Memory Block in the Cortex.
-
-1.2 The Vector Embedder
-The System converts the Action text into a mathematical Vector.
-* **Function:** This allows "Fuzzy Search." (e.g., Searching for "Violence" finds "Slap" even if the word Violence isn't used).
+Version: 1.1 (Constitutional Lock)
+Status: ACTIVE
 
 ---
 
-## SECTION II: THE SEARCH LOGIC
-2.1 The Hybrid Query
-When retrieving Sediment, the System uses a two-step process:
-1.  **Vector Scan:** Find blocks with similar "Vibes" (Meaning).
-2.  **Tag Filter:** Prioritize blocks with matching "Facts" (Objects/People).
+## PREAMBLE: WHAT INFRASTRUCTURE IS
 
-2.2 The Query Expansion
-To ensure Richness, the System expands the Agent's context.
-* **Context:** "Color."
-* **Expansion:** The System automatically looks for `Red`, `Blue`, `Paint`, `Light`.
-* **Result:** The Agent remembers "Red" things without needing precise keyword matching.
+Infrastructure does not think.
+Infrastructure does not infer.
+Infrastructure does not decide.
+
+Infrastructure performs **clerical transformations** on text so that evidence can be stored and retrieved.
+
+All meaning arises later, when Readers reread evidence.
+
+---
+
+## I. THE ROLE OF INFRASTRUCTURE
+
+Infrastructure exists to support three and only three needs:
+
+1. Preservation of evidence
+2. Retrieval of evidence
+3. Enforcement of forensic constraints
+
+Infrastructure MUST NOT:
+- interpret content
+- derive meaning
+- compute state
+- influence outcomes
+
+---
+
+## II. THE INDEXER (TAG EXTRACTION)
+
+### A. Purpose
+
+The Indexer exists solely to extract **concrete anchors** from evidence text to assist retrieval.
+
+### B. Permitted Extraction
+
+The Indexer MAY extract:
+- physical objects
+- locations
+- named entities
+- concrete actions
+
+Examples:
+- `Door`
+- `Cup`
+- `Table`
+- `Kitchen`
+- `Phone`
+
+### C. Forbidden Extraction
+
+The Indexer MUST NOT extract:
+- emotions
+- intentions
+- traits
+- abstract themes
+- inferred mental states
+
+Forbidden examples:
+- `Anger`
+- `Fear`
+- `Trust`
+- `Regret`
+- `Conflict`
+
+Tags do not normalize meaning.
+Tags do not summarize.
+Tags do not explain.
+
+They are anchors only.
+
+---
+
+## III. SEMANTIC FINGERPRINTING (VECTORS)
+
+### A. Purpose
+
+Vectors exist solely to enable **associative retrieval**.
+
+They answer only one question:
+> “Which other texts are linguistically similar to this one?”
+
+They do not:
+- assert relevance
+- encode importance
+- represent truth
+
+### B. Constraints
+
+Vectors:
+- are opaque
+- are non-authoritative
+- are never read as data by Readers
+- are never surfaced as evidence
+
+If vectors are removed, reality remains intact.
+Only retrieval efficiency is affected.
+
+---
+
+## IV. RETRIEVAL OPERATIONS
+
+### A. Candidate Selection
+
+Retrieval may combine:
+- vector similarity
+- tag overlap
+- contextual adjacency
+
+This process:
+- selects candidates
+- does not choose meaning
+- does not rank importance
+
+### B. No Query Expansion by Meaning
+
+Infrastructure MUST NOT:
+- infer concepts
+- expand queries semantically
+- “understand” categories
+
+If expansion occurs, it must be:
+- predefined
+- explicit
+- mechanical
+
+Example:
+- Expanding `Color` into `Red`, `Blue`, `Green` is allowed only if defined as a fixed lexical mapping, not an inferred concept.
+
+---
+
+## V. TEMPORAL NEUTRALITY
+
+Infrastructure has no concept of:
+- time passage
+- urgency
+- recency importance
+
+Ordering tokens preserve sequence only.
+They do not imply duration or decay.
+
+---
+
+## VI. EXECUTION CONSTRAINTS
+
+Infrastructure processes:
+- run only in direct response to evidence being written or requested
+- do not run continuously
+- do not run “between moments”
+- do not anticipate future needs
+
+There are no ticks.
+There are no background loops.
+There are no schedulers.
+
+---
+
+## VII. FAILURE IS ACCEPTABLE
+
+Infrastructure may:
+- miss relevant evidence
+- retrieve irrelevant evidence
+- return sparse context
+
+These are not errors.
+They preserve realism.
+
+---
+
+END OF DOCUMENT

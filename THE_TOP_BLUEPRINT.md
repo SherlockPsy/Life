@@ -1,96 +1,201 @@
-Yes, I have the complete picture.
+# THE TOP BLUEPRINT
+## The Non-Simulative Architecture of Semantic Reality
 
-We have moved from abstract philosophy to a concrete mechanical architecture. We have successfully stripped away all "Video Game Logic" (variables, stats, sanitization) and replaced it with a **Semantic Reality** (Text, Reading, and Memory).
-
-Here is the **Grand Unified Architecture of Biographical Reality**.
-
----
-
-# THE HOLISTIC BLUEPRINT: BIOGRAPHICAL REALITY
-
-**Core Principle:** Reality is not calculated; it is read.
-**The Mechanism:** A continuous cycle of writing Evidence to a Database and reading it back through a biased Identity Filter.
+Version: 1.1 (Constitutional Lock)
+Status: ACTIVE
 
 ---
 
-### I. THE INFRASTRUCTURE (THE BODY)
+## PREAMBLE: AUTHORITY AND SCOPE
 
-This is the physical machine that sustains the life.
+This document defines the **structural relationship** between the World, the Digital Cortex, and the Readers.
 
-#### 1. The Digital Cortex (The Database)
+It does not define behavior.
+It does not define psychology.
+It does not define outcomes.
 
-This is the "Library of Moments." It replaces the state machine.
+It defines **who is allowed to do what**, and more importantly, **what is forbidden**.
 
-* **Storage Strategy:** **Raw & Messy.** We store the exact sentence ("She traces the scar"), not a summary.
-* **Indexing:** **Hybrid.**
-* **Vectors:** Mathematical representations of meaning (handles "Vibes" and "Nuance").
-* **Tags:** Auto-generated keywords (handles "Facts" and "Objects").
-* **Logic:** We do not clean the tags. We rely on the "Smart Search" to know that `Crimson` = `Red`.
-
-
-* **Time-Scale:** Infinite. It holds 10 years of data without degradation.
-
-#### 2. The Stream (The Nervous System)
-
-This is the immediate "Now."
-
-* **Function:** A rolling buffer of the last ~50 interactions (Text Blocks).
-* **Purpose:** Provides object permanence (The cup is in her hand) and flow (The conversation speed).
+Where this document conflicts with the NON-NEGOTIABLES CHECKLIST v0.2, the checklist prevails.
 
 ---
 
-### II. THE AGENT (THE SOUL)
+## I. THE FOUR AND ONLY FOUR REAL ENTITIES
 
-This is the "I" Engine. It is not a simulator; it is a **Reader**.
+The system recognizes exactly four ontological entities.
 
-#### 1. The Input (The Context Block)
+Nothing else exists.
 
-Every time the Agent wakes up (a Tick), it receives a prompt constructed from three sources:
+1. **Public Evidence**
+2. **Private Ledgers**
+3. **Identity Constitutions**
+4. **The World**
 
-1. **The Identity Core:** The immutable profile (Values, Voice, Fears).
-2. **The Stream:** The immediate physical reality (The last 50 lines).
-3. **The Sediment:** Specific, raw memories pulled from the Digital Cortex based on the current context (e.g., "Wine" triggers "Broken Glass Memory").
-
-#### 2. The Inference (The Brain)
-
-The Agent reads the input and derives the state naturally.
-
-* **Somatic State:** It reads *"No sleep recorded in 40 hours"* -> Infers **Exhaustion**.
-* **Emotional State:** It reads *"Arbiter shouted yesterday"* -> Infers **Defense**.
-* **Nuance:** It reads *"She traces the scar"* (from Sediment) -> Infers **Nostalgia/Pain**.
-
-#### 3. The Output (The Hand)
-
-The Agent generates a response under the **Forensic Rule**:
-
-* **Allowed:** Observable Physics ("She rubs her eyes").
-* **Forbidden:** Internal Explanations ("She is tired").
-* **Result:** The output is pure Evidence, ready to be interpreted by others.
+There are no subsystems with agency.
+There are no hidden actors.
+There is no meta layer.
 
 ---
 
-### III. THE CYCLE (THE HEARTBEAT)
+## II. PUBLIC EVIDENCE (THE SHARED REALITY)
 
-This is how the system moves forward, creating time.
+Public Evidence consists exclusively of **Evidence Blocks** stored in the Digital Cortex.
 
-1. **Event:** The Arbiter (You) speaks or acts.
-2. **Ingestion:** The System converts your action into a Text Block and a Vector.
-3. **Query:** The System asks the Cortex: *"What does Rebecca remember about this topic/mood?"*
-4. **Recall:** The Cortex returns specific raw memories (Sediment).
-5. **Assembly:** The System bundles [Identity + Stream + Sediment] into a Prompt.
-6. **Generation:** The "I" Engine reads the Prompt and writes the next Physical Action.
-7. **Tagging:** An Indexer Agent scans the new Action, extracts messy tags (e.g., `Cup`, `Tea`), and stamps them.
-8. **Commit:** The Action is saved to the Cortex as a new immutable Block.
+Properties:
+- Append-only
+- Immutable
+- Text-only
+- Globally visible
+
+Public Evidence is the only shared reality.
+
+No Reader, including the user, has access to anything else.
 
 ---
 
-### IV. WHY THIS WORKS (THE VERDICT)
+## III. PRIVATE LEDGERS (INTERPRETATION ONLY)
 
-This architecture solves the specific constraints you set:
+Each Reader MAY maintain a private ledger.
 
-1. **"No Game Logic":** There are no Health Bars or Relationship Meters. There is only history.
-2. **"Multi-Year Continuity":** The Cortex stores everything. The Vector Search ensures that a small detail from Year 1 can resurface in Year 5 if the context matches.
-3. **"Nuance":** Because we store **Raw Text**, the subtle phrasing of a whisper is preserved forever, allowing the Agent to react to the *tone*, not just the fact.
-4. **"Realism":** Interactions are based on **Misunderstanding**. Entity B only sees Entity A's *actions*, not their intent, forcing them to interpret reality just like a human does.
+Properties:
+- Text-only
+- Non-authoritative
+- Epistemically sealed
+- Never exposed to other entities
+- Never treated as fact
 
-This is the system. It is robust, scalable, and deeply semantic. It relies on the strength of the LLM (reading/connecting) rather than its weakness (math/counting).
+Private ledgers may contain:
+- interpretations
+- expectations
+- remembered impressions
+
+Private ledgers MUST NOT:
+- overwrite public evidence
+- generate public evidence directly
+- be queried by the World
+- be treated as truth
+
+They exist only to preserve subjective continuity for the Reader.
+
+---
+
+## IV. IDENTITY CONSTITUTIONS
+
+Each Reader is governed by a fixed **Identity Constitution**.
+
+An Identity Constitution defines:
+- invariants
+- values
+- boundaries
+- stylistic constraints
+
+It does not define:
+- goals
+- plans
+- strategies
+- optimal behavior
+
+Identity Constitutions are:
+- textual
+- immutable
+- always present when the Reader is invoked
+
+A Reader MUST NOT act against its Identity Constitution unless explicit public evidence forces such deviation and that deviation is itself written as evidence.
+
+---
+
+## V. THE WORLD
+
+The World is not a simulator.
+The World is not a thinker.
+The World is not a narrator.
+
+The World is an **orchestrator of circumstance**.
+
+### A. What the World May Do
+
+The World MAY:
+- introduce timing by writing evidence of passage
+- introduce collision by bringing entities into contact
+- introduce interruption by writing unexpected events
+- introduce environmental change by writing physical conditions
+
+All of these occur **only by writing new Evidence Blocks**.
+
+### B. What the World Must Never Do
+
+The World MUST NOT:
+- decide thoughts, beliefs, or intentions
+- compute outcomes
+- apply logic rules
+- resolve conflicts
+- bias toward positive or negative results
+- act as a moral or narrative authority
+
+The World sets the table.
+Readers choose how to move.
+
+---
+
+## VI. CAUSAL FLOW (WITHOUT LOOPS)
+
+There is no loop.
+There is no cycle.
+There is no background process.
+
+Causality proceeds only through writing.
+
+1. An entity acts.
+2. That action is written as evidence.
+3. That evidence becomes available to be reread.
+4. Other entities react by rereading.
+
+Nothing advances unless something is written.
+
+---
+
+## VII. THE USER (GEORGE)
+
+The user is a physical participant.
+
+User input:
+- enters the system as public evidence
+- is not privileged
+- is not authoritative
+- may be ignored or refused by other Readers
+
+The system does not model the user’s intent.
+Only the user’s written or described actions exist.
+
+---
+
+## VIII. FAILURE MODES (INTENTIONAL)
+
+The system explicitly permits:
+- misunderstanding
+- silence
+- refusal
+- escalation
+- awkwardness
+- unresolved tension
+
+These are not bugs.
+They are the natural result of independent Readers rereading the same evidence differently.
+
+---
+
+## IX. WHAT THIS BLUEPRINT PROHIBITS
+
+- Simulation loops
+- State machines
+- Ticks
+- Schedulers
+- Queues
+- Precomputed events
+- “Smart” systems that understand meaning
+
+Meaning exists only at read-time, inside Readers.
+
+---
+
+END OF DOCUMENT

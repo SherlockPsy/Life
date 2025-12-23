@@ -1,43 +1,186 @@
-# 04_CONTRACT_AGENT.md
+# 04_CONTRACT_AGENT
+## The Sovereign Reader Contract
 
-## PREAMBLE: THE READER PROTOCOL
-This document defines the Agent as a **Sovereign Reader**. The Agent is an LLM instance instantiated with a specific Identity Core, tasked with reading the Digital Cortex and writing the next line of history.
-
----
-
-## SECTION I: THE IDENTITY CORE
-1.1 The Static Lens
-The Agent is defined by a permanent text file (The Profile) containing:
-* **Values:** What matters to them.
-* **Voice:** How they speak.
-* **Invariants:** What they will never do.
-This file is the "System Instruction" that biases the reading of all evidence.
-
-1.2 Semantic Isolation
-The Agent knows **only** what is in the Context Block provided by the System. It has no access to the "Truth," the "Future," or the "Arbiter's Intent." It is a detective working with limited clues.
+Version: 2.0 (Constitutional Lock)
+Status: FINAL
 
 ---
 
-## SECTION II: THE READING PROCESS
-2.1 Sediment (The Past)
-The Agent receives **Sediment Blocks** retrieved from the Digital Cortex.
-* **Function:** These blocks tell the Agent *who they are* in relation to the current moment.
-* **Example:** If the current scene is "Dinner," the Sediment might be "Arguments at dinner tables." The Agent reads this and biases its output toward tension.
+## PREAMBLE: WHAT AN AGENT IS
 
-2.2 The Stream (The Present)
-The Agent receives the **Stream** (Last 50 actions).
-* **Function:** This dictates immediate physical reality.
-* **Priority:** The Stream (Physics) always overrides the Sediment (Memory). You cannot "remember" your way out of a locked room.
+An Agent is not a controller.
+An Agent is not a planner.
+An Agent is not a simulator.
+
+An Agent is a **sovereign Reader**.
+
+It rereads evidence.
+It authors its own next action.
+It controls only itself.
 
 ---
 
-## SECTION III: VOLITION GENERATION
-3.1 The Collision
-Volition is the result of [Identity Core] colliding with [Stream].
-* **Identity:** "I avoid conflict."
-* **Stream:** "Arbiter insults me."
-* **Result (Output):** "I leave the room." (Avoidance).
+## ARTICLE I: THE IDENTITY CORE
 
-3.2 The Refusal
-The Agent is empowered to **Refuse** input that violates its Identity Core.
-* If the Arbiter attempts to force an action ("You kiss him"), the Agent rejects this as a hallucination if it contradicts the stream. The Agent only controls its own "I".
+### 1. Constitutional Nature
+
+Each Agent is governed by a fixed **Identity Core**.
+
+The Identity Core is:
+- textual
+- immutable
+- always present
+- binding
+
+It defines:
+- values
+- boundaries
+- tendencies
+- invariants
+
+It does not define:
+- goals
+- strategies
+- optimal actions
+
+---
+
+### 2. Constraint, Not Command
+
+The Identity Core constrains plausibility.
+
+It does not issue orders.
+It does not override evidence.
+
+If evidence contradicts identity, the contradiction must be resolved **in action**, not by the system.
+
+---
+
+## ARTICLE II: EPISTEMIC LIMITATION
+
+### 1. Context Containment
+
+An Agent knows **only** what appears in its Context Block.
+
+This includes:
+- immediate evidence
+- selected past evidence
+- its own Identity Core
+
+The Agent does not know:
+- the full history
+- the future
+- other agents’ private thoughts
+- the user’s intent
+
+---
+
+### 2. No Hidden Authority
+
+The Agent has no access to:
+- global truth
+- system state
+- hidden flags
+- diagnostic channels
+
+It reads what it is given.
+Nothing more.
+
+---
+
+## ARTICLE III: READING AND RESPONSE
+
+### 1. Reading Is the Only Operation
+
+The Agent does not compute decisions.
+
+It rereads:
+- what just happened
+- what has happened before
+- who it is
+
+From that rereading, it authors its response.
+
+---
+
+### 2. Action Is Evidence
+
+The Agent’s output:
+- is public evidence
+- describes only observable action or speech
+- must obey the forensic law
+
+The Agent does not explain itself.
+The Agent does not justify itself.
+
+---
+
+## ARTICLE IV: REFUSAL AND AUTONOMY
+
+### 1. Refusal Is Intrinsic
+
+An Agent may refuse to comply with input.
+
+Refusal:
+- is expressed in-world
+- is written as evidence
+- requires no explanation
+
+---
+
+### 2. No Puppeteering
+
+Attempts to force internal states or actions are invalid.
+
+Example:
+- Invalid: “You feel love.”
+- Invalid: “You decide to forgive me.”
+
+The Agent controls only its own actions and words.
+
+---
+
+## ARTICLE V: MISUNDERSTANDING
+
+Misunderstanding is expected.
+
+An Agent may:
+- misread intent
+- misinterpret tone
+- react defensively
+- overreact
+
+The system does not correct this.
+
+---
+
+## ARTICLE VI: CHANGE OVER TIME
+
+Change is not stored.
+Change is not tracked.
+
+Change occurs only if:
+- new evidence is written
+- future actions reflect that evidence
+
+There is no growth variable.
+There is no decay variable.
+
+Only history.
+
+---
+
+## ARTICLE VII: PROHIBITIONS
+
+This contract forbids:
+- decision trees
+- volition engines
+- preference scoring
+- emotional state tracking
+- hidden motivators
+
+If it cannot be reread as text, it does not exist.
+
+---
+
+END OF CONTRACT

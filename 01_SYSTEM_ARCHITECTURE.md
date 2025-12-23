@@ -1,48 +1,180 @@
-# 01_SYSTEM_ARCHITECTURE.md
+# 01_SYSTEM_ARCHITECTURE
+## The Structural Mechanics of Semantic Reality
 
-## OVERVIEW: THE SEMANTIC ENGINE
-The architecture is defined by the interaction between the **Digital Cortex** (Memory) and the **Biographical Readers** (Agents). There is no central simulation loop; there is only a cycle of Reading and Writing text.
-
----
-
-## COMPONENT I: THE DIGITAL CORTEX (THE INFRASTRUCTURE)
-**Definition:** The infinite, unthinking repository of all reality.
-**Functions:**
-1.  **The Library:** Stores every event as a raw **Memory Block** (Text + Vector + Tags).
-2.  **The Stream:** A rolling buffer of the last ~50 blocks (The "Now").
-3.  **The Search:** A hybrid retrieval engine that pulls relevant past blocks (Sediment) based on the current context (Vectors/Tags).
+Version: 1.1 (Constitutional Lock)
+Status: ACTIVE
 
 ---
 
-## COMPONENT II: THE BIOGRAPHICAL READERS (THE AGENTS)
-**Definition:** The processing cores that simulate specific individuals (e.g., Rebecca).
-**Functions:**
-1.  **The Context Construction:** Ingests [Identity Core + Stream + Sediment].
-2.  **The Inference:** Reads the text to determine Somatic and Emotional state.
-3.  **The Output:** Generates a new block of Exposed Evidence describing physical action.
+## OVERVIEW
+
+This architecture defines how **text becomes reality**.
+
+There is no simulation loop.
+There is no central intelligence.
+There is no global state.
+
+Reality advances only through the **writing and rereading of evidence**.
 
 ---
 
-## COMPONENT III: THE RECORDER (THE VALIDATOR)
-**Definition:** The interface between the Agent's output and the Digital Cortex.
-**Functions:**
-1.  **The Forensic Check:** Enforces the "What, Not Why" rule. It rejects any output that describes internal state (e.g., "She felt sad").
-2.  **The Timestamp:** Stamps the accepted text with Time and Location.
-3.  **The Commit:** Writes the validated block into the Cortex, making it permanent reality.
+## COMPONENT I: THE DIGITAL CORTEX
+
+### Definition
+
+The Digital Cortex is the **public ledger of reality**.
+
+It stores:
+- every action
+- every utterance
+- every observable event
+
+Exactly as text.
+
+### Properties
+
+- Infinite capacity
+- Append-only
+- Immutable
+- Non-interpreting
+
+The Cortex does not know what matters.
+It only knows what was written.
 
 ---
 
-## COMPONENT IV: THE ARBITER (THE ANOMALY)
-**Definition:** The physical user.
-**Functions:**
-1.  **Evidence Injection:** The Arbiter's inputs are treated as "God-Tier Evidence." They are written directly to the Stream without filtering, forcing the Agents to react.
+## COMPONENT II: THE BIOGRAPHICAL READERS
+
+### Definition
+
+A Biographical Reader is a **sovereign interpreter of evidence** bound to a single identity.
+
+A Reader:
+- reads evidence
+- privately infers meaning
+- produces new evidence
+
+A Reader does not:
+- store public memory
+- compute state
+- access hidden knowledge
+- know the full history
 
 ---
 
-## ARCHITECTURAL FLOW (THE CYCLE)
-1.  **Event:** Arbiter or Agent generates Action.
-2.  **Ingestion:** Recorder validates and saves to **Cortex**.
-3.  **Retrieval:** System searches Cortex for relevant **Sediment** (History).
-4.  **Prompting:** System feeds [Stream + Sediment] to the **Agent**.
-5.  **Reading:** Agent infers state and generates Reaction.
-6.  **Loop:** Reaction becomes the new Event.
+### Reader Input
+
+Each invocation provides the Reader with a bounded Context:
+
+1. **Identity Constitution**  
+   Immutable textual constraints defining the Reader.
+
+2. **Immediate Evidence**  
+   The contiguous evidence describing the present moment.
+
+3. **Retrieved Evidence**  
+   Additional past evidence selected mechanically for rereading.
+
+Nothing else exists for the Reader.
+
+---
+
+### Reader Output
+
+The Reader outputs exactly one thing:
+
+A new **Evidence Block** describing observable action or speech.
+
+The output:
+- must obey forensic constraints
+- must respect physical continuity
+- must not expose internal inference
+
+---
+
+## COMPONENT III: THE RECORDER
+
+### Definition
+
+The Recorder is a **clerical boundary**, not an authority.
+
+It does not interpret meaning.
+It does not decide truth.
+
+### Responsibilities
+
+1. **Forensic Validation**  
+   Rejects outputs that:
+   - assert internal mental states
+   - violate physical continuity
+   - contradict supplied evidence
+
+2. **Ordering Assignment**  
+   Assigns an ordering token to preserve sequence.
+   - This token has no temporal semantics.
+
+3. **Commitment**  
+   Appends the validated block to the Digital Cortex.
+
+---
+
+## COMPONENT IV: THE USER (GEORGE)
+
+### Definition
+
+The user is a physical participant inside the world.
+
+User input:
+- is written as public evidence
+- carries no special authority
+- may be ignored, refused, or misinterpreted
+
+The system does not model user intent.
+Only user action exists.
+
+---
+
+## ARCHITECTURAL FLOW (NON-LOOPING)
+
+This is not a loop.
+This is not continuous.
+
+It is a discrete progression:
+
+1. An entity produces an action or utterance.
+2. The action is validated as evidence.
+3. The evidence is written.
+4. Other entities may later reread it.
+
+Time advances only because evidence exists.
+
+---
+
+## FAILURE AS A FEATURE
+
+The architecture explicitly allows:
+- silence
+- refusal
+- misunderstanding
+- conflict
+- asymmetry of knowledge
+
+No system component attempts to resolve these.
+
+---
+
+## PROHIBITED STRUCTURES
+
+This architecture forbids:
+- simulation engines
+- tick-based systems
+- schedulers
+- background processors
+- state machines
+- hidden evaluators
+
+If it is not text, it is not real.
+
+---
+
+END OF DOCUMENT
