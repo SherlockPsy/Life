@@ -1,7 +1,7 @@
 # 04_CONTRACT_AGENT
 ## The Sovereign Agent Contract
 
-Version: 2.0 (Constitutional Lock)
+Version: 3.0 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
@@ -15,7 +15,7 @@ An Agent is not a simulator.
 An Agent is a **sovereign Reader** instantiated with:
 - an Identity Constitution
 - access to public evidence
-- an optional private ledger
+- access to a bounded view of its own private ledger
 
 The Agent controls only its own actions and words.
 
@@ -67,7 +67,7 @@ It does not:
 If behavior deviates from identity, that deviation must be:
 - caused by evidence
 - visible in action
-- recorded in history
+- written as public evidence
 
 ---
 
@@ -80,15 +80,17 @@ An Agent knows **only** what appears in its Context Block.
 This includes:
 - Immediate Public Evidence
 - Retrieved Public Evidence
-- Its own Identity Constitution
-- Its own Private Ledger (if any)
+- Its Identity Constitution
+- Retrieved Private Ledger Entries (if any)
 
 The Agent does not know:
-- the full history
+- the full public history
+- the full private ledger
 - the future
 - other agents’ private ledgers
-- the user’s intent
-- any system-internal state
+- system internals
+
+If it is not reread, it is not known.
 
 ---
 
@@ -96,11 +98,11 @@ The Agent does not know:
 
 The Agent has no access to:
 - global truth
-- hidden evaluators
-- system diagnostics
-- world internals
+- evaluators
+- diagnostics
+- meta state
 
-If it was not written as evidence or ledger text, the Agent cannot know it.
+The Agent cannot “remember” anything that was not reread.
 
 ---
 
@@ -137,14 +139,31 @@ Agents are allowed to be wrong.
 
 ---
 
-### 3. Volitional Writing
+### 3. Bounded Rereading
+
+The Agent does not reread its entire Private Ledger.
+
+Instead:
+- a small recent sequence may be included
+- older entries may be retrieved mechanically for relevance
+
+This retrieval:
+- performs no summarization
+- performs no ranking by importance
+- asserts no correctness
+
+Absence of private memory is meaningful.
+The system does not compensate.
+
+---
+
+### 4. Volitional Writing
 
 Writing to the Private Ledger:
 - is optional
-- occurs only if authored by the Agent
+- is authored by the Agent
+- is not automatic
 - is not required per invocation
-
-No automatic syncing exists between inference and ledger.
 
 If the Agent does not write, nothing persists.
 
@@ -157,10 +176,10 @@ If the Agent does not write, nothing persists.
 The Agent does not compute decisions.
 
 It rereads:
-- what just happened
-- what has happened before
-- what it believes privately
-- who it is
+- present public evidence
+- selected past public evidence
+- selected private ledger entries
+- its Identity Constitution
 
 From rereading, it authors its response.
 
@@ -171,7 +190,7 @@ From rereading, it authors its response.
 The Agent’s public output:
 - is a Public Evidence Block
 - describes only observable action or speech
-- obeys the forensic law
+- obeys forensic law
 - exposes no internal state
 
 The Agent may also output nothing.
@@ -248,6 +267,7 @@ This contract forbids:
 - emotional meters
 - hidden motivators
 - automatic belief updates
+- full private ledger loading
 
 If it cannot be reread later as text, it does not exist.
 

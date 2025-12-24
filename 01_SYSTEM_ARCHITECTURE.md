@@ -1,7 +1,7 @@
 # 01_SYSTEM_ARCHITECTURE
 ## Structural Mechanics of Semantic Reality
 
-Version: 2.0 (Constitutional Lock)
+Version: 3.0 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
@@ -88,23 +88,23 @@ Properties:
 - text-only
 - append-only
 - epistemically sealed
+- persistent across invocations
 - non-authoritative
 
 Private ledgers:
-- persist across invocations
-- are visible only to the owning Agent
 - may contain incorrect beliefs
-
-The system never reads private ledgers as truth.
+- may contain remembered misunderstandings
+- never override public evidence
 
 ---
 
-### 2. Interaction with Public Reality
+### 2. Access Constraints
 
 Private ledgers:
-- do not modify public evidence
-- do not influence retrieval directly
-- may influence future actions only through Agent rereading
+- are visible only to the owning Agent
+- are never accessed by other Agents
+- are never accessed by the World
+- are never merged with public reality
 
 ---
 
@@ -142,39 +142,49 @@ The World has:
 
 ---
 
-### 2. When the World Acts
+### 2. Invocation Rules (CRITICAL)
 
-The World acts **only when invoked**.
+The World is invoked **only** in response to **Agent-authored public evidence**.
 
-Invocation occurs:
-- in direct response to new public evidence
-- never in the background
-- never on a schedule
-- never due to elapsed time alone
+The World MUST NOT be invoked by:
+- World-authored evidence
+- prior World actions
+- elapsed time
+- system conditions
+- background processes
 
-There is no ambient world activity.
+There is no World-on-World invocation.
 
 ---
 
-### 3. What the World May Write
+### 3. Permitted World Output
 
-The World may write **Public Evidence Blocks** describing:
+When invoked, the World may write **Public Evidence Blocks** describing:
 - environmental change
 - interruption
 - collision
-- timing (as written description only)
-- entropy and novelty
+- coincidence
+- entropy
 
 Examples:
 - “A cold rain begins to fall.”
 - “The lights flicker, then go out.”
 - “A loud crash echoes from upstairs.”
 
+---
+
+### 4. Forbidden World Behavior
+
 The World MUST NOT:
 - decide outcomes
 - influence agent intent
+- respond to emotional intensity
 - balance scenarios
 - protect or punish
+- act recursively
+
+The World sets conditions.
+Agents respond.
 
 ---
 
@@ -185,10 +195,11 @@ There is no loop.
 
 A single progression looks like this:
 
-1. Public Evidence is written (by an Agent or the World).
-2. That evidence becomes part of Public Reality.
-3. Other Agents and/or the World may later be invoked.
-4. Invocation results in new writing or silence.
+1. An Agent writes Public Evidence.
+2. That evidence is appended to Public Reality.
+3. The World MAY be invoked exactly once in response.
+4. Other Agents MAY later be invoked.
+5. Invocation results in new writing or silence.
 
 If nothing is written, nothing advances.
 
@@ -229,6 +240,7 @@ This architecture forbids:
 - simulation loops
 - schedulers
 - background processing
+- recursive world action
 - global state
 - hidden evaluators
 - outcome optimization

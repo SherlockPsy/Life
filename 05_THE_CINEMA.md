@@ -1,7 +1,7 @@
 # 05_THE_CINEMA
-## Memory as Rereading, Not Mechanism
+## Memory as Rereading, Not Storage
 
-Version: 2.0 (Constitutional Lock)
+Version: 3.0 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
@@ -11,11 +11,12 @@ Status: AUTHORITATIVE
 The Cinema is not memory.
 The Cinema is not recall.
 The Cinema is not interpretation.
+The Cinema is not a mind.
 
 The Cinema is a **mechanism for rereading past public evidence** alongside the present.
 
 It selects text.
-It shows text.
+It presents text.
 It explains nothing.
 
 ---
@@ -28,24 +29,40 @@ No rereading, no influence.
 
 ---
 
-## I. SOURCE OF ALL MEMORY
+## I. SCOPE (EXPLICIT)
 
-All memory originates in **Public Reality**.
+The Cinema applies **only to Public Reality**.
 
-The Cinema does not store memories.
-It does not summarize memories.
-It does not rank memories.
+It does not operate on:
+- Private Ledgers
+- Identity Constitutions
+- World internals
 
-It retrieves **unaltered Evidence Blocks**.
+Private rereading exists, but it is **not the Cinema**.
 
 ---
 
-## II. RETRIEVAL INPUT
+## II. SOURCE OF ALL CINEMATIC MATERIAL
 
-Retrieval is triggered **only** by the present context.
+All cinematic material originates in **Public Evidence**.
+
+The Cinema:
+- does not store memories
+- does not summarize history
+- does not designate importance
+- does not rewrite text
+
+It retrieves **unaltered Evidence Blocks** only.
+
+---
+
+## III. RETRIEVAL TRIGGERS
+
+Retrieval is triggered only by the **present public context**.
 
 The Cinema may examine:
 - objects currently present
+- locations currently occupied
 - actions currently occurring
 - words currently spoken
 - environmental descriptions
@@ -54,20 +71,22 @@ It MUST NOT examine:
 - inferred emotion
 - inferred intent
 - private ledger content
-- internal agent beliefs
+- internal beliefs
 
 ---
 
-## III. RETRIEVAL MECHANICS (EXHAUSTIVE)
+## IV. RETRIEVAL MECHANICS (EXHAUSTIVE)
 
 Exactly two retrieval aids exist.
+
+---
 
 ### 1. Tags (Clerical)
 
 Tags are:
-- extracted mechanically
+- mechanically extracted
 - concrete
-- object- or location-based
+- non-interpretive
 
 Examples:
 - `Door`
@@ -86,13 +105,13 @@ Tags:
 
 Vectors are:
 - opaque
-- non-authoritative
 - similarity-based
+- non-authoritative
 
 Vectors:
-- suggest linguistic adjacency
-- assert no truth
+- suggest linguistic adjacency only
 - assert no relevance
+- assert no truth
 
 ---
 
@@ -101,24 +120,24 @@ There are no other retrieval mechanisms.
 No anchors.
 No pillars.
 No significant memory class.
-No manually weighted memories.
+No manual weighting.
 
 ---
 
-## IV. SELECTION BEHAVIOR
+## V. SELECTION BEHAVIOR
 
 The Cinema:
-- selects a small number of candidate Evidence Blocks
-- does not explain selection
+- selects a bounded set of candidate Evidence Blocks
 - does not guarantee relevance
+- does not explain selection
+- does not correct failure
 
-Selection failure is allowed.
-
-Perfect recall is forbidden.
+Missed recall is allowed.
+Irrelevant recall is allowed.
 
 ---
 
-## V. PRESENTATION TO THE READER
+## VI. PRESENTATION TO THE READER
 
 Retrieved Evidence Blocks are:
 - unmodified
@@ -127,26 +146,26 @@ Retrieved Evidence Blocks are:
 
 They are presented alongside the Immediate Public Evidence.
 
-The Reader decides what they mean.
+Meaning arises only when reread by a Reader.
 
 ---
 
-## VI. SUBJECTIVE EFFECTS
+## VII. PRIVATE REREADING (NON-CINEMATIC)
 
-Any emotional impact, bias, or distortion arises:
-- inside the Reader
-- during rereading
+Agents may reread their own Private Ledgers.
 
-The Cinema does not:
-- reinforce moods
-- favor themes
-- bias retrieval
+This rereading:
+- is bounded
+- is mechanical
+- is non-authoritative
+- is not the Cinema
+- is not a separate subsystem
 
-If the Reader feels “stuck in the past,” that is authored behavior, not system logic.
+The Cinema MUST NOT be extended to private content.
 
 ---
 
-## VII. FAILURE MODES (INTENTIONAL)
+## VIII. FAILURE MODES (INTENTIONAL)
 
 The Cinema allows:
 - irrelevant recall
@@ -159,14 +178,14 @@ They preserve realism.
 
 ---
 
-## VIII. PROHIBITIONS
+## IX. PROHIBITIONS
 
 The Cinema MUST NOT:
 - rank memories by importance
 - tag memories as emotional
-- create narrative arcs
-- reinforce identity traits
 - summarize history
+- reinforce identity traits
+- influence interpretation
 
 If it interprets, it violates the constitution.
 

@@ -1,7 +1,7 @@
 # I_ENGINE
 ## The Sovereign Reader Execution Contract
 
-Version: 2.0 (Constitutional Lock)
+Version: 3.0 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
@@ -42,7 +42,7 @@ Each invocation of the I_ENGINE is discrete.
 The Engine receives:
 - a bounded Context Block
 - an Identity Constitution
-- zero implicit memory
+- no implicit memory
 
 The Engine produces:
 - zero or one Public Evidence Block
@@ -56,7 +56,9 @@ No other outputs are permitted.
 
 The Context Block is the **entire universe** available to the Engine during an invocation.
 
-It contains exactly three components.
+It contains exactly four components.
+
+---
 
 ### 1. Identity Constitution (Static)
 
@@ -100,6 +102,25 @@ The system does not label absence.
 
 ---
 
+### 4. Retrieved Private Ledger Entries (The Subjective Past)
+
+The Engine may be provided with a **bounded subset** of its own Private Ledger.
+
+This subset consists of:
+- a small recent sequence of private entries
+- zero or more older entries retrieved mechanically for relevance
+
+Retrieval:
+- is mechanical
+- uses only private clerical indexing
+- performs no summarization
+- asserts no importance
+- asserts no correctness
+
+The Engine is never provided the entire private ledger unless it is trivially small.
+
+---
+
 ## III. PRIVATE INFERENCE (NON-PUBLIC)
 
 While rereading the Context Block, the Engine may privately infer:
@@ -124,6 +145,8 @@ Inference alone has no persistence.
 The Engine MAY choose to write a **Private Ledger Block**.
 
 This is the only mechanism by which private continuity persists.
+
+---
 
 ### A. Nature of the Private Ledger
 
@@ -179,7 +202,7 @@ Silence is valid.
 
 For a single invocation:
 
-1. Context is presented.
+1. Context is assembled.
 2. Text is reread.
 3. Private inference may occur.
 4. Zero or one Private Ledger Block may be written.
@@ -196,13 +219,14 @@ There is no persistence outside text.
 The I_ENGINE MUST NOT:
 - compute state
 - store variables
+- summarize memory
 - update identity
 - resolve contradictions
 - correct misunderstandings
 - access hidden knowledge
 - reference system mechanics
 
-If it cannot be reread as text later, it does not exist.
+If it cannot be reread later as text, it does not exist.
 
 ---
 
