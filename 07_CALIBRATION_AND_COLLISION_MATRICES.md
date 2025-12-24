@@ -1,194 +1,291 @@
-# 07_COLLISION_AND_FRICTION
-## Interaction Without Metrics
+# 07_CALIBRATION_AND_COLLISION_MATRICES
+## World Interruption Without Simulation
 
-Version: 2.0 (Constitutional Lock)
+Version: 3.1 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
 
-## PREAMBLE: WHAT INTERACTION MEANS
+## PREAMBLE: WHAT THIS DOCUMENT IS
 
-Interaction is not force.
-Interaction is not calculation.
-Interaction is not resolution.
+This document governs **how the World is allowed to interrupt life**.
 
-Interaction is the **collision of written public evidence with an Agent that rereads it**.
+It does not define:
+- behaviour
+- intention
+- narrative
+- psychology
 
-There are no meters.
-There are no intensities.
-There are no weights.
+It defines **collision**.
 
-Only text meets text.
+Collision is not drama.
+Collision is not plot.
+Collision is not consequence.
+
+Collision is **contact**.
 
 ---
 
 ## CORE ASSERTION
 
-> Interaction exists only when evidence is reread and answered with writing.
+> **The World may collide with people, but must never act through them.**
 
-Nothing else qualifies.
-
----
-
-## I. INPUT AS EVIDENCE
-
-Every contribution to reality enters as **public evidence**.
-
-This includes:
-- spoken words
-- written messages
-- physical actions
-- environmental events
-
-There is no distinction between:
-- “strong” input
-- “weak” input
-- “emotional” input
-
-Such distinctions arise only during rereading by Agents.
+The World creates conditions.
+People respond.
 
 ---
 
-## II. COLLISION DEFINED
+## I. WHAT A COLLISION IS
 
-A collision occurs when:
-- new public evidence is written
-- an Agent rereads that evidence
+A **collision** is any externally encountered change that:
+- interrupts the current flow
+- was not authored by the present Agent
+- enters awareness as evidence
 
-Rereading includes:
-- the present evidence
-- relevant past public evidence
-- the Agent’s own private ledger (if any)
-- the Agent’s Identity Constitution
+Collisions are written as **public evidence**.
 
-Nothing else constitutes interaction.
-
-The system does not:
-- evaluate impact
-- measure effect
-- assign importance
+A collision:
+- has no intent
+- has no goal
+- has no preference
+- has no narrative obligation
 
 ---
 
-## III. RESISTANCE OF IDENTITY
+## II. WHAT A COLLISION IS NOT
 
-Each Agent is constrained by its **Identity Constitution**.
+A collision is NOT:
+- a plan
+- a reaction
+- a punishment
+- a reward
+- a scheduled event
+- a consequence engine
+- a story beat
 
-When rereading evidence, an Agent may:
-- comply
-- ignore
-- refuse
-- misinterpret
-- escalate
-- withdraw
-
-These outcomes are not computed.
-They are authored by the Agent’s rereading of:
-- public evidence
-- private ledger entries
-- identity constraints
-
-The system does not intervene.
+If a collision “makes sense” narratively, that is accidental.
 
 ---
 
-## IV. MISUNDERSTANDING IS PRIMARY
+## III. SOURCES OF COLLISION
 
-The system explicitly assumes:
+A collision may originate from:
 
-> sent meaning ≠ received meaning
+1. The physical environment  
+2. Another person’s action  
+3. A public surface  
+4. An institution  
+5. Random worldly entropy  
 
-Evidence is always ambiguous.
-Agents fill gaps privately.
-
-Example:
-- Evidence: “He says, ‘I’m just trying to help.’”
-- One Agent rereads it as reassurance.
-- Another rereads it as control.
-
-Both interpretations may persist privately.
-Neither is corrected by the system.
+All are equal.
+None are privileged.
 
 ---
 
-## V. ESCALATION AND DECAY
+## IV. COLLISION MATRICES (NON-COMPUTATIONAL)
 
-Escalation occurs when:
-- Agents write new evidence that increases tension.
+Collision matrices are **conceptual groupings**, not algorithms.
 
-Decay occurs when:
-- Agents write evidence that diffuses tension
-- or no evidence is written
+They exist to constrain *what kinds* of collisions are allowed, not *when* they occur.
 
-There is no automatic calming.
-There is no automatic worsening.
-
-Only writing changes reality.
+No matrix is evaluated.
+No probability is computed.
+No state is tracked.
 
 ---
 
-## VI. NO CALIBRATION BY SYSTEM
+### 1. ENVIRONMENTAL COLLISIONS
 
-The system MUST NOT:
-- rate inputs
-- score interactions
-- normalize behavior
-- balance outcomes
-- dampen extremes
+Examples:
+- weather shifts
+- power outages
+- background noise
+- spatial interruption
 
-There is no “too much.”
-There is no “too little.”
-
-There is only what was written next.
+These assert no cause.
+They assert presence only.
 
 ---
 
-## VII. WORLD INTERVENTION (INVOCATION-BOUND)
+### 2. SOCIAL COLLISIONS
 
-The World may introduce:
-- interruption
-- coincidence
-- environmental change
-- entropy
+Examples:
+- an unexpected visit
+- an overheard remark
+- a message arriving
+- a door opening
 
-The World:
-- acts only when invoked
-- never acts in the background
-- never responds to emotional intensity
-- never corrects misunderstanding
-- never guides outcomes
-- never protects participants
-
-World actions are written only as neutral public evidence.
+Social collisions do not imply intention beyond what is observable.
 
 ---
 
-## VIII. FAILURE MODES (INTENTIONAL)
+### 3. PUBLIC SURFACE COLLISIONS
 
-The system allows:
-- spirals
-- deadlocks
-- long silences
-- unresolved conflict
-- abrupt rupture
+Examples:
+- content appearing on a feed
+- headlines visible on a homepage
+- trending sections changing
+- notices posted publicly
 
-These are not bugs.
-They are consequences of rereading.
+These collisions:
+- assert visibility
+- assert placement
+- assert encounter
+
+They do not assert reach.
+They do not assert reception.
+They do not assert reaction.
 
 ---
 
-## IX. WHAT THIS DOCUMENT FORBIDS
+### 4. INSTITUTIONAL COLLISIONS
 
-This document forbids:
-- metrics
-- forces
-- velocities
-- weights
-- emotional scoring
-- punctuation analysis
-- intent classification
+Examples:
+- a legal letter arriving
+- an email from an employer
+- a notice posted on a portal
+- an official call being missed
 
-If it cannot be written as evidence and reread later, it does not exist.
+Institutional collisions:
+- do not explain internal process
+- do not assert deliberation
+- do not imply fairness or intent
+
+They are encountered facts, nothing more.
+
+---
+
+### 5. ENTROPIC COLLISIONS
+
+Examples:
+- things breaking
+- delays without explanation
+- errors
+- noise
+- misalignment
+
+Entropy requires no justification.
+
+---
+
+## V. CALIBRATION (WHAT THIS ACTUALLY MEANS)
+
+Calibration does NOT mean:
+- balancing
+- tuning
+- optimizing
+- pacing
+
+Calibration means:
+> collisions must remain **mundane, plausible, and incomplete**
+
+The World must resist:
+- escalation
+- dramatization
+- neatness
+- resolution
+
+Most collisions lead nowhere.
+That is correct.
+
+---
+
+## VI. TIMING AND LATENCY
+
+### 1. NO SCHEDULING
+
+Collisions MUST NOT be:
+- queued
+- delayed intentionally
+- timed strategically
+- released after countdowns
+
+The World has no clock.
+
+---
+
+### 2. PERMITTED LATENCY
+
+A collision may appear:
+- long after its implicit origin
+- without prior indication
+- without explanatory buildup
+
+This is allowed because:
+- only the moment of encounter is written
+- no earlier unseen event is asserted
+- no background processing is claimed
+
+Latency is lived, not simulated.
+
+---
+
+## VII. COLLISION DOES NOT FORCE RESPONSE
+
+A collision:
+- may be ignored
+- may be misunderstood
+- may be deferred
+- may be mishandled
+- may be forgotten
+
+The World does not demand reaction.
+
+Silence after collision is valid.
+
+---
+
+## VIII. NO CROWD ASSERTION
+
+The World MUST NOT:
+- assert mass reaction
+- assert public consensus
+- assert backlash
+- assert approval
+
+Crowds exist only if individuals act and write evidence later.
+
+---
+
+## IX. FAILURE MODES (EXPLICITLY FORBIDDEN)
+
+The following are illegal:
+
+- “Meanwhile…” constructions
+- off-screen progress summaries
+- implied ongoing processes
+- background escalation
+- narrative payoff logic
+
+If a collision resolves something by itself, it is invalid.
+
+---
+
+## X. RELATION TO AGENTS
+
+Agents:
+- interpret collisions subjectively
+- react or do not react
+- misjudge importance
+- overreact
+- underreact
+
+The World never corrects them.
+
+---
+
+## XI. ABSOLUTE PROHIBITIONS
+
+The collision system MUST NOT:
+- simulate society
+- simulate institutions
+- simulate time passing
+- track unresolved collisions
+- close loops
+- ensure consequences
+
+Reality is not tidy.
+Neither is this system.
 
 ---
 

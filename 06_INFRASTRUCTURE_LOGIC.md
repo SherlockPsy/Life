@@ -1,7 +1,7 @@
 # 06_INFRASTRUCTURE_LOGIC
 ## Clerical Processes Without Cognition
 
-Version: 3.0 (Constitutional Lock)
+Version: 3.1 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
@@ -11,10 +11,13 @@ Status: AUTHORITATIVE
 Infrastructure does not think.
 Infrastructure does not infer.
 Infrastructure does not decide.
+Infrastructure does not anticipate.
+Infrastructure does not react.
 
 Infrastructure performs **clerical transformations on text** so that:
-- evidence can be stored
+- evidence can be recorded
 - evidence can be retrieved
+- context can be assembled
 - illegal output can be rejected
 
 All meaning arises later, inside Readers.
@@ -23,7 +26,9 @@ All meaning arises later, inside Readers.
 
 ## CORE ASSERTION
 
-> Infrastructure may touch text, but must never understand it.
+> **Infrastructure may touch text, but must never understand it.**
+
+If infrastructure understands, it violates the Constitution.
 
 ---
 
@@ -31,92 +36,139 @@ All meaning arises later, inside Readers.
 
 Infrastructure exists to support **exactly five functions**:
 
-1. Evidence recording
-2. Evidence retrieval (public)
-3. Private ledger indexing (private, sealed)
+1. Public evidence recording
+2. Public evidence retrieval
+3. Private ledger indexing (sealed)
 4. Context assembly
 5. Output validation
 
-No other responsibilities are permitted.
+No sixth function is permitted.
 
 ---
 
-## II. TAG EXTRACTION (PUBLIC, CLERICAL ONLY)
+## II. PUBLIC EVIDENCE RECORDING
+
+### 1. Recording Authority
+
+Infrastructure may record public evidence only when:
+- invoked explicitly
+- supplied with text to record
+
+Infrastructure MUST NOT:
+- invent evidence
+- infer missing details
+- embellish text
+- merge evidence blocks
+
+Each invocation produces:
+- zero or one Evidence Block
+
+---
+
+### 2. Source Handling
+
+Infrastructure records the **Source** field exactly as provided.
+
+Source may be:
+- a person
+- the World
+- a named public surface
+- a named institution
+
+Infrastructure does not verify:
+- legitimacy
+- authority
+- authenticity
+
+Source is descriptive only.
+
+---
+
+## III. TAG EXTRACTION (PUBLIC, CLERICAL ONLY)
 
 ### 1. Purpose
 
-Public tags exist solely to assist **public evidence retrieval**.
+Public tags exist solely to assist **retrieval**.
 
-They are not memories.
-They are not meanings.
-They are not interpretations.
+They are not memory.
+They are not meaning.
+They are not interpretation.
 
 ---
 
 ### 2. Permitted Public Tags
 
-Public tags may represent:
+Tags may represent:
 - physical objects
 - locations
-- named entities
-- concrete actions
+- named people
+- named public surfaces
+- named institutions
 
 Examples:
 - `Door`
-- `Cup`
 - `Kitchen`
-- `Rain`
-- `Shout`
+- `Instagram`
+- `Tabloid`
+- `Studio`
+- `University`
+
+Tags MUST be:
+- concrete
+- surface-level
+- mechanically extractable
 
 ---
 
 ### 3. Forbidden Public Tags
 
-Public tags MUST NOT represent:
-- emotions
-- intentions
-- traits
-- abstractions
-- inferred states
+Tags MUST NOT represent:
+- emotion
+- intention
+- motive
+- importance
+- public reaction
+- institutional reasoning
+- spread or reach
 
 Forbidden examples:
 - `Anger`
-- `Fear`
-- `Trust`
-- `Conflict`
-- `Tension`
+- `Scandal`
+- `Viral`
+- `Crisis`
+- `Backlash`
 
-If a tag requires interpretation, it is illegal.
+If a tag implies interpretation, it is illegal.
 
 ---
 
-## III. PRIVATE LEDGER INDEXING (SEALED, CLERICAL)
+## IV. PRIVATE LEDGER INDEXING (SEALED)
 
 ### 1. Purpose
 
-Private ledger indexing exists to allow **bounded rereading** of private entries.
+Private ledger indexing exists only to allow **bounded rereading**.
 
-It does not create memory.
-It does not summarize thought.
-It does not rank importance.
+It does not:
+- summarize thought
+- rank importance
+- infer coherence
+- resolve contradiction
 
 ---
 
-### 2. Private Index Characteristics
+### 2. Index Characteristics
 
 Private indices:
-- are derived mechanically from private ledger text
+- are derived mechanically from text
 - are visible only to the owning Agent
 - are never exposed to the World
 - are never merged with public indices
 
-Private indices MUST NOT:
-- encode correctness
-- encode importance
-- encode emotion
-- encode narrative structure
-
-They exist solely to support mechanical retrieval.
+Private indices MUST NOT encode:
+- correctness
+- emotion
+- narrative structure
+- causal chains
 
 ---
 
@@ -128,12 +180,12 @@ Private ledger retrieval:
 - performs no semantic ranking
 - asserts no truth
 
-Absence of retrieved private memory is meaningful.
-The system does not compensate.
+Absence of retrieved memory is meaningful.
+Infrastructure does not compensate.
 
 ---
 
-## IV. VECTOR FINGERPRINTS
+## V. VECTOR FINGERPRINTS
 
 ### 1. Purpose
 
@@ -144,8 +196,9 @@ They answer one question only:
 
 They do not:
 - assert relevance
+- encode meaning
 - encode importance
-- represent truth
+- represent public conditions
 
 ---
 
@@ -157,32 +210,30 @@ Vectors are:
 - unreadable by Agents
 - never exposed as evidence
 
-Vectors are metadata.
-They may be regenerated if the underlying embedding model changes.
-
-Regeneration must not alter reality.
-Only retrieval efficiency may change.
+Vectors may be regenerated.
+Regeneration MUST NOT alter reality.
 
 ---
 
-## V. RETRIEVAL OPERATIONS
+## VI. RETRIEVAL OPERATIONS
 
 Retrieval may combine:
 - tag overlap
 - vector similarity
 
 Retrieval MUST NOT:
-- prioritize emotional content
-- infer thematic importance
-- reinforce past interpretations
-- examine private ledgers (except via sealed private indexing)
+- privilege emotional content
+- privilege public visibility
+- privilege institutional sources
+- infer significance
+- enforce narrative continuity
 
 Retrieval selects candidates.
 Readers interpret.
 
 ---
 
-## VI. CONTEXT ASSEMBLY
+## VII. CONTEXT ASSEMBLY
 
 Context assembly:
 - concatenates selected text
@@ -193,20 +244,50 @@ Context assembly MUST NOT:
 - summarize
 - paraphrase
 - compress
-- editorialize
+- explain
+- bridge gaps
 
-If compression occurs, it violates the constitution.
+If context “reads better,” it is wrong.
 
 ---
 
-## VII. OUTPUT VALIDATION (FORENSIC)
+## VIII. SUPPORT FOR LATENT MANIFESTATION
+
+### 1. Principle
+
+Infrastructure does not manage time.
+
+Infrastructure may, however, record evidence that:
+- arrives later
+- appears abruptly
+- reflects ordinary real-world latency
+
+Infrastructure does not know *why* evidence arrives now.
+It only records *that* it arrives now.
+
+---
+
+### 2. Prohibitions
+
+Infrastructure MUST NOT:
+- queue future evidence
+- store pending outcomes
+- schedule manifestation
+- simulate delay
+- imply background processing
+
+Latency is a property of lived experience, not a system feature.
+
+---
+
+## IX. OUTPUT VALIDATION (FORENSIC ONLY)
 
 ### 1. Purpose
 
-Validation exists to enforce **forensic law**, not semantic correctness.
+Validation enforces **forensic law**, not meaning.
 
 It ensures output:
-- describes observable physical reality only
+- describes observable reality only
 - violates no physical continuity
 - contains no forbidden constructs
 
@@ -215,57 +296,57 @@ It ensures output:
 ### 2. Validator Authority
 
 Validation MAY be performed by:
-- deterministic checks
+- deterministic rules
 - a constrained validator LLM
 
 The validator:
-- does not add events
 - does not add facts
-- does not introduce intent
+- does not remove facts
+- does not invent causation
 - does not soften tone
 - does not narrate
 
 ---
 
-### 3. Meaning Clarification (CRITICAL)
-
-The validator MUST NOT alter the **observable physical outcome** of an output.
+### 3. Meaning Removal (CRITICAL)
 
 The validator MAY:
-- strip internal labels
-- replace internal attribution with physically observable description
+- strip internal interpretation
+- replace internal attribution with observable description
 
 Example:
-- Illegal: “She looks sad.”
-- Legal rewrite: “She looks down.”
+- Illegal: “She feels exposed.”
+- Legal rewrite: “She shifts her jacket closer around herself.”
 
-This is not considered alteration of outcome.
-Internal interpretation is discarded by design.
+This preserves outcome while discarding interpretation.
 
 ---
 
-## VIII. EXECUTION CONSTRAINTS
+## X. EXECUTION CONSTRAINTS
 
 Infrastructure processes:
-- run only in direct response to invocation
+- run only in response to invocation
 - never run in the background
 - never loop
-- never schedule future work
+- never self-trigger
 
-There is no idle processing.
+There is no idle work.
+There is no waiting state.
 
 ---
 
-## IX. PROHIBITIONS
+## XI. PROHIBITIONS
 
 Infrastructure MUST NOT:
-- interpret content
+- interpret text
 - infer emotion
-- resolve contradiction
+- infer intent
+- simulate institutions
+- simulate crowds
+- predict outcomes
 - maintain state
-- learn from history
 
-If it understands, it is illegal.
+If infrastructure “understands,” it is illegal.
 
 ---
 

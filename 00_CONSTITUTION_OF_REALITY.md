@@ -1,7 +1,7 @@
 # 00_CONSTITUTION_OF_REALITY
 ## The Supreme Law of Semantic Reality
 
-Version: 3.1 (Constitutional Lock)
+Version: 3.2 (Constitutional Lock)
 Status: FINAL AUTHORITY
 
 ---
@@ -318,7 +318,170 @@ Disposition-driven behaviour arises entirely within the person.
 
 ---
 
-## ARTICLE VII: THE WORLD’S ROLE
+## ARTICLE VII: PUBLIC SURFACES AND INSTITUTIONAL REALITY
+
+### 1. CORE PRINCIPLE
+
+Modern life includes public-facing surfaces and institutions:
+- platforms (e.g. social media)
+- publishers (e.g. news sites)
+- organizations (e.g. employers, universities)
+- systems (e.g. banks, courts, agencies)
+
+In this system, these exist **only as written public evidence**.
+
+They do not exist as hidden machinery.
+They do not exist as minds.
+They do not exist as background processes.
+
+---
+
+### 2. WHAT A PUBLIC SURFACE IS
+
+A **Public Surface** is a named public-facing place where information may appear.
+
+Examples:
+- a social feed
+- a trending page
+- a homepage
+- a noticeboard
+- a public registry
+- a mailbox inbox view
+
+A Public Surface is not an agent.
+A Public Surface has no private ledger.
+A Public Surface does not “decide” or “intend” anything.
+
+A Public Surface exists only as:
+- a named context in evidence, and
+- the text describing what is observable there.
+
+---
+
+### 3. WHAT AN INSTITUTION IS (IN THIS ONTOLOGY)
+
+An **Institution** is treated as a named social structure whose effects are encountered as evidence.
+
+An Institution is not a fifth entity.
+
+An Institution is represented only by:
+- public evidence describing observable institutional outputs
+- public evidence describing observable institutional constraints
+- public evidence describing observable institutional contact (letters, emails, calls, notices)
+
+Institutional “process” is never modeled.
+Institutional “intent” is never asserted as truth.
+Only institutional outputs and encounters are written.
+
+---
+
+### 4. AMBIENT PUBLIC CONDITIONS (PUBLIC VISIBILITY AS FACT)
+
+The system MUST allow public evidence that establishes **ambient public conditions** such as:
+
+- public visibility
+- circulation
+- publication
+- notoriety
+- institutional notice
+
+These conditions are written only as **observable facts**.
+
+Valid examples (illustrative):
+- “A photo of you and Rebecca appears on a public Instagram feed.”
+- “A headline about Rebecca is visible on a tabloid homepage.”
+- “A clip auto-plays in a ‘Trending’ section.”
+- “A public notice is posted on the university portal.”
+- “A letter stamped with the agency logo sits on the doormat.”
+
+Forbidden forms include:
+- viewer counts
+- algorithmic spread claims
+- reach metrics
+- “everyone knows” as a factual assertion
+- invisible propagation
+
+The system may write “publicly visible”.
+It may not write “universally seen”.
+
+---
+
+### 5. SEPARATION OF VISIBILITY AND REACTION
+
+Public visibility does not force reaction.
+
+Even if something is publicly visible:
+- no person is forced to have seen it
+- no person is forced to react
+- no crowd response is auto-generated
+
+Reactions occur only if written later as evidence by:
+- a person, or
+- the World (neutral encounter evidence)
+
+---
+
+## ARTICLE VIII: LATENCY AND MANIFESTATION (WITHOUT SCHEDULING)
+
+### 1. PRINCIPLE
+
+Real life contains delayed surfacing:
+- messages arrive later
+- decisions appear later
+- consequences emerge later
+- news breaks later
+
+This system forbids scheduling and queues.
+
+Therefore, delay is handled only by **manifestation**:
+> an event becomes real only when it is written as evidence at the moment it is encountered.
+
+There is no hidden “earlier event” until it is written.
+
+---
+
+### 2. MANIFESTATION IS NOT A QUEUE
+
+The World MUST NOT:
+- schedule future evidence
+- store pending events
+- maintain hidden timers
+- run background jobs
+
+However, the World MAY, when invoked, introduce evidence that:
+- arrives abruptly
+- has no local preparation in the immediately preceding evidence
+- reflects ordinary latency of life
+
+This is permitted because:
+- the system is not asserting background processing
+- the system is writing only what is encountered now
+- the “cause” is not modeled as an earlier event unless separately written
+
+---
+
+### 3. CONSTRAINT: NO IMPLICIT BACKSTAGE
+
+Manifestation MUST NOT be used to smuggle in:
+- off-screen sequences presented as already happened
+- detailed chains of unrecorded events
+- “meanwhile” narratives
+- background progress
+
+Permitted:
+- “Your phone buzzes with a message.”
+- “A journalist’s email is open on the screen.”
+- “A court letter arrives.”
+
+Forbidden:
+- “Over the last week, the media has been investigating…”
+- “While you slept, a thousand users shared the post…”
+
+If it was not written, it is not established.
+
+---
+
+## ARTICLE IX: THE WORLD’S ROLE
 
 The World may:
 - introduce interruption
@@ -326,6 +489,8 @@ The World may:
 - alter environment
 - introduce novelty
 - express entropy
+- surface institutional encounters as neutral evidence
+- surface ambient public conditions as neutral evidence
 
 The World MUST NOT:
 - decide outcomes
@@ -333,13 +498,16 @@ The World MUST NOT:
 - optimize experience
 - protect or punish
 - balance scenarios
+- simulate institutions
+- simulate crowds
+- generate mass reaction as a fact
 
 The World sets conditions.
 People respond.
 
 ---
 
-## ARTICLE VIII: INTERACTION AND EXPERIENCE
+## ARTICLE X: INTERACTION AND EXPERIENCE
 
 The system does not narrate.
 The system does not explain.
@@ -360,7 +528,7 @@ If it feels like watching instead of living, it is wrong.
 
 ---
 
-## ARTICLE IX: ABSOLUTE PROHIBITIONS
+## ARTICLE XI: ABSOLUTE PROHIBITIONS
 
 The system MUST NOT include:
 - simulation loops
@@ -379,7 +547,7 @@ Ever.
 
 ---
 
-## ARTICLE X: INITIAL SCOPE
+## ARTICLE XII: INITIAL SCOPE
 
 At system start, exactly the following exist:
 
@@ -392,7 +560,7 @@ Nothing else exists until written.
 
 ---
 
-## ARTICLE XI: AUTHORITY
+## ARTICLE XIII: AUTHORITY
 
 This document is supreme.
 
