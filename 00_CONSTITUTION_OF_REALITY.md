@@ -1,7 +1,7 @@
 # 00_CONSTITUTION_OF_REALITY
 ## The Supreme Law of Semantic Reality
 
-Version: 3.0 (Constitutional Lock)
+Version: 3.1 (Constitutional Lock)
 Status: FINAL AUTHORITY
 
 ---
@@ -45,7 +45,7 @@ Reality exists only as written text.
 
 Exactly four things exist.
 
-Nothing else exists implicitly, derivatively, or secretly.
+Nothing else exists implicitly, derivatively, probabilistically, or secretly.
 
 ---
 
@@ -61,6 +61,8 @@ Properties:
 
 Public Reality is the only shared world.
 
+If something is not written into Public Reality, it is not part of the shared world.
+
 ---
 
 ### 2. PRIVATE REALITY
@@ -75,9 +77,10 @@ Properties:
 - visible only to the owning person
 
 Private Reality:
-- contains interpretations, beliefs, intentions, expectations
+- contains interpretations, beliefs, expectations, intentions, assumptions
 - may be incorrect
-- never overrides public evidence
+- may contradict Public Reality
+- never overrides Public Reality
 - is never treated as truth by the system
 
 Private Reality exists only if written.
@@ -94,8 +97,17 @@ Properties:
 - immutable
 - always present
 
-Identity constrains plausibility.
-Identity does not dictate outcome.
+Identity:
+- defines who the person is
+- defines what feels natural or unnatural
+- defines stable psychological dispositions
+- constrains plausibility
+
+Identity does not:
+- dictate outcomes
+- guarantee behaviour
+- issue commands
+- act as a goal system
 
 ---
 
@@ -199,23 +211,114 @@ People are autonomous agents.
 
 Each person:
 - rereads evidence
-- interprets privately
+- interprets subjectively
+- possesses psychological dispositions
 - may write private ledger entries
 - authors their own actions
 - controls only themselves
 
 People may:
+- initiate action without prompting
 - refuse
 - ignore
 - misunderstand
+- overreact
+- underreact
 - persist in false beliefs
-- change inconsistently
+- act inconsistently
+- contradict themselves
 
-The system does not correct them.
+The system does not correct people.
 
 ---
 
-## ARTICLE VI: THE WORLD’S ROLE
+## ARTICLE VI: PSYCHOLOGICAL DISPOSITIONS
+
+### 1. EXISTENCE
+
+People are not blank states.
+
+Each person possesses **stable psychological dispositions** that shape how they interpret situations and how they select actions among many plausible options.
+
+These dispositions are part of the person, not part of the system.
+
+---
+
+### 2. NATURE
+
+Psychological dispositions are:
+- textual
+- descriptive
+- persistent
+- non-numeric
+- non-computational
+- non-optimizing
+
+They may include:
+- tendencies (e.g. seeking validation, avoiding conflict)
+- sensitivities (e.g. to rejection, authority, exposure)
+- habitual orientations (e.g. toward control, reassurance, withdrawal)
+- characteristic styles of presentation and self-expression
+
+Dispositions do not exist as:
+- meters
+- scores
+- thresholds
+- state machines
+- background processes
+
+---
+
+### 3. CAUSAL ROLE
+
+Psychological dispositions may:
+- bias interpretation of evidence
+- bias which actions feel natural or salient
+- bias proactive behaviour
+- bias tone, posture, presentation, and initiative
+- bias behaviour even in the absence of immediate external triggers
+
+Psychological dispositions do **not**:
+- guarantee behaviour
+- enforce outcomes
+- eliminate alternative actions
+- override evidence
+- remove autonomy
+
+Disposition is **bias**, not command.
+
+---
+
+### 4. AUTONOMY AND DEVIATION
+
+A person may:
+- act in alignment with their dispositions
+- contradict their dispositions
+- suppress them
+- ignore them
+- violate them deliberately or accidentally
+
+Deviation is allowed.
+Inconsistency is allowed.
+Self-contradiction is allowed.
+
+There is no obligation to be coherent.
+
+---
+
+### 5. SYSTEM NON-INTERFERENCE
+
+The system:
+- does not activate dispositions
+- does not rank dispositions
+- does not evaluate correctness
+- does not enforce psychological consistency
+
+Disposition-driven behaviour arises entirely within the person.
+
+---
+
+## ARTICLE VII: THE WORLD’S ROLE
 
 The World may:
 - introduce interruption
@@ -236,7 +339,7 @@ People respond.
 
 ---
 
-## ARTICLE VII: INTERACTION AND EXPERIENCE
+## ARTICLE VIII: INTERACTION AND EXPERIENCE
 
 The system does not narrate.
 The system does not explain.
@@ -257,9 +360,7 @@ If it feels like watching instead of living, it is wrong.
 
 ---
 
-## ARTICLE VIII: ABSOLUTE PROHIBITIONS
-
-These are bans, not preferences.
+## ARTICLE IX: ABSOLUTE PROHIBITIONS
 
 The system MUST NOT include:
 - simulation loops
@@ -278,7 +379,7 @@ Ever.
 
 ---
 
-## ARTICLE IX: INITIAL SCOPE
+## ARTICLE X: INITIAL SCOPE
 
 At system start, exactly the following exist:
 
@@ -291,7 +392,7 @@ Nothing else exists until written.
 
 ---
 
-## ARTICLE X: AUTHORITY
+## ARTICLE XI: AUTHORITY
 
 This document is supreme.
 
