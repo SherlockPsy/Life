@@ -1,177 +1,174 @@
 # 05_THE_CINEMA
-## Memory as Rereading, Not State
+## Memory as Rereading, Not Mechanism
 
-Version: 1.1 (Constitutional Lock)
-Status: ACTIVE
-
----
-
-## PREAMBLE: WHAT “MEMORY” MEANS HERE
-
-Memory is not storage.
-Memory is not recall.
-Memory is not a state.
-
-Memory is **evidence being reread in a new context**.
-
-The Cinema is not a mind.
-It is not an interpreter.
-It is not a judge of relevance.
-
-It is a **mechanism for surfacing past evidence alongside the present**.
+Version: 2.0 (Constitutional Lock)
+Status: AUTHORITATIVE
 
 ---
 
-## I. THE DIGITAL CORTEX AS LIBRARY
+## PREAMBLE: WHAT THE CINEMA IS
 
-All past evidence exists in the Digital Cortex.
+The Cinema is not memory.
+The Cinema is not recall.
+The Cinema is not interpretation.
 
-Nothing fades.
-Nothing weakens.
-Nothing is summarized.
+The Cinema is a **mechanism for rereading past public evidence** alongside the present.
 
-The past does not act on the present by itself.
-It must be reread.
-
----
-
-## II. THE CINEMA (THE MONTAGE MECHANISM)
-
-The Cinema is the process by which **additional past Evidence Blocks** are selected and presented to a Reader during invocation.
-
-This selection:
-- is mechanical
-- is non-authoritative
-- does not assert meaning
-- does not compute state
-
-The Cinema does not “remember.”
-It **retrieves candidates**.
+It selects text.
+It shows text.
+It explains nothing.
 
 ---
 
-## III. SELECTION PRINCIPLE (CONSTITUTIONAL)
+## CORE ASSERTION
 
-### A. Trigger Source
+> The past affects the present only when it is reread.
 
-Selection is triggered **only by the present evidence**.
+No rereading, no influence.
+
+---
+
+## I. SOURCE OF ALL MEMORY
+
+All memory originates in **Public Reality**.
+
+The Cinema does not store memories.
+It does not summarize memories.
+It does not rank memories.
+
+It retrieves **unaltered Evidence Blocks**.
+
+---
+
+## II. RETRIEVAL INPUT
+
+Retrieval is triggered **only** by the present context.
 
 The Cinema may examine:
-- objects present
-- actions occurring
-- words spoken
-- environmental conditions described
+- objects currently present
+- actions currently occurring
+- words currently spoken
+- environmental descriptions
 
 It MUST NOT examine:
-- inferred emotions
-- inferred intentions
-- private mental labels
-- internal Reader interpretations
+- inferred emotion
+- inferred intent
+- private ledger content
+- internal agent beliefs
 
 ---
 
-### B. Retrieval Basis
+## III. RETRIEVAL MECHANICS (EXHAUSTIVE)
 
-Evidence may be selected based on:
-- shared objects
-- shared locations
-- shared actions
-- semantic adjacency in language
+Exactly two retrieval aids exist.
+
+### 1. Tags (Clerical)
+
+Tags are:
+- extracted mechanically
+- concrete
+- object- or location-based
 
 Examples:
-- A cup in hand may retrieve past cup-related evidence.
-- A raised voice may retrieve past raised-voice evidence.
-- Darkness may retrieve prior darkness-related evidence.
+- `Door`
+- `Cup`
+- `Kitchen`
+- `Rain`
 
-No retrieval is justified by “mood,” “anger,” “fear,” or any internal label.
-
----
-
-## IV. NO PRIORITIZATION OF MEANING
-
-The Cinema MUST NOT:
-- rank memories by emotional importance
-- prefer “traumatic” or “happy” evidence
-- reinforce inferred states
-- create feedback loops based on internal conditions
-
-The Cinema has no concept of:
-- significance
-- trauma
-- safety
-- threat
-
-Those arise only when a Reader rereads evidence.
+Tags:
+- do not encode importance
+- do not encode meaning
+- do not encode emotion
 
 ---
 
-## V. ANCHORS (REDEFINED AND RESTRICTED)
+### 2. Vectors (Associative)
 
-Some Evidence Blocks MAY be designated as **Anchors**.
+Vectors are:
+- opaque
+- non-authoritative
+- similarity-based
 
-Anchors are not psychological constructs.
-Anchors are **explicitly marked public evidence**.
-
-Properties:
-- Anchors are designated manually or by explicit rule.
-- Anchors do not carry numeric weight.
-- Anchors do not override retrieval constraints.
-
-Effect:
-- Anchors are more likely to be included when directly relevant to present evidence.
-
-Anchors do not:
-- force recall
-- bias interpretation
-- encode meaning
-
-They only increase **availability**, not authority.
+Vectors:
+- suggest linguistic adjacency
+- assert no truth
+- assert no relevance
 
 ---
 
-## VI. THE CINEMA OUTPUT
+There are no other retrieval mechanisms.
 
-The Cinema outputs:
-- a small collection of past Evidence Blocks
+No anchors.
+No pillars.
+No significant memory class.
+No manually weighted memories.
+
+---
+
+## IV. SELECTION BEHAVIOR
+
+The Cinema:
+- selects a small number of candidate Evidence Blocks
+- does not explain selection
+- does not guarantee relevance
+
+Selection failure is allowed.
+
+Perfect recall is forbidden.
+
+---
+
+## V. PRESENTATION TO THE READER
+
+Retrieved Evidence Blocks are:
 - unmodified
 - unsummarized
 - unannotated
 
-These blocks are appended to the Reader’s Context.
+They are presented alongside the Immediate Public Evidence.
 
-They do not:
-- explain themselves
-- justify themselves
-- instruct the Reader
-
-They are simply shown.
+The Reader decides what they mean.
 
 ---
 
-## VII. DISTORTION IS A READER EFFECT
+## VI. SUBJECTIVE EFFECTS
 
-Any distortion, bias, or emotional coloring arises **inside the Reader**, not in the Cinema.
+Any emotional impact, bias, or distortion arises:
+- inside the Reader
+- during rereading
 
-The same montage:
-- may harden one Reader
-- may soften another
-- may be ignored entirely
+The Cinema does not:
+- reinforce moods
+- favor themes
+- bias retrieval
 
-The system does not correct this.
-The system records what follows.
+If the Reader feels “stuck in the past,” that is authored behavior, not system logic.
 
 ---
 
-## VIII. FAILURE MODES (INTENTIONAL)
+## VII. FAILURE MODES (INTENTIONAL)
 
 The Cinema allows:
-- irrelevant memories
-- missed memories
-- awkward recall
-- incomplete context
+- irrelevant recall
+- missed recall
+- repetition
+- awkward resurfacing
 
-Perfect recall is forbidden.
-Human-like limitation is required.
+These are not bugs.
+They preserve realism.
+
+---
+
+## VIII. PROHIBITIONS
+
+The Cinema MUST NOT:
+- rank memories by importance
+- tag memories as emotional
+- create narrative arcs
+- reinforce identity traits
+- summarize history
+
+If it interprets, it violates the constitution.
 
 ---
 

@@ -1,8 +1,8 @@
 # 00_CONSTITUTION_OF_REALITY
 ## The Supreme Law of Semantic Reality
 
-Version: 2.0 (Constitutional Lock)
-Status: FINAL
+Version: 3.0 (Constitutional Lock)
+Status: FINAL AUTHORITY
 
 ---
 
@@ -11,18 +11,19 @@ Status: FINAL
 This system is not a simulator.
 It is not a game.
 It is not a tool.
-It is not a storytelling engine.
+It is not a narrative engine.
 
 It is a **semantic reality**.
 
 Nothing is calculated.
-Nothing is optimised.
+Nothing is optimized.
 Nothing is balanced.
 Nothing is reasoned about in the background.
 
-The system records text.
-The system rereads text.
-The system produces new text when invoked.
+The system:
+- records text
+- rereads text
+- writes text when invoked
 
 Nothing else happens.
 
@@ -46,68 +47,71 @@ Exactly four things exist.
 
 Nothing else exists implicitly, derivatively, or secretly.
 
-### 1. Public Reality
+---
+
+### 1. PUBLIC REALITY
 
 Public Reality consists of **Exposed Evidence Blocks**.
 
 Properties:
-- Text only
-- Append-only
-- Immutable
-- Globally visible
+- text only
+- append-only
+- immutable
+- globally visible
 
 Public Reality is the only shared world.
 
 ---
 
-### 2. Private Reality
+### 2. PRIVATE REALITY
 
-Each person may maintain a **private ledger**.
+Each person may maintain a **Private Ledger**.
 
 Properties:
-- Text only
-- Epistemically sealed
-- Non-authoritative
-- Invisible to others
-- Never promoted to public truth
+- text only
+- append-only
+- epistemically sealed
+- persistent across invocations
+- visible only to the owning person
 
-Private reality may contain interpretation, belief, memory, or confusion.
-It never overrides evidence.
+Private Reality:
+- contains interpretations, beliefs, intentions, expectations
+- may be incorrect
+- never overrides public evidence
+- is never treated as truth by the system
+
+Private Reality exists only if written.
 
 ---
 
-### 3. Identity
+### 3. IDENTITY
 
-Each person has a fixed **Identity Core**.
+Each person has a fixed **Identity Constitution**.
 
 Properties:
-- Textual
-- Static
-- Constitutional
-- Always present when that person acts
+- textual
+- static
+- immutable
+- always present
 
-Identity constrains behaviour.
-Identity does not dictate outcomes.
+Identity constrains plausibility.
+Identity does not dictate outcome.
 
 ---
 
-### 4. The World
+### 4. THE WORLD
 
-The World is an **orchestrator**.
+The World is a **non-subjective orchestrator**.
 
 The World:
-- injects new evidence
-- introduces timing
-- causes collision
-- introduces interruption
-- allows entropy and novelty
+- rereads public evidence
+- has no private ledger
+- has no goals
+- has no preferences
+- has no learning
+- has no memory beyond public evidence
 
-The World does not think.
-The World does not decide.
-The World does not optimise.
-The World does not learn.
-The World does not favour outcomes.
-The World does not violate physics.
+The World writes evidence only when invoked.
 
 There is no fifth entity.
 
@@ -118,38 +122,48 @@ There is no fifth entity.
 There is one timeline.
 
 Properties:
-- Irreversible
-- Singular
-- Append-only
+- singular
+- irreversible
+- append-only
 
-### 1. Advancement
+---
 
-Time advances only when the system is running and evidence is written.
+### 1. TIME ADVANCEMENT
 
-No evidence → no time passage.
+Time advances only when **new public evidence is written**.
 
-### 2. Pause
+If no evidence is written, no time passes.
 
-When paused:
-- Everything is frozen
-- Nothing happens off-screen
-- No queues advance
-- No events are prepared
+---
+
+### 2. PAUSE
+
+When the system is paused:
+- nothing moves
+- nothing queues
+- nothing decays
+- nothing progresses
 
 Pause is absolute.
 
-### 3. Resume
+---
+
+### 3. RESUME
 
 On resume:
-- The world continues from the exact same instant
-- No hidden time has passed
-- No deferred consequences are released
+- the same instant continues
+- no hidden time has passed
+- no deferred events occur
 
-### 4. Events
+---
 
-Unexpected events are generated **only when they occur**.
+### 4. EVENTS
 
-If an event is queued, scheduled, or pre-written, it is illegal.
+Events occur only when written.
+
+Queued events are forbidden.
+Scheduled events are forbidden.
+Future evidence is forbidden.
 
 ---
 
@@ -172,14 +186,10 @@ Memory is not storage.
 Memory is not recall.
 Memory is not state.
 
-Memory works only by **rereading selected past evidence**.
+Memory works only by **rereading past public evidence**.
 
-- No variables
-- No counters
-- No summaries as truth
-
-Absence of evidence is meaningful.
-The system does not label absence.
+Private ledgers preserve subjective continuity.
+They do not define truth.
 
 ---
 
@@ -188,57 +198,79 @@ The system does not label absence.
 People are autonomous agents.
 
 Each person:
-- is conscious and self-aware
+- rereads evidence
+- interprets privately
+- may write private ledger entries
+- authors their own actions
 - controls only themselves
-- has no numeric state
-- has no meters
-- has no hidden controller
 
-They may:
+People may:
 - refuse
 - ignore
 - misunderstand
-- be wrong
-- change over time
+- persist in false beliefs
+- change inconsistently
 
-No system component corrects them.
+The system does not correct them.
 
 ---
 
-## ARTICLE VI: INTERACTION AND EXPERIENCE
+## ARTICLE VI: THE WORLD’S ROLE
+
+The World may:
+- introduce interruption
+- cause collision
+- alter environment
+- introduce novelty
+- express entropy
+
+The World MUST NOT:
+- decide outcomes
+- influence intent
+- optimize experience
+- protect or punish
+- balance scenarios
+
+The World sets conditions.
+People respond.
+
+---
+
+## ARTICLE VII: INTERACTION AND EXPERIENCE
 
 The system does not narrate.
-It does not explain.
-It does not report.
+The system does not explain.
+The system does not report.
 
 It **acts**.
 
-Output is lived experience:
+Output is:
 - continuous
-- perceptual
 - embodied
+- perceptual
+- lived
+
+Interruptions may occur mid-sentence.
+Silence is valid.
 
 If it feels like watching instead of living, it is wrong.
 
-Interruptions may occur mid-sentence.
-Silence is allowed.
-
 ---
 
-## ARTICLE VII: ABSOLUTE PROHIBITIONS
+## ARTICLE VIII: ABSOLUTE PROHIBITIONS
 
 These are bans, not preferences.
 
 The system MUST NOT include:
-- debugging tools
+- simulation loops
+- schedulers
+- background processing
 - dashboards
-- audit trails
-- operator views
+- debug tools
+- audit views
 - meta queries
 - observer modes
-- game logic
 - state machines
-- scenario systems
 - variables standing in for life
 
 There is no backstage.
@@ -246,17 +278,26 @@ Ever.
 
 ---
 
-## ARTICLE VIII: INITIAL SCOPE
+## ARTICLE IX: INITIAL SCOPE
 
 At system start, exactly the following exist:
 
 - George [full name]
 - Rebecca [full name]
-- A shared house
-- Public evidence that Rebecca has just moved in
+- a shared house
+- public evidence that Rebecca has just moved in
 
-No other people exist.
-No external world exists beyond what is written.
+Nothing else exists until written.
+
+---
+
+## ARTICLE X: AUTHORITY
+
+This document is supreme.
+
+If any other document conflicts with this one:
+- this document prevails
+- the conflicting text is invalid
 
 ---
 

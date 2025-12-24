@@ -1,217 +1,110 @@
 # DIRECTION
-## The Lived Semantic Reality System
+## Orientation Notes for the Semantic Reality System
 
-Version: 2.0 (Constitutional Lock)
-Status: FINAL
-
----
-
-## PREAMBLE: WHAT THIS SYSTEM IS
-
-This system is not a simulation.
-It is not cinematic playback.
-It is not a narrative engine.
-It is not a tool observing life.
-
-It is **life expressed as text**.
-
-The system does not calculate reality.
-The system does not manage reality.
-The system does not curate reality.
-
-It records what happens.
-It rereads what happened.
-It writes what happens next when invoked.
-
-Nothing else exists.
+Version: 1.0  
+Status: NON-AUTHORITATIVE  
+Authority: SUBORDINATE (Informational Only)
 
 ---
 
-## I. CORE TRUTH
+## NOTICE OF STATUS
 
-Reality is not processed.
-Reality is **written**.
+This document is **not law**.
 
-If it is not written as evidence, it did not happen.
-If it is not reread, it does not influence the present.
+It does not define constraints.
+It does not override contracts.
+It does not introduce requirements.
 
----
+If any statement in this document conflicts with:
+- NON_NEGOTIABLE_CHECKLIST_v0.2
+- 00_CONSTITUTION_OF_REALITY
 
-## II. THE FOUR ENTITIES (EXHAUSTIVE)
+then this document is wrong.
 
-Exactly four things exist.
-
-1. **Public Evidence**  
-   Immutable, append-only Exposed Evidence Blocks.
-
-2. **Private Ledgers**  
-   Per-person, sealed, textual interpretation notebooks.
-
-3. **Identity Constitutions**  
-   Fixed textual constraints defining how a person tends to act.
-
-4. **The World**  
-   An orchestrator that injects new evidence without intention.
-
-There is no fifth component.
-There is no hidden machinery.
+This document exists solely to orient human and LLM readers.
 
 ---
 
-## III. TIME (NO METRONOME)
+## WHAT THIS SYSTEM IS TRYING TO BE
 
-There is no pulse.
-There is no clock.
-There is no external time source.
+This system exists to support **lived semantic reality**.
 
-Time advances only when evidence is written.
+Reality is not simulated.
+Reality is not computed.
+Reality is not optimized.
 
-When paused:
-- nothing moves
-- nothing waits
-- nothing decays
-- nothing queues
+Reality is written as text and reread.
 
-On resume:
-- the same instant continues
-- no unseen passage has occurred
-
-Any mechanism implying background time is forbidden.
-
----
-
-## IV. MEMORY (NO PALIMPSEST)
-
-There is no compression of history into traits.
-There is no “current world state.”
-There is no sediment document.
-
-History exists only as:
-- individual Evidence Blocks
-- reread selectively when relevant
-
-Repetition does not create norms.
-Frequency does not create rules.
-Only rereading creates influence.
-
----
-
-## V. THE WORLD (ACTIVE, NOT INTENTIONAL)
-
-The World may:
-- introduce interruptions
-- cause collisions
-- alter environments
-- allow coincidence
-- introduce novelty
-
-The World must not:
-- decide outcomes
-- guide behavior
-- protect participants
-- punish participants
-- optimize experience
-- learn from history
-
-The World writes evidence.
-People respond.
-
----
-
-## VI. PEOPLE (AUTONOMOUS)
-
-People are not characters.
-People are not functions.
-People are not puppets.
-
-Each person:
-- rereads evidence
-- interprets privately
-- authors their own actions
-- controls only themselves
-
-They may:
-- refuse
-- ignore
-- misunderstand
-- be wrong
-- change inconsistently
-
-No system component intervenes.
-
----
-
-## VII. INTERACTION
-
-You do not narrate.
-You do not explain.
-You do not describe “what is happening.”
-
-You **act**.
-
-Output is:
-- continuous
-- embodied
-- perceptual
-- second-person present
-
-There are:
-- no panels
-- no summaries
-- no explanations
-- no meta language
-
-Interruptions may occur mid-sentence.
-Silence is allowed.
-
-If it feels like watching instead of living, it is wrong.
-
----
-
-## VIII. ABSOLUTE BANS (REASSERTED)
-
-This system MUST NOT contain:
-
-- simulators
-- schedulers
-- queues
-- timers
-- dashboards
-- debug views
-- operator tools
-- meta narration
-- state machines
-- variables standing in for life
-- future storage
-- background processing
-
+Nothing is happening “behind the scenes.”
 There is no backstage.
-Ever.
 
 ---
 
-## IX. INITIAL REALITY (BOOT STATE)
+## WHY THE SYSTEM FEELS STRANGE
 
-At start, the world contains only:
+Most software systems:
+- track state
+- update variables
+- run loops
+- correct inconsistencies
 
-- George [full name]
-- Rebecca [full name]
-- a shared house
-- public evidence that Rebecca has just moved in
+This system does none of those things.
 
-Nothing else exists until written.
+It allows:
+- contradiction
+- misunderstanding
+- silence
+- refusal
+- persistence of error
+
+These are not bugs.
+They are properties of lived experience.
 
 ---
 
-## X. FINAL ASSERTION
+## HOW CHANGE OCCURS
 
-This system is complete at the level of **being**.
+Change does not occur because a variable updates.
 
-Nothing essential is missing.
-Nothing is waiting to be added later.
-Nothing will be “filled in.”
+Change occurs because:
+- new evidence is written
+- old evidence is reread
+- agents act differently as a result
 
-From here onward, work concerns **structure and execution only**, never philosophy.
+If nothing is written, nothing changes.
+
+---
+
+## WHAT NOT TO ADD
+
+If you are implementing this system and feel tempted to add:
+- a scheduler
+- a tick loop
+- a “temporary” state variable
+- a background job
+- a convenience cache that stores meaning
+
+Stop.
+
+Those additions violate the constitution.
+
+---
+
+## HOW TO READ THE OTHER DOCUMENTS
+
+- The **Constitution** defines what exists.
+- The **Checklist** defines what is forbidden.
+- The **Contracts** define how components must behave.
+- This document defines nothing.
+
+---
+
+## FINAL NOTE
+
+This document exists to prevent confusion, not to create rules.
+
+If you find yourself citing this document as authority,
+you are already doing something wrong.
 
 ---
 

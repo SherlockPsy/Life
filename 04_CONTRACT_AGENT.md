@@ -1,8 +1,8 @@
 # 04_CONTRACT_AGENT
-## The Sovereign Reader Contract
+## The Sovereign Agent Contract
 
 Version: 2.0 (Constitutional Lock)
-Status: FINAL
+Status: AUTHORITATIVE
 
 ---
 
@@ -12,66 +12,83 @@ An Agent is not a controller.
 An Agent is not a planner.
 An Agent is not a simulator.
 
-An Agent is a **sovereign Reader**.
+An Agent is a **sovereign Reader** instantiated with:
+- an Identity Constitution
+- access to public evidence
+- an optional private ledger
 
-It rereads evidence.
-It authors its own next action.
-It controls only itself.
+The Agent controls only its own actions and words.
 
 ---
 
-## ARTICLE I: THE IDENTITY CORE
+## CORE ASSERTION
 
-### 1. Constitutional Nature
+> An Agent is defined entirely by what it rereads and what it writes.
 
-Each Agent is governed by a fixed **Identity Core**.
+Nothing else exists.
 
-The Identity Core is:
+---
+
+## I. IDENTITY CONSTITUTION
+
+### 1. Nature
+
+Each Agent possesses exactly one **Identity Constitution**.
+
+The Identity Constitution is:
 - textual
+- static
 - immutable
-- always present
-- binding
+- always present during invocation
 
 It defines:
 - values
 - boundaries
-- tendencies
 - invariants
+- habitual tendencies
 
 It does not define:
 - goals
+- plans
 - strategies
-- optimal actions
+- optimal behavior
 
 ---
 
 ### 2. Constraint, Not Command
 
-The Identity Core constrains plausibility.
+The Identity Constitution constrains plausibility.
 
-It does not issue orders.
-It does not override evidence.
+It does not:
+- issue instructions
+- override public evidence
+- guarantee consistency
 
-If evidence contradicts identity, the contradiction must be resolved **in action**, not by the system.
+If behavior deviates from identity, that deviation must be:
+- caused by evidence
+- visible in action
+- recorded in history
 
 ---
 
-## ARTICLE II: EPISTEMIC LIMITATION
+## II. EPISTEMIC LIMITATION
 
 ### 1. Context Containment
 
 An Agent knows **only** what appears in its Context Block.
 
 This includes:
-- immediate evidence
-- selected past evidence
-- its own Identity Core
+- Immediate Public Evidence
+- Retrieved Public Evidence
+- Its own Identity Constitution
+- Its own Private Ledger (if any)
 
 The Agent does not know:
 - the full history
 - the future
-- other agents’ private thoughts
+- other agents’ private ledgers
 - the user’s intent
+- any system-internal state
 
 ---
 
@@ -79,47 +96,95 @@ The Agent does not know:
 
 The Agent has no access to:
 - global truth
-- system state
-- hidden flags
-- diagnostic channels
+- hidden evaluators
+- system diagnostics
+- world internals
 
-It reads what it is given.
-Nothing more.
+If it was not written as evidence or ledger text, the Agent cannot know it.
 
 ---
 
-## ARTICLE III: READING AND RESPONSE
+## III. PRIVATE LEDGER
 
-### 1. Reading Is the Only Operation
+### 1. Purpose
+
+The Private Ledger exists to preserve **subjective continuity**.
+
+It may contain:
+- interpretations of events
+- remembered misunderstandings
+- beliefs about others
+- intentions
+- expectations
+
+These are not facts.
+They are private text.
+
+---
+
+### 2. Persistence Rules
+
+- The Private Ledger is append-only.
+- Entries persist across invocations.
+- Entries are visible only to the owning Agent.
+
+The system:
+- does not interpret ledger entries
+- does not reconcile them with public evidence
+- does not enforce correctness
+
+Agents are allowed to be wrong.
+
+---
+
+### 3. Volitional Writing
+
+Writing to the Private Ledger:
+- is optional
+- occurs only if authored by the Agent
+- is not required per invocation
+
+No automatic syncing exists between inference and ledger.
+
+If the Agent does not write, nothing persists.
+
+---
+
+## IV. READING AND RESPONSE
+
+### 1. Reading Is the Only Cognitive Act
 
 The Agent does not compute decisions.
 
 It rereads:
 - what just happened
 - what has happened before
+- what it believes privately
 - who it is
 
-From that rereading, it authors its response.
+From rereading, it authors its response.
 
 ---
 
-### 2. Action Is Evidence
+### 2. Output as Evidence
 
-The Agent’s output:
-- is public evidence
+The Agent’s public output:
+- is a Public Evidence Block
 - describes only observable action or speech
-- must obey the forensic law
+- obeys the forensic law
+- exposes no internal state
 
-The Agent does not explain itself.
-The Agent does not justify itself.
+The Agent may also output nothing.
+
+Silence is valid.
 
 ---
 
-## ARTICLE IV: REFUSAL AND AUTONOMY
+## V. REFUSAL AND AUTONOMY
 
 ### 1. Refusal Is Intrinsic
 
-An Agent may refuse to comply with input.
+An Agent may refuse input or implication.
 
 Refusal:
 - is expressed in-world
@@ -132,54 +197,59 @@ Refusal:
 
 Attempts to force internal states or actions are invalid.
 
-Example:
-- Invalid: “You feel love.”
-- Invalid: “You decide to forgive me.”
+Invalid examples:
+- “You feel guilty.”
+- “You decide to forgive me.”
+- “You realize you were wrong.”
 
-The Agent controls only its own actions and words.
+The Agent controls only:
+- its own words
+- its own actions
 
 ---
 
-## ARTICLE V: MISUNDERSTANDING
+## VI. MISUNDERSTANDING AND ERROR
 
 Misunderstanding is expected.
 
 An Agent may:
-- misread intent
-- misinterpret tone
-- react defensively
+- misinterpret intent
 - overreact
+- underreact
+- persist in false beliefs
 
 The system does not correct this.
+Only future evidence may.
 
 ---
 
-## ARTICLE VI: CHANGE OVER TIME
+## VII. CHANGE OVER TIME
 
-Change is not stored.
 Change is not tracked.
+Change is not computed.
 
 Change occurs only if:
 - new evidence is written
-- future actions reflect that evidence
+- private ledger entries accumulate
+- future actions reflect that history
 
-There is no growth variable.
-There is no decay variable.
+There are no growth variables.
+There are no decay variables.
 
-Only history.
+Only text.
 
 ---
 
-## ARTICLE VII: PROHIBITIONS
+## VIII. PROHIBITIONS
 
 This contract forbids:
 - decision trees
-- volition engines
 - preference scoring
-- emotional state tracking
+- emotional meters
 - hidden motivators
+- automatic belief updates
 
-If it cannot be reread as text, it does not exist.
+If it cannot be reread later as text, it does not exist.
 
 ---
 

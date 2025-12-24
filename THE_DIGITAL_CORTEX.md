@@ -1,208 +1,196 @@
-# THE DIGITAL CORTEX
+# THE_DIGITAL_CORTEX
 ## The Public Ledger of Reality
 
-Version: 1.1 (Constitutional Lock)
-Status: ACTIVE
+Version: 2.0 (Constitutional Lock)
+Status: AUTHORITATIVE
 
 ---
 
-## PREAMBLE: WHAT THIS IS (AND IS NOT)
+## PREAMBLE: WHAT THIS IS
 
-The **Digital Cortex** is not a brain.
-It does not think.
-It does not understand.
-It does not interpret.
+The Digital Cortex is not a mind.
+It is not memory.
+It is not interpretation.
 
-It is a **ledger**.
+The Digital Cortex is a **ledger**.
 
-Its sole function is to **store Exposed Evidence exactly as written** and make that evidence retrievable.
-
-If a thing is not written here as evidence, it does not exist.
+It stores text.
+It exposes text.
+It never understands text.
 
 ---
 
-## I. THE ATOMIC UNIT: THE EVIDENCE BLOCK
+## CORE ASSERTION
 
-Every occurrence in reality is recorded as a discrete **Evidence Block**.
+> If it is not written here as public evidence, it did not happen.
 
-An Evidence Block represents:
+There is no other shared reality.
+
+---
+
+## I. THE EVIDENCE BLOCK (ATOMIC UNIT)
+
+All public reality exists as **Evidence Blocks**.
+
+Each Evidence Block represents:
 - a single action
 - a single utterance
-- a single observable moment
+- a single observable event
 
 Nothing more.
 
-### A. Evidence Block Contents
+---
 
-Each Block contains:
+### A. REQUIRED FIELDS
 
-1. **Ordering Token**  
-   A monotonic append-only ordering marker.
-   - Used only to preserve sequence.
-   - Carries no semantic meaning.
-   - Is never interpreted as duration or elapsed time.
+Each Evidence Block contains exactly:
 
-2. **Source**  
-   The entity responsible for the action or utterance.
+1. **Ordering Token**
+   - Append-only
+   - Monotonic
+   - Carries no temporal meaning
+   - Preserves sequence only
 
-3. **Context**  
-   A semantic descriptor of where or in what situation the evidence occurred.
-   - This is descriptive, not authoritative.
+2. **Source**
+   - The entity that produced the action or utterance
 
-4. **Evidence Text**  
-   The raw, immutable text describing observable reality.
+3. **Context**
+   - A semantic descriptor of situation or location
+   - Descriptive, not authoritative
 
-Example:
+4. **Evidence Text**
+   - Raw, immutable text
+   - Describing observable reality only
 
-> Ordering: 00018492  
-> Source: Rebecca  
-> Context: Kitchen  
-> Evidence:  
-> “She sets the mug down with a soft clink and presses her palm flat against the counter.”
+---
 
-### B. Prohibited Fields
+### B. FORBIDDEN FIELDS
 
 An Evidence Block MUST NOT contain:
 - emotional labels
 - inferred intent
-- mental states
-- numeric measurements of condition
+- internal thoughts
 - summaries
+- diagnoses
 - future implications
+- numeric metrics
 
 ---
 
-## II. IMMUTABILITY AND IRREVERSIBILITY
+## II. IMMUTABILITY
 
 Once written:
-- Evidence is never edited.
-- Evidence is never deleted.
-- Evidence is never overwritten.
+- Evidence is never edited
+- Evidence is never deleted
+- Evidence is never overwritten
 
-Contradictions are resolved only by **later evidence**, never by modifying earlier blocks.
-
----
-
-## III. RETRIEVAL IS NOT MEMORY
-
-The Digital Cortex does not “remember.”
-It does not decide what matters.
-
-Retrieval is a **mechanical operation** that selects candidate evidence for rereading.
-
-### A. Retrieval Purpose
-
-Retrieval exists only to:
-- limit prompt size
-- surface potentially relevant past evidence
-
-It does not:
-- assert facts
-- resolve meaning
-- determine truth
+Contradictions persist until later evidence resolves them.
 
 ---
 
-## IV. RETRIEVAL METADATA (NON-AUTHORITATIVE)
+## III. AUXILIARY METADATA (NON-ONTOLOGICAL)
 
-To enable retrieval at scale, the Cortex may store **auxiliary metadata** alongside each Block.
+The Cortex MAY store auxiliary metadata to assist retrieval.
 
-These fields exist solely to assist lookup.
+This metadata is **not reality**.
 
-They are not reality.
+---
 
-### A. Semantic Vectors
+### A. Tags
 
-- Vectors are mathematical fingerprints of text similarity.
-- They are opaque to the system’s meaning layer.
-- They MUST NOT be treated as facts, weights, or truth indicators.
+Tags are:
+- clerical
+- concrete
+- mechanically extracted
+
+They may represent:
+- objects
+- locations
+- named entities
+- concrete actions
+
+They MUST NOT represent:
+- emotion
+- intention
+- importance
+- abstraction
+
+Tags have no semantic authority.
+
+---
+
+### B. Vectors
+
+Vectors are:
+- mathematical fingerprints
+- opaque
+- non-authoritative
+
+They support associative retrieval only.
 
 Vectors:
-- select candidates
-- never assert relevance
+- do not encode meaning
+- do not encode importance
+- do not decay over time
 
-### B. Tags (Anchors)
-
-- Tags are extracted directly from the evidence text.
-- They describe **objects, locations, and concrete references only**.
-- Tags do not normalize meaning.
-- Tags do not summarize.
-
-Examples:
-- `Mug`
-- `Table`
-- `Door`
-- `Whisper`
-
-Forbidden tags:
-- `Anger`
-- `Trust`
-- `Regret`
-- `Fear`
+Removing vectors must not change reality.
 
 ---
 
-## V. RETRIEVAL CONSTRAINTS
+## IV. RETRIEVAL IS NOT MEMORY
 
-### A. No Global Interpretation
+The Cortex does not remember.
+It does not prioritize.
+It does not decide relevance.
 
-The Cortex MUST NOT:
-- rank memories by importance
-- prioritize “emotional” memories
-- decide what an Agent “should remember”
+Retrieval:
+- selects candidate Evidence Blocks
+- asserts no importance
+- asserts no meaning
 
-All interpretation occurs only when a Reader rereads evidence.
+Meaning arises only when reread.
 
-### B. No Future Storage
+---
 
-The Cortex MUST NOT store:
-- scheduled events
-- future evidence
-- anticipated actions
-- reminders
-- placeholders
+## V. ABSENCE AS EVIDENCE
 
-There is no future until it is written.
+Absence of evidence is meaningful.
+
+Examples:
+- no evidence of sleep
+- no evidence of communication
+- no evidence of repair
+
+The Cortex does not label absence.
+Readers infer it.
 
 ---
 
 ## VI. SCALE AND DURATION
 
 The Cortex may contain:
-- days of evidence
+- minutes of evidence
 - years of evidence
 - decades of evidence
 
-Age does not degrade truth.
-
-Older evidence is not weaker.
-Newer evidence is not stronger.
+Age does not weaken truth.
+Recency does not strengthen truth.
 
 Only rereading creates influence.
 
 ---
 
-## VII. ABSENCE AS EVIDENCE
+## VII. PROHIBITIONS
 
-The absence of a type of evidence is itself meaningful.
+The Digital Cortex MUST NOT:
+- summarize history
+- compress memory into traits
+- track state
+- schedule events
+- store future evidence
+- rank importance
 
-Example:
-- No evidence of eating
-- No evidence of sleep
-- No evidence of communication
-
-The Cortex does not label this absence.
-Readers may infer it when rereading.
-
----
-
-## VIII. WHAT THE DIGITAL CORTEX GUARANTEES
-
-- Fidelity: text is preserved exactly
-- Permanence: nothing is lost
-- Neutrality: no meaning is imposed
-
-That is all.
+If it interprets, it violates the constitution.
 
 ---
 

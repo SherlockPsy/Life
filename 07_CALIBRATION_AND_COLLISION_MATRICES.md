@@ -1,8 +1,8 @@
 # 07_COLLISION_AND_FRICTION
 ## Interaction Without Metrics
 
-Version: 1.1 (Constitutional Lock)
-Status: ACTIVE
+Version: 2.0 (Constitutional Lock)
+Status: AUTHORITATIVE
 
 ---
 
@@ -12,13 +12,21 @@ Interaction is not force.
 Interaction is not calculation.
 Interaction is not resolution.
 
-Interaction is the **collision of written evidence with an identity that rereads it**.
+Interaction is the **collision of written public evidence with an Agent that rereads it**.
 
 There are no meters.
 There are no intensities.
 There are no weights.
 
 Only text meets text.
+
+---
+
+## CORE ASSERTION
+
+> Interaction exists only when evidence is reread and answered with writing.
+
+Nothing else qualifies.
 
 ---
 
@@ -37,40 +45,48 @@ There is no distinction between:
 - “weak” input
 - “emotional” input
 
-Those distinctions arise only during rereading.
+Such distinctions arise only during rereading by Agents.
 
 ---
 
 ## II. COLLISION DEFINED
 
 A collision occurs when:
-- new evidence is written
-- an identity rereads that evidence
+- new public evidence is written
+- an Agent rereads that evidence
 
-Nothing else qualifies as interaction.
+Rereading includes:
+- the present evidence
+- relevant past public evidence
+- the Agent’s own private ledger (if any)
+- the Agent’s Identity Constitution
 
-The system does not evaluate impact.
-The system does not measure effect.
-The system does not assign importance.
+Nothing else constitutes interaction.
+
+The system does not:
+- evaluate impact
+- measure effect
+- assign importance
 
 ---
 
 ## III. RESISTANCE OF IDENTITY
 
-Each Reader is constrained by its **Identity Constitution**.
+Each Agent is constrained by its **Identity Constitution**.
 
-When rereading evidence, a Reader may:
+When rereading evidence, an Agent may:
 - comply
 - ignore
 - refuse
 - misinterpret
 - escalate
+- withdraw
 
 These outcomes are not computed.
-They are authored by the Reader’s rereading of:
-- the new evidence
-- the supplied past evidence
-- its immutable constitution
+They are authored by the Agent’s rereading of:
+- public evidence
+- private ledger entries
+- identity constraints
 
 The system does not intervene.
 
@@ -79,29 +95,30 @@ The system does not intervene.
 ## IV. MISUNDERSTANDING IS PRIMARY
 
 The system explicitly assumes:
-- sent meaning ≠ received meaning
+
+> sent meaning ≠ received meaning
 
 Evidence is always ambiguous.
-Readers fill gaps privately.
+Agents fill gaps privately.
 
 Example:
 - Evidence: “He says, ‘I’m just trying to help.’”
-- One Reader rereads it as reassurance.
+- One Agent rereads it as reassurance.
 - Another rereads it as control.
 
-Both are valid.
-Neither is corrected.
+Both interpretations may persist privately.
+Neither is corrected by the system.
 
 ---
 
 ## V. ESCALATION AND DECAY
 
 Escalation occurs when:
-- Readers write new evidence that increases tension.
+- Agents write new evidence that increases tension.
 
 Decay occurs when:
-- Readers write evidence that diffuses tension.
-- or no evidence is written.
+- Agents write evidence that diffuses tension
+- or no evidence is written
 
 There is no automatic calming.
 There is no automatic worsening.
@@ -126,20 +143,23 @@ There is only what was written next.
 
 ---
 
-## VII. WORLD INTERVENTION (LIMITED)
+## VII. WORLD INTERVENTION (INVOCATION-BOUND)
 
 The World may introduce:
 - interruption
 - coincidence
 - environmental change
+- entropy
 
-The World MUST NOT:
-- respond to emotional intensity
-- correct misunderstandings
-- guide outcomes
-- protect participants
+The World:
+- acts only when invoked
+- never acts in the background
+- never responds to emotional intensity
+- never corrects misunderstanding
+- never guides outcomes
+- never protects participants
 
-World actions are written as neutral evidence.
+World actions are written only as neutral public evidence.
 
 ---
 
@@ -159,15 +179,16 @@ They are consequences of rereading.
 
 ## IX. WHAT THIS DOCUMENT FORBIDS
 
-- Metrics
-- Forces
-- Velocities
-- Weights
-- Emotional scoring
-- Punctuation analysis
-- Intent classification
+This document forbids:
+- metrics
+- forces
+- velocities
+- weights
+- emotional scoring
+- punctuation analysis
+- intent classification
 
-If it cannot be written as evidence, it does not exist.
+If it cannot be written as evidence and reread later, it does not exist.
 
 ---
 

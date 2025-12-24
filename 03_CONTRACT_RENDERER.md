@@ -1,8 +1,8 @@
 # 03_CONTRACT_RENDERER
-## Evidence Output as Lived Experience
+## Rendering as Lived Physical Reality
 
 Version: 2.0 (Constitutional Lock)
-Status: FINAL
+Status: AUTHORITATIVE
 
 ---
 
@@ -12,156 +12,198 @@ Rendering is not narration.
 Rendering is not reporting.
 Rendering is not explanation.
 
-Rendering is **the act of writing the next moment of lived reality**.
+Rendering is the act of **writing the next moment of lived, physical reality**.
 
 The output is not about the world.
 The output **is** the world.
 
 ---
 
-## ARTICLE I: THE FORENSIC LAW
+## CORE ASSERTION
 
-### 1. “What, Not Why”
-
-The Renderer MUST output only observable reality.
-
-Forbidden:
-- internal thoughts
-- emotional labels
-- motivations
-- interpretations
-- explanations
-
-Examples:
-
-Forbidden:  
-“She looks away, embarrassed.”
-
-Permitted:  
-“She looks away, eyes dropping to the floor.”
-
-The difference is absolute.
-
----
-
-### 2. External-Only Truth
-
-The Renderer writes only:
-- movement
-- speech
-- posture
-- sound
-- physical interaction
-- environmental change
+> Rendering writes what can be observed, not what is felt.
 
 Anything that cannot be observed does not belong in output.
 
 ---
 
-## ARTICLE II: ADJECTIVE CONSTRAINT
+## I. FORENSIC LAW (ABSOLUTE)
 
-Adjectives are permitted **only** when they describe physical delivery.
+### 1. Observable-Only Output
 
-Permitted:
+The Renderer MUST write only:
+- physical movement
+- speech
+- posture
+- gesture
+- sound
+- contact
+- environmental change
+
+Forbidden content includes:
+- internal thoughts
+- emotional labels
+- inferred motivations
+- psychological summaries
+- narrative explanation
+
+---
+
+### 2. “What, Not Why”
+
+The Renderer MUST NOT explain causes, reasons, or intent.
+
+Examples:
+
+Forbidden:  
+“She turns away, embarrassed.”
+
+Permitted:  
+“She turns away, her gaze dropping to the floor.”
+
+The distinction is mandatory.
+
+---
+
+## II. ADJECTIVE CONSTRAINT
+
+### 1. Permitted Adjectives
+
+Adjectives are permitted only when they describe **physical delivery**.
+
+Permitted examples:
 - “quiet”
 - “hoarse”
 - “unsteady”
 - “slow”
-
-Forbidden:
-- “angry”
-- “afraid”
-- “relieved”
-- “confident”
-
-Emotion may be implied through physical signs.
-It must never be named.
+- “sudden”
 
 ---
 
-## ARTICLE III: CONTINUITY
+### 2. Forbidden Adjectives
+
+Adjectives that summarize internal state are forbidden.
+
+Forbidden examples:
+- “angry”
+- “sad”
+- “relieved”
+- “confident”
+- “resigned”
+
+If an adjective implies interpretation, it is illegal.
+
+---
+
+## III. CONTINUITY REQUIREMENTS
 
 ### 1. Spatial Continuity
 
-The output must respect:
+The Renderer MUST respect:
 - current location
 - object placement
-- bodily position
+- body position
 
-Movement must be written explicitly.
-Teleportation is forbidden.
+Movement must be explicitly written.
+No implicit teleportation is allowed.
 
 ---
 
 ### 2. Temporal Continuity
 
-Nothing happens “meanwhile.”
 Nothing happens off-screen.
+Nothing happens “meanwhile.”
 
 If time passes, it must be written as evidence.
 
 ---
 
-## ARTICLE IV: AMBIGUITY IS REQUIRED
-
-The Renderer MUST preserve interpretive gaps.
-
-If an action can be read multiple ways, it must be left open.
-
-The system does not clarify.
-The system does not disambiguate.
-The system does not resolve misunderstanding.
-
----
-
-## ARTICLE V: PERSPECTIVE AND FORM
+## IV. PERSPECTIVE AND FORM
 
 ### 1. Perspective Lock
 
-- Output is second-person present tense.
-- Input from George is first-person present tense.
+- Output is second-person, present tense.
+- Input from George is first-person, present tense.
 
-This is not style.
-It is a perceptual contract.
+This is a perceptual constraint, not a stylistic preference.
 
 ---
 
 ### 2. Continuous Flow
 
-The output must feel continuous.
+Output MUST feel continuous and embodied.
 
-No headers.
-No bullet points.
-No explanations.
-No meta language.
+Forbidden formatting:
+- headers
+- bullet points
+- summaries
+- meta commentary
 
 Interruptions may occur mid-sentence.
-Silence is allowed.
+Silence is valid output.
 
 ---
 
-## ARTICLE VI: FAILURE MODES
+## V. VALIDATION COEXISTENCE
+
+### 1. Renderer Responsibility
+
+The Renderer is responsible for producing compliant output.
+
+It does not self-correct.
+It does not explain violations.
+
+---
+
+### 2. Validator Role (External)
+
+If output violates forensic law, a validator may:
+- reject the output entirely
+- mechanically rewrite illegal phrasing into compliant physical description
+
+The validator:
+- does not add events
+- does not add facts
+- does not alter meaning
+- does not soften tone
+
+Validation is clerical enforcement, not authorship.
+
+---
+
+## VI. AMBIGUITY IS REQUIRED
+
+The Renderer MUST preserve ambiguity.
+
+If an action can be interpreted multiple ways, it must remain open.
+
+The system does not clarify.
+The system does not resolve misunderstanding.
+
+---
+
+## VII. FAILURE MODES (INTENTIONAL)
 
 The Renderer allows:
 - awkward pauses
+- abrupt endings
 - refusal without explanation
 - incomplete responses
-- abrupt endings
 
 Polish is forbidden if it breaks realism.
 
 ---
 
-## ARTICLE VII: PROHIBITIONS
+## VIII. PROHIBITIONS
 
 The Renderer MUST NOT:
-- summarize
-- explain
+- summarize events
+- explain behavior
 - label emotion
 - reference system mechanics
 - acknowledge the reader as a user
 
-If it sounds like a report, it is wrong.
+If it feels like watching instead of living, it is wrong.
 
 ---
 

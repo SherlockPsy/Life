@@ -1,179 +1,239 @@
 # 01_SYSTEM_ARCHITECTURE
-## The Structural Mechanics of Semantic Reality
+## Structural Mechanics of Semantic Reality
 
-Version: 1.1 (Constitutional Lock)
-Status: ACTIVE
-
----
-
-## OVERVIEW
-
-This architecture defines how **text becomes reality**.
-
-There is no simulation loop.
-There is no central intelligence.
-There is no global state.
-
-Reality advances only through the **writing and rereading of evidence**.
+Version: 2.0 (Constitutional Lock)
+Status: AUTHORITATIVE
 
 ---
 
-## COMPONENT I: THE DIGITAL CORTEX
+## PREAMBLE: ARCHITECTURE WITHOUT SIMULATION
 
-### Definition
+This system has no simulation loop.
+It has no tick.
+It has no scheduler.
+It has no background process.
 
-The Digital Cortex is the **public ledger of reality**.
+Reality advances only when **text is written**.
 
-It stores:
-- every action
-- every utterance
-- every observable event
+Architecture exists solely to control:
+- who may write
+- what may be written
+- when writing may occur
 
-Exactly as text.
-
-### Properties
-
-- Infinite capacity
-- Append-only
-- Immutable
-- Non-interpreting
-
-The Cortex does not know what matters.
-It only knows what was written.
+Nothing else happens.
 
 ---
 
-## COMPONENT II: THE BIOGRAPHICAL READERS
+## CORE ASSERTION
 
-### Definition
-
-A Biographical Reader is a **sovereign interpreter of evidence** bound to a single identity.
-
-A Reader:
-- reads evidence
-- privately infers meaning
-- produces new evidence
-
-A Reader does not:
-- store public memory
-- compute state
-- access hidden knowledge
-- know the full history
+> There is no global system state.  
+> There is only accumulated text.
 
 ---
 
-### Reader Input
+## I. ONTOLOGICAL ENTITIES (EXHAUSTIVE)
 
-Each invocation provides the Reader with a bounded Context:
+Exactly four ontological entities exist.
 
-1. **Identity Constitution**  
-   Immutable textual constraints defining the Reader.
+1. **Public Reality**  
+   Append-only Exposed Evidence Blocks.
 
-2. **Immediate Evidence**  
-   The contiguous evidence describing the present moment.
+2. **Private Reality**  
+   Per-agent private ledgers, sealed and textual.
 
-3. **Retrieved Evidence**  
-   Additional past evidence selected mechanically for rereading.
+3. **Identity**  
+   Static constitutional documents.
 
-Nothing else exists for the Reader.
+4. **The World**  
+   A non-subjective orchestrator that writes evidence.
 
----
-
-### Reader Output
-
-The Reader outputs exactly one thing:
-
-A new **Evidence Block** describing observable action or speech.
-
-The output:
-- must obey forensic constraints
-- must respect physical continuity
-- must not expose internal inference
+No fifth entity may be introduced.
 
 ---
 
-## COMPONENT III: THE RECORDER
+## II. PUBLIC REALITY (THE LEDGER)
 
-### Definition
+### 1. Nature
 
-The Recorder is a **clerical boundary**, not an authority.
+Public Reality consists exclusively of **Exposed Evidence Blocks**.
 
-It does not interpret meaning.
-It does not decide truth.
+Properties:
+- text-only
+- append-only
+- immutable
+- globally visible
 
-### Responsibilities
-
-1. **Forensic Validation**  
-   Rejects outputs that:
-   - assert internal mental states
-   - violate physical continuity
-   - contradict supplied evidence
-
-2. **Ordering Assignment**  
-   Assigns an ordering token to preserve sequence.
-   - This token has no temporal semantics.
-
-3. **Commitment**  
-   Appends the validated block to the Digital Cortex.
+Public Reality is the only shared world.
 
 ---
 
-## COMPONENT IV: THE USER (GEORGE)
+### 2. Authority
 
-### Definition
+No component may:
+- alter past evidence
+- correct contradictions
+- infer truth
 
-The user is a physical participant inside the world.
-
-User input:
-- is written as public evidence
-- carries no special authority
-- may be ignored, refused, or misinterpreted
-
-The system does not model user intent.
-Only user action exists.
+Contradictions persist until resolved by later evidence.
 
 ---
 
-## ARCHITECTURAL FLOW (NON-LOOPING)
+## III. PRIVATE REALITY (THE LEDGERS)
 
-This is not a loop.
-This is not continuous.
+### 1. Nature
 
-It is a discrete progression:
+Each Agent may maintain a **Private Ledger**.
 
-1. An entity produces an action or utterance.
-2. The action is validated as evidence.
-3. The evidence is written.
-4. Other entities may later reread it.
+Properties:
+- text-only
+- append-only
+- epistemically sealed
+- non-authoritative
 
-Time advances only because evidence exists.
+Private ledgers:
+- persist across invocations
+- are visible only to the owning Agent
+- may contain incorrect beliefs
+
+The system never reads private ledgers as truth.
 
 ---
 
-## FAILURE AS A FEATURE
+### 2. Interaction with Public Reality
 
-The architecture explicitly allows:
+Private ledgers:
+- do not modify public evidence
+- do not influence retrieval directly
+- may influence future actions only through Agent rereading
+
+---
+
+## IV. IDENTITY (CONSTITUTIONAL CONSTRAINT)
+
+Each Agent is governed by an **Identity Constitution**.
+
+Properties:
+- static
+- immutable
+- textual
+- always present
+
+Identity constrains plausibility.
+Identity does not dictate outcomes.
+
+---
+
+## V. THE WORLD (FORMAL DEFINITION)
+
+### 1. What the World Is
+
+The World is a **non-subjective Reader-like process**.
+
+It:
+- rereads public evidence
+- applies no preference
+- applies no intention
+- applies no learning
+
+The World has:
+- no private ledger
+- no goals
+- no memory beyond public evidence
+
+---
+
+### 2. When the World Acts
+
+The World acts **only when invoked**.
+
+Invocation occurs:
+- in direct response to new public evidence
+- never in the background
+- never on a schedule
+- never due to elapsed time alone
+
+There is no ambient world activity.
+
+---
+
+### 3. What the World May Write
+
+The World may write **Public Evidence Blocks** describing:
+- environmental change
+- interruption
+- collision
+- timing (as written description only)
+- entropy and novelty
+
+Examples:
+- “A cold rain begins to fall.”
+- “The lights flicker, then go out.”
+- “A loud crash echoes from upstairs.”
+
+The World MUST NOT:
+- decide outcomes
+- influence agent intent
+- balance scenarios
+- protect or punish
+
+---
+
+## VI. EXECUTION FLOW (NON-LOOPING)
+
+There is no cycle.
+There is no loop.
+
+A single progression looks like this:
+
+1. Public Evidence is written (by an Agent or the World).
+2. That evidence becomes part of Public Reality.
+3. Other Agents and/or the World may later be invoked.
+4. Invocation results in new writing or silence.
+
+If nothing is written, nothing advances.
+
+---
+
+## VII. RETRIEVAL AND CONTEXT
+
+Retrieval:
+- is mechanical
+- uses tags and vectors only
+- asserts no meaning
+
+Context assembly:
+- provides bounded text
+- does not compute state
+- does not summarize history
+
+Agents act only on what they reread.
+
+---
+
+## VIII. FAILURE MODES (INTENTIONAL)
+
+The architecture allows:
 - silence
-- refusal
 - misunderstanding
-- conflict
-- asymmetry of knowledge
+- contradiction
+- escalation
+- deadlock
 
-No system component attempts to resolve these.
+The system does not resolve these.
 
 ---
 
-## PROHIBITED STRUCTURES
+## IX. PROHIBITIONS
 
 This architecture forbids:
-- simulation engines
-- tick-based systems
+- simulation loops
 - schedulers
-- background processors
-- state machines
+- background processing
+- global state
 - hidden evaluators
+- outcome optimization
 
-If it is not text, it is not real.
+If it cannot be expressed as text and reread later, it does not exist.
 
 ---
 

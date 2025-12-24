@@ -2,7 +2,7 @@
 ## Somatic Reality Without State
 
 Version: 2.0 (Constitutional Lock)
-Status: FINAL
+Status: AUTHORITATIVE
 
 ---
 
@@ -12,59 +12,84 @@ There is no stored state.
 There are no biological meters.
 There are no thresholds.
 There are no checks.
+There is no physiology engine.
 
-There is only **written bodily evidence** and a Reader rereading it.
+There is only:
+- written bodily evidence (public)
+- private bodily interpretation (private)
+- rereading
 
-The body does not exist as data.
 The body exists only as described.
 
 ---
 
-## ARTICLE I: THE LAW OF SOMATIC INFERENCE
+## CORE ASSERTION
 
-### 1. No Possession of State
-
-An Agent does not “have” fatigue.
-An Agent does not “have” injury.
-An Agent does not “have” adrenaline.
-
-An Agent rereads its evidence and privately infers what actions remain plausible.
-
-Nothing is computed.
-Nothing is stored.
+> Bodily condition is never a field.  
+> It is always a conclusion drawn from text.
 
 ---
 
-### 2. Evidence Dominance
+## I. PUBLIC BODILY EVIDENCE
 
-Observable bodily evidence constrains output.
+Public evidence may describe:
+- posture
+- movement
+- injury
+- fatigue signs
+- sensory limitation
+- physical failure
+- recovery actions
 
-Examples of constraining evidence:
-- “She has not slept.”
-- “His leg buckles.”
-- “Her hands shake.”
-- “Blood soaks through the bandage.”
+Examples:
+- “Her hands tremble as she reaches for the cup.”
+- “He leans heavily against the wall.”
+- “She winces and does not put weight on her leg.”
 
-These descriptions do not label condition.
-They constrain what can reasonably follow.
+These descriptions:
+- assert no diagnosis
+- assert no duration
+- assert no severity level
+
+They constrain plausibility only.
 
 ---
 
-## ARTICLE II: LIMITATION THROUGH TEXT
+## II. PRIVATE BODILY INTERPRETATION
 
-### 1. Constraint, Not Enforcement
+An Agent may privately interpret bodily evidence.
+
+These interpretations:
+- occur during rereading
+- may be written to the Private Ledger
+- persist only if written
+
+Examples of private ledger entries:
+- “I am more injured than I want to admit.”
+- “I don’t trust my leg to hold.”
+- “I think I pushed myself too far.”
+
+These are not facts.
+They are beliefs.
+
+---
+
+## III. CONSTRAINT THROUGH CONTINUITY
+
+### 1. No Enforcement, Only Inconsistency
 
 The system does not enforce bodily limits.
-The Reader authors them by rereading.
 
-If evidence implies impairment, the Reader must not output actions that contradict it.
+Instead:
+- outputs that contradict bodily evidence are invalid
+- outputs that ignore bodily continuity are rejected
 
 Example:
-- Evidence: “She drags her injured leg.”
-- Forbidden output: “She sprints up the stairs.”
+- Evidence: “Blood soaks through the bandage.”
+- Forbidden output: “She runs up the stairs.”
 
-No numeric comparison occurs.
-Only narrative continuity.
+No calculation occurs.
+Only continuity.
 
 ---
 
@@ -76,83 +101,93 @@ If there is no evidence of:
 - rest
 - recovery
 
-The Reader may infer depletion.
+An Agent may infer depletion.
 
-The system does not track duration.
-The Reader sees only what is written.
+This inference:
+- is private
+- is optional
+- persists only if written to the private ledger
+
+The system tracks nothing.
+The Agent rereads absence.
 
 ---
 
-## ARTICLE III: HIGH-FRICTION CONTEXTS (WITHOUT MECHANICS)
+## IV. HIGH-FRICTION CONTEXTS (NON-MECHANICAL)
 
 There is no adrenaline system.
-There is no tunnel-vision switch.
-There is no mode change.
+There is no tunnel-vision mode.
+There is no override switch.
 
-High-friction situations exist only as **dense, threatening evidence**.
+High-friction contexts exist only as **dense, threatening evidence**.
 
 Examples:
-- “Shouting fills the room.”
 - “Glass shatters.”
-- “A body blocks the exit.”
+- “Voices rise over one another.”
+- “The door slams shut.”
 
-The Reader may:
-- focus narrowly
-- ignore long-term considerations
+In such contexts, an Agent may:
+- narrow attention
 - act abruptly
+- ignore long-term considerations
 
-These are authored responses, not system-imposed behaviors.
+These behaviors:
+- are authored by the Agent
+- may be remembered privately
+- are never imposed by the system
 
 ---
 
-## ARTICLE IV: RECOVERY
+## V. RECOVERY
 
-Recovery is not triggered.
-Recovery is not timed.
-Recovery is not guaranteed.
+Recovery does not trigger.
+Recovery does not schedule.
+Recovery does not progress automatically.
 
-Recovery exists only if evidence of recovery is written.
+Recovery exists only if written as evidence.
 
 Examples:
 - “She sinks into the chair, breathing slowly.”
-- “He sits on the floor, back against the wall.”
-- “They remain silent for a long moment.”
+- “He sits on the floor, head in his hands.”
+
+Private interpretations of recovery may persist if written.
 
 If no recovery evidence exists, no recovery occurs.
 
 ---
 
-## ARTICLE V: ENVIRONMENTAL COUPLING
+## VI. ENVIRONMENTAL COUPLING
 
-The body is permeable to environment **as described**.
+The body is affected by environment **only as described**.
 
-If evidence includes:
+Environmental evidence may include:
 - cold
 - heat
 - rain
 - darkness
 - noise
+- crowding
 
-The Reader may author bodily response consistent with that environment.
+The Agent may:
+- respond physically
+- interpret threat
+- misjudge risk
 
-There is no abstract concept of “danger.”
-There is no automatic response.
-
-Objects do not carry meaning.
-Only their described presence constrains plausibility.
+Objects carry no inherent meaning.
+Only their described presence constrains action.
 
 ---
 
-## ARTICLE VI: PROHIBITIONS
+## VII. PROHIBITIONS
 
 This contract forbids:
-- numeric checks (“last 24 hours”)
+- numeric comparisons
+- duration tracking
 - keyword-triggered modes
-- restricted memory access
-- internal flags
 - physiological simulations
+- automatic state updates
 
-If it cannot be written as evidence, it does not exist.
+If it cannot be reread later as text, it does not exist.
 
 ---
 

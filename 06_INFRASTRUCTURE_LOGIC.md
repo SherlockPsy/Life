@@ -1,8 +1,8 @@
 # 06_INFRASTRUCTURE_LOGIC
 ## Clerical Processes Without Cognition
 
-Version: 1.1 (Constitutional Lock)
-Status: ACTIVE
+Version: 2.0 (Constitutional Lock)
+Status: AUTHORITATIVE
 
 ---
 
@@ -12,37 +12,49 @@ Infrastructure does not think.
 Infrastructure does not infer.
 Infrastructure does not decide.
 
-Infrastructure performs **clerical transformations** on text so that evidence can be stored and retrieved.
+Infrastructure performs **clerical transformations on text** so that:
+- evidence can be stored
+- evidence can be retrieved
+- illegal output can be rejected
 
-All meaning arises later, when Readers reread evidence.
-
----
-
-## I. THE ROLE OF INFRASTRUCTURE
-
-Infrastructure exists to support three and only three needs:
-
-1. Preservation of evidence
-2. Retrieval of evidence
-3. Enforcement of forensic constraints
-
-Infrastructure MUST NOT:
-- interpret content
-- derive meaning
-- compute state
-- influence outcomes
+All meaning arises later, inside Readers.
 
 ---
 
-## II. THE INDEXER (TAG EXTRACTION)
+## CORE ASSERTION
 
-### A. Purpose
+> Infrastructure may touch text, but must never understand it.
 
-The Indexer exists solely to extract **concrete anchors** from evidence text to assist retrieval.
+---
 
-### B. Permitted Extraction
+## I. SCOPE OF INFRASTRUCTURE
 
-The Indexer MAY extract:
+Infrastructure exists to support **exactly four functions**:
+
+1. Evidence recording
+2. Evidence retrieval
+3. Context assembly
+4. Output validation
+
+No other responsibilities are permitted.
+
+---
+
+## II. TAG EXTRACTION (CLERICAL ONLY)
+
+### 1. Purpose
+
+Tags exist to assist retrieval.
+
+They are not memories.
+They are not meanings.
+They are not interpretations.
+
+---
+
+### 2. Permitted Tags
+
+Tags may represent:
 - physical objects
 - locations
 - named entities
@@ -51,127 +63,161 @@ The Indexer MAY extract:
 Examples:
 - `Door`
 - `Cup`
-- `Table`
 - `Kitchen`
-- `Phone`
+- `Rain`
+- `Shout`
 
-### C. Forbidden Extraction
+---
 
-The Indexer MUST NOT extract:
+### 3. Forbidden Tags
+
+Tags MUST NOT represent:
 - emotions
 - intentions
 - traits
-- abstract themes
-- inferred mental states
+- abstractions
+- inferred states
 
 Forbidden examples:
 - `Anger`
 - `Fear`
 - `Trust`
-- `Regret`
 - `Conflict`
+- `Tension`
 
-Tags do not normalize meaning.
-Tags do not summarize.
-Tags do not explain.
-
-They are anchors only.
+If a tag requires interpretation, it is illegal.
 
 ---
 
-## III. SEMANTIC FINGERPRINTING (VECTORS)
+## III. VECTOR FINGERPRINTS
 
-### A. Purpose
+### 1. Purpose
 
-Vectors exist solely to enable **associative retrieval**.
+Vectors exist solely to support **associative retrieval**.
 
-They answer only one question:
-> “Which other texts are linguistically similar to this one?”
+They answer one question only:
+> “Which texts are linguistically similar?”
 
 They do not:
 - assert relevance
 - encode importance
 - represent truth
 
-### B. Constraints
+---
 
-Vectors:
-- are opaque
-- are non-authoritative
-- are never read as data by Readers
-- are never surfaced as evidence
+### 2. Constraints
 
-If vectors are removed, reality remains intact.
-Only retrieval efficiency is affected.
+Vectors are:
+- opaque
+- non-authoritative
+- unreadable by Agents
+- never exposed as evidence
+
+Removing vectors must not alter reality.
+Only retrieval efficiency may change.
 
 ---
 
 ## IV. RETRIEVAL OPERATIONS
 
-### A. Candidate Selection
-
 Retrieval may combine:
-- vector similarity
 - tag overlap
-- contextual adjacency
+- vector similarity
 
-This process:
-- selects candidates
-- does not choose meaning
-- does not rank importance
+Retrieval MUST NOT:
+- prioritize emotional content
+- infer thematic importance
+- reinforce past interpretations
+- examine private ledgers
 
-### B. No Query Expansion by Meaning
-
-Infrastructure MUST NOT:
-- infer concepts
-- expand queries semantically
-- “understand” categories
-
-If expansion occurs, it must be:
-- predefined
-- explicit
-- mechanical
-
-Example:
-- Expanding `Color` into `Red`, `Blue`, `Green` is allowed only if defined as a fixed lexical mapping, not an inferred concept.
+Retrieval selects candidates.
+Readers interpret.
 
 ---
 
-## V. TEMPORAL NEUTRALITY
+## V. CONTEXT ASSEMBLY
 
-Infrastructure has no concept of:
-- time passage
-- urgency
-- recency importance
+Context assembly:
+- concatenates selected text
+- preserves original wording
+- preserves ordering
 
-Ordering tokens preserve sequence only.
-They do not imply duration or decay.
+Context assembly MUST NOT:
+- summarize
+- paraphrase
+- compress
+- editorialize
+
+If compression occurs, it violates the constitution.
 
 ---
 
-## VI. EXECUTION CONSTRAINTS
+## VI. OUTPUT VALIDATION (FORENSIC)
+
+### 1. Purpose
+
+Validation exists to enforce **forensic law**, not correctness of meaning.
+
+It ensures output:
+- describes observable reality only
+- violates no physical continuity
+- contains no forbidden constructs
+
+---
+
+### 2. Validation Mechanisms
+
+Validation MAY be performed by:
+- deterministic checks
+- a constrained validator LLM
+
+The validator:
+- does not add content
+- does not improve prose
+- does not explain
+- does not decide outcomes
+
+Its only roles are:
+- rejection of illegal output
+- or mechanical rewriting to compliant form
+
+---
+
+### 3. Forbidden Validator Behavior
+
+The validator MUST NOT:
+- introduce new events
+- introduce new facts
+- soften conflict
+- clarify ambiguity
+- narrate
+
+If validation changes meaning, it is invalid.
+
+---
+
+## VII. EXECUTION CONSTRAINTS
 
 Infrastructure processes:
-- run only in direct response to evidence being written or requested
-- do not run continuously
-- do not run “between moments”
-- do not anticipate future needs
+- run only in direct response to invocation
+- never run in the background
+- never loop
+- never schedule future work
 
-There are no ticks.
-There are no background loops.
-There are no schedulers.
+There is no idle processing.
 
 ---
 
-## VII. FAILURE IS ACCEPTABLE
+## VIII. PROHIBITIONS
 
-Infrastructure may:
-- miss relevant evidence
-- retrieve irrelevant evidence
-- return sparse context
+Infrastructure MUST NOT:
+- interpret content
+- infer emotion
+- resolve contradiction
+- maintain state
+- learn from history
 
-These are not errors.
-They preserve realism.
+If it “understands,” it is illegal.
 
 ---
 

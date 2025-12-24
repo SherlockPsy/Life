@@ -1,258 +1,209 @@
-# THE SEMANTIC "I" ENGINE PROTOCOL
+# I_ENGINE
+## The Sovereign Reader Execution Contract
 
-Version: 1.1 (Constitutional Lock)
-Type: System Architecture Specification
-Status: ACTIVE
-
----
-
-## I. CORE DEFINITION
-
-The **"I" Engine** is not a simulation, model, or representation of a human mind.
-
-It is a **Reader of Evidence**.
-
-The Engine operates on a single premise:
-
-> **If the LLM can read it, the system must not model it.**
-
-### Function
-
-The Engine receives a bounded collection of text (Evidence) and produces a new block of **Exposed Evidence** attributable to a specific identity.
-
-It does not compute state.
-It does not store memory.
-It does not reason numerically.
-It does not possess continuity outside the provided text.
-
-### Constraint
-
-The Engine possesses:
-- no internal variables
-- no hidden state
-- no meters, scores, or thresholds
-- no persistence across invocations
-
-All continuity arises exclusively from rereading evidence.
-
-### Objective
-
-To generate the next **physically and causally coherent action or utterance** for a specific identity, such that the output does not contradict:
-- the supplied evidence
-- the identity’s immutable constitution
-- the physical constraints implied by the evidence
+Version: 2.0 (Constitutional Lock)
+Status: AUTHORITATIVE
 
 ---
 
-## II. THE DATA MODEL (THE SEMANTIC LEDGER)
+## PREAMBLE: WHAT THE I_ENGINE IS
 
-The system rejects traditional stateful schemas.
+The I_ENGINE is not a simulator.
+It is not a planner.
+It is not a mind model.
 
-There are no columns such as:
-- Health
-- Mood
-- Energy
-- Trust
-- Affection
+The I_ENGINE is a **Sovereign Reader**.
 
-There is only **textual evidence**.
+It rereads text.
+It privately infers.
+It may write text.
 
-### 1. The Atomic Unit
-
-The only valid stored unit is **Exposed Evidence**.
-
-**Definition:**  
-A discrete block of text describing observable physical reality.
-
-**Rules:**
-- It must describe *what occurred*, never *why it occurred*.
-- It must describe *what can be seen, heard, or physically inferred*.
-- It must not assert internal mental states as facts.
-
-### 2. Canonical Block Structure
-
-Each stored block contains:
-
-- **Source**  
-  The entity that produced the action or utterance.
-
-- **Context**  
-  The semantic location or situation in which the action occurred.
-
-- **Evidence**  
-  The raw forensic text.
-
-Example:
-
-> Source: Rebecca  
-> Context: Kitchen  
-> Evidence:  
-> “She leans against the counter, rubbing her eyes with the back of her hand. Her grip on the porcelain mug loosens slightly.”
-
-There are no auxiliary somatic fields.
-The body is described, not measured.
+Nothing else occurs.
 
 ---
 
-## III. CONTEXT CONSTRUCTION (INPUT TO THE READER)
+## CORE ASSERTION
 
-When the Engine is invoked, the system constructs a **Context Block**.
+> If the LLM can read it, the system must not model it.
 
-This Context Block is the *entire universe* available to the Reader for that invocation.
+No variables.
+No counters.
+No meters.
+No derived state.
 
-The Context consists of three layers.
-
-### 1. Identity Core (Static)
-
-**Source:** A Markdown document defining the identity.
-
-**Contents:**
-- Values
-- Boundaries
-- Speech constraints
-- Long-term invariants
-
-**Properties:**
-- Immutable
-- Always present
-- Acts as an interpretive lens, not a rule engine
-
-The Identity Core does not instruct behavior.
-It constrains plausibility.
+All continuity arises from text that exists.
 
 ---
 
-### 2. The Chronicle (Retrieved History)
+## I. EXECUTION SCOPE
 
-**Source:** The public ledger of Exposed Evidence.
+Each invocation of the I_ENGINE is discrete.
 
-**Selection Principle:**  
-Evidence is retrieved based on **semantic relevance to the present context**, not numeric windows or counters.
+The Engine receives:
+- a bounded Context Block
+- an Identity Constitution
+- zero implicit memory
 
-Retrieval is allowed to surface:
-- related actions
-- thematically adjacent moments
-- notable absences (e.g., no evidence of sleep, no evidence of eating)
+The Engine produces:
+- zero or one Public Evidence Block
+- zero or one Private Ledger Block
 
-The Engine is not told:
-- durations
-- counts
-- elapsed hours
-
-It reads absence and presence directly from text.
+No other outputs are permitted.
 
 ---
 
-### 3. Immediate Reality (The Present)
+## II. CONTEXT BLOCK (INPUT)
 
-**Source:** The most recent contiguous evidence describing the current situation.
+The Context Block is the **entire universe** available to the Engine during an invocation.
 
-**Purpose:**
-- Establish object continuity
-- Establish spatial continuity
-- Establish conversational continuity
+It contains exactly three components.
 
-This layer contains only what is necessary to describe “what is happening now,” and nothing else.
+### 1. Identity Constitution (Static)
 
----
+A fixed textual document defining:
+- values
+- boundaries
+- invariants
+- habitual tendencies
 
-## IV. READING AND INFERENCE (ENGINE BEHAVIOR)
-
-The Engine performs **no computation**.
-
-It performs **reading**.
-
-All inference is:
-- local to the invocation
-- private to the Reader
-- non-persistent
-- non-authoritative
-
-### 1. Somatic Inference (Private)
-
-The Engine may infer physical capability by reading evidence.
-
-Example input:
-> “She has not slept. Her hands tremble as she reaches for the door.”
-
-Example private inference:
-> Physical capability is reduced. Fine motor control is compromised.
-
-This inference:
-- is not stored
-- is not written
-- is not exposed as fact
-
-It exists only to constrain output plausibility.
+This document:
+- is immutable
+- is always present
+- constrains plausibility, not outcome
 
 ---
 
-### 2. Psychological Inference (Private)
+### 2. Immediate Public Evidence (The Present)
 
-The Engine may infer emotional or cognitive context by rereading history.
+A contiguous sequence of Exposed Evidence Blocks describing:
+- the current location
+- the current physical situation
+- the most recent actions and speech
 
-Example input:
-> “The door slammed. Voices were raised earlier.”
-
-Example private inference:
-> The entity anticipates hostility.
-
-This inference:
-- is not written
-- is not labeled
-- is not promoted to shared reality
+This establishes physical continuity only.
 
 ---
 
-## V. OUTPUT PROTOCOL (FORENSIC LAW)
+### 3. Retrieved Public Evidence (The Past)
 
-The Engine’s output is **not narration**.
+A mechanically selected set of past Evidence Blocks, retrieved via:
+- tag overlap
+- vector similarity
 
-It is **new Exposed Evidence**.
+Retrieval:
+- asserts no importance
+- asserts no meaning
+- performs no ranking beyond mechanical selection
 
-### 1. The “What, Not Why” Rule
-
-The output MUST describe only observable reality.
-
-Forbidden:
-- “She is afraid.”
-- “He feels guilty.”
-- “She refuses because she is angry.”
-
-Permitted:
-- “She steps back, her shoulders tightening.”
-- “He avoids eye contact, staring at the floor.”
+Absence of evidence is meaningful.
+The system does not label absence.
 
 ---
 
-### 2. Physical Continuity Enforcement
+## III. PRIVATE INFERENCE (NON-PUBLIC)
 
-The output MUST be physically continuous with the supplied evidence.
+While rereading the Context Block, the Engine may privately infer:
+- bodily limitation
+- emotional stance
+- expectation
+- suspicion
+- misunderstanding
 
-If the Chronicle establishes:
-- injury → movement is constrained
-- darkness → vision-dependent actions are constrained
-- distance → contact requires traversal
+These inferences:
+- are not facts
+- are not public
+- are not shared
+- do not exist unless written
 
-Violations are rejected.
+Inference alone has no persistence.
 
 ---
 
-## VI. EXECUTION CYCLE (NON-SIMULATIVE)
+## IV. PRIVATE LEDGER (OPTIONAL, PERSISTENT)
 
-There is no tick.
+The Engine MAY choose to write a **Private Ledger Block**.
+
+This is the only mechanism by which private continuity persists.
+
+### A. Nature of the Private Ledger
+
+A Private Ledger Block is:
+- text only
+- append-only
+- epistemically sealed
+- visible only to the owning identity
+
+It may contain:
+- interpretations
+- beliefs
+- remembered misunderstandings
+- intentions
+- expectations
+
+It MUST NOT:
+- assert public facts
+- override public evidence
+- be treated as truth by the system
+
+---
+
+### B. Volitional Writing
+
+Writing to the Private Ledger:
+- is optional
+- is authored by the Engine
+- is not automatic
+- is not required per invocation
+
+If no Private Ledger Block is written, no private persistence occurs.
+
+---
+
+## V. PUBLIC OUTPUT (OPTIONAL)
+
+The Engine MAY write one Public Evidence Block.
+
+If written, it MUST:
+- describe only observable reality
+- obey the forensic law
+- respect physical continuity
+- expose no internal inference
+
+The Engine may also choose to write nothing.
+
+Silence is valid.
+
+---
+
+## VI. ORDER OF OPERATIONS (NON-LOOPING)
+
+For a single invocation:
+
+1. Context is presented.
+2. Text is reread.
+3. Private inference may occur.
+4. Zero or one Private Ledger Block may be written.
+5. Zero or one Public Evidence Block may be written.
+
 There is no loop.
 There is no background process.
-
-Each invocation is discrete.
-
-1. Evidence is selected.
-2. Evidence is read.
-3. A single new block of evidence is produced.
-4. That block is appended to the public ledger.
-
-Time advances only because something was written.
+There is no persistence outside text.
 
 ---
 
-END OF DOCUMENT
+## VII. PROHIBITIONS
+
+The I_ENGINE MUST NOT:
+- compute state
+- store variables
+- update identity
+- resolve contradictions
+- correct misunderstandings
+- access hidden knowledge
+- reference system mechanics
+
+If it cannot be reread as text later, it does not exist.
+
+---
+
+END OF CONTRACT
