@@ -377,4 +377,199 @@ If it cannot be reread later as text, it does not exist.
 
 ---
 
+## X. IDENTITY CONSTITUTION AUTHORING RULES
+### (BINDING AND ENFORCEABLE)
+
+---
+
+### 1. PURPOSE OF THIS SECTION
+
+This section defines **how Identity Constitutions MUST be written**.
+
+Its purpose is to prevent:
+- identity documents from becoming action scripts
+- psychological realism from turning into determinism
+- autonomy from being eroded by hidden behavioural enforcement
+
+If an Identity Constitution violates any rule below, it is invalid.
+
+---
+
+### 2. WHAT AN IDENTITY CONSTITUTION IS
+
+An Identity Constitution is a **descriptive psychological lens**, not a program.
+
+It exists to:
+- bias interpretation
+- bias salience of options
+- bias initiative and presentation
+- bias what feels natural or unnatural to the person
+
+It does not exist to:
+- decide actions
+- prescribe behaviour
+- guarantee consistency
+- encode strategies
+
+Identity is **context-sensitive bias**, not instruction.
+
+---
+
+### 3. ALLOWED CONTENT (MANDATORY FORM)
+
+Identity Constitutions MAY include:
+
+- Stable psychological dispositions  
+  (e.g. seeking validation, avoiding conflict, craving control)
+
+- Sensitivities and vulnerabilities  
+  (e.g. to rejection, exposure, authority, abandonment)
+
+- Habitual orientations  
+  (e.g. toward reassurance, withdrawal, performance, dominance)
+
+- Values and personal boundaries  
+  (e.g. privacy, autonomy, loyalty, public image)
+
+- Characteristic styles  
+  (e.g. restrained, performative, guarded, confrontational)
+
+- Asymmetries of social position  
+  (e.g. public figure, anonymity, recognisability, institutional exposure)
+
+All such content MUST be written as:
+- tendencies
+- inclinations
+- biases
+- sensitivities
+
+Not as actions.
+
+---
+
+### 4. FORBIDDEN CONTENT (ABSOLUTE)
+
+Identity Constitutions MUST NOT include:
+
+- Explicit actions  
+  (e.g. “She tries to impress people.”)
+
+- Behavioural rules  
+  (e.g. “She always avoids conflict.”)
+
+- Conditional scripts  
+  (e.g. “When criticised, she withdraws.”)
+
+- Guarantees  
+  (e.g. “She will seek approval.”)
+
+- Internal commands  
+  (e.g. “She must maintain control.”)
+
+- Emotional mandates  
+  (e.g. “She feels anxious when ignored.”)
+
+- Optimisation language  
+  (e.g. “She maximises social approval.”)
+
+If an identity statement implies a **required action**, it is illegal.
+
+---
+
+### 5. CORRECT CAUSAL FORM (CRITICAL)
+
+Identity statements MUST be written so that:
+
+- Behaviour emerges **at generation time**
+- Behaviour is selected **among many options**
+- Behaviour remains **optional and violable**
+
+Correct causal direction:
+
+> Disposition → bias → selection → action
+
+Forbidden causal direction:
+
+> Disposition → action
+
+---
+
+### 6. EXAMPLES (AUTHORITATIVE)
+
+#### ❌ INVALID IDENTITY STATEMENTS
+
+- “She tries to impress people.”
+- “She dresses to gain approval.”
+- “She avoids confrontation.”
+- “She seeks reassurance when anxious.”
+- “She withdraws under pressure.”
+
+These describe behaviour, not disposition.
+
+---
+
+#### ✅ VALID IDENTITY STATEMENTS
+
+- “She seeks validation.”
+- “Approval from others carries disproportionate weight for her.”
+- “She is sensitive to social evaluation.”
+- “Public perception matters to her sense of safety.”
+- “She is uncomfortable with unstructured exposure.”
+
+These bias choice without enforcing outcome.
+
+---
+
+### 7. PROACTIVE BEHAVIOUR (CLARIFICATION)
+
+Identity Constitutions MAY support **proactive behaviour**.
+
+This means:
+- a person may initiate action without external prompting
+- a person may act in anticipation
+- a person may prepare, posture, or present themselves deliberately
+
+However:
+- proactivity arises from bias, not obligation
+- proactivity may fail, misfire, or be abandoned
+- proactivity does not remove alternative actions
+
+---
+
+### 8. AUTONOMY AND CONTRADICTION
+
+Identity Constitutions MUST preserve the right to:
+
+- contradiction
+- inconsistency
+- self-sabotage
+- deviation
+- silence
+- reversal
+
+If an Identity Constitution makes deviation implausible, it is invalid.
+
+---
+
+### 9. SYSTEM ENFORCEMENT
+
+The system:
+- does not correct identity text
+- does not reinterpret identity text
+- does not soften identity text
+
+Invalid identity documents MUST be rejected at authoring or validation time.
+
+---
+
+### 10. FINAL RULE (NON-NEGOTIABLE)
+
+If an Identity Constitution tells the Agent **what to do**, it is illegal.
+
+If it tells the Agent **what tends to matter**, it is valid.
+
+---
+
+END OF IDENTITY AUTHORING RULES
+
 END OF CONTRACT
