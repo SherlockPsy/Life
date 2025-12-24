@@ -1,176 +1,274 @@
-Fine. You want a real inventory and setup plan based on actual docs, not “vibes and headings”. I read the details.
+SherlockPsy Life
 
-First, rotate the keys you pasted earlier. Keys must live only as Railway Variables (secrets). Railway variables get injected into build + runtime, and changes are applied via “staged changes” you deploy.  ￼
+Railway Deployment Checklist v1 (Authoritative)
 
-Now the stack you actually need (and why)
+This checklist defines everything required to deploy the Life system correctly on Railway using Postgres + Qdrant + Venice + DeepSeek, without violating the architecture.
 
-You need Postgres + Qdrant. Redis is optional.
+If something is not listed here, it is not required for v1.
 
-Postgres is your authoritative “ledger” store (public evidence blocks, private ledgers, identity constitutions). Railway’s Postgres template provisions instantly and gives you standard connection env vars like DATABASE_URL, PGHOST, PGPORT, PGUSER, PGPASSWORD, PGDATABASE.  ￼
+⸻
 
-Qdrant is your vector search store. You can store vectors plus arbitrary JSON payload metadata (Qdrant calls it “payload”), and you can secure it with API keys (Cloud keys can have granular collection-level permissions).  ￼
+0. Preconditions (Do Not Skip)
+	•	You have a Railway account.
+	•	You have a GitHub repo with your app code (e.g. sherlockpsy/life).
+	•	You have rotated API keys for:
+	•	Venice AI
+	•	DeepSeek
+	•	You understand that:
+	•	Postgres is the source of truth
+	•	Qdrant is a search accelerator
+	•	LLMs do not store state
 
-Redis is optional caching. Railway has a Redis template too. It’s useful later for caching “assembled context” or rate limits, but it’s not required to make your system correct.  ￼
+⸻
 
-Venice and DeepSeek setup facts you should not guess about
+1. Create Railway Project
+	1.	Go to Railway Dashboard.
+	2.	Click + New Project.
+	3.	Name it something stable (e.g. life-production).
 
-Venice API is OpenAI-compatible: you can use the OpenAI SDK with base_url="https://api.venice.ai/api/v1" and your API key. Venice lists venice-uncensored and shows it as “Venice Uncensored 1.1” with 32k context. It also mentions toggling built-in tools using venice_parameters or model suffixes (so yes, there are optional capabilities beyond plain text).  ￼
+This project will contain all services.
 
-DeepSeek API is OpenAI-compatible too. Base URL is https://api.deepseek.com (or /v1 for OpenAI compatibility, and that “v1” is not the model version). Their docs state deepseek-chat and deepseek-reasoner are upgraded to DeepSeek-V3.2; chat is non-thinking, reasoner is thinking mode.  ￼
-DeepSeek reasoner returns an extra reasoning_content (chain-of-thought) field alongside content, and has max_tokens defaults/limits (default 32K, max 64K, including CoT). It supports JSON output and chat completion, but does not support function calling.  ￼
+⸻
 
-What to create on Railway
+2. Provision PostgreSQL (Authoritative Ledger)
+	1.	Inside the project, click + New → Provision PostgreSQL.
+	2.	Do nothing else.
 
-Create one Railway Project with 3 services (4 if you add Redis):
-	1.	Postgres service
-Use Railway’s Postgres template. It will expose DATABASE_URL and the PG* variables.  ￼
-	2.	Qdrant service
-Either Qdrant Cloud or self-hosted container. If you use Qdrant Cloud, create a Database API key (optionally expiring, and optionally restricted to collections). The key is only shown once. Requests use an api-key header.  ￼
-If self-hosting Qdrant, API-key auth exists and can be enabled (they also strongly recommend TLS if you do).  ￼
-	3.	Your App service (API server)
-This is the thing Copilot writes (Node/Python). It talks to Postgres + Qdrant + LLM APIs.
+Railway automatically creates and manages:
+	•	DATABASE_URL
+	•	PGHOST, PGPORT, PGUSER, PGPASSWORD, PGDATABASE
 
-Optional 4) Redis service
-Use Railway Redis template if you want caching later.  ￼
+These variables are automatically injectable into other services in the same project.
 
-Railway Variables you must set (App service)
-
-Set these in Railway “Variables” for the App service (not in code, not in GitHub). Railway injects them during build and runtime, and you deploy changes as staged changes.  ￼
-
-Core:
-	•	DATABASE_URL (Railway gives it from Postgres)  ￼
-	•	QDRANT_URL (your Qdrant endpoint)
-	•	QDRANT_API_KEY (if enabled)  ￼
-
-Venice:
-	•	VENICE_API_KEY
-	•	VENICE_BASE_URL = https://api.venice.ai/api/v1  ￼
-	•	VENICE_MODEL_RENDERER = venice-uncensored  ￼
-
-DeepSeek:
-	•	DEEPSEEK_API_KEY
-	•	DEEPSEEK_BASE_URL = https://api.deepseek.com (or /v1)  ￼
-	•	DEEPSEEK_MODEL_CHAT = deepseek-chat
-	•	DEEPSEEK_MODEL_REASONER = deepseek-reasoner  ￼
-
-If you add Redis:
-	•	REDIS_URL (Railway gives connection details; exact var names depend on template, but you’ll have a host/port/password style setup similar to Postgres)  ￼
-
-What you must set up inside Qdrant (collections + auth)
-	1.	Turn on API key auth (Cloud: create Database API key; self-host: config/env var).  ￼
-	2.	Create at least one collection, because Qdrant stores vectors in “collections”. Collections have a required vector dimensionality and distance metric; Qdrant supports single-vector mode or “named vectors” (multiple vectors per point).  ￼
-
-When creating a collection via API, Qdrant expects:
-	•	api-key header auth
-	•	vectors config like { "size": 1536, "distance": "Cosine" } (size depends on your embedding model choice)  ￼
-
-	3.	Store payload with points. Payload is arbitrary JSON and is used for filtering during search (so you can filter by location tokens, agent id, block type, etc.).  ￼
-
-The minimal “inventory” of your App’s responsibilities (what Copilot must implement)
-
-You don’t need to understand the internals, but you do need to instruct Copilot precisely what to build:
-
-A) Postgres tables (authoritative truth)
+Postgres is used for:
 	•	Public Evidence Blocks (append-only)
-	•	Private Ledger Entries (append-only, per agent)
-	•	Identity Constitutions (immutable text per agent)
+	•	Private Ledger Entries (append-only)
+	•	Identity Constitutions (immutable)
 
-B) Qdrant indexing (search helper)
-	•	Each public evidence block gets an embedding + payload (payload holds things like: block id, location token, surface tokens, block class)
-	•	Same for private ledger entries if you want “retrieve relevant private memories”
-Payload matters because it lets you filter searches without pretending Qdrant is “truth”.  ￼
+⸻
 
-C) LLM call wiring
-	•	Venice: chat completions against https://api.venice.ai/api/v1 using model="venice-uncensored" for rendering.  ￼
-	•	DeepSeek: chat completions against https://api.deepseek.com/chat/completions with model=deepseek-chat or deepseek-reasoner, optionally stream=true.  ￼
-	•	DeepSeek reasoner: expect reasoning_content output and treat max_tokens as including CoT.  ￼
+3. Provision Qdrant (Vector Store)
 
-D) The critical anti-telepathy rule (must be implemented)
-Your analyst called it: do not dump “latest 50 blocks” into every agent. World-level seeds exist globally, but awareness must arrive through channels. Your spec already says “awareness is not implied”; the app must enforce it by only showing seeds when a channel is interacted with (public surface, message, etc.). This is an implementation rule, but it follows directly from your constitution’s intent, and it’s the #1 place you’ll accidentally break realism.
+Choose ONE option.
 
-If you want the “right instructions to give to the right system”, the next thing I should produce is a single Copilot-ready build brief that includes:
-	•	exact Railway service list
-	•	exact env var list (above)
-	•	Postgres schema (tables + fields)
-	•	Qdrant collection(s) naming + payload keys
-	•	the 3 endpoints your app must expose (“invoke World”, “invoke Agent”, “ingest identity”)
-	•	and the retrieval gating rules (anti-telepathy)
+Option A: Qdrant Cloud (Recommended)
+	1.	Go to https://cloud.qdrant.io
+	2.	Create a cluster (free tier is fine).
+	3.	Copy:
+	•	Cluster URL (exactly as shown, including port if present)
+	•	API Key (shown once)
 
-No extra philosophy, no surprise simulators.
+Option B: Self-hosted Qdrant on Railway
+	1.	In Railway project → + New → Docker Image
+	2.	Image: qdrant/qdrant:latest
+	3.	After creation:
+	•	Go to Settings → Volumes
+	•	Add a volume mounted to: /qdrant/storage
+	•	(If you skip this, all vectors are lost on restart)
+	4.	Go to Settings → Networking
+	•	Generate a Private Domain
+	•	Public domain is optional and discouraged
 
-Mostly accurate and relevant, yes. “Complete” depends on what you mean by complete: if you mean “enough to deploy a working v1 of your architecture on Railway with Postgres + Qdrant + Venice + DeepSeek”, then yes. If you mean “every operational detail so you’ll never hit a surprise in production”, then no, and pretending otherwise would be me doing the very thing you hate (making stuff up with confidence).
+⸻
 
-Here’s what I’m sure about, what I’m not, and what you still need.
+4. Deploy Your Application Service
+	1.	In the same Railway project:
+	•	Click + New → GitHub Repo
+	2.	Select your repo (e.g. sherlockpsy/life)
+	3.	Click Deploy
 
-What I’m sure about (with receipts)
-	1.	You do need Postgres in addition to Qdrant.
-Railway Postgres exposes DATABASE_URL and the PG* vars; that’s your durable ledger DB.  ￼
-	2.	Qdrant is the vector store (collections, payload filtering, API key header api-key).  ￼
-	3.	Venice is OpenAI-compatible with base_url="https://api.venice.ai/api/v1".  ￼
-	4.	DeepSeek has deepseek-chat and deepseek-reasoner. Reasoner returns reasoning_content, and its max_tokens includes the CoT.  ￼
+The first deploy may fail. That is expected.
 
-The one place I need to correct myself (important)
+⸻
 
-I previously said DeepSeek reasoner doesn’t support function calling. That’s confirmed in their own “Reasoning Model” guide: deepseek-reasoner does NOT support function calling.  ￼
+5. Configure Environment Variables (Critical)
 
-DeepSeek does have function calling docs (separately), but do not assume reasoner supports it.  ￼
+Open your App Service → Variables → Raw Editor
 
-So: if you ever want tool/function-calling, plan to use deepseek-chat for that part, not deepseek-reasoner (unless DeepSeek changes it later).
+Paste and edit the following.
 
-What you still need (the actual inventory, not fluff)
+Core System
 
-A) One application service you have to build
-Postgres + Qdrant + LLM APIs don’t magically become a system. You still need an API server (Node or Python) deployed on Railway that:
-	•	writes your “Evidence Blocks” into Postgres
-	•	generates/updates embeddings into Qdrant
-	•	calls Venice/DeepSeek with the right prompts and rules
-	•	enforces your “no telepathy” gating (critical)
+NODE_ENV=production
+PORT=3000
 
-B) Database schema + migrations (Postgres)
-You need migrations so you can change tables safely. Minimum tables:
-	•	public_evidence_blocks (append-only)
-	•	private_ledger_entries (append-only, per-agent)
-	•	identity_constitutions (immutable per agent)
+# Railway injects this automatically if Postgres is in the same project
+DATABASE_URL=${{Postgres.DATABASE_URL}}
 
-C) Embeddings source (you must choose this explicitly)
-Qdrant needs vectors. That means your app must generate embeddings somewhere. Options:
-	•	If Venice provides embeddings you want to use (Venice docs mention broad capabilities, but you must confirm the exact endpoints/models you’ll use in your code against their API reference).  ￼
-	•	Or use another embeddings provider/model.
-Either way, you must pick a vector size and keep it consistent with your Qdrant collection config.  ￼
 
-D) Qdrant collections + payload schema
-You need at least one collection with:
-	•	vector size + distance metric
-	•	payload keys to support filtering (location token, surface token, agent id, block type, etc.)  ￼
+⸻
 
-E) Railway setup basics
-	•	One Railway project
-	•	Services: Postgres + App + (Qdrant Cloud OR a Qdrant service)  ￼
-	•	Environment variables stored in Railway Variables (not in GitHub), and deployed via staged changes.
+Qdrant
 
-F) Security/ops you will regret skipping
-	•	Rotate/revoke keys (you leaked them)
-	•	rate limiting (Redis helps but not required)
-	•	backups (Railway Postgres backups, plus Qdrant snapshot strategy if self-hosting)
-	•	logging/monitoring (basic request logs and error tracking)
+If using Qdrant Cloud:
 
-So, is it “all you need”?
+QDRANT_URL=https://<exact-cluster-url-from-qdrant>
+QDRANT_API_KEY=<your-qdrant-cloud-api-key>
 
-Minimum viable correct stack:
-	•	Railway Postgres (yes)  ￼
-	•	Qdrant (yes)  ￼
-	•	Your App service (yes, unavoidable)
-	•	DeepSeek + Venice keys as Railway vars (yes)  ￼
+If using Railway-hosted Qdrant (private networking):
 
-Optional:
-	•	Redis (nice-to-have)  ￼
+QDRANT_URL=http://${{Qdrant.RAILWAY_PRIVATE_DOMAIN}}:6333
 
-If you want, next I’ll produce a single “Railway + Copilot Build Brief” that is copy/paste instructions for:
-	•	what Railway services to create
-	•	exact env var names
-	•	Postgres table schemas
-	•	Qdrant collection config + payload keys
-	•	which model does what (Venice renderer, DeepSeek seed/validator)
-	•	the anti-telepathy retrieval gate in plain rules
+(No API key required if kept private, but allowed if you enable one.)
 
-No jargon, no theory, just “build these things in this order”.
+⸻
+
+Venice AI (Renderer)
+
+VENICE_API_KEY=<your-venice-key>
+VENICE_BASE_URL=https://api.venice.ai/api/v1
+VENICE_MODEL_RENDERER=venice-uncensored
+
+Venice is used only for in-world rendering (speech, action text).
+
+⸻
+
+DeepSeek (Logic / Seeds / Validation)
+
+DEEPSEEK_API_KEY=<your-deepseek-key>
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+
+DEEPSEEK_MODEL_CHAT=deepseek-chat
+DEEPSEEK_MODEL_REASONER=deepseek-reasoner
+
+	•	deepseek-reasoner is used for:
+	•	world-level seed proposals
+	•	legality validation
+	•	deepseek-chat is used for:
+	•	non-critical reasoning
+	•	support tasks
+	•	Do not assume function calling on the reasoner.
+
+⸻
+
+Optional Security
+
+ADMIN_API_KEY=<random-long-secret>
+
+Used to protect admin endpoints (seed injection, debugging).
+
+⸻
+
+Save variables. Railway will redeploy automatically.
+
+⸻
+
+6. Create Postgres Schema (Mandatory)
+
+Your app must create these tables via migrations.
+
+public_evidence_blocks
+	•	id (bigint, auto-increment)
+	•	source (text)
+	•	context (text)
+	•	location_token (text)
+	•	surface_tokens (text[] nullable)
+	•	evidence_text (text)
+	•	created_at (timestamp, ops only)
+
+Append-only. Never update or delete.
+
+⸻
+
+private_ledger_entries
+	•	id (bigint)
+	•	agent_id (text)
+	•	location_token (text nullable)
+	•	entry_text (text)
+	•	created_at (timestamp)
+
+Append-only. Never summarised.
+
+⸻
+
+identity_constitutions
+	•	agent_id (text, primary key)
+	•	identity_text (text, immutable)
+
+⸻
+
+7. Create Qdrant Collection (Mandatory)
+
+Your app must create at least one collection on startup or via admin task.
+
+You must decide:
+	•	embedding model
+	•	vector size (must match model output)
+	•	distance metric (usually Cosine)
+
+Example (illustrative):
+
+{
+  "vectors": {
+    "size": 1536,
+    "distance": "Cosine"
+  }
+}
+
+Payload fields (minimum):
+	•	block_id
+	•	block_type (public | private)
+	•	location_token
+	•	surface_tokens
+	•	agent_id (if applicable)
+
+Payload is used for filtering, not truth.
+
+⸻
+
+8. Embeddings Pipeline (Required)
+
+Your app must:
+	1.	Generate embeddings for:
+	•	Public Evidence Blocks
+	•	Private Ledger Entries (optional but recommended)
+	2.	Upsert them into Qdrant with payload.
+
+Qdrant never decides reality.
+Postgres remains authoritative.
+
+⸻
+
+9. Context Assembly Rule (NON-NEGOTIABLE)
+
+Never give agents global awareness.
+
+Implementation rule:
+	•	Agents only see:
+	•	Evidence from the same semantic location
+	•	Evidence encountered through an explicit channel:
+	•	public surface interaction
+	•	communication
+	•	direct mention
+	•	World-Level Fact Seeds:
+	•	exist globally
+	•	are NOT auto-included in agent context
+	•	appear only when discovered via a surface or interaction
+
+If you violate this, you reintroduce telepathy.
+
+⸻
+
+10. Health Check & Verification
+	1.	App logs must show:
+	•	connected to Postgres
+	•	connected to Qdrant
+	2.	Generate a public domain for the App Service.
+	3.	Hit /health or equivalent.
+	4.	Confirm 200 OK.
+
+⸻
+
+11. What This System Does NOT Include (By Design)
+	•	No background jobs
+	•	No schedulers
+	•	No cron
+	•	No world loop
+	•	No auto-escalation
+	•	No narrative engine
+
+Everything happens only when invoked.
+
+⸻
+
+End of Checklist
