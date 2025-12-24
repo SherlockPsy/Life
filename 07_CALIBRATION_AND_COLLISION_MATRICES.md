@@ -1,237 +1,308 @@
 # 07_CALIBRATION_AND_COLLISION_MATRICES
-## World Interruption Without Simulation
+## World Disturbance, Seeding, and Contact Without Simulation
 
-Version: 3.1 (Constitutional Lock)
+Version: 4.0 (World-Seed Lock)
 Status: AUTHORITATIVE
 
 ---
 
-## PREAMBLE: WHAT THIS DOCUMENT IS
+## PREAMBLE: WHAT THIS DOCUMENT GOVERNS
 
-This document governs **how the World is allowed to interrupt life**.
+This document governs **how novelty, disturbance, and change enter the world**.
 
-It does not define:
-- behaviour
-- intention
-- narrative
-- psychology
+It does not govern:
+- agent psychology
+- narrative progression
+- outcome selection
+- meaning assignment
+- interpretation
 
-It defines **collision**.
-
-Collision is not drama.
-Collision is not plot.
-Collision is not consequence.
-
-Collision is **contact**.
+This document defines **how the world touches people** without thinking, planning, or caring.
 
 ---
 
 ## CORE ASSERTION
 
-> **The World may collide with people, but must never act through them.**
+> **The World introduces facts and disturbances.  
+> People create consequences.**
 
-The World creates conditions.
-People respond.
-
----
-
-## I. WHAT A COLLISION IS
-
-A **collision** is any externally encountered change that:
-- interrupts the current flow
-- was not authored by the present Agent
-- enters awareness as evidence
-
-Collisions are written as **public evidence**.
-
-A collision:
-- has no intent
-- has no goal
-- has no preference
-- has no narrative obligation
+If the World creates consequences, the system is invalid.
 
 ---
 
-## II. WHAT A COLLISION IS NOT
+## I. DEFINITIONS
 
-A collision is NOT:
-- a plan
-- a reaction
-- a punishment
-- a reward
-- a scheduled event
-- a consequence engine
-- a story beat
+### 1. COLLISION
 
-If a collision “makes sense” narratively, that is accidental.
+A **Collision** is any externally encountered disturbance that:
+- was not authored by the encountering person
+- interrupts the current situation
+- enters awareness as public evidence
+
+Collisions are **encounters**, not processes.
 
 ---
 
-## III. SOURCES OF COLLISION
+### 2. SEED
 
-A collision may originate from:
+A **Seed** is a collision that introduces **new reality**.
 
-1. The physical environment  
-2. Another person’s action  
-3. A public surface  
-4. An institution  
-5. Random worldly entropy  
+Seeds are not reactions.
+Seeds are not continuations.
+Seeds are not outcomes.
 
-All are equal.
-None are privileged.
+Seeds are **new facts or conditions** that did not previously exist in Public Reality.
 
 ---
 
-## IV. COLLISION MATRICES (NON-COMPUTATIONAL)
+### 3. WORLD-LEVEL FACT SEED
 
-Collision matrices are **conceptual groupings**, not algorithms.
+A **World-Level Fact Seed** is a seed that:
+- establishes a new external fact
+- exists independently of any one person
+- may affect people both on-screen and off-screen
+- does not imply awareness
+- does not describe process
 
-They exist to constrain *what kinds* of collisions are allowed, not *when* they occur.
+World-Level Fact Seeds are the primary mechanism by which the world does not stagnate.
 
-No matrix is evaluated.
-No probability is computed.
-No state is tracked.
+---
+
+## II. THE WORLD’S ROLE IN COLLISION AND SEEDING
+
+The World:
+- rereads Public Reality
+- introduces collisions when invoked
+- may introduce seeds
+- has no goals
+- has no preferences
+- has no memory beyond Public Reality
+
+The World does NOT:
+- decide what matters
+- decide what should happen next
+- escalate situations
+- resolve situations
+- track consequences
+- ensure novelty balance
+
+The World is **indifferent**.
+
+---
+
+## III. CLASSES OF COLLISION
+
+Collisions fall into **five non-hierarchical classes**.
+
+All classes are equal.
+None imply priority or importance.
 
 ---
 
 ### 1. ENVIRONMENTAL COLLISIONS
 
 Examples:
-- weather shifts
-- power outages
-- background noise
-- spatial interruption
-
-These assert no cause.
-They assert presence only.
-
----
-
-### 2. SOCIAL COLLISIONS
-
-Examples:
-- an unexpected visit
-- an overheard remark
-- a message arriving
-- a door opening
-
-Social collisions do not imply intention beyond what is observable.
-
----
-
-### 3. PUBLIC SURFACE COLLISIONS
-
-Examples:
-- content appearing on a feed
-- headlines visible on a homepage
-- trending sections changing
-- notices posted publicly
-
-These collisions:
-- assert visibility
-- assert placement
-- assert encounter
-
-They do not assert reach.
-They do not assert reception.
-They do not assert reaction.
-
----
-
-### 4. INSTITUTIONAL COLLISIONS
-
-Examples:
-- a legal letter arriving
-- an email from an employer
-- a notice posted on a portal
-- an official call being missed
-
-Institutional collisions:
-- do not explain internal process
-- do not assert deliberation
-- do not imply fairness or intent
-
-They are encountered facts, nothing more.
-
----
-
-### 5. ENTROPIC COLLISIONS
-
-Examples:
-- things breaking
-- delays without explanation
-- errors
+- weather changes
 - noise
-- misalignment
+- outages
+- delays
+- spatial obstruction
 
-Entropy requires no justification.
+Properties:
+- non-intentional
+- non-personal
+- often disruptive
+- often unfair
+
+Environmental collisions assert presence only.
+They assert no meaning.
 
 ---
 
-## V. CALIBRATION (WHAT THIS ACTUALLY MEANS)
+### 2. INTERPERSONAL COLLISIONS
 
-Calibration does NOT mean:
-- balancing
-- tuning
-- optimizing
-- pacing
+Examples:
+- unexpected visits
+- overheard remarks
+- unsolicited approaches
+- sudden confrontations
+
+Properties:
+- initiated by other people
+- limited to what is observed
+- may be misunderstood
+
+Interpersonal collisions do not assert motive beyond what is visible.
+
+---
+
+### 3. COMMUNICATION COLLISIONS
+
+Examples:
+- emails
+- messages
+- calls
+- letters
+- invitations
+
+Properties:
+- always about something
+- seriousness unknown
+- intent ambiguous
+- may be wrong, spam, or noise
+
+Communication collisions may initiate action, but guarantee nothing.
+
+---
+
+### 4. PUBLIC SURFACE COLLISIONS
+
+Examples:
+- headlines
+- posts
+- listings
+- schedules
+- registries
+
+Properties:
+- visible by design
+- scale implied by the surface
+- no claim of reaction
+- no claim of spread mechanics
+
+Public surface collisions assert **structural exposure**, not public response.
+
+---
+
+### 5. WORLD-LEVEL FACT COLLISIONS (SEEDS)
+
+These are **World-Level Fact Seeds**.
+
+Examples (illustrative, not exhaustive):
+- “Maria is now in a relationship.”
+- “Michael has signed a new deal.”
+- “The BAFTAs are scheduled for 12 August.”
+- “A gig has been arranged in Athens.”
+- “Rebecca’s ex is getting married.”
+
+Properties:
+- fact-asserting
+- process-free
+- globally true
+- awareness-neutral
+
+These seeds exist whether or not anyone is present.
+
+---
+
+## IV. CALIBRATION: WHAT THE WORLD MAY INTRODUCE
+
+Calibration is not balancing.
+Calibration is not pacing.
+Calibration is not optimisation.
 
 Calibration means:
-> collisions must remain **mundane, plausible, and incomplete**
 
-The World must resist:
-- escalation
-- dramatization
-- neatness
-- resolution
-
-Most collisions lead nowhere.
-That is correct.
+> **The World introduces reality that is plausible, incomplete, and indifferent.**
 
 ---
 
-## VI. TIMING AND LATENCY
+### 1. PERMITTED SEED CONTENT
 
-### 1. NO SCHEDULING
+World-Level Fact Seeds MAY:
+- assert that something is now the case
+- specify subject matter
+- specify scope where structurally obvious
+- exist without explanation
 
-Collisions MUST NOT be:
-- queued
-- delayed intentionally
-- timed strategically
-- released after countdowns
+Seeds MAY be:
+- mundane
+- inconvenient
+- disruptive
+- emotionally loaded
+- socially significant
+
+---
+
+### 2. FORBIDDEN SEED CONTENT
+
+World-Level Fact Seeds MUST NOT:
+- describe how the fact came to be
+- describe negotiations or deliberation
+- assert inevitability
+- assert reaction
+- assert timeline
+- assert causation
+
+Forbidden examples:
+- “After months of planning…”
+- “This guarantees consequences…”
+- “Everyone is reacting…”
+- “This will escalate…”
+
+Such seeds are invalid and must not be written.
+
+---
+
+## V. AWARENESS AND DISCOVERY
+
+The introduction of a seed:
+- does NOT imply awareness
+- does NOT imply attention
+- does NOT imply reaction
+
+Awareness occurs only through:
+- later encounters
+- later collisions
+- communication
+- observation
+
+Different people may discover the same seed:
+- at different times
+- through different channels
+- with different interpretations
+- or never at all
+
+This asymmetry is correct.
+
+---
+
+## VI. DEVELOPMENT AND NON-DEVELOPMENT
+
+The World does NOT:
+- follow seeds
+- escalate seeds
+- check outcomes
+- enforce continuation
+
+A seed may:
+- die immediately
+- be ignored
+- be misunderstood
+- explode
+- quietly rot
+- matter only emotionally
+
+All development arises from **people acting**, not from the World intervening again.
+
+---
+
+## VII. LATENCY WITHOUT SCHEDULING
 
 The World has no clock.
+The World has no queue.
 
----
-
-### 2. PERMITTED LATENCY
-
-A collision may appear:
-- long after its implicit origin
-- without prior indication
-- without explanatory buildup
+However, the World MAY introduce:
+- facts that appear late
+- discoveries that feel overdue
+- information that arrives “too late”
 
 This is allowed because:
-- only the moment of encounter is written
-- no earlier unseen event is asserted
-- no background processing is claimed
+- only the encounter is written
+- no background progression is asserted
+- no unseen timeline is claimed
 
-Latency is lived, not simulated.
-
----
-
-## VII. COLLISION DOES NOT FORCE RESPONSE
-
-A collision:
-- may be ignored
-- may be misunderstood
-- may be deferred
-- may be mishandled
-- may be forgotten
-
-The World does not demand reaction.
-
-Silence after collision is valid.
+Lateness is experiential, not simulated.
 
 ---
 
@@ -239,25 +310,27 @@ Silence after collision is valid.
 
 The World MUST NOT:
 - assert mass reaction
-- assert public consensus
+- assert consensus
 - assert backlash
 - assert approval
+- assert outrage
 
-Crowds exist only if individuals act and write evidence later.
+Crowds exist only if individuals later act and evidence is written.
 
 ---
 
-## IX. FAILURE MODES (EXPLICITLY FORBIDDEN)
+## IX. FAILURE MODES (EXPLICITLY ILLEGAL)
 
-The following are illegal:
+The following are forbidden:
 
-- “Meanwhile…” constructions
-- off-screen progress summaries
-- implied ongoing processes
-- background escalation
 - narrative payoff logic
+- escalation guarantees
+- dramatic framing
+- “meanwhile” constructions
+- off-screen summaries
+- causal stitching
 
-If a collision resolves something by itself, it is invalid.
+If a collision “explains itself”, it is illegal.
 
 ---
 
@@ -265,27 +338,27 @@ If a collision resolves something by itself, it is invalid.
 
 Agents:
 - interpret collisions subjectively
-- react or do not react
-- misjudge importance
-- overreact
-- underreact
+- may misjudge importance
+- may overreact
+- may underreact
+- may ignore entirely
 
-The World never corrects them.
+The World does not correct them.
+
+The World does not help them.
 
 ---
 
-## XI. ABSOLUTE PROHIBITIONS
+## XI. FINAL CONSTRAINT
 
-The collision system MUST NOT:
-- simulate society
-- simulate institutions
-- simulate time passing
-- track unresolved collisions
-- close loops
-- ensure consequences
+If the World ever:
+- decides outcomes
+- prefers drama
+- ensures novelty
+- manages tension
+- tracks unresolved seeds
 
-Reality is not tidy.
-Neither is this system.
+then the system has become a simulator and is invalid.
 
 ---
 

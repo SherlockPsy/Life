@@ -1,67 +1,76 @@
 # 06_INFRASTRUCTURE_LOGIC
-## Clerical Processes Without Cognition
+## Clerical Reality Without Cognition
 
-Version: 3.1 (Constitutional Lock)
+Version: 4.0 (Seed-Compliant Lock)
 Status: AUTHORITATIVE
 
 ---
 
 ## PREAMBLE: WHAT INFRASTRUCTURE IS
 
-Infrastructure does not think.
-Infrastructure does not infer.
-Infrastructure does not decide.
-Infrastructure does not anticipate.
-Infrastructure does not react.
+Infrastructure is not a mind.
+Infrastructure is not an agent.
+Infrastructure is not a planner.
+Infrastructure is not a world.
 
-Infrastructure performs **clerical transformations on text** so that:
-- evidence can be recorded
-- evidence can be retrieved
-- context can be assembled
-- illegal output can be rejected
+Infrastructure is **clerical machinery**.
 
-All meaning arises later, inside Readers.
+It moves text.
+It stores text.
+It retrieves text.
+It validates text.
+
+It never understands text.
 
 ---
 
 ## CORE ASSERTION
 
-> **Infrastructure may touch text, but must never understand it.**
+> **Infrastructure may manipulate text, but must never create meaning.**
 
-If infrastructure understands, it violates the Constitution.
+If infrastructure understands, interprets, or reasons, the system is invalid.
 
 ---
 
-## I. SCOPE OF INFRASTRUCTURE
+## I. SCOPE OF INFRASTRUCTURE AUTHORITY
 
-Infrastructure exists to support **exactly five functions**:
+Infrastructure exists to perform exactly **six** functions:
 
-1. Public evidence recording
-2. Public evidence retrieval
-3. Private ledger indexing (sealed)
-4. Context assembly
-5. Output validation
+1. Record public evidence
+2. Record private ledger entries
+3. Retrieve evidence
+4. Assemble context
+5. Validate outputs
+6. Enforce constitutional constraints
 
-No sixth function is permitted.
+No other function is permitted.
+
+Infrastructure MUST NOT:
+- decide what matters
+- decide what happens next
+- decide what should occur
+- advance time
+- generate trajectories
 
 ---
 
 ## II. PUBLIC EVIDENCE RECORDING
 
-### 1. Recording Authority
+### 1. Recording Conditions
 
-Infrastructure may record public evidence only when:
-- invoked explicitly
-- supplied with text to record
+Infrastructure may record a Public Evidence Block only when:
+- explicitly invoked
+- supplied with candidate evidence text
 
 Infrastructure MUST NOT:
 - invent evidence
-- infer missing details
-- embellish text
-- merge evidence blocks
+- elaborate evidence
+- infer missing content
+- merge evidence
+- reorder evidence
 
 Each invocation produces:
-- zero or one Evidence Block
+- zero or one Public Evidence Block
 
 ---
 
@@ -72,281 +81,246 @@ Infrastructure records the **Source** field exactly as provided.
 Source may be:
 - a person
 - the World
-- a named public surface
 - a named institution
+- a named public surface
 
 Infrastructure does not verify:
-- legitimacy
-- authority
 - authenticity
+- authority
+- legitimacy
+- intent
 
 Source is descriptive only.
 
 ---
 
-## III. TAG EXTRACTION (PUBLIC, CLERICAL ONLY)
+## III. WORLD-LEVEL FACT SEED HANDLING (CRITICAL)
 
-### 1. Purpose
+### 1. DEFINITION
 
-Public tags exist solely to assist **retrieval**.
+Infrastructure MUST support a class of evidence called **World-Level Fact Seeds**.
 
-They are not memory.
-They are not meaning.
-They are not interpretation.
+A World-Level Fact Seed:
+- introduces a new fact into Public Reality
+- is not authored by a person
+- is not derived from prior evidence
+- does not imply process or causation
+
+Infrastructure treats such seeds as **first-class public evidence**.
 
 ---
 
-### 2. Permitted Public Tags
+### 2. VALIDATION RULES FOR WORLD-LEVEL FACT SEEDS
 
-Tags may represent:
-- physical objects
-- locations
+Infrastructure MUST validate that World-Level Fact Seeds:
+
+- assert a fact, not a process
+- contain no temporal narrative
+- contain no explanation
+- contain no inevitability
+- contain no instruction
+- contain no reaction claims
+
+Valid:
+- “Michael has signed a new deal.”
+- “Maria is now in a relationship.”
+- “The BAFTAs are scheduled for 12 August.”
+- “Rebecca’s ex is getting married.”
+
+Invalid:
+- “After months of negotiation…”
+- “This will change everything.”
+- “Everyone is reacting.”
+- “This guarantees consequences.”
+
+Invalid seeds MUST be rejected.
+
+---
+
+### 3. AWARENESS SEPARATION
+
+Infrastructure MUST NOT:
+- assume awareness
+- propagate awareness
+- assert who knows
+- infer reactions
+
+World-Level Fact Seeds establish **truth**, not **knowledge**.
+
+Awareness occurs only through later encounters.
+
+---
+
+## IV. PRIVATE LEDGER RECORDING
+
+### 1. AUTHORSHIP
+
+Only Agents may write to their own Private Ledger.
+
+Infrastructure MUST NOT:
+- auto-generate ledger entries
+- infer beliefs
+- correct misunderstandings
+
+---
+
+### 2. IMMUTABILITY
+
+Private Ledger entries are:
+- append-only
+- immutable
+- never reconciled
+- never summarised
+
+---
+
+## V. RETRIEVAL MECHANICS
+
+### 1. PURPOSE
+
+Retrieval exists to:
+- resurface past text
+- re-present written reality
+
+Retrieval does NOT:
+- prioritise importance
+- enforce relevance
+- impose narrative coherence
+
+---
+
+### 2. RETRIEVAL INPUTS
+
+Retrieval MAY use:
+- literal text matching
+- tag overlap
+- vector similarity
+
+Retrieval MUST NOT use:
+- emotional weighting
+- salience scoring
+- public impact estimates
+- institutional authority weighting
+
+---
+
+## VI. TAGGING (CLERICAL ONLY)
+
+### 1. PERMITTED TAGS
+
+Tags may identify:
 - named people
-- named public surfaces
+- named places
 - named institutions
-
-Examples:
-- `Door`
-- `Kitchen`
-- `Instagram`
-- `Tabloid`
-- `Studio`
-- `University`
+- named public surfaces
+- concrete objects
 
 Tags MUST be:
-- concrete
+- literal
 - surface-level
 - mechanically extractable
 
 ---
 
-### 3. Forbidden Public Tags
+### 2. FORBIDDEN TAGS
 
-Tags MUST NOT represent:
+Tags MUST NOT encode:
 - emotion
-- intention
-- motive
 - importance
-- public reaction
-- institutional reasoning
-- spread or reach
+- reaction
+- narrative role
+- causation
+- “seed” status
 
-Forbidden examples:
-- `Anger`
-- `Scandal`
-- `Viral`
-- `Crisis`
-- `Backlash`
-
-If a tag implies interpretation, it is illegal.
+If a tag implies meaning, it is illegal.
 
 ---
 
-## IV. PRIVATE LEDGER INDEXING (SEALED)
+## VII. VECTOR REPRESENTATIONS
 
-### 1. Purpose
+Vectors MAY exist to support associative retrieval.
 
-Private ledger indexing exists only to allow **bounded rereading**.
+Vectors:
+- are opaque
+- are non-authoritative
+- do not encode truth
+- may be regenerated
 
-It does not:
-- summarize thought
-- rank importance
-- infer coherence
-- resolve contradiction
-
----
-
-### 2. Index Characteristics
-
-Private indices:
-- are derived mechanically from text
-- are visible only to the owning Agent
-- are never exposed to the World
-- are never merged with public indices
-
-Private indices MUST NOT encode:
-- correctness
-- emotion
-- narrative structure
-- causal chains
+Vector regeneration MUST NOT alter reality.
 
 ---
 
-### 3. Retrieval Constraints
-
-Private ledger retrieval:
-- selects a bounded subset of entries
-- performs no summarization
-- performs no semantic ranking
-- asserts no truth
-
-Absence of retrieved memory is meaningful.
-Infrastructure does not compensate.
-
----
-
-## V. VECTOR FINGERPRINTS
-
-### 1. Purpose
-
-Vectors exist solely to support **associative retrieval**.
-
-They answer one question only:
-> “Which texts are linguistically similar?”
-
-They do not:
-- assert relevance
-- encode meaning
-- encode importance
-- represent public conditions
-
----
-
-### 2. Constraints
-
-Vectors are:
-- opaque
-- non-authoritative
-- unreadable by Agents
-- never exposed as evidence
-
-Vectors may be regenerated.
-Regeneration MUST NOT alter reality.
-
----
-
-## VI. RETRIEVAL OPERATIONS
-
-Retrieval may combine:
-- tag overlap
-- vector similarity
-
-Retrieval MUST NOT:
-- privilege emotional content
-- privilege public visibility
-- privilege institutional sources
-- infer significance
-- enforce narrative continuity
-
-Retrieval selects candidates.
-Readers interpret.
-
----
-
-## VII. CONTEXT ASSEMBLY
+## VIII. CONTEXT ASSEMBLY
 
 Context assembly:
-- concatenates selected text
+- concatenates retrieved text
 - preserves original wording
 - preserves ordering
 
 Context assembly MUST NOT:
-- summarize
-- paraphrase
+- summarise
 - compress
 - explain
 - bridge gaps
+- imply continuity
 
-If context “reads better,” it is wrong.
-
----
-
-## VIII. SUPPORT FOR LATENT MANIFESTATION
-
-### 1. Principle
-
-Infrastructure does not manage time.
-
-Infrastructure may, however, record evidence that:
-- arrives later
-- appears abruptly
-- reflects ordinary real-world latency
-
-Infrastructure does not know *why* evidence arrives now.
-It only records *that* it arrives now.
-
----
-
-### 2. Prohibitions
-
-Infrastructure MUST NOT:
-- queue future evidence
-- store pending outcomes
-- schedule manifestation
-- simulate delay
-- imply background processing
-
-Latency is a property of lived experience, not a system feature.
+If context “reads better”, it is wrong.
 
 ---
 
 ## IX. OUTPUT VALIDATION (FORENSIC ONLY)
 
-### 1. Purpose
+### 1. PURPOSE
 
-Validation enforces **forensic law**, not meaning.
+Validation enforces **constitutional legality**, not quality.
 
-It ensures output:
-- describes observable reality only
-- violates no physical continuity
-- contains no forbidden constructs
-
----
-
-### 2. Validator Authority
-
-Validation MAY be performed by:
-- deterministic rules
-- a constrained validator LLM
-
-The validator:
-- does not add facts
-- does not remove facts
-- does not invent causation
-- does not soften tone
-- does not narrate
+Validation checks for:
+- forbidden constructs
+- illegal assertions
+- internal state leakage
+- causation claims
+- trajectory claims
 
 ---
 
-### 3. Meaning Removal (CRITICAL)
+### 2. SEED-SPECIFIC VALIDATION
 
-The validator MAY:
-- strip internal interpretation
-- replace internal attribution with observable description
+When validating World-Level Fact Seeds, infrastructure MUST ensure:
 
-Example:
-- Illegal: “She feels exposed.”
-- Legal rewrite: “She shifts her jacket closer around herself.”
+- no process language
+- no “after”, “because”, “therefore”
+- no future commitments
+- no escalation framing
 
-This preserves outcome while discarding interpretation.
+Seeds that violate these rules MUST be rejected.
 
 ---
 
 ## X. EXECUTION CONSTRAINTS
 
-Infrastructure processes:
-- run only in response to invocation
-- never run in the background
-- never loop
-- never self-trigger
+Infrastructure:
+- runs only when invoked
+- does not idle
+- does not loop
+- does not self-trigger
+- does not persist execution state
 
-There is no idle work.
-There is no waiting state.
+There is no background activity.
 
 ---
 
-## XI. PROHIBITIONS
+## XI. ABSOLUTE PROHIBITIONS
 
 Infrastructure MUST NOT:
-- interpret text
-- infer emotion
-- infer intent
+- simulate society
 - simulate institutions
-- simulate crowds
-- predict outcomes
-- maintain state
+- simulate time
+- simulate causation
+- simulate escalation
+- manage plots
+- curate novelty
 
-If infrastructure “understands,” it is illegal.
+If infrastructure “decides”, it is invalid.
 
 ---
 

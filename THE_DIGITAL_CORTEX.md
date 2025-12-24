@@ -1,342 +1,337 @@
 # THE_DIGITAL_CORTEX
 ## The Public Ledger of Reality
 
-Version: 2.1 (Constitutional Lock)
+Version: 3.0 (Seed-Aware Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
 
 ## PREAMBLE: WHAT THIS IS
 
-The Digital Cortex is not a mind.
+The Digital Cortex is not intelligence.
+It is not cognition.
 It is not memory.
 It is not interpretation.
 It is not society.
-It is not an institution.
 
 The Digital Cortex is a **ledger**.
 
 It stores text.
 It exposes text.
+It orders text.
+
 It never understands text.
 
 ---
 
 ## CORE ASSERTION
 
-> **If it is not written here as public evidence, it did not happen.**
+> **Public Reality exists only as what is written in this ledger.**
 
-There is no other shared reality.
+If something is not written here, it does not exist for the shared world.
 
 ---
 
 ## I. THE EVIDENCE BLOCK (ATOMIC UNIT)
 
-All public reality exists as **Evidence Blocks**.
+All Public Reality exists as **Evidence Blocks**.
 
-Each Evidence Block represents exactly one of the following:
-- a single observable action
-- a single observable utterance
-- a single observable environmental event
-- a single observable public or institutional manifestation
+An Evidence Block represents exactly one of the following:
+- an observable action
+- an observable utterance
+- an observable environmental change
+- an observable institutional or public-surface manifestation
+- an observable world-level fact becoming true
 
-Nothing more.
-Nothing implied.
-Nothing inferred.
+Nothing else.
 
 ---
 
 ### A. REQUIRED FIELDS
 
-Each Evidence Block contains exactly:
+Each Evidence Block MUST contain exactly:
 
-1. **Ordering Token**
+1. **Sequence Marker**
    - Append-only
    - Monotonic
-   - Carries no temporal meaning
-   - Preserves sequence only
+   - Carries ordering only
+   - Carries no temporal semantics
 
 2. **Source**
-   - The entity or surface from which the evidence is encountered
+   - Descriptive origin of the evidence
    - May be:
      - a person
      - the World
      - a named public surface
      - a named institution
-   - Source is descriptive, not authoritative
+   - Source asserts no authority
 
 3. **Context**
-   - A semantic descriptor of situation or location
+   - Situational descriptor
    - May include:
-     - physical place
+     - physical location
      - social setting
      - public surface name
-     - institutional surface name
-   - Context is descriptive, not interpretive
+     - institutional setting
+   - Context describes where evidence is encountered, not why
 
 4. **Evidence Text**
-   - Raw, immutable text
-   - Describes **only what is directly observable**
-   - Contains no interpretation, explanation, or internal state
+   - Raw text
+   - Immutable
+   - Describes only what is asserted as real
 
 ---
 
-### B. FORBIDDEN FIELDS
+### B. FORBIDDEN CONTENT
 
-An Evidence Block MUST NOT contain:
-- emotional labels
-- inferred intent
+Evidence Blocks MUST NOT include:
 - internal thoughts
-- summaries
-- diagnoses
-- probabilities
-- reach estimates
-- metrics
-- future implications
-- unseen causal chains
+- emotional states
+- inferred intent
+- causal explanation
+- process description
+- timelines
+- guarantees
+- forecasts
+- narrative framing
 
-If it cannot be directly observed, it cannot be written.
+If something cannot be reread later as text, it does not exist.
 
 ---
 
-## II. TYPES OF PUBLIC EVIDENCE (CLARIFICATION)
+## II. CLASSES OF PUBLIC EVIDENCE
 
-The Digital Cortex recognizes no hierarchy of importance.
-However, public evidence may describe different **kinds of observable reality**.
+The Cortex does not privilege classes, but recognizes **distinct forms** of evidence for validation purposes.
 
-All kinds are equal in authority.
+All classes are equal in ontological authority.
 
 ---
 
 ### 1. PERSONAL ACTION EVIDENCE
 
+Evidence authored by a person describing:
+- physical actions
+- spoken words
+- visible behaviour
+
 Examples:
 - “She opens the door.”
-- “He says, ‘I didn’t mean it.’”
-- “She looks away.”
+- “He says, ‘We should talk.’”
+- “She leaves the room.”
 
 ---
 
 ### 2. ENVIRONMENTAL EVIDENCE
+
+Evidence describing physical or situational conditions.
 
 Examples:
 - “Rain hits the window.”
 - “The lights go out.”
 - “The room falls silent.”
 
-Environmental evidence asserts no cause.
-It describes only what is encountered.
+No cause is asserted.
 
 ---
 
-### 3. PUBLIC SURFACE EVIDENCE
+### 3. COMMUNICATION EVIDENCE
 
-Public surfaces are places where information is visible.
-
-Examples:
-- social feeds
-- homepages
-- trending panels
-- noticeboards
-- inbox views
-
-Valid evidence describes:
-- what is visible
-- where it is visible
-- that it is publicly visible
+Evidence describing received or sent communications.
 
 Examples:
-- “A photo of you and Rebecca appears on a public Instagram feed.”
-- “A headline about Rebecca is visible on a tabloid homepage.”
-- “A clip auto-plays in a ‘Trending’ section.”
+- “An email arrives offering a photoshoot for Rebecca.”
+- “Her phone rings with a call from her agent.”
+- “A message notification lights up the screen.”
 
-Public surface evidence MUST NOT include:
+Communication evidence:
+- is always about something
+- may be wrong
+- may be misleading
+- may be ignored
+
+---
+
+### 4. PUBLIC SURFACE EVIDENCE
+
+Evidence describing what is visible on public-facing surfaces.
+
+Examples:
+- “A photo of Rebecca appears on a public Instagram feed.”
+- “A headline featuring Rebecca is visible on a tabloid homepage.”
+- “A listing shows Rebecca attached to a project.”
+
+Public surface evidence may assert:
+- visibility
+- placement
+- surface-level prominence
+- structural scale implied by the surface itself
+
+Public surface evidence MUST NOT assert:
 - audience size
-- spread claims
-- algorithmic behavior
-- implied universality
-
-Visibility is a fact.
-Reach is not.
+- reaction
+- spread mechanics
+- sentiment
 
 ---
 
-### 4. INSTITUTIONAL MANIFESTATION EVIDENCE
+### 5. INSTITUTIONAL EVIDENCE
 
-Institutions surface reality through encounters.
+Evidence describing institutional outputs or constraints.
 
 Examples:
-- letters
-- emails
-- calls
-- notices
-- portals
-- documents
-- physical presence
+- “A contract is attached to an email from a studio.”
+- “A notice appears on a university portal.”
+- “A legal letter arrives.”
 
-Valid evidence examples:
-- “An email from the studio’s legal department is open on the screen.”
-- “A letter stamped with the agency logo lies on the table.”
-- “A notice is posted on the university portal.”
+Institutional evidence asserts:
+- encounter
+- existence
+- constraint
 
-Institutional evidence:
-- asserts no internal process
-- asserts no deliberation
-- asserts no intention
-- asserts only encounter
+It never asserts intent.
 
 ---
 
-## III. IMMUTABILITY
+### 6. WORLD-LEVEL FACT EVIDENCE (CRITICAL)
+
+World-Level Fact Evidence establishes **a new external fact** in the shared world.
+
+This evidence:
+- is not authored by any person
+- does not require a witnessing agent
+- does not imply awareness
+- does not describe process
+
+Examples (illustrative only):
+- “Maria is now in a relationship.”
+- “Michael has signed a new deal.”
+- “The BAFTAs are scheduled for 12 August.”
+- “Rebecca’s ex is getting married.”
+
+World-Level Fact Evidence asserts only:
+> **This is now true.**
+
+Nothing else.
+
+---
+
+## III. IMMUTABILITY AND CONTRADICTION
 
 Once written:
-- Evidence is never edited
-- Evidence is never deleted
-- Evidence is never overwritten
+- evidence is never edited
+- evidence is never deleted
+- evidence is never reconciled
 
 Contradictions persist.
-Clarification occurs only through later evidence.
+Resolution occurs only through later evidence.
 
 ---
 
-## IV. AUXILIARY METADATA (NON-ONTOLOGICAL)
+## IV. RETRIEVAL IS NOT INTERPRETATION
 
-The Cortex MAY store auxiliary metadata to assist retrieval.
-
-This metadata is **not reality**.
-It has no authority.
-
----
-
-### A. TAGS
-
-Tags are:
-- clerical
-- concrete
-- mechanically extracted
-
-They may represent:
-- physical objects
-- locations
-- named entities
-- named surfaces
-- named institutions
-
-Examples:
-- `Door`
-- `Kitchen`
-- `Instagram`
-- `Tabloid`
-- `University`
-
-Tags MUST NOT represent:
-- emotion
-- intention
-- importance
-- abstraction
-- public reaction
-- institutional meaning
-
----
-
-### B. VECTORS
-
-Vectors are:
-- mathematical fingerprints
-- opaque
-- non-authoritative
-
-They support associative retrieval only.
-
-Vectors:
-- do not encode meaning
-- do not encode importance
-- do not decay over time
-- do not represent public conditions
-
-Removing vectors must not alter reality.
-
----
-
-## V. RETRIEVAL IS NOT MEMORY
-
-The Digital Cortex does not remember.
-It does not prioritize.
-It does not interpret.
+The Digital Cortex retrieves text.
+It does not explain text.
+It does not prioritise text.
 
 Retrieval:
-- selects candidate Evidence Blocks
-- preserves original text
+- preserves original wording
+- preserves ordering
 - asserts no importance
-- asserts no meaning
 
-Meaning arises only when reread.
+Meaning arises only when reread by a Reader.
 
 ---
 
-## VI. ABSENCE AS EVIDENCE
+## V. TAGGING AND METADATA (NON-ONTOLOGICAL)
 
-Absence of evidence is meaningful.
+### 1. PURPOSE
+
+Metadata exists only to support retrieval.
+
+Metadata is not reality.
+Metadata has no authority.
+
+---
+
+### 2. PERMITTED TAGS
+
+Tags may identify:
+- named people
+- named places
+- named institutions
+- named public surfaces
+- concrete objects
+
+Tags MUST be literal and surface-level.
+
+---
+
+### 3. FORBIDDEN TAGS
+
+Tags MUST NOT encode:
+- emotion
+- importance
+- evaluation
+- narrative role
+- reaction
+- causation
+
+---
+
+## VI. VECTORS (OPTIONAL AND OPAQUE)
+
+Vector embeddings may exist for associative retrieval.
+
+Vectors:
+- are unreadable
+- are non-authoritative
+- do not encode meaning
+- may be regenerated without changing reality
+
+---
+
+## VII. ABSENCE AS FACT
+
+The absence of evidence is meaningful.
 
 Examples:
 - no reply
+- no announcement
 - no follow-up
 - no appearance
-- no notice
 
-The Cortex does not label absence.
-Readers infer it.
-
----
-
-## VII. SCALE AND DURATION
-
-The Cortex may contain:
-- minutes of evidence
-- years of evidence
-- decades of evidence
-
-Age does not weaken truth.
-Recency does not strengthen truth.
-
-Only rereading creates influence.
+The Cortex does not annotate absence.
+Readers interpret it.
 
 ---
 
-## VIII. LATENCY AND MANIFESTATION
+## VIII. TIME AND LATENCY
 
-The Cortex does not track pending events.
+The Cortex does not track time.
 
-Evidence may appear that reflects:
-- delayed communication
-- delayed institutional response
-- delayed public appearance
+Evidence may reflect:
+- delayed discovery
+- late notification
+- after-the-fact awareness
 
-This is permitted because:
+This is allowed because:
 - only the moment of encounter is written
-- no unseen timeline is asserted
-- no background processing is implied
-
-The Cortex never claims:
-- when something “started”
-- how long it “took”
-- what happened off-record
+- no background process is implied
 
 ---
 
 ## IX. PROHIBITIONS
 
 The Digital Cortex MUST NOT:
-- summarize history
-- compress memory into traits
-- track state
 - infer intent
+- infer reaction
+- infer consequence
+- simulate society
 - simulate institutions
-- simulate public reaction
-- schedule future evidence
-- store hidden processes
+- simulate time passing
+- enforce narrative coherence
 
-If it interprets, it violates the constitution.
+If the ledger “understands”, it violates the Constitution.
 
 ---
 
