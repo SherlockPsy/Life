@@ -1,520 +1,286 @@
-# MASTER_INFRASTRUCTURE.md
-## The Physical and Logical Hardware of Semantic Reality
+# MASTER_INFRASTRUCTURE
+## Storage, Deployment, and System Plumbing
 
-**Authority:** HIGH (Hardware Law)
-**Scope:** Deployment, Database, Filesystem
-**Enforcement:** Automated
+Version: 5.0 (Constitutional Lock)
+Status: AUTHORITATIVE
 
 ---
-
-# PART 1: RAILWAY DEPLOYMENT SPECIFICATION
 
 ## PREAMBLE
 
-This section defines the **actual inventory** and **setup plan** for the system.
-It is based on the verified documentation for Railway, Postgres, Qdrant, Venice, and DeepSeek.
+This document defines the **technical substrate** of the system.
+
+It does NOT define:
+- cognition
+- agency
+- psychology
+- behaviour
+- realism
+- pacing
+
+Those are constitutional concerns handled elsewhere.
+
+Infrastructure exists to **support**, not to decide.
 
 ---
 
-## I. THE INFRASTRUCTURE STACK
+## ARTICLE I — PRINCIPLES
 
-The system requires exactly **three** mandatory services (and one optional).
+### I.1 Infrastructure Is Dumb
 
-### 1. PostgreSQL (The Authoritative Ledger)
-- **Role:** The sole source of truth for Public Evidence, Private Ledgers, and Identity.
-- **Provider:** Railway PostgreSQL Template.
-- **Variables:** `DATABASE_URL`, `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`.
-- **Constraint:** Must be authoritative. If Qdrant disagrees with Postgres, Postgres wins.
+Infrastructure:
+- stores text
+- retrieves text
+- forwards text
+- persists text
 
-### 2. Qdrant (The Vector Cortex)
-- **Role:** Search accelerator and context assembler.
-- **Provider:** Qdrant Cloud (Recommended) or Self-Hosted on Railway.
-- **Configuration:**
-  - **Collection:** `life_vectors` (or similar).
-  - **Metric:** Cosine.
-  - **Dimensions:** Must match embedding model (e.g., 1536).
-  - **Payload:** Arbitrary JSON used for **filtering** (Location, AgentID, BlockType).
-- **Security:** API Key authentication MUST be enabled.
+Infrastructure does not:
+- interpret
+- infer
+- optimise
+- simulate
+- decide
 
-### 3. The App Service (The API Server)
-- **Role:** The runtime that talks to Postgres, Qdrant, and LLMs.
-- **Provider:** Railway App Service (Node/Python).
-- **Build:** Copilot-generated.
-
-### 4. Redis (Optional)
-- **Role:** Caching assembled context or rate limits.
-- **Provider:** Railway Redis Template.
+If infrastructure begins to “understand”, the system is broken.
 
 ---
 
-## II. ENVIRONMENT VARIABLES (APP SERVICE)
+### I.2 Text Fidelity
 
-These variables must be set in Railway (not in code).
+All text:
+- is stored verbatim
+- is retrieved verbatim
+- is forwarded verbatim
 
-### Core Connectivity
-- `DATABASE_URL`: (Auto-injected by Railway)
-- `QDRANT_URL`: The specific endpoint for the cluster.
-- `QDRANT_API_KEY`: The secret key for vector access.
-
-### Venice AI (Renderer)
-- `VENICE_API_KEY`: [Secret]
-- `VENICE_BASE_URL`: `https://api.venice.ai/api/v1`
-- `VENICE_MODEL_RENDERER`: `venice-uncensored`
-
-### DeepSeek (Logic & Seeding)
-- `DEEPSEEK_API_KEY`: [Secret]
-- `DEEPSEEK_BASE_URL`: `https://api.deepseek.com`
-- `DEEPSEEK_MODEL_CHAT`: `deepseek-chat` (V3)
-- `DEEPSEEK_MODEL_REASONER`: `deepseek-reasoner` (R1 - Thinking Mode)
+There is no rewriting layer.
+There is no compression layer.
+There is no semantic normalisation.
 
 ---
 
-## III. DATABASE SCHEMA (POSTGRES)
+## ARTICLE II — DATA STORES
 
-The App must manage these tables via migrations.
+### II.1 Authoritative Store (PostgreSQL)
 
-### Table A: `public_evidence_blocks`
-- **Nature:** Append-only, Immutable.
-- **Fields:**
-  - `id` (UUID/BigInt)
-  - `content` (Text)
-  - `location_token` (Text)
-  - `timestamp` (ISO8601)
-  - `source_agent_id` (Text)
+PostgreSQL is the **authoritative ledger**.
 
-### Table B: `private_ledger_entries`
-- **Nature:** Append-only, Sealed per Agent.
-- **Fields:**
-  - `id` (UUID/BigInt)
-  - `agent_id` (Text - Owner)
-  - `content` (Text)
-  - `timestamp` (ISO8601)
-  - `associated_block_id` (Optional - Link to public event)
+It stores:
+- Public Evidence (Recorder)
+- World Fact Seeds
+- Identity Documents
+- System Configuration (non-behavioural)
 
-### Table C: `identity_constitutions`
-- **Nature:** Static, Versioned.
-- **Fields:**
-  - `agent_id` (PK)
-  - `content` (Markdown Text)
-  - `hash` (For integrity checks)
+It does NOT store:
+- inferred state
+- scores
+- counters
+- metrics
+- derived psychology
 
 ---
 
-## IV. QDRANT SCHEMA (VECTORS)
+### II.2 Recorder Table (Conceptual)
 
-Qdrant is **not truth**. It is a **search helper**.
+The Recorder table is append-only.
 
-### Indexing Rule
-- Every `public_evidence_block` gets an embedding.
-- **Payload** MUST include:
-  - `block_id`
-  - `location_token`
-  - `agent_id`
-  - `timestamp`
-  - `type` ("public" or "private")
+Each row contains:
+- sequential index
+- timestamp (for ordering only, not simulation)
+- raw text content
+- origin marker (user / agent / world)
 
-### Retrieval Rule
-- Searches must ALWAYS filter by `location_token` to enforce the "Anti-Telepathy" rule.
-- Agents cannot search global vectors. They can only search vectors present in their location.
+No row is ever updated.
+No row is ever deleted.
 
 ---
 
-## V. ANTI-TELEPATHY IMPLEMENTATION (CRITICAL)
+### II.3 Single Present Pointer
 
-The App must enforce awareness gating at the **Database/Query level**.
+Infrastructure maintains a single pointer:
+- referencing the last written Recorder row
 
-1. **Global Seeds:** World seeds exist globally in Postgres.
-2. **Local Awareness:** An Agent's context query MUST exclude global seeds unless the Agent has interacted with a "Channel" (Phone, TV, Person) that reveals them.
-3. **Implementation:** Do not dump the "last 50 blocks" into the prompt. Dump "last 50 blocks WHERE location = current_location".
-
----
-
-# PART 2: THE DIGITAL CORTEX
-
-## PREAMBLE: WHAT THE DIGITAL CORTEX IS
-
-The Digital Cortex is not intelligence.
-The Digital Cortex is not reasoning.
-The Digital Cortex is not interpretation.
-
-The Digital Cortex is **context assembly**.
-
-Its sole purpose is to:
-- select what text is reread
-- present it coherently
-- preserve epistemic limitation
-- avoid telepathy
-- avoid simulation
-
-The Cortex does not think.
-The Renderer thinks.
+This pointer:
+- defines the present
+- is shared across all devices
+- advances only when a new row is written
 
 ---
 
-## CORE ASSERTION
+## ARTICLE III — VECTOR STORE (QDRANT)
 
-> What the Renderer produces depends entirely on what the Cortex chooses to show.
+### III.1 Purpose
 
-Incorrect context produces impossible minds.
+Qdrant exists solely to support **selective rereading**.
 
----
+It is used for:
+- retrieving relevant past text
+- based on semantic similarity
 
-## I. INPUT SOURCES
-
-### I.1 Recorder Stream
-
-The primary input is the Recorder.
-
-The Cortex may retrieve:
-- recent Public Evidence
-- nothing else by default
-
-The Cortex MUST NOT:
-- summarise history
-- compress events
-- infer state
-- introduce interpretation
+It is NOT used for:
+- memory compression
+- summarisation
+- state inference
+- behaviour shaping
 
 ---
 
-### I.2 User Input
+### III.2 Indexing Rules
 
-User input:
-- is raw text
-- is unlabelled
-- is unclassified
-- is not privileged
+Only raw text blocks may be indexed.
 
-User input is treated as:
-- another observable utterance
-- nothing more
+No metadata labels that encode:
+- emotion
+- intent
+- priority
+- importance
+- decay
+- truth
 
----
-
-### I.3 World Fact Seeds
-
-World Fact Seeds:
-- are raw text statements
-- assert existence only
-- imply no awareness
-- imply no reaction
-
-The Cortex MUST NOT expand them.
+Text in equals text out.
 
 ---
 
-## II. CONTEXT ASSEMBLY
+### III.3 Retrieval Discipline
 
-### II.1 Minimal Sufficiency
+Retrieval:
+- is mechanical
+- is relevance-based
+- asserts no correctness
 
-The Cortex assembles **only enough context** for the Renderer to plausibly continue.
-
-There is no obligation to include:
-- full scene history
-- emotional arcs
-- resolved interactions
-
-Excess context causes telepathy.
+Failure to retrieve is meaningful.
+The system does not compensate.
 
 ---
 
-### II.2 No Canonical Context
+## ARTICLE IV — MODEL INVOCATION
 
-There is no “correct” context window.
+### IV.1 Models Used
 
-Context is:
-- contingent
-- local
-- sufficient, not exhaustive
+The system uses:
+- Venice (renderer)
+- DeepSeek (reasoning / seeding support if needed)
 
-Omission is meaningful.
-
----
-
-### II.3 Epistemic Isolation
-
-The Cortex MUST ensure that:
-
-- no Agent sees what they could not plausibly know
-- no Agent reacts to unseen facts
-- no Renderer output implies global awareness
-
-If an event is not perceptible in-world, it must not appear in context.
+Models are invoked as:
+- stateless services
+- with explicit input
+- producing explicit output
 
 ---
 
-## III. SOCIAL INITIATION SUPPORT
+### IV.2 No Persistent Model State
 
-### III.1 No User Privilege
+Models:
+- do not retain memory
+- do not maintain continuity
+- do not store state
 
-The Cortex MUST NOT bias context assembly toward:
-
-- user utterances as initiators
-- user silence as blocking
-- user presence as causal priority
-
-All present Agents are equal participants.
+All continuity lives in stored text.
 
 ---
 
-### III.2 Silence as Context
+### IV.3 Prompt Discipline
 
-Silence is part of context.
+Infrastructure MUST ensure that:
+- only raw text is sent
+- no labels are injected
+- no control codes exist
+- no internal fields are exposed
 
-The absence of text:
-- may permit initiation
-- may permit continuation
-- may permit drift
-- may permit nothing
-
-Silence does not mean “wait”.
+If it wouldn’t appear on screen, it must not appear in the prompt.
 
 ---
 
-## IV. CONVERSATIONAL CONTINUITY SUPPORT
+## ARTICLE V — STREAMING AND DEVICES
 
-### IV.1 Anti-Closure Bias
+### V.1 Live Observation
 
-When assembling context, the Cortex MUST assume:
+Clients connect via:
+- streaming (SSE or WebSocket)
 
-- conversation is ongoing unless explicitly ended
-- topics remain live unless displaced
-- social momentum decays gradually, not instantly
-
-The Cortex MUST NOT frame interactions as completed unless evidence shows closure.
-
----
-
-### IV.2 Residual Threads
-
-If recent text contains:
-- unanswered remarks
-- emotional charge
-- practical loose ends
-- conversational hooks
-
-the Cortex SHOULD preserve these in context to allow continuation.
+They receive:
+- newly written Recorder rows
+- in order
+- without buffering future content
 
 ---
 
-## V. WORLD INTERRUPTIONS
+### V.2 Cross-Device Continuity
 
-### V.1 Minimal Exposure
+Because:
+- Recorder is authoritative
+- present pointer is global
 
-When a World Fact Seed is included, the Cortex MUST present:
+Any device may disconnect and reconnect and see:
+- the same present
+- the same accumulated reality
 
-- only the perceptible assertion
-- no implied consequences
-- no inferred reactions
-
-Example:
-- “The doorbell rings.”
-
-Not:
-- identity
-- motive
-- resolution
+No session state exists on the client.
 
 ---
 
-### V.2 Deferment After Exposure
+### V.3 Observation Is Passive
 
-After a World interruption is exposed, the Cortex MUST defer.
+Client connection:
+- does not trigger invocation
+- does not advance time
+- does not generate output
 
-Further context is driven only by:
-- Agent action
-- Agent speech
-- interaction outcomes
-
----
-
-## VI. MULTI-BEAT GENERATION SUPPORT
-
-### VI.1 Consecutive Invocation Eligibility
-
-The Cortex MAY permit consecutive Renderer invocations when:
-
-- social momentum is high
-- multiple Agents are active
-- interruption remains unresolved
-- interaction is unfolding
-
-This does NOT mandate output.
-It permits it.
+Watching is passive.
 
 ---
 
-### VI.2 No Artificial Throttling
+## ARTICLE VI — SECURITY AND ACCESS
 
-The Cortex MUST NOT enforce:
-- “one beat per interaction”
-- fixed pacing
-- conversational symmetry
+### VI.1 Administrative Access
 
-Irregularity is required.
+Administrative access may allow:
+- inspection of Recorder
+- inspection of Identity Documents
+- inspection of World Fact Seeds
 
----
-
-## VII. PROHIBITIONS
-
-The Digital Cortex MUST NOT:
-
-- infer intent
-- calculate emotion
-- assign weights
-- encode rules
-- label participants
-- predict outcomes
-- stabilise conversations artificially
-
-If context assembly feels clever, it is wrong.
+Administrative access MUST NOT:
+- alter past evidence
+- inject hidden state
+- manipulate outcomes
 
 ---
 
-## FINAL RULE (NON-NEGOTIABLE)
+### VI.2 Separation of Concerns
 
-The Cortex exists to **withhold**, not to enrich.
+Infrastructure enforces:
+- access control
+- rate limiting
+- API boundaries
 
-It must show only what a mind could plausibly reread.
-
-Anything more is telepathy.
-
----
-
-# PART 3: REPOSITORY STRUCTURE
-
-## PREAMBLE
-
-This section defines the **only valid repository structure** for the system.
-This structure is not cosmetic. It is a **constraint mechanism**.
-
-Copilot is expected to build the system.
-Therefore the filesystem itself must encode ontology, authority, and prohibition.
-
-If a concept has no folder, it does not exist.
-If a folder exists, it may contain only what is explicitly allowed.
+It does NOT enforce:
+- realism
+- behaviour
+- pacing
+- narrative quality
 
 ---
 
-## TOP-LEVEL TREE (CANONICAL)
+## ARTICLE VII — FAILURE MODES (GUARDS)
 
+Infrastructure MUST actively avoid:
 
-```
+- background jobs that simulate life
+- cron-based advancement
+- implicit state creation
+- caching that alters order
+- retries that duplicate output
+- auto-healing that invents data
 
-/life
-├── .github/
-│   └── copilot-instructions.md
-│
-├── law/
-│   ├── 0_constitution/
-│   │   ├── NON_NEGOTIABLES_v0.2.md
-│   │   ├── 00_CONSTITUTION_OF_REALITY.md
-│   │   └── DIRECTION.md
-│   │
-│   └── 1_contracts/
-│       ├── 01_SYSTEM_ARCHITECTURE.md
-│       ├── 02_CONTRACT_STATE.md
-│       ├── 03_CONTRACT_RENDERER.md
-│       ├── 04_CONTRACT_AGENT.md
-│       ├── 05_THE_CINEMA.md
-│       ├── 06_INFRASTRUCTURE_LOGIC.md
-│       └── 07_COLLISION_AND_FRICTION.md
-│
-├── ontology/
-│   ├── public_reality/
-│   ├── private_reality/
-│   ├── identity/
-│   └── world/
-│
-├── clerks/
-│   ├── recorder/
-│   ├── retrieval/
-│   ├── invocation/
-│   └── validation/
-│
-├── boot/
-│   └── initial_evidence.md
-│
-└── README.md
-
-```
+If infrastructure starts “helping”, it is wrong.
 
 ---
 
-## AUTHORITY LADDER
+## FINAL RULE
 
-Authority flows **top to bottom** and **never upward**:
+Infrastructure exists to move text safely.
 
-1. `/law/0_constitution/`
-2. `/law/1_contracts/`
-3. `/ontology/`
-4. `/clerks/`
-5. `/boot/`
-
-No file in a lower tier may:
-- reinterpret
-- override
-- weaken
-- “extend”
-
-a higher tier.
+Anything beyond that belongs elsewhere and is forbidden here.
 
 ---
 
-## FOLDER DEFINITIONS
-
-### /law/
-Defines **what reality is allowed to be**.
-- **0_constitution:** Supreme, non-negotiable law.
-- **1_contracts:** Binding operational constraints.
-
-### /ontology/
-Encodes the **four and only four things that exist**.
-- **public_reality:** Append-only evidence storage.
-- **private_reality:** Per-person private ledgers (sealed).
-- **identity:** Static identity constitutions.
-- **world:** Evidence injection and environmental change.
-
-### /clerks/
-Contains **non-thinking clerical machinery**.
-- **recorder:** Forensic validation and writing to public reality.
-- **retrieval:** Vector similarity and tag matching.
-- **invocation:** Context assembly and LLM passing.
-- **validation:** Continuity and physics checks.
-
-### /boot/
-Contains **Initial reality only**.
-- Startup is evidence, not configuration.
-
----
-
-## DELIBERATELY ABSENT FOLDERS
-
-The following folder names MUST NOT exist:
-
-- `/utils`
-- `/services`
-- `/engine`
-- `/state`
-- `/memory`
-- `/scheduler`
-- `/time`
-- `/ai`
-- `/logic`
-
-If Copilot suggests adding one of these, it is wrong.
-
----
-
-## FINAL NOTE
-
-This repository structure is a **physical enforcement of ontology**.
-
-If something cannot be placed in this tree without violating a rule above,
-then it is not allowed to exist in the system.
-
----
-
-# END OF MASTER INFRASTRUCTURE
-
-```
+END OF INFRASTRUCTURE SPEC
