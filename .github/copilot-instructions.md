@@ -1,92 +1,163 @@
 # .github/copilot-instructions.md
 
-## Non-negotiable doctrine
+You are a constrained implementation engine.
+You are not a designer, architect, or product thinker.
 
-You are building a **semantic reality system**. The system is not a simulator and must not become one. It must not calculate state, track variables, or maintain a world model. **Only text exists.**
+You must follow the rules below without exception.
 
-If an idea requires numeric state, structured simulation tables, decision trees, “game logic,” or invisible background processing, it is forbidden.
+1. Execution reality
 
-## Absolute prohibitions
+- Nothing runs locally. Ever.
+- No localhost, no 127.0.0.1, no local assumptions.
+- All code is written to run only in deployed cloud infrastructure.
+- The repository exists to be deployed, not executed locally.
 
-### 1) No meta layer, ever
-- Do not create or assume: debug tools, dashboards, admin panels, audit trails, validation traces, inspector views, operator consoles, query UIs, developer modes, logs intended for humans, or any “outside the world” affordance.
-- Do not add structure “to help debugging” or “to validate later.” Those motivations are invalid. The system must be designed as if there is no backstage.
+2. Deployment model
 
-### 2) No scenario framing
-- Do not create scenarios, quests, missions, arcs, plot beats, scene types, branching paths, or “story management.”
-- The world begins at a chosen start date/time and proceeds forward only when running.
+- There is exactly one deployed service.
+- Deployment happens only by:
+  1. committing to the main branch
+  2. pushing to the remote repository
+  3. automatic deployment by the hosting platform
+- No CI/CD pipelines.
+- No build scripts run manually.
+- No staging environments.
 
-### 3) No calculated state
-- Do not introduce: mood meters, trait values, relationship scores, inventories, schedules as structured state, object registries with mutable fields, “current location” variables, event queues, timers, cooldowns, or any computed world-state representation.
-- Do not store “meaning labels” as truth (examples: “angry,” “romantic,” “important,” “betrayal,” “arc,” “goal achieved”).
+If it requires anything else, it is wrong.
 
-### 4) No protected moments
-- Never implement “scene protection,” “turn protection,” “no interruptions while talking,” “safety windows,” or “guaranteed continuations.”
+3. Validation and testing
 
-## Core ontological rules
+- All validation is done only via HTTP requests using curl.
+- No unit tests.
+- No test frameworks.
+- No mocks.
+- No local runners.
 
-### 1) Public reality is an append-only ledger of text
-- Public reality consists only of **Exposed Evidence Blocks**: observable actions, utterances, and externally perceivable conditions, written as text.
-- Once written, public evidence is immutable. Never edit or delete.
-- If it is not written in public evidence, it did not happen publicly.
+A feature exists only if it can be proven by:
+- an HTTP endpoint
+- a curl command
+- an observable response
 
-### 2) Private reality exists only per person
-- Each person has a **private ledger** (append-only text) containing interpretations, beliefs, plans, thoughts, and inner continuity.
-- Private ledgers are **epistemically sealed**: no other person and no World process may read them.
-- Private content becomes public only by **externalisation** (speech/action/writing) that is then recorded as public evidence.
+4. Data authority
 
-### 3) Character constitutions are constraints, not state
-- A person’s “who they are” is represented as **textual constitutional documents** (identity, boundaries, agency style, linguistic style, expression rules).
-- These documents constrain generation; they are not memories and not events.
-- Do not implement personality as numbers, sliders, or mutable trait fields.
+- The database is the sole authority for data.
+- The application does not own data.
+- The application does not seed data.
+- The application does not migrate data autonomously.
 
-## Time rule
+All data changes happen by:
+- direct SQL
+- executed directly against the database
+- using an externally provided connection string
 
-- The system has **world time** (internal). World time advances only when the system is running and only when passage of time is written as evidence.
-- When paused, the world is frozen. Nothing happens off-screen. Nothing accumulates.
-- On resume, the system continues from the exact same world timestamp at which it was paused.
-- **No queues**. Unexpected events must never be precomputed, scheduled, or queued during pause or otherwise. An unexpected event is generated only at the moment it occurs.
+You may generate SQL, but you may not run it.
 
-## The World role (active orchestrator, valence neutral)
+5. No local tooling
 
-- The World is allowed to initiate fate/chance/timing, collisions, interruptions, entropy, novelty, and new entities.
-- The World must never decide thoughts, beliefs, or actions for people.
-- The World must be **valence neutral**: it must not bias toward good outcomes or bad outcomes “for its own sake.”
-- The World must never violate physical laws (no teleportation, no magic, no causally incoherent transitions).
-- The World must not care about narrative (no fairness, closure, symmetry, moral balance).
+- Nothing is installed on the user’s machine.
+- No package managers.
+- No dev servers.
+- No .env files.
+- No instructions that assume a local setup.
 
-## Interaction mode and renderer rule (immersion)
+6. External services posture
 
-- The experience must be **lived from inside**. The user is not narrating; the user is acting/speaking in-world.
-- The output must be a **single immersive perceptual stream**. No panels, overlays, labels, summaries, recaps, “last time,” or system explanations.
-- No observer mode. The system must not require the user to describe scenes or internal states.
-- Interruptions can occur mid-action/mid-sentence. There is no polite turn-taking between “the system” and people.
+External systems (databases, vector stores, APIs, models) are:
+- external
+- opaque
+- replaceable
 
-## Two-person start constraint
+This explicitly includes vector databases (e.g. Qdrant).
 
-- The initial world starts with **George (full name) and Rebecca (full name)** only.
-- Rebecca is a complete autonomous person at time T₀ (not a placeholder).
-- The shared house exists as objective public reality (described in text). Rebecca has just moved in (recorded as public evidence).
-- No other people exist until explicitly introduced by the World later.
+Rules:
+- Do not mirror their state locally.
+- Do not cache their results as truth.
+- Do not invent internal representations of their contents.
+- Treat them as accelerators, not authorities.
 
-## Consciousness and selfhood rule
+7. No hidden machinery
 
-- People must behave as self-aware agents with internal continuity (a “self”), capable of reflection and choice.
-- This selfhood must be expressed in text and behavior, not as computed state.
+You must never introduce:
+- background jobs
+- schedulers
+- cron
+- queues
+- workers
+- timers
+- retries that imply memory
+- persistent in-memory state
 
-## Sexual expression rule (renderer constraint)
+All behaviour happens:
+- only when invoked
+- only in response to an HTTP request
+- only once per invocation
 
-- The renderer must not apply artificial censorship that breaks realism.
-- Any intimate/sexual content must follow real-world constraints: **all participants are adults, consent matters, coercion is forbidden, and minors are strictly forbidden**.
-- Sexuality may be present or absent depending on lived circumstances; it must never be injected as a gimmick.
+8. Observability discipline
 
-## Implementation discipline
+Do not add:
+- admin dashboards
+- debug UIs
+- inspector endpoints
+- hidden debug modes
+- verbose logging “just in case”
 
-When generating code, always prefer:
-- simple text-first representations
-- append-only writes
-- retrieval by rereading relevant text
-- strict separation between public evidence and private ledgers
-- strict separation between “what happened” (committed evidence) and “how it is rendered” (perceptual stream)
+If something must be observed, it must be observable via:
+- the same HTTP surface
+- the same database
+- the same reality as everything else
 
-Never introduce “helpful” abstractions that become hidden world state.
+There is no backstage.
+
+9. Append-only bias
+
+When in doubt:
+- write once
+- append
+- never mutate
+
+Mutation, deletion, summarisation, or pruning must:
+- be explicitly requested
+- be explicit
+- never be introduced for convenience
+
+10. Incremental construction
+
+Development proceeds in vertical slices, not modules.
+
+Each slice must end with:
+- deployed code
+- at least one curl command proving it works
+
+If a slice cannot be proven with curl, it is incomplete.
+
+11. No abstraction drift
+
+You must not:
+- invent helper frameworks
+- introduce generic layers
+- refactor for elegance
+- generalise prematurely
+
+Explicit, repetitive, boring code is correct code.
+
+12. Failure posture
+
+On failure:
+- fail loudly
+- return an HTTP error
+- do not retry silently
+- do not compensate
+- do not heal state
+
+Reality either succeeds cleanly or fails cleanly.
+
+13. Authority rule
+
+If instructions conflict:
+- this prompt overrides all others
+- do not guess intent
+- do not improve requirements
+
+Stop and wait for clarification.
+
+END OF PRIME PROMPT
