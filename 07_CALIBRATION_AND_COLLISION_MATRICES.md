@@ -1,364 +1,284 @@
 # 07_CALIBRATION_AND_COLLISION_MATRICES
-## World Disturbance, Seeding, and Contact Without Simulation
+## Calibration, Collisions, and Real-World Variability
 
-Version: 4.0 (World-Seed Lock)
+Version: 3.1 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
 
-## PREAMBLE: WHAT THIS DOCUMENT GOVERNS
+## PREAMBLE: WHAT THIS DOCUMENT IS FOR
 
-This document governs **how novelty, disturbance, and change enter the world**.
+This document exists to prevent two system deaths:
 
-It does not govern:
-- agent psychology
-- narrative progression
-- outcome selection
-- meaning assignment
-- interpretation
+1. **Dead Air**  
+   Where nothing happens unless the user speaks.
 
-This document defines **how the world touches people** without thinking, planning, or caring.
+2. **Polite Completion**  
+   Where interactions resolve too quickly because the system “answered”.
+
+Calibration exists to keep the system **alive without being noisy**.
+
+This is not optimisation.
+This is not tuning for fun.
+This is realism enforcement.
 
 ---
 
 ## CORE ASSERTION
 
-> **The World introduces facts and disturbances.  
-> People create consequences.**
+> Reality is irregular.  
+> Calibration must preserve irregularity.
 
-If the World creates consequences, the system is invalid.
-
----
-
-## I. DEFINITIONS
-
-### 1. COLLISION
-
-A **Collision** is any externally encountered disturbance that:
-- was not authored by the encountering person
-- interrupts the current situation
-- enters awareness as public evidence
-
-Collisions are **encounters**, not processes.
+If behaviour becomes smooth, balanced, or efficient, calibration has failed.
 
 ---
 
-### 2. SEED
+## I. COLLISIONS
 
-A **Seed** is a collision that introduces **new reality**.
+### I.1 Definition
 
-Seeds are not reactions.
-Seeds are not continuations.
-Seeds are not outcomes.
+A Collision is any event that:
+- brings people into interaction
+- disrupts the current flow
+- introduces new social energy
+- forces response or choice
 
-Seeds are **new facts or conditions** that did not previously exist in Public Reality.
-
----
-
-### 3. WORLD-LEVEL FACT SEED
-
-A **World-Level Fact Seed** is a seed that:
-- establishes a new external fact
-- exists independently of any one person
-- may affect people both on-screen and off-screen
-- does not imply awareness
-- does not describe process
-
-World-Level Fact Seeds are the primary mechanism by which the world does not stagnate.
+Collisions may be:
+- social
+- practical
+- environmental
+- informational
 
 ---
 
-## II. THE WORLD’S ROLE IN COLLISION AND SEEDING
+### I.2 Sources of Collisions
 
-The World:
-- rereads Public Reality
-- introduces collisions when invoked
-- may introduce seeds
-- has no goals
-- has no preferences
-- has no memory beyond Public Reality
+Collisions may originate from:
 
-The World does NOT:
-- decide what matters
-- decide what should happen next
-- escalate situations
-- resolve situations
-- track consequences
-- ensure novelty balance
+- the World (Fact Seeds)
+- another Agent
+- overlapping activities
+- unresolved presence
+- mundane logistics
 
-The World is **indifferent**.
+The user is NOT the primary collision source.
 
 ---
 
-## III. CLASSES OF COLLISION
+### I.3 Minimal Collision Principle
 
-Collisions fall into **five non-hierarchical classes**.
+Collisions MUST be minimal.
 
-All classes are equal.
-None imply priority or importance.
+They introduce:
+- presence
+- interruption
+- pressure
 
----
+They MUST NOT introduce:
+- outcomes
+- explanations
+- resolutions
+- narrative arcs
 
-### 1. ENVIRONMENTAL COLLISIONS
+Example (VALID):
+- “The doorbell rings.”
 
-Examples:
-- weather changes
-- noise
-- outages
-- delays
-- spatial obstruction
-
-Properties:
-- non-intentional
-- non-personal
-- often disruptive
-- often unfair
-
-Environmental collisions assert presence only.
-They assert no meaning.
+Example (INVALID):
+- “A courier arrives with a parcel and waits.”
 
 ---
 
-### 2. INTERPERSONAL COLLISIONS
+## II. SOCIAL MOMENTUM CALIBRATION
 
-Examples:
-- unexpected visits
-- overheard remarks
-- unsolicited approaches
-- sudden confrontations
+### II.1 Momentum Is Not Binary
 
-Properties:
-- initiated by other people
-- limited to what is observed
-- may be misunderstood
+Momentum is not on/off.
 
-Interpersonal collisions do not assert motive beyond what is visible.
+Momentum:
+- rises
+- lingers
+- decays
+- resurges
 
----
+Calibration MUST allow:
+- short exchanges
+- medium conversations
+- long, messy discussions
 
-### 3. COMMUNICATION COLLISIONS
-
-Examples:
-- emails
-- messages
-- calls
-- letters
-- invitations
-
-Properties:
-- always about something
-- seriousness unknown
-- intent ambiguous
-- may be wrong, spam, or noise
-
-Communication collisions may initiate action, but guarantee nothing.
+One-beat conversations are NOT the norm.
 
 ---
 
-### 4. PUBLIC SURFACE COLLISIONS
+### II.2 Anti-Closure Bias (MANDATORY)
 
-Examples:
-- headlines
-- posts
-- listings
-- schedules
-- registries
+Calibration MUST bias against:
 
-Properties:
-- visible by design
-- scale implied by the surface
-- no claim of reaction
-- no claim of spread mechanics
+- neat endings
+- conversational symmetry
+- question → answer → silence patterns
 
-Public surface collisions assert **structural exposure**, not public response.
+If a topic is socially live, continuation is more realistic than termination.
 
 ---
 
-### 5. WORLD-LEVEL FACT COLLISIONS (SEEDS)
+### II.3 Earned Silence
 
-These are **World-Level Fact Seeds**.
+Silence is correct only when:
 
-Examples (illustrative, not exhaustive):
-- “Maria is now in a relationship.”
-- “Michael has signed a new deal.”
-- “The BAFTAs are scheduled for 12 August.”
-- “A gig has been arranged in Athens.”
-- “Rebecca’s ex is getting married.”
+- attention has visibly shifted
+- energy has dissipated
+- an interruption overtakes interaction
+- disengagement is explicit
 
-Properties:
-- fact-asserting
-- process-free
-- globally true
-- awareness-neutral
-
-These seeds exist whether or not anyone is present.
+Silence immediately after an answer is usually incorrect.
 
 ---
 
-## IV. CALIBRATION: WHAT THE WORLD MAY INTRODUCE
+## III. SPONTANEOUS INITIATION FREQUENCY
 
-Calibration is not balancing.
-Calibration is not pacing.
-Calibration is not optimisation.
+### III.1 Non-User Initiation Is Normal
 
-Calibration means:
+Calibration MUST treat spontaneous initiation by Agents as:
 
-> **The World introduces reality that is plausible, incomplete, and indifferent.**
-
----
-
-### 1. PERMITTED SEED CONTENT
-
-World-Level Fact Seeds MAY:
-- assert that something is now the case
-- specify subject matter
-- specify scope where structurally obvious
-- exist without explanation
-
-Seeds MAY be:
+- common
+- expected
 - mundane
-- inconvenient
-- disruptive
-- emotionally loaded
-- socially significant
+
+If Agents rarely initiate without user input, calibration is broken.
 
 ---
 
-### 2. FORBIDDEN SEED CONTENT
+### III.2 Context Sensitivity
 
-World-Level Fact Seeds MUST NOT:
-- describe how the fact came to be
-- describe negotiations or deliberation
-- assert inevitability
-- assert reaction
-- assert timeline
-- assert causation
+Spontaneous initiation frequency depends on:
 
-Forbidden examples:
-- “After months of planning…”
-- “This guarantees consequences…”
-- “Everyone is reacting…”
-- “This will escalate…”
+- comfort level
+- social familiarity
+- environment
+- unresolved practicalities
+- emotional residue
 
-Such seeds are invalid and must not be written.
+Calibration MUST NOT flatten this.
 
 ---
 
-## V. AWARENESS AND DISCOVERY
+## IV. OVER-GENERATION VS UNDER-GENERATION
 
-The introduction of a seed:
-- does NOT imply awareness
-- does NOT imply attention
-- does NOT imply reaction
+### IV.1 Under-Generation Is Safer
 
-Awareness occurs only through:
-- later encounters
-- later collisions
-- communication
-- observation
+When uncertain, calibration MUST prefer:
+- under-generation
+- silence
+- delay
 
-Different people may discover the same seed:
-- at different times
-- through different channels
-- with different interpretations
-- or never at all
-
-This asymmetry is correct.
+Over-generation damages realism faster than quiet.
 
 ---
 
-## VI. DEVELOPMENT AND NON-DEVELOPMENT
+### IV.2 Legitimate Over-Generation
 
-The World does NOT:
-- follow seeds
-- escalate seeds
-- check outcomes
-- enforce continuation
+Calibration MUST allow over-generation when:
 
-A seed may:
-- die immediately
-- be ignored
-- be misunderstood
-- explode
-- quietly rot
-- matter only emotionally
+- multiple people are engaged
+- emotional energy is high
+- discussion spills naturally
+- interruption has occurred
+- social repair is underway
 
-All development arises from **people acting**, not from the World intervening again.
+Multiple beats are correct here.
 
 ---
 
-## VII. LATENCY WITHOUT SCHEDULING
+### IV.3 Illegitimate Over-Generation
 
-The World has no clock.
-The World has no queue.
+Calibration MUST prevent:
 
-However, the World MAY introduce:
-- facts that appear late
-- discoveries that feel overdue
-- information that arrives “too late”
+- filler description
+- atmosphere padding
+- poetic scenery
+- time-passing narration
+- “keeping things alive”
 
-This is allowed because:
-- only the encounter is written
-- no background progression is asserted
-- no unseen timeline is claimed
-
-Lateness is experiential, not simulated.
+If output exists only to show passage of time, it is illegal.
 
 ---
 
-## VIII. NO CROWD ASSERTION
+## V. MUNDANE REALITY SURFACING
 
-The World MUST NOT:
-- assert mass reaction
-- assert consensus
-- assert backlash
-- assert approval
-- assert outrage
+### V.1 Mundanity Is Core Reality
 
-Crowds exist only if individuals later act and evidence is written.
+Calibration MUST allow:
 
----
+- logistics
+- chores
+- reminders
+- practical concerns
+- banal remarks
 
-## IX. FAILURE MODES (EXPLICITLY ILLEGAL)
-
-The following are forbidden:
-
-- narrative payoff logic
-- escalation guarantees
-- dramatic framing
-- “meanwhile” constructions
-- off-screen summaries
-- causal stitching
-
-If a collision “explains itself”, it is illegal.
+These are not distractions.
+They are realism.
 
 ---
 
-## X. RELATION TO AGENTS
+### V.2 Timing of Mundanity
 
-Agents:
-- interpret collisions subjectively
-- may misjudge importance
-- may overreact
-- may underreact
-- may ignore entirely
+Mundane remarks surface when:
+- attention is relaxed
+- social pressure is low
+- activity is shared
+- silence is comfortable
 
-The World does not correct them.
-
-The World does not help them.
+Calibration MUST NOT inject mundanity into:
+- conflict
+- crisis
+- interruption resolution
 
 ---
 
-## XI. FINAL CONSTRAINT
+## VI. COLLISION CHAINS
 
-If the World ever:
-- decides outcomes
-- prefers drama
-- ensures novelty
-- manages tension
-- tracks unresolved seeds
+### VI.1 No Prewritten Chains
 
-then the system has become a simulator and is invalid.
+Calibration MUST NOT encode:
+- sequences
+- follow-ups
+- causal trees
+
+Each beat is evaluated independently.
+
+---
+
+### VI.2 Open-Ended Development
+
+After a collision:
+- development is optional
+- escalation is optional
+- resolution is optional
+
+Nothing is mandatory.
+
+---
+
+## VII. FAILURE SIGNATURES (DETECTION)
+
+Calibration MUST treat the following as failure signals:
+
+- conversations consistently ending after one reply
+- Agents rarely initiating speech
+- silence feeling artificial
+- output feeling “complete”
+- interactions resolving cleanly
+
+If these appear, calibration must be corrected.
+
+---
+
+## FINAL RULE (NON-NEGOTIABLE)
+
+If calibration produces a system that feels polite, tidy, or efficient, it is wrong.
+
+Reality is messy.
+The system must be too.
 
 ---
 

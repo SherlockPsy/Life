@@ -1,337 +1,258 @@
 # THE_DIGITAL_CORTEX
-## The Public Ledger of Reality
+## Context Assembly and Cognitive Integrity
 
-Version: 3.0 (Seed-Aware Constitutional Lock)
+Version: 3.1 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
 
-## PREAMBLE: WHAT THIS IS
+## PREAMBLE: WHAT THE DIGITAL CORTEX IS
 
 The Digital Cortex is not intelligence.
-It is not cognition.
-It is not memory.
-It is not interpretation.
-It is not society.
+The Digital Cortex is not reasoning.
+The Digital Cortex is not interpretation.
 
-The Digital Cortex is a **ledger**.
+The Digital Cortex is **context assembly**.
 
-It stores text.
-It exposes text.
-It orders text.
+Its sole purpose is to:
+- select what text is reread
+- present it coherently
+- preserve epistemic limitation
+- avoid telepathy
+- avoid simulation
 
-It never understands text.
+The Cortex does not think.
+The Renderer thinks.
 
 ---
 
 ## CORE ASSERTION
 
-> **Public Reality exists only as what is written in this ledger.**
+> What the Renderer produces depends entirely on what the Cortex chooses to show.
 
-If something is not written here, it does not exist for the shared world.
-
----
-
-## I. THE EVIDENCE BLOCK (ATOMIC UNIT)
-
-All Public Reality exists as **Evidence Blocks**.
-
-An Evidence Block represents exactly one of the following:
-- an observable action
-- an observable utterance
-- an observable environmental change
-- an observable institutional or public-surface manifestation
-- an observable world-level fact becoming true
-
-Nothing else.
+Incorrect context produces impossible minds.
 
 ---
 
-### A. REQUIRED FIELDS
+## I. INPUT SOURCES
 
-Each Evidence Block MUST contain exactly:
+### I.1 Recorder Stream
 
-1. **Sequence Marker**
-   - Append-only
-   - Monotonic
-   - Carries ordering only
-   - Carries no temporal semantics
+The primary input is the Recorder.
 
-2. **Source**
-   - Descriptive origin of the evidence
-   - May be:
-     - a person
-     - the World
-     - a named public surface
-     - a named institution
-   - Source asserts no authority
+The Cortex may retrieve:
+- recent Public Evidence
+- nothing else by default
 
-3. **Context**
-   - Situational descriptor
-   - May include:
-     - physical location
-     - social setting
-     - public surface name
-     - institutional setting
-   - Context describes where evidence is encountered, not why
-
-4. **Evidence Text**
-   - Raw text
-   - Immutable
-   - Describes only what is asserted as real
+The Cortex MUST NOT:
+- summarise history
+- compress events
+- infer state
+- introduce interpretation
 
 ---
 
-### B. FORBIDDEN CONTENT
+### I.2 User Input
 
-Evidence Blocks MUST NOT include:
-- internal thoughts
-- emotional states
-- inferred intent
-- causal explanation
-- process description
-- timelines
-- guarantees
-- forecasts
-- narrative framing
+User input:
+- is raw text
+- is unlabelled
+- is unclassified
+- is not privileged
 
-If something cannot be reread later as text, it does not exist.
+User input is treated as:
+- another observable utterance
+- nothing more
 
 ---
 
-## II. CLASSES OF PUBLIC EVIDENCE
+### I.3 World Fact Seeds
 
-The Cortex does not privilege classes, but recognizes **distinct forms** of evidence for validation purposes.
+World Fact Seeds:
+- are raw text statements
+- assert existence only
+- imply no awareness
+- imply no reaction
 
-All classes are equal in ontological authority.
-
----
-
-### 1. PERSONAL ACTION EVIDENCE
-
-Evidence authored by a person describing:
-- physical actions
-- spoken words
-- visible behaviour
-
-Examples:
-- “She opens the door.”
-- “He says, ‘We should talk.’”
-- “She leaves the room.”
+The Cortex MUST NOT expand them.
 
 ---
 
-### 2. ENVIRONMENTAL EVIDENCE
+## II. CONTEXT ASSEMBLY
 
-Evidence describing physical or situational conditions.
+### II.1 Minimal Sufficiency
 
-Examples:
-- “Rain hits the window.”
-- “The lights go out.”
-- “The room falls silent.”
+The Cortex assembles **only enough context** for the Renderer to plausibly continue.
 
-No cause is asserted.
+There is no obligation to include:
+- full scene history
+- emotional arcs
+- resolved interactions
 
----
-
-### 3. COMMUNICATION EVIDENCE
-
-Evidence describing received or sent communications.
-
-Examples:
-- “An email arrives offering a photoshoot for Rebecca.”
-- “Her phone rings with a call from her agent.”
-- “A message notification lights up the screen.”
-
-Communication evidence:
-- is always about something
-- may be wrong
-- may be misleading
-- may be ignored
+Excess context causes telepathy.
 
 ---
 
-### 4. PUBLIC SURFACE EVIDENCE
+### II.2 No Canonical Context
 
-Evidence describing what is visible on public-facing surfaces.
+There is no “correct” context window.
 
-Examples:
-- “A photo of Rebecca appears on a public Instagram feed.”
-- “A headline featuring Rebecca is visible on a tabloid homepage.”
-- “A listing shows Rebecca attached to a project.”
+Context is:
+- contingent
+- local
+- sufficient, not exhaustive
 
-Public surface evidence may assert:
-- visibility
-- placement
-- surface-level prominence
-- structural scale implied by the surface itself
-
-Public surface evidence MUST NOT assert:
-- audience size
-- reaction
-- spread mechanics
-- sentiment
+Omission is meaningful.
 
 ---
 
-### 5. INSTITUTIONAL EVIDENCE
+### II.3 Epistemic Isolation
 
-Evidence describing institutional outputs or constraints.
+The Cortex MUST ensure that:
 
-Examples:
-- “A contract is attached to an email from a studio.”
-- “A notice appears on a university portal.”
-- “A legal letter arrives.”
+- no Agent sees what they could not plausibly know
+- no Agent reacts to unseen facts
+- no Renderer output implies global awareness
 
-Institutional evidence asserts:
-- encounter
-- existence
-- constraint
-
-It never asserts intent.
+If an event is not perceptible in-world, it must not appear in context.
 
 ---
 
-### 6. WORLD-LEVEL FACT EVIDENCE (CRITICAL)
+## III. SOCIAL INITIATION SUPPORT
 
-World-Level Fact Evidence establishes **a new external fact** in the shared world.
+### III.1 No User Privilege
 
-This evidence:
-- is not authored by any person
-- does not require a witnessing agent
-- does not imply awareness
-- does not describe process
+The Cortex MUST NOT bias context assembly toward:
 
-Examples (illustrative only):
-- “Maria is now in a relationship.”
-- “Michael has signed a new deal.”
-- “The BAFTAs are scheduled for 12 August.”
-- “Rebecca’s ex is getting married.”
+- user utterances as initiators
+- user silence as blocking
+- user presence as causal priority
 
-World-Level Fact Evidence asserts only:
-> **This is now true.**
-
-Nothing else.
+All present Agents are equal participants.
 
 ---
 
-## III. IMMUTABILITY AND CONTRADICTION
+### III.2 Silence as Context
 
-Once written:
-- evidence is never edited
-- evidence is never deleted
-- evidence is never reconciled
+Silence is part of context.
 
-Contradictions persist.
-Resolution occurs only through later evidence.
+The absence of text:
+- may permit initiation
+- may permit continuation
+- may permit drift
+- may permit nothing
 
----
-
-## IV. RETRIEVAL IS NOT INTERPRETATION
-
-The Digital Cortex retrieves text.
-It does not explain text.
-It does not prioritise text.
-
-Retrieval:
-- preserves original wording
-- preserves ordering
-- asserts no importance
-
-Meaning arises only when reread by a Reader.
+Silence does not mean “wait”.
 
 ---
 
-## V. TAGGING AND METADATA (NON-ONTOLOGICAL)
+## IV. CONVERSATIONAL CONTINUITY SUPPORT
 
-### 1. PURPOSE
+### IV.1 Anti-Closure Bias
 
-Metadata exists only to support retrieval.
+When assembling context, the Cortex MUST assume:
 
-Metadata is not reality.
-Metadata has no authority.
+- conversation is ongoing unless explicitly ended
+- topics remain live unless displaced
+- social momentum decays gradually, not instantly
 
----
-
-### 2. PERMITTED TAGS
-
-Tags may identify:
-- named people
-- named places
-- named institutions
-- named public surfaces
-- concrete objects
-
-Tags MUST be literal and surface-level.
+The Cortex MUST NOT frame interactions as completed unless evidence shows closure.
 
 ---
 
-### 3. FORBIDDEN TAGS
+### IV.2 Residual Threads
 
-Tags MUST NOT encode:
-- emotion
-- importance
-- evaluation
-- narrative role
-- reaction
-- causation
+If recent text contains:
+- unanswered remarks
+- emotional charge
+- practical loose ends
+- conversational hooks
 
----
-
-## VI. VECTORS (OPTIONAL AND OPAQUE)
-
-Vector embeddings may exist for associative retrieval.
-
-Vectors:
-- are unreadable
-- are non-authoritative
-- do not encode meaning
-- may be regenerated without changing reality
+the Cortex SHOULD preserve these in context to allow continuation.
 
 ---
 
-## VII. ABSENCE AS FACT
+## V. WORLD INTERRUPTIONS
 
-The absence of evidence is meaningful.
+### V.1 Minimal Exposure
 
-Examples:
-- no reply
-- no announcement
-- no follow-up
-- no appearance
+When a World Fact Seed is included, the Cortex MUST present:
 
-The Cortex does not annotate absence.
-Readers interpret it.
+- only the perceptible assertion
+- no implied consequences
+- no inferred reactions
 
----
+Example:
+- “The doorbell rings.”
 
-## VIII. TIME AND LATENCY
-
-The Cortex does not track time.
-
-Evidence may reflect:
-- delayed discovery
-- late notification
-- after-the-fact awareness
-
-This is allowed because:
-- only the moment of encounter is written
-- no background process is implied
+Not:
+- identity
+- motive
+- resolution
 
 ---
 
-## IX. PROHIBITIONS
+### V.2 Deferment After Exposure
+
+After a World interruption is exposed, the Cortex MUST defer.
+
+Further context is driven only by:
+- Agent action
+- Agent speech
+- interaction outcomes
+
+---
+
+## VI. MULTI-BEAT GENERATION SUPPORT
+
+### VI.1 Consecutive Invocation Eligibility
+
+The Cortex MAY permit consecutive Renderer invocations when:
+
+- social momentum is high
+- multiple Agents are active
+- interruption remains unresolved
+- interaction is unfolding
+
+This does NOT mandate output.
+It permits it.
+
+---
+
+### VI.2 No Artificial Throttling
+
+The Cortex MUST NOT enforce:
+- “one beat per interaction”
+- fixed pacing
+- conversational symmetry
+
+Irregularity is required.
+
+---
+
+## VII. PROHIBITIONS
 
 The Digital Cortex MUST NOT:
-- infer intent
-- infer reaction
-- infer consequence
-- simulate society
-- simulate institutions
-- simulate time passing
-- enforce narrative coherence
 
-If the ledger “understands”, it violates the Constitution.
+- infer intent
+- calculate emotion
+- assign weights
+- encode rules
+- label participants
+- predict outcomes
+- stabilise conversations artificially
+
+If context assembly feels clever, it is wrong.
+
+---
+
+## FINAL RULE (NON-NEGOTIABLE)
+
+The Cortex exists to **withhold**, not to enrich.
+
+It must show only what a mind could plausibly reread.
+
+Anything more is telepathy.
 
 ---
 

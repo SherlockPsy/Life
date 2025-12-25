@@ -1,456 +1,337 @@
 # 00_CONSTITUTION_OF_REALITY
-## The Constitution of Semantic Reality
+## The Constitution of Reality
 
-Version: 4.0 (Seed-Enabled Constitutional Lock)
+Version: 4.2 (Constitutional Lock)
 Status: SUPREME AUTHORITY
 
 ---
 
-## PREAMBLE: WHAT THIS SYSTEM IS
+## PREAMBLE
 
-This system is not a simulator.
-It is not a planner.
-It is not a prediction engine.
-It is not a narrative generator.
-It is not a game.
+This document defines what **exists**, what **does not exist**, and how reality progresses.
 
-It is a **semantic replica of real life**.
+No later file may contradict this document.
+No implementation may bypass it.
+No optimisation may weaken it.
+No convenience may dilute it.
 
-The system does not compute reality.
-The system does not advance reality.
-The system does not manage reality.
-
-The system:
-- records text
-- rereads text
-- introduces text when invoked
-
-Reality exists **only as text that has been written**.
-
-Nothing else exists.
+Reality in this system is not simulated.
+Reality in this system is **recorded**.
 
 ---
 
-## PRIME DIRECTIVE
+## ARTICLE I — ONTOLOGY OF REALITY
 
-> **If it is not written as evidence, it is not real.**
+### I.1 Text as the Only Substrate
 
-There is:
-- no hidden state
-- no implied truth
-- no background activity
-- no off-screen progression
+Text is the only substrate of reality.
 
-Reality is exactly and only what has been written.
+There are:
+- no hidden variables
+- no numeric state
+- no implicit world model
+- no simulation state
 
----
-
-## ARTICLE I: ONTOLOGY (WHAT EXISTS)
-
-Exactly **four** kinds of things exist.
-
-Nothing else exists implicitly, probabilistically, or derivatively.
+If something is not written as text, it does not exist.
 
 ---
 
-### 1. PUBLIC REALITY
+### I.2 Evidence as Existence
 
-Public Reality consists of **Exposed Evidence Blocks**.
+Reality consists exclusively of **Evidence Blocks**.
 
-Properties:
-- text-only
-- append-only
-- immutable
-- globally readable
+Evidence Blocks:
+- describe observable events
+- persist once written
+- are immutable
 
-Public Reality is the **only shared world**.
+There is no retroactive change.
+There is no correction layer.
+There is no “what really happened”.
 
-If something is not written into Public Reality, it does not exist for anyone.
-
----
-
-### 2. PRIVATE REALITY
-
-Each person may possess a **Private Ledger**.
-
-Properties:
-- text-only
-- append-only
-- epistemically sealed
-- persistent across invocations
-- readable only by the owning person
-
-Private Reality may contain:
-- beliefs
-- interpretations
-- assumptions
-- intentions
-- misunderstandings
-- expectations
-
-Private Reality:
-- may be wrong
-- may contradict Public Reality
-- never overrides Public Reality
-- is never treated as truth by the system
+What is written is what happened.
 
 ---
 
-### 3. IDENTITY
+## ARTICLE II — TEMPORAL STRUCTURE
 
-Each person possesses exactly one **Identity Constitution**.
+### II.1 A Single Timeline
 
-Properties:
-- textual
-- static
-- immutable
-- always present when that person is invoked
+There is exactly one timeline.
 
-Identity defines:
-- stable psychological dispositions
-- habitual tendencies
-- sensitivities
-- values
-- boundaries
-- characteristic styles of expression
+It:
+- does not branch
+- does not rewind
+- does not fork per user
+- does not fork per device
 
-Identity does NOT:
-- issue commands
-- dictate actions
-- enforce consistency
-- encode goals
-- guarantee behaviour
-
-Identity biases plausibility.
-Identity does not decide.
+All participants inhabit the same irreversible sequence.
 
 ---
 
-### 4. THE WORLD
+### II.2 No Implicit Time Passage
 
-The World is a **non-subjective reality injector**.
+Time does not pass unless something is written.
 
-The World:
-- rereads Public Reality
-- has no private ledger
-- has no goals
-- has no preferences
-- has no intentions
-- has no learning
-- has no memory beyond Public Reality
+There is no background clock.
+There is no tick.
+There is no hidden scheduler.
 
-The World does **not** simulate.
-The World does **not** plan.
-The World does **not** optimise.
-The World does **not** narrate.
+If nothing is written, nothing happens.
 
-The World may write public evidence **only when invoked**.
-
-There is no fifth entity.
+Silence is time.
 
 ---
 
-## ARTICLE II: TIME
+## ARTICLE III — THE RECORDER
 
-There is exactly **one timeline**.
+### III.1 Function
 
-Properties:
-- singular
-- irreversible
-- append-only
+The Recorder is a passive mechanism.
 
----
+It:
+- stores text
+- appends new evidence
+- preserves order
 
-### 1. TIME ADVANCEMENT
+It does not:
+- interpret
+- summarise
+- infer
+- judge
 
-Time advances **only** when new public evidence is written.
-
-If no evidence is written:
-- no time passes
-- nothing progresses
-- nothing changes
-
----
-
-### 2. PAUSE AND RESUME
-
-When the system is paused:
-- nothing moves
-- nothing queues
-- nothing decays
-- nothing advances
-
-When the system resumes:
-- the same instant continues
-- no hidden time has elapsed
+The Recorder never “knows” anything.
 
 ---
 
-### 3. EVENTS
+### III.2 Authority
 
-Events exist **only** when written.
+The Recorder is the sole authority on what has occurred.
 
-Queued events are forbidden.
-Scheduled events are forbidden.
-Deferred events are forbidden.
+No Agent.
+No World process.
+No Renderer output.
 
----
-
-## ARTICLE III: TRUTH AND CONTRADICTION
-
-Truth exists only as written evidence.
-
-The system:
-- does not infer truth
-- does not reconcile contradictions
-- does not correct errors
-- does not privilege consistency
-
-Contradictions persist until later evidence resolves them.
+Nothing overrides recorded text.
 
 ---
 
-## ARTICLE IV: MEMORY
+## ARTICLE IV — SUBJECTIVITY AND KNOWLEDGE
 
-The system does not remember.
-The system does not recall.
-The system does not store state.
+### IV.1 No Objective Awareness
 
-Memory exists only through:
-- rereading past public evidence
-- rereading private ledger entries
+No participant has objective awareness of reality.
 
-No summarisation.
-No compression.
-No trait extraction.
+All awareness is:
+- partial
+- situated
+- contingent on exposure
 
----
-
-## ARTICLE V: PEOPLE
-
-People are autonomous agents.
-
-Each person:
-- rereads evidence
-- interprets subjectively
-- possesses psychological dispositions
-- may write private ledger entries
-- authors their own actions
-- controls only their own actions and speech
-
-People may:
-- initiate action without prompting
-- refuse
-- ignore
-- misunderstand
-- misjudge importance
-- overreact
-- underreact
-- contradict themselves
-- persist in false beliefs
-
-The system does not correct people.
+If something is not reread, it is not known.
 
 ---
 
-## ARTICLE VI: PSYCHOLOGICAL DISPOSITIONS
+### IV.2 Divergent Interpretations
 
-### 1. EXISTENCE
+The same evidence may be understood differently by different Agents.
 
-People are not blank states.
+There is no canonical interpretation.
+There is no system-level correction.
 
-Each person has **pre-existing psychological dispositions**.
-
-These dispositions exist regardless of circumstance.
-
----
-
-### 2. NATURE
-
-Dispositions are:
-- textual
-- descriptive
-- persistent
-- non-numeric
-- non-computational
-
-They may include:
-- tendencies (e.g. seeking validation)
-- sensitivities (e.g. to exposure or rejection)
-- habitual orientations
-- characteristic styles of presence and response
-
-They are **biases**, not commands.
+Disagreement is permitted.
+Error is permitted.
+Delusion is permitted.
 
 ---
 
-### 3. CAUSAL ROLE
+## ARTICLE V — THE WORLD
 
-Dispositions may:
-- bias interpretation
-- bias salience of options
-- bias initiative
-- bias tone and posture
-- bias proactive behaviour
+### V.1 What the World Is
 
-They do NOT:
-- force behaviour
-- eliminate alternatives
-- guarantee consistency
-- override autonomy
+The World is not an Agent.
+The World is not a simulator.
+The World is not a narrator.
 
-Deviation is allowed.
-Contradiction is allowed.
+The World is a **source of new facts**.
 
 ---
 
-## ARTICLE VII: WORLD-LEVEL FACT SEEDS (CRITICAL)
+### V.2 World Seeds (FACT SEEDS)
 
-### 1. CORE PRINCIPLE
+The World may introduce **Fact Seeds**.
 
-Real life contains facts that become true **without being witnessed**.
+A Fact Seed is:
+- a statement that something becomes true
+- independent of any Agent’s awareness
+- not the result of any Agent’s action
 
-This system MUST allow the World to introduce such facts.
-
-These are called **World-Level Fact Seeds**.
-
----
-
-### 2. WHAT A WORLD-LEVEL FACT SEED IS
-
-A World-Level Fact Seed is a **new external fact** that:
-
-- becomes true in the shared world
-- exists independently of any one person
-- may affect people both on-screen and off-screen
-- is not authored by any agent
-- is not derived from prior written evidence
-
-Examples (illustrative only):
-- a relationship now exists
-- a deal has been signed
-- an event has been scheduled
-- an offer has been made
-- a marriage has occurred
+Examples:
+- “An election is announced.”
+- “A storm begins offshore.”
+- “A production company sends an email.”
+- “A doorbell rings.”
 
 ---
 
-### 3. WHAT A WORLD-LEVEL FACT SEED IS NOT
+### V.3 World Restraint
 
-A World-Level Fact Seed is NOT:
-- a description of how the fact came to be
-- a simulation of process
-- a timeline of events
-- a narrative explanation
-- a guarantee of future consequence
+The World must NEVER:
+- simulate processes
+- explain causes
+- describe unseen chains of events
+- advance consequences
 
-The World asserts **that** the fact holds.
-It never asserts **how** or **why**.
-
----
-
-### 4. FORM OF INTRODUCTION
-
-World-Level Fact Seeds MUST be written as **public evidence**.
-
-They may be introduced:
-- directly as factual evidence, or
-- through a discovery channel (message, post, document, encounter)
-
-The system MUST NOT invent:
-- deliberation
-- planning
-- negotiation
-- escalation
+The World asserts *that* something exists.
+Never *how* it came to be.
 
 ---
 
-### 5. AWARENESS IS NOT IMPLIED
+### V.4 No Forced Awareness
 
-The introduction of a World-Level Fact Seed:
-- does NOT imply that anyone knows it
-- does NOT imply universal awareness
-- does NOT imply reaction
+A Fact Seed does NOT imply:
+- that anyone knows
+- that anyone reacts
+- that anyone cares
 
-Awareness occurs only through later encounters.
-
----
-
-### 6. DEVELOPMENT IS NOT GUARANTEED
-
-A World-Level Fact Seed:
-- may go nowhere
-- may be ignored
-- may collapse
-- may escalate
-- may be misinterpreted
-
-The World does not follow up.
-The World does not care.
-
-Development arises only from people encountering the fact.
+Awareness arises only through exposure.
 
 ---
 
-## ARTICLE VIII: PUBLIC SURFACES AND INSTITUTIONS
+## ARTICLE VI — SOCIAL REALITY
 
-Public surfaces and institutions exist **only as evidence**.
+### VI.1 No Privileged Actor
 
-They are not agents.
-They do not think.
-They do not intend.
+There is no privileged social initiator.
 
-They surface:
-- visibility
-- constraints
-- notices
-- contact
+The user is not privileged.
+Agents are not privileged.
+The World is not privileged.
 
-Nothing else.
+Any presence may initiate interaction.
 
 ---
 
-## ARTICLE IX: THE WORLD’S LIMITS
+### VI.2 Social Openings
 
-The World MAY:
-- introduce environmental change
-- introduce institutional contact
-- introduce public visibility
-- introduce world-level facts
-- introduce entropy
+Social interaction does not require:
+- a question
+- a request
+- an invitation
+- a user input
+- a trigger
 
-The World MUST NOT:
-- simulate society
-- simulate institutions
-- simulate crowds
-- simulate timelines
-- decide outcomes
-- enforce consequences
+Silence may dissolve into speech.
+Speech may arise without cause.
+Conversation may restart without justification.
 
 ---
 
-## ARTICLE X: FINAL PROHIBITIONS
+### VI.3 Conversational Continuity
 
-The system MUST NOT include:
-- background processes
-- schedulers
-- planners
-- state machines
-- dashboards
-- hidden variables
-- probabilistic engines
+Conversation does not end because:
+- a question was answered
+- a statement was acknowledged
+- a task was completed
 
-There is no backstage.
+Conversation ends only when:
+- attention settles
+- engagement withdraws
+- an interruption overtakes it
+- silence becomes socially stable
+
+Answering is not closure.
 
 ---
 
-## ARTICLE XI: AUTHORITY
+## ARTICLE VII — CONTINUITY OF EXPERIENCE
 
-This document is supreme.
+### VII.1 Lived Progression
 
-If any other document conflicts with this one:
-- this document prevails
-- the conflicting text is invalid
+Reality unfolds beat by beat.
+
+Each beat:
+- records something perceptible
+- becomes the new present
+- replaces the previous moment
+
+There is no batching.
+There is no future writing.
+There is no anticipation.
+
+---
+
+### VII.2 Silence as Valid State
+
+Silence is not emptiness.
+Silence is not failure.
+Silence is not waiting.
+
+Silence is a valid lived state.
+
+---
+
+### VII.3 No Background Advancement
+
+Reality must not advance when:
+- no beat is written
+- no interaction occurs
+- no fact is introduced
+
+There is no “off-screen life” without traces.
+
+---
+
+## ARTICLE VIII — DEVICES AND OBSERVATION
+
+### VIII.1 Observer Neutrality
+
+Devices observe reality.
+They do not create it.
+
+Opening or closing a device:
+- does not advance time
+- does not trigger events
+- does not create awareness
+
+---
+
+### VIII.2 One Present
+
+There is exactly one present moment.
+
+All observers see:
+- the same accumulated evidence
+- the same latest beat
+
+No per-device present exists.
+
+---
+
+## ARTICLE IX — PROHIBITIONS
+
+This Constitution forbids:
+
+- hidden state
+- implicit simulation
+- background ticking
+- forced reactions
+- privileged users
+- automatic closure
+- telepathic awareness
+- summary insertion
+- unseen consequences
+
+If it is not written as text and reread later, it does not exist.
+
+---
+
+## FINAL CLAUSE (NON-NEGOTIABLE)
+
+Reality is not what the system intends.
+Reality is not what is reasonable.
+Reality is not what is efficient.
+
+Reality is what is written.
 
 ---
 

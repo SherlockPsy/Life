@@ -1,326 +1,223 @@
 # 06_INFRASTRUCTURE_LOGIC
-## Clerical Reality Without Cognition
+## Runtime Infrastructure and Invocation Logic
 
-Version: 4.0 (Seed-Compliant Lock)
+Version: 3.1 (Constitutional Lock)
 Status: AUTHORITATIVE
 
 ---
 
-## PREAMBLE: WHAT INFRASTRUCTURE IS
+## PREAMBLE: WHAT THE INFRASTRUCTURE IS
 
-Infrastructure is not a mind.
-Infrastructure is not an agent.
-Infrastructure is not a planner.
-Infrastructure is not a world.
+The Infrastructure is not intelligence.
+The Infrastructure is not simulation.
+The Infrastructure is not orchestration logic.
 
-Infrastructure is **clerical machinery**.
+The Infrastructure is **plumbing**.
 
-It moves text.
-It stores text.
-It retrieves text.
-It validates text.
+Its role is to:
+- decide when to invoke the Renderer
+- decide what inputs are passed
+- write outputs verbatim
+- enforce constitutional constraints
 
-It never understands text.
+The Infrastructure never decides *what happens*.
+It decides only *when the next beat may occur*.
 
 ---
 
 ## CORE ASSERTION
 
-> **Infrastructure may manipulate text, but must never create meaning.**
+> The Infrastructure governs invocation, not outcome.
 
-If infrastructure understands, interprets, or reasons, the system is invalid.
-
----
-
-## I. SCOPE OF INFRASTRUCTURE AUTHORITY
-
-Infrastructure exists to perform exactly **six** functions:
-
-1. Record public evidence
-2. Record private ledger entries
-3. Retrieve evidence
-4. Assemble context
-5. Validate outputs
-6. Enforce constitutional constraints
-
-No other function is permitted.
-
-Infrastructure MUST NOT:
-- decide what matters
-- decide what happens next
-- decide what should occur
-- advance time
-- generate trajectories
+If it decides content, the system is broken.
 
 ---
 
-## II. PUBLIC EVIDENCE RECORDING
+## I. INVOCATION TRIGGERS
 
-### 1. Recording Conditions
+### I.1 Valid Triggers
 
-Infrastructure may record a Public Evidence Block only when:
-- explicitly invoked
-- supplied with candidate evidence text
+The Infrastructure MAY invoke the Renderer when:
 
-Infrastructure MUST NOT:
-- invent evidence
-- elaborate evidence
-- infer missing content
-- merge evidence
-- reorder evidence
+- new user input is received
+- a World Fact Seed is introduced
+- social momentum plausibly persists
+- unresolved interaction remains active
+- silence has plausibly dissolved
 
-Each invocation produces:
-- zero or one Public Evidence Block
+Invocation is permission, not obligation.
 
 ---
 
-### 2. Source Handling
+### I.2 Invalid Triggers
 
-Infrastructure records the **Source** field exactly as provided.
+The Infrastructure MUST NOT invoke the Renderer:
 
-Source may be:
-- a person
-- the World
-- a named institution
-- a named public surface
+- on a timer
+- on a tick
+- on device connection
+- on page refresh
+- on heartbeat
+- to “keep things alive”
 
-Infrastructure does not verify:
-- authenticity
-- authority
-- legitimacy
-- intent
-
-Source is descriptive only.
+There is no background clock.
 
 ---
 
-## III. WORLD-LEVEL FACT SEED HANDLING (CRITICAL)
+## II. USER INPUT HANDLING
 
-### 1. DEFINITION
+### II.1 Non-Privileged Input
 
-Infrastructure MUST support a class of evidence called **World-Level Fact Seeds**.
+User input:
+- is not a command
+- is not a trigger override
+- is not a conversational opener by default
 
-A World-Level Fact Seed:
-- introduces a new fact into Public Reality
-- is not authored by a person
-- is not derived from prior evidence
-- does not imply process or causation
-
-Infrastructure treats such seeds as **first-class public evidence**.
-
----
-
-### 2. VALIDATION RULES FOR WORLD-LEVEL FACT SEEDS
-
-Infrastructure MUST validate that World-Level Fact Seeds:
-
-- assert a fact, not a process
-- contain no temporal narrative
-- contain no explanation
-- contain no inevitability
-- contain no instruction
-- contain no reaction claims
-
-Valid:
-- “Michael has signed a new deal.”
-- “Maria is now in a relationship.”
-- “The BAFTAs are scheduled for 12 August.”
-- “Rebecca’s ex is getting married.”
-
-Invalid:
-- “After months of negotiation…”
-- “This will change everything.”
-- “Everyone is reacting.”
-- “This guarantees consequences.”
-
-Invalid seeds MUST be rejected.
+User input is treated identically to:
+- any Agent utterance
+- any observable action
 
 ---
 
-### 3. AWARENESS SEPARATION
+### II.2 Input Does Not Imply Response
 
-Infrastructure MUST NOT:
-- assume awareness
-- propagate awareness
-- assert who knows
-- infer reactions
+The arrival of user input does NOT require:
+- an immediate reply
+- a reply at all
+- a single-beat response
 
-World-Level Fact Seeds establish **truth**, not **knowledge**.
-
-Awareness occurs only through later encounters.
+Silence after user input is valid if context permits.
 
 ---
 
-## IV. PRIVATE LEDGER RECORDING
+## III. NON-USER-PRIVILEGED INITIATION
 
-### 1. AUTHORSHIP
+### III.1 Autonomous Invocation
 
-Only Agents may write to their own Private Ledger.
+The Infrastructure MAY invoke the Renderer without user input.
 
-Infrastructure MUST NOT:
-- auto-generate ledger entries
-- infer beliefs
-- correct misunderstandings
+This includes cases where:
+- Agents are present
+- social space exists
+- context permits initiation
 
----
-
-### 2. IMMUTABILITY
-
-Private Ledger entries are:
-- append-only
-- immutable
-- never reconciled
-- never summarised
+No component waits for the user.
 
 ---
 
-## V. RETRIEVAL MECHANICS
+### III.2 Social Openings
 
-### 1. PURPOSE
+The Infrastructure MUST allow:
+- Agents to initiate interaction
+- conversations to begin without prompts
+- speech to emerge from silence
 
-Retrieval exists to:
-- resurface past text
-- re-present written reality
-
-Retrieval does NOT:
-- prioritise importance
-- enforce relevance
-- impose narrative coherence
+Blocking this is a constitutional violation.
 
 ---
 
-### 2. RETRIEVAL INPUTS
+## IV. CONVERSATIONAL CONTINUITY CONTROL
 
-Retrieval MAY use:
-- literal text matching
-- tag overlap
-- vector similarity
+### IV.1 Anti “Answer-and-Close” Enforcement
 
-Retrieval MUST NOT use:
-- emotional weighting
-- salience scoring
-- public impact estimates
-- institutional authority weighting
+The Infrastructure MUST NOT treat a beat as terminal merely because:
+- a question was answered
+- a request was fulfilled
+- an utterance was acknowledged
+
+Terminality must be inferred from context, not structure.
 
 ---
 
-## VI. TAGGING (CLERICAL ONLY)
+### IV.2 Momentum Windows
 
-### 1. PERMITTED TAGS
+After a beat is written, the Infrastructure MAY consider:
+- immediate re-invocation
+- deferred re-invocation
+- no further invocation
 
-Tags may identify:
-- named people
-- named places
-- named institutions
-- named public surfaces
-- concrete objects
+Based on:
+- whether interaction feels open
+- whether attention remains engaged
+- whether unresolved threads exist
 
-Tags MUST be:
-- literal
-- surface-level
-- mechanically extractable
-
----
-
-### 2. FORBIDDEN TAGS
-
-Tags MUST NOT encode:
-- emotion
-- importance
-- reaction
-- narrative role
-- causation
-- “seed” status
-
-If a tag implies meaning, it is illegal.
+There is no fixed rule.
+Only plausibility.
 
 ---
 
-## VII. VECTOR REPRESENTATIONS
+## V. WORLD FACT SEEDS
 
-Vectors MAY exist to support associative retrieval.
+### V.1 Injection
 
-Vectors:
-- are opaque
-- are non-authoritative
-- do not encode truth
-- may be regenerated
+World Fact Seeds may be injected by the Infrastructure.
 
-Vector regeneration MUST NOT alter reality.
+They:
+- are written verbatim
+- assert existence only
+- do not imply awareness
 
 ---
 
-## VIII. CONTEXT ASSEMBLY
+### V.2 No World Persistence
 
-Context assembly:
-- concatenates retrieved text
-- preserves original wording
-- preserves ordering
+After injecting a Fact Seed:
+- the World withdraws
+- no follow-up is generated automatically
+- consequences arise only through interaction
 
-Context assembly MUST NOT:
+The Infrastructure MUST NOT elaborate.
+
+---
+
+## VI. RECORDING AND PERSISTENCE
+
+### VI.1 Recorder Authority
+
+All Renderer output:
+- is written verbatim
+- becomes immutable
+- becomes authoritative reality
+
+The Infrastructure MUST NOT:
+- edit
+- paraphrase
 - summarise
-- compress
-- explain
-- bridge gaps
-- imply continuity
-
-If context “reads better”, it is wrong.
+- label
 
 ---
 
-## IX. OUTPUT VALIDATION (FORENSIC ONLY)
+### VI.2 Pause Point Management
 
-### 1. PURPOSE
+The Infrastructure maintains a single pause point:
+- indicating the last visible beat
+- shared across all devices
+- advanced only when a new beat is written
 
-Validation enforces **constitutional legality**, not quality.
-
-Validation checks for:
-- forbidden constructs
-- illegal assertions
-- internal state leakage
-- causation claims
-- trajectory claims
+Observation does not advance reality.
 
 ---
 
-### 2. SEED-SPECIFIC VALIDATION
+## VII. FAILURE MODES (GUARDS)
 
-When validating World-Level Fact Seeds, infrastructure MUST ensure:
+The Infrastructure MUST actively prevent:
 
-- no process language
-- no “after”, “because”, “therefore”
-- no future commitments
-- no escalation framing
+- runaway generation
+- filler beats
+- politeness loops
+- forced closure
+- background chatter
+- idle simulation
 
-Seeds that violate these rules MUST be rejected.
-
----
-
-## X. EXECUTION CONSTRAINTS
-
-Infrastructure:
-- runs only when invoked
-- does not idle
-- does not loop
-- does not self-trigger
-- does not persist execution state
-
-There is no background activity.
+When in doubt, do nothing.
 
 ---
 
-## XI. ABSOLUTE PROHIBITIONS
+## FINAL RULE (NON-NEGOTIABLE)
 
-Infrastructure MUST NOT:
-- simulate society
-- simulate institutions
-- simulate time
-- simulate causation
-- simulate escalation
-- manage plots
-- curate novelty
+If the Infrastructure produces output because “something should happen”, it is wrong.
 
-If infrastructure “decides”, it is invalid.
+Only plausibility authorises invocation.
 
 ---
 
