@@ -1,3 +1,12 @@
+Before writing any code, you MUST:
+
+1. Read AUTHORITY.md
+2. Explicitly restate (in your own words) the authority hierarchy.
+3. Confirm which document currently governs the milestone you are implementing.
+
+Do not proceed until this is done.
+
+
 YOU ARE OPERATING INSIDE A LOCKED REPOSITORY WITH A LOCKED ARCHITECTURE.
 
 You are implementing EXACTLY ONE milestone of the SherlockPsy Life system.
