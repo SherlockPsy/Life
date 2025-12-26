@@ -56,28 +56,38 @@ They do not:
 
 ### II.1 Definition
 
-A Fact Seed is a minimal textual assertion that a new external condition exists.
+A Fact Seed is a **causally sufficient textual assertion** that a new external condition exists.
 
-Examples:
-- “The doorbell rings.”
-- “An email arrives.”
-- “The power goes out.”
-- “A storm begins.”
-- “An event is announced.”
+A Fact Seed MUST fully specify the entities and context involved such that:
+- no later action requires inventing missing causes
+- no agent is forced to complete the reality retroactively
+- no hidden resolution is required to make the fact meaningful
+
+Examples of valid Fact Seeds:
+- “Maria is at the door to talk about her new relationship to George and Rebecca.”
+- “The plumber is outside waiting to be let in.”
+- “A storm begins over the city.”
+- “George receives an email from his manager about the deadline.”
+
+Underspecified stimuli are forbidden.
 
 ---
 
-### II.2 Minimality Requirement
+### II.2 Causal Sufficiency Requirement
 
-Fact Seeds MUST be minimal.
+Fact Seeds MUST be minimal **without being ambiguous**.
 
-They MUST NOT include:
-- who is responsible
-- why it happened
-- what will happen next
-- how anyone reacts
+They MUST:
+- assert existence only
+- specify all necessary referents
+- avoid outcomes, reactions, or internal states
 
-Anything beyond the perceptible assertion is forbidden.
+They MUST NOT:
+- leave the cause of a socially referential event unspecified
+- introduce stimuli that imply an unseen agent without naming them
+- defer meaning to a later action
+
+Minimality means **no outcomes**, not **missing causes**.
 
 ---
 
@@ -95,6 +105,20 @@ It does not:
 All development occurs only through Agent action or in-world interaction.
 
 ---
+
+### II.4 Forbidden Underspecification
+
+The World MUST NOT introduce Fact Seeds that are perceptually or socially incomplete.
+
+The following are INVALID Fact Seeds:
+- “The doorbell rings.”
+- “Someone knocks.”
+- “A phone vibrates.”
+- “An email arrives.”
+
+Unless the referent and context are explicitly specified in the same text.
+
+This rule exists to prevent hidden causal completion by agents or the system.
 
 ## ARTICLE III — PEOPLE IN THE WORLD
 
