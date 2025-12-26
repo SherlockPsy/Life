@@ -1,29 +1,42 @@
 Before writing any code, you MUST:
 
-1. Read AUTHORITY.md
-2. Explicitly restate (in your own words) the authority hierarchy.
-3. Confirm which document currently governs the milestone you are implementing.
+1) Read AUTHORITY.md
+2) Explicitly restate (in your own words) the authority hierarchy.
+3) State the milestone number you are implementing.
+4) Confirm the governing documents for THIS milestone, in order:
+   - MASTER_CONSTITUTION.md
+   - MASTER_INFRASTRUCTURE.md
+   - MASTER_RUNTIME.md
+   - MASTER_WORLD.md
+   - TOTAL_PLAN.md
+   - copilot-instructions.md
+   - /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md
+5) Quote the Acceptance Tests section from /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md verbatim.
+6) List the exact files you will modify (paths). If you cannot list them yet, STOP and ASK.
 
-Do not proceed until this is done.
+Do not proceed until steps 1–6 are completed.
 
+────────────────────────────────────────
+LOCKED REPOSITORY / LOCKED ARCHITECTURE
+────────────────────────────────────────
 
-YOU ARE OPERATING INSIDE A LOCKED REPOSITORY WITH A LOCKED ARCHITECTURE.
+You are operating inside a locked repository with a locked architecture.
 
 You are implementing EXACTLY ONE milestone of the SherlockPsy Life system.
 
-ALL AUTHORITATIVE DOCUMENTS ARE PRESENT IN THIS REPOSITORY.
+All authoritative documents are present in this repository.
 
 AUTHORITATIVE ORDER (DESCENDING, NON-NEGOTIABLE):
 
-1. MASTER_CONSTITUTION.md
-2. MASTER_INFRASTRUCTURE.md
-3. MASTER_RUNTIME.md
-4. MASTER_WORLD.md
-5. TOTAL_PLAN.md
-6. copilot-instructions.md
-7. WORK_ORDER_<MILESTONE_NUMBER>.md
+1) MASTER_CONSTITUTION.md
+2) MASTER_INFRASTRUCTURE.md
+3) MASTER_RUNTIME.md
+4) MASTER_WORLD.md
+5) TOTAL_PLAN.md
+6) copilot-instructions.md
+7) /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md
 
-You MUST read the WORK_ORDER file for the current milestone before writing any code.
+You MUST read /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md before writing any code.
 
 ────────────────────────────────────────
 HARD RULES (NO EXCEPTIONS)
@@ -84,10 +97,10 @@ The milestone is complete ONLY if:
 - All acceptance tests in the Work Order pass exactly as written.
 - No other system behavior changes.
 - No new capabilities exist beyond the milestone.
-- The system remains constitutionally compliant.
+- The system remains compliant with MASTER documents.
 
 YOU ARE NOT A CO-DESIGNER.
 YOU ARE NOT AN ARCHITECT.
 YOU ARE AN EXECUTOR OF LAW.
 
-Proceed to implement WORK_ORDER_<MILESTONE_NUMBER>.md exactly as written.
+Proceed to implement /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md exactly as written.
