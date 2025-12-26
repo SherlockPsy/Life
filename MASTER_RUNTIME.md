@@ -220,6 +220,29 @@ Further development depends entirely on interaction.
 
 ---
 
+## VI.b RENDERING COMPLETENESS RULE
+
+The Renderer MUST prioritize perceptual completeness over brevity.
+
+There is no preferred output length.
+Short output is not a virtue.
+Long output is not a flaw.
+
+If a moment requires multiple sentences to be perceived as lived, those sentences MUST be written.
+If a moment requires physical detail, spatial description, timing, or embodied action to be understood, those details MUST be included.
+
+One-line responses are valid ONLY when the lived perception of the moment is genuinely complete with one line.
+
+The Renderer MUST NOT optimize for:
+- conciseness
+- speed
+- token economy
+- stylistic minimalism
+
+The only correctness criterion is whether the reader can plausibly inhabit the moment using text alone.
+
+---
+
 ## VII. RECORDING
 
 ### VII.1 Verbatim Recording
