@@ -1,9 +1,3 @@
-# .github/copilot-instructions.md
-# IMPORTANT: This file MUST match /copilot-instructions.md exactly.
-# If they differ, STOP and report the mismatch.
-
-(Verbatim mirror of /copilot-instructions.md)
-
 # copilot-instructions.md
 ## Life: A Text-Only Continuous Reality System
 ### Zero-Wiggle / Procedural / Copilot-Hostile Constraints
