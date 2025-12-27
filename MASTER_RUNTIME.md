@@ -1,72 +1,83 @@
-# MASTER_RUNTIME
-## Runtime Invocation and Lived Continuity
+# MASTER_RUNTIME (v6)
+## Runtime Invocation, Opportunity, Writing, Rendering, and Record Integrity
 
-Version: 5.0 (Constitutional Lock)
-Status: AUTHORITATIVE
+Runtime exists to **provide opportunities for writing** and to **record what is written**.
+Runtime does not decide what happens in the world.
 
 ---
 
 ## PREAMBLE
 
-This document defines **when** the system may produce output.
+This Runtime governs how the system is invoked, how writing opportunities are created, how writing is recorded, and how rendering is produced.
 
-It does NOT define:
-- what people think
-- what people feel
-- what people decide
-- how behaviour is selected
+It must uphold the Constitution’s core physics:
 
-Any attempt to encode cognition, motivation, fatigue, rhythm, or optimisation here is invalid.
-
-The runtime does not simulate life.
-It permits life to continue.
+- Written text is the only reality.
+- Rendering is separate from existence.
+- Off-screen life is narrated, not simulated.
+- Initiative belongs to people, not the system.
+- Invocation is not causation.
+- Time exists as context, not as a rule engine.
+- Summaries may exist only as non-authoritative reading aids.
 
 ---
 
 ## CORE ASSERTION
 
-> The Runtime decides **when a next beat may be written**.
-> It never decides **what that beat contains**.
+**Runtime only grants opportunities to write and faithfully records what is written.**
+
+Runtime must be:
+- blind to “story significance,”
+- blind to “pacing,”
+- blind to “what should happen,”
+- blind to “who should act.”
+
+Runtime must be able to do nothing (silence) without treating that as failure.
 
 ---
 
-## I. WHAT THE RUNTIME IS
+## I. WHAT THE RUNTIME IS (AND IS NOT)
 
-### I.1 Not a Scheduler
+### I.1 Runtime Is Not a Director
 
-The Runtime is NOT:
-- a clock
-- a tick loop
-- a heartbeat
-- a background process
+Runtime MUST NOT:
+- choose moments,
+- evaluate relevance,
+- enforce narrative momentum,
+- nudge outcomes,
+- “keep things interesting,”
+- decide someone should act.
 
-There is no time-based execution.
+### I.2 Runtime Is Not a Simulation
 
----
+Runtime MUST NOT:
+- simulate gradual change,
+- advance hidden variables,
+- maintain meters/flags/counters,
+- decay or refresh psychological state,
+- update the world in the background.
 
-### I.2 Not a State Machine
+Reality changes only when new text is written and recorded.
 
-The Runtime does NOT maintain:
-- internal state
-- counters
-- flags
-- timers
-- thresholds
-- deltas
+### I.3 Runtime Is Not a State Machine
 
-All state exists only as recorded text.
+Runtime MUST NOT implement “if X then Y happens” world logic beyond:
+- validating input contracts,
+- enforcing record integrity,
+- enforcing idempotency rules where specified,
+- enforcing security and correctness rules.
 
----
+### I.4 Runtime May Create Opportunities (Without Causing Outcomes)
 
-### I.3 Not an Agent
+Runtime MAY create opportunities for writing by permitting invocation windows triggered by:
+- explicit external requests (user/system API calls),
+- content-agnostic time passage mechanisms,
+- content-agnostic randomness.
 
-The Runtime does not:
-- interpret meaning
-- infer intent
-- reason
-- evaluate outcomes
-
-It does not “know” anything.
+However:
+- these triggers must never imply that writing must occur,
+- these triggers must never encode semantic meaning,
+- these triggers must never select outcomes.
 
 ---
 
@@ -74,223 +85,229 @@ It does not “know” anything.
 
 ### II.1 Invocation Is Permission, Not Obligation
 
-The Runtime may invoke the Renderer.
-It is never required to do so.
+On any invocation, the system may:
+- write new text, or
+- write nothing (silence).
 
-Invocation grants the possibility of a new beat.
-It does not guarantee one will be written.
+Invocation must never be treated as a requirement to “produce content.”
 
----
+### II.2 Invocation Sources (Allowed)
 
-### II.2 When Invocation Is Allowed
+Invocation is allowed only via an explicit invocation event, such as:
 
-Invocation is allowed only when at least one of the following is true:
+1) **User-initiated calls** (e.g., sending user speech)
+2) **Non-user initiated calls** (e.g., “beat” opportunities that do not include user speech)
+3) **Opportunity invocations** initiated by time/randomness that are:
+   - opaque,
+   - content-agnostic,
+   - non-predictable,
+   - non-semantic.
 
-- new user input exists
-- a World Fact Seed is introduced
-- social interaction plausibly remains open
-- silence plausibly dissolves into action or speech
-- multiple people are present and not disengaged
+Every invocation must be logged as an invocation event.
 
-Invocation is never automatic.
+### II.3 Invocation Sources (Forbidden)
 
----
+Invocation is forbidden if it is caused by:
 
-### II.3 When Invocation Is Forbidden
+1) semantic rules such as:
+   - “if boredom > 0.7 then call,”
+   - “if momentum low then add drama,”
+   - “if user inactive then force event.”
 
-The Runtime MUST NOT invoke the Renderer:
+2) deterministic schedules that function as outcome engines, such as:
+   - “every 10 minutes, something happens.”
 
-- on a timer
-- on a tick
-- on page load
-- on reconnect
-- to “keep things moving”
-- to fill silence
-- to simulate off-screen life
+3) any component that inspects world content to decide when to invoke.
 
-If nothing plausibly happens, nothing happens.
-
----
-
-## III. USER INPUT HANDLING
-
-### III.1 Input as Evidence
-
-User input is treated as:
-- an utterance
-- an observable action
-
-It is not treated as:
-- a command
-- a directive
-- a trigger override
+**Time/randomness may open opportunities. They must not choose outcomes.**
 
 ---
 
-### III.2 No Guaranteed Response
+## III. TIME IN RUNTIME
 
-User input does NOT guarantee:
-- an immediate reply
-- a reply at all
-- a single-beat response
+### III.1 Time as Context
 
-Silence after input is valid if context supports it.
+Runtime MAY read objective wall-clock time to provide context to the writing process, including:
+- current timestamp,
+- timezone context where applicable,
+- elapsed time since last write (as a fact about timestamps, not as simulated experience).
 
----
+Runtime MUST NOT interpret time as a rule engine:
+- no “because it is 9am, force breakfast,”
+- no “because it is Friday, force party.”
 
-## IV. NON-USER-PRIVILEGED CONTINUATION
+Time is informational context only.
 
-### IV.1 Autonomous Invocation
+### III.2 Calendar Commitments and “Due-ness”
 
-The Runtime may invoke the Renderer even when:
-- the user is silent
-- no new input has arrived
+Runtime MUST NOT invent plans or appointments.
 
-This supports:
-- spontaneous speech
-- unprompted action
-- continuation of conversation
+If plans/appointments exist because they were written, Runtime may expose time context such that the writing process can acknowledge:
+- due,
+- missed,
+- delayed,
+- early,
+- travel-time plausibility.
 
-No component waits for the user.
+But Runtime must not enforce an outcome:
+- it may permit an opportunity;
+- it may not force a meeting to “happen.”
 
----
+### III.3 Opportunity Triggers from Time (Allowed Form)
 
-### IV.2 Multiple Participants
+If time-based opportunity triggering is enabled, it must obey:
 
-When multiple Agents are present, the Runtime MUST allow:
-- Agent-Agent interaction
-- conversation without user participation
-- overlapping speech across beats
+1) **Content-agnostic:** the trigger does not look at world text.
+2) **Non-semantic:** no meaning is attached to “why now.”
+3) **Non-fixed:** no simple fixed interval (“every 5 minutes”) as the defining mechanism.
+4) **Non-obligating:** a triggered opportunity can yield silence.
 
-The user is an observer-participant, not a driver.
+A time-based trigger is allowed only as a way to permit thought/writing, not to cause action.
 
----
+### III.4 Opportunity Triggers from Randomness (Allowed Form)
 
-## V. CONVERSATIONAL CONTINUITY
+Randomness-based opportunity triggering is allowed only if:
+- randomness selects only “an opportunity occurred,”
+- randomness does not select which agent acts,
+- randomness does not select events,
+- randomness does not inject facts.
 
-### V.1 Anti “Answer-and-Close” Enforcement
-
-The Runtime MUST NOT treat a beat as terminal merely because:
-- a question was answered
-- a request was fulfilled
-- a remark was acknowledged
-
-Terminality must be implied by context, not structure.
-
----
-
-### V.2 Consecutive Invocation Windows
-
-After a beat is written, the Runtime MAY:
-
-- allow immediate re-invocation
-- allow delayed re-invocation
-- allow no re-invocation
-
-Based only on:
-- whether interaction plausibly remains live
-- whether attention has plausibly settled
-
-No numeric pacing exists.
-No throttling rules exist.
+Randomness may open the door. It may not decide what walks through it.
 
 ---
 
-## VI. WORLD FACT SEEDS
+## IV. WRITING PROCESS
 
-### VI.1 Injection
+### IV.1 Writing Is the Only World-Change
 
-The Runtime may inject a World Fact Seed.
+The only way reality changes is:
+1) an invocation occurs (permission),
+2) writing may occur (or silence),
+3) written text is recorded (existence).
 
-When injected:
-- it is written verbatim
-- it asserts existence only
-- it implies no awareness
+### IV.2 What May Be Written
 
----
+Writing may include:
+- public evidence (renderable),
+- private text (unrendered reality),
+- background developments (narrated off-screen life),
+- plans/commitments,
+- corrections (by new writing).
 
-### VI.2 World Withdrawal
+### IV.3 What Must Not Be Written
 
-After injection:
-- the World withdraws
-- no follow-up is scheduled
-- no escalation occurs
-
-Further development depends entirely on interaction.
-
----
-
-## VI.b RENDERING COMPLETENESS RULE
-
-The Renderer MUST prioritize perceptual completeness over brevity.
-
-There is no preferred output length.
-Short output is not a virtue.
-Long output is not a flaw.
-
-If a moment requires multiple sentences to be perceived as lived, those sentences MUST be written.
-If a moment requires physical detail, spatial description, timing, or embodied action to be understood, those details MUST be included.
-
-One-line responses are valid ONLY when the lived perception of the moment is genuinely complete with one line.
-
-The Renderer MUST NOT optimize for:
-- conciseness
-- speed
-- token economy
-- stylistic minimalism
-
-The only correctness criterion is whether the reader can plausibly inhabit the moment using text alone.
+Writing must not include:
+- hidden meters/flags/counters,
+- mechanical triggers (“in N beats…”),
+- guaranteed future outcomes,
+- director commentary (“this is a good moment to…”),
+- summary text presented as if it were authoritative reality.
 
 ---
 
-## VII. RECORDING
+## V. RENDERING (PROJECTION, NOT EXISTENCE)
 
-### VII.1 Verbatim Recording
+### V.1 Rendering Is Optional
 
-Any Renderer output:
-- is written verbatim
-- becomes immutable
-- becomes authoritative reality
+Runtime may render:
+- everything,
+- a subset,
+- or nothing,
+depending on the interface requirements.
 
-The Runtime MUST NOT:
-- edit
-- summarise
-- rephrase
-- annotate
+Rendering decisions do not affect what exists.
 
----
+### V.2 Rendering Must Not Create Facts
 
-### VII.2 Single Present
+Runtime must not:
+- infer new facts for display,
+- “clean up” or rewrite reality for readability,
+- present summaries as if they were original authoritative text.
 
-The Runtime maintains exactly one present point:
-- the last written beat
-
-Observation does not advance reality.
-Only writing does.
+Rendering must be faithful to written text.
 
 ---
 
-## VIII. FAILURE MODES (GUARDS)
+## VI. SUMMARIES (READING AIDS ONLY)
 
-The Runtime MUST actively avoid:
+### VI.1 Summary Generation Rules
 
-- background chatter
-- filler output
-- polite completion
-- premature silence
-- forced continuation
-- artificial pacing
+Summaries may be produced only if:
+1) they are derived solely from authoritative written text,
+2) they introduce no new facts or interpretations,
+3) each summary is linked to a source span of authoritative text.
 
-When in doubt, the correct action is **inaction**.
+### VI.2 Summary Authority
+
+Summaries are non-authoritative.
+If a summary conflicts with authoritative text, authoritative text wins automatically.
+
+### VI.3 Summaries as Context Loading
+
+Runtime may provide summaries to aid reading and context loading, but it must preserve the primacy of authoritative text by ensuring:
+- the authoritative record remains intact and retrievable,
+- summaries are clearly marked and traceable,
+- the writing process is grounded in written reality, not invented compression.
+
+---
+
+## VII. INPUT HANDLING
+
+### VII.1 Input as Evidence
+
+User input may be written as evidence, subject to:
+- format and safety validation,
+- record integrity constraints.
+
+### VII.2 No Guaranteed Response
+
+The system must not promise that any input yields a reply.
+Silence is valid and must not be treated as error.
+
+---
+
+## VIII. RECORDING (INTEGRITY)
+
+### VIII.1 Verbatim Recording
+
+Runtime must record written text verbatim.
+No post-hoc rewriting, paraphrasing, or stylistic “cleanup” is allowed in the authoritative record.
+
+### VIII.2 Append-Only
+
+Runtime must enforce append-only storage of authoritative text.
+Corrections are new writing, not edits.
+
+### VIII.3 Timestamping
+
+Each written entry must include:
+- a timestamp anchored to objective time,
+- authorship attribution,
+- visibility classification (renderable/unrendered),
+- and any required linkage metadata (e.g., summaries to spans).
+
+---
+
+## IX. FAILURE MODES (GUARDS)
+
+Runtime must fail safely and explicitly when integrity is at risk, including:
+- missing required configuration for persistence,
+- inability to write to the authoritative record,
+- corrupted or non-append-only storage conditions,
+- attempts to invoke forbidden mechanisms (director logic, hidden state, semantic schedulers).
+
+On such failures:
+- Runtime must not invent compensations,
+- Runtime must not “continue anyway” by simulating state,
+- Runtime must not rewrite reality to recover.
 
 ---
 
 ## FINAL RULE
 
-If the Runtime produces output because “something should happen”, it is wrong.
+Runtime provides opportunities.
+Writing changes reality.
+Recording makes it exist.
+Rendering merely shows a slice.
 
-Only plausibility authorises continuation.
-
----
-
-END OF RUNTIME SPEC
+Time and randomness may open opportunities, but they never decide outcomes.

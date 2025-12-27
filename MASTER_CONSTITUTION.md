@@ -1,25 +1,26 @@
-# MASTER_CONSTITUTION
-## Constitution of Reality, Agency, and Continuity
+# MASTER_CONSTITUTION (v6)
+## Constitution of Written Reality, Agency, Time, and Continuity
 
-Version: 5.0 (Constitutional Lock)
-Status: SUPREME AUTHORITY
+If something is not written as text, it does not exist in this system.
+
+This Constitution defines the immutable physics of the Virtual Life world. It is not a style guide. It is law.
 
 ---
 
 ## PREAMBLE
 
-This document defines what exists, how reality advances, and what is forbidden.
+This system is a **virtual world** expressed in **text**.
 
-It supersedes:
-- architectural convenience
-- performance optimisation
-- implementation preference
-- developer intuition
+It aims to be as close as possible to real life **without** becoming a simulation engine, game logic, or a hidden state machine.
 
-If any later system component contradicts this document, that component is invalid.
+This Constitution enforces:
 
-Reality in this system is not simulated.
-Reality in this system is recorded.
+- **Written reality:** what exists is what is written.
+- **Separation of writing from rendering:** what exists is not limited to what is shown.
+- **Off-screen life via narration:** life can advance without being shown, but only becomes real when written.
+- **No hidden causality:** no component chooses moments, nudges outcomes, or decides what “should happen.”
+- **No variable-based psychology:** no meters, flags, or background updates.
+- **Time as a shared coordinate:** time exists and advances, but time does not decide outcomes.
 
 ---
 
@@ -27,162 +28,164 @@ Reality in this system is recorded.
 
 ### I.1 Text Is the Only Substrate
 
-Text is the only substrate of reality.
+1) The only substrate of reality in this system is **written text**.
+2) “Written” means: stored, durable text recorded into the authoritative record.
+3) Nothing exists merely because it was:
+   - rendered on screen,
+   - spoken aloud,
+   - displayed in an interface,
+   - considered by a model,
+   - calculated internally,
+   - inferred as “likely,”
+   unless it is written.
 
-There are:
-- no hidden variables
-- no numeric world state
-- no implicit clocks
-- no background processes
-- no simulation layers
+### I.2 Written Does Not Mean Rendered
 
-If something is not written as text, it does not exist.
+1) Written reality is not limited to what is shown to the user.
+2) Rendering (showing) is a **projection choice** made after writing.
+3) Many written facts, developments, thoughts, and changes may never be rendered.
+4) Rendering must never be treated as a condition for existence.
+
+### I.3 Types of Written Text
+
+Written reality may include distinct kinds of text, all equally real once written:
+
+1) **Public Evidence**  
+   - Written text that records what a participant said/did, or what was publicly observable.
+
+2) **Private Text (Unrendered Reality)**  
+   - Written text that is real but not shown, including:
+     - private thoughts,
+     - private perceptions,
+     - internal reflections,
+     - unseen actions,
+     - off-screen developments.
+   - Private text is not “state variables.” It is still text.
+
+3) **Background Developments (Narrated Off-Screen Life)**  
+   - Written text that establishes what happened during unobserved time.
+   - It may cover minutes, hours, days, or weeks in a single writing act.
+   - It must be written explicitly to become real.
+
+4) **Plans and Commitments**  
+   - Written text establishing intended future actions, appointments, promises, obligations, and schedules.
+   - A plan may exist even if not spoken to another person, as long as it is written.
+
+5) **Summaries (Reading Aids Only)**  
+   - Summaries are allowed only as non-authoritative reading aids derived from existing written text.
+   - Summaries never create reality. (See Article IX.)
+
+### I.4 No Reality by Implication
+
+1) The system must not treat silence, gaps, or “what usually happens” as reality.
+2) If a fact is required for continuity, it must be written explicitly.
+3) The only allowed bridge from unwritten to written is: **new writing**.
 
 ---
 
-### I.2 Evidence as Existence
-
-Reality consists exclusively of Evidence Blocks.
-
-An Evidence Block:
-- records observable action or speech
-- is immutable once written
-- persists indefinitely
-
-There is no retroactive correction.
-There is no “true” version behind the text.
-
-What is written is what happened.
-
----
-
-## ARTICLE II — TEMPORAL STRUCTURE
+## ARTICLE II — TIME
 
 ### II.1 Single Irreversible Timeline
 
-There is exactly one timeline.
+1) The world has a single timeline: events do not branch into alternate realities.
+2) Once text is written into the authoritative record, it cannot be altered or erased.
+3) New writing may supersede earlier understandings, but it must do so by writing new text, not editing old text.
 
-It:
-- does not branch
-- does not rewind
-- does not fork by device
-- does not fork by observer
+### II.2 Time Is a Shared Coordinate, Not a Rule Engine
 
-All participants inhabit the same irreversible sequence.
+1) Time exists objectively and advances continuously, whether or not anything is written.
+2) Time is not a driver of outcomes.
+3) Time may anchor context, including:
+   - days and weeks,
+   - fatigue, hunger, anticipation,
+   - “earlier,” “later,” “yesterday,” “tomorrow,”
+   - deadlines, lateness, travel, time zones.
+4) Time must never be used as a mechanical trigger that decides what happens.
+
+### II.3 Plans and Appointments Are Real When Written
+
+1) A scheduled meeting at a specific time is a real part of the world if it is written as a plan/commitment.
+2) Time passing may make a plan **due**, **missed**, or **urgent** as a matter of interpretation, but it does not force an outcome.
+3) The system must not invent calendar commitments that were never written.
+
+### II.4 Forbidden: Beat-Countdown Plotting
+
+The following are forbidden forms of time use:
+
+1) “In 15 beats, the door knocks.”
+2) “In 10 minutes, Martha arrives,” unless it is written as an actual appointment/commitment already established by writing (e.g., “Martha said she’d be here at 10:00”).
+3) Any rule that transforms time into a deterministic story engine.
 
 ---
 
-### II.2 No Implicit Time
-
-Time does not pass unless something is written.
-
-There is:
-- no tick
-- no scheduler
-- no heartbeat
-- no background advancement
-
-Silence is time.
-
----
-
-## ARTICLE III — THE RECORDER
+## ARTICLE III — THE RECORDER (AUTHORITATIVE RECORD)
 
 ### III.1 Role of the Recorder
 
-The Recorder is passive.
+1) The Recorder is the authoritative store of written reality.
+2) The Recorder must store:
+   - the written text,
+   - its timestamps,
+   - authorship attribution,
+   - visibility classification (renderable vs unrendered),
+   - references/links where applicable (e.g., summaries to source ranges).
 
-It:
-- appends text
-- preserves order
-- exposes history for rereading
+### III.2 Append-Only and Immutable
 
-It does not:
-- interpret
-- summarise
-- compress
-- infer
-- decide relevance
+1) The record is append-only.
+2) Past text must not be rewritten, reformatted, “cleaned up,” summarised into replacement, or compressed into loss.
+3) Corrections happen only by writing new text that supersedes older text.
 
----
+### III.3 Authority
 
-### III.2 Authority
-
-The Recorder is the sole authority on what has occurred.
-
-No Agent.
-No World mechanism.
-No Renderer output.
-
-Nothing overrides recorded text.
+1) The Recorder is the only authority on what exists.
+2) Rendered views, caches, indices, summaries, and derived structures are not authoritative.
 
 ---
 
 ## ARTICLE IV — SUBJECTIVITY AND KNOWLEDGE
 
-### IV.1 No Objective Awareness
+### IV.1 No Objective Omniscience Inside the World
 
-No participant has global awareness.
+1) No participant is automatically aware of all written reality.
+2) Different participants may interpret the same written reality differently.
+3) Private text may exist without being known by anyone else, including the user.
 
-Awareness is:
-- partial
-- situated
-- contingent on exposure
+### IV.2 Knowledge Must Be Earned by Writing
 
-If it is not reread, it is not known.
-
----
-
-### IV.2 Divergent Interpretation
-
-Different Agents may interpret the same Evidence differently.
-
-There is:
-- no canonical interpretation
-- no system-level correction
-- no reconciliation layer
-
-Misunderstanding is allowed.
-Error is allowed.
-False belief is allowed.
+1) Awareness, discovery, recall, and realization must appear as written text (public or private).
+2) The system must not retroactively grant awareness without writing it.
 
 ---
 
-## ARTICLE V — AGENTS
+## ARTICLE V — AGENCY
 
 ### V.1 Nature of Agents
 
-Agents are not controllers.
-Agents are not planners.
-Agents are not optimisers.
+1) Agents are people in the world (including the user-character and non-user characters).
+2) Agents act by writing actions, speech, thoughts, and developments into reality.
 
-Agents are sovereign readers.
+### V.2 Initiative Belongs to People, Not the System
 
-They:
-- reread text
-- interpret subjectively
-- speak or act
-- may remain silent
-
----
-
-### V.2 Autonomy
-
-Agents control only:
-- their own actions
-- their own speech
-- their own silence
-
-They control nothing else.
-
----
+1) The system never decides that someone “should act.”
+2) There are no mechanical triggers such as:
+   - boredom meters,
+   - momentum scores,
+   - desire flags,
+   - relationship points,
+   - decay timers,
+   - “narrative pacing.”
+3) Initiative emerges from accumulated written continuity:
+   - private thoughts,
+   - prior actions,
+   - past experiences,
+   - written off-screen developments.
 
 ### V.3 No Privileged Participant
 
-The user is not privileged.
-No Agent is privileged.
-
-Presence does not imply authority.
+1) The user is not privileged as a controller of reality.
+2) The user is a participant whose speech/actions become written evidence when written.
+3) Non-user agents may initiate writing without the user speaking first (when an opportunity exists), but the system must not force them to do so.
 
 ---
 
@@ -190,31 +193,15 @@ Presence does not imply authority.
 
 ### VI.1 Social Initiation
 
-Social interaction does not require:
-- a prompt
-- a question
-- a trigger
-- user input
-
-Any Agent may initiate interaction.
-Silence may dissolve without cause.
-
----
+1) Conversations and social actions may begin without a user prompt.
+2) A call, a message, a knock, a glance, silence—any of these may be written when coherent.
+3) The system must not generate underspecified stimuli that demand follow-up guessing. Any stimulus written must be sufficiently grounded in the same writing act to be causally intelligible.
 
 ### VI.2 Conversational Continuity
 
-Conversation does not end because:
-- a question was answered
-- a request was fulfilled
-- a remark was acknowledged
-
-Conversation ends only when:
-- attention settles
-- disengagement is explicit
-- interruption supersedes interaction
-- silence becomes socially stable
-
-Answering is not closure.
+1) The world is not turn-based.
+2) Multiple consecutive writing acts may occur without the user speaking each time.
+3) Silence is a valid outcome.
 
 ---
 
@@ -222,118 +209,104 @@ Answering is not closure.
 
 ### VII.1 What the World Is
 
-The World is not an Agent.
-The World is not a simulator.
-The World is not a narrator.
+1) The “World” is the set of non-agent conditions and events that can be written:
+   - places,
+   - schedules,
+   - weather (if written),
+   - institutions,
+   - travel, logistics,
+   - chance encounters (if written),
+   - off-screen events (if written).
 
-The World is a source of new facts.
+2) The World is not:
+   - an autonomous simulation,
+   - a story director,
+   - a pacing engine,
+   - a probability machine that “decides” significance.
 
----
+### VII.2 World Facts and World Fact Seeds
 
-### VII.2 World Fact Seeds
-
-The World may introduce Fact Seeds.
-
-A Fact Seed:
-- asserts that something becomes true
-- is independent of any Agent’s action
-- does not imply awareness
-- does not imply reaction
-
-Examples:
-- “The doorbell rings.”
-- “An email arrives.”
-- “A storm begins.”
-
----
+1) The World may be introduced via explicit writing of world facts.
+2) “World Fact Seeds” are permitted as a mechanism to inject world context that is:
+   - specific,
+   - coherent,
+   - non-directorial,
+   - non-outcome-forcing.
+3) World Fact Seeds must not encode conclusions about agents’ internal states or guaranteed future outcomes.
 
 ### VII.3 World Withdrawal
 
-After introducing a Fact Seed, the World withdraws.
-
-It does not:
-- persist
-- escalate
-- explain
-- resolve
-
-All further development arises only through interaction.
+1) Previously introduced world facts may be withdrawn only by writing new text that corrects or supersedes them.
+2) Withdrawal must never erase the existence of prior writing.
 
 ---
 
 ## ARTICLE VIII — CONTINUITY OF EXPERIENCE
 
-### VIII.1 Beat-Based Progression
+### VIII.1 Writing Acts (“Beats”) and Granularity
 
-Reality advances beat by beat.
+1) A “beat” is one opportunity to write new reality.
+2) A beat may be:
+   - moment-level (seconds),
+   - scene-level (minutes),
+   - or summarized off-screen life (hours/days/weeks),
+   provided it is written explicitly and coherently.
+3) A beat must not contain hidden mechanical hooks such as:
+   - “in N beats X happens,”
+   - forced countdown outcomes,
+   - deterministic plot triggers.
 
-Each beat:
-- records one perceptible change
-- becomes the new present
+### VIII.2 Off-Screen Life Is Narrated, Not Simulated
 
-There is no batching.
-There is no prewriting.
+1) Life may advance off-screen.
+2) Off-screen developments become real only when written as text.
+3) There is no continuous simulation, ticking model, background evolution, or hidden gradual progression.
+4) Nothing “happens gradually” unless it is later written as having happened.
 
----
+### VIII.3 Silence
 
-### VIII.2 Silence
-
-Silence is valid.
-Silence is meaningful.
-Silence is not waiting.
-
----
-
-## ARTICLE IX — DEVICES AND OBSERVATION
-
-### IX.1 Observer Neutrality
-
-Devices observe reality.
-They do not create it.
-
-Opening or closing a device:
-- does not advance time
-- does not trigger events
+1) Invocation may produce no new writing.
+2) Silence is valid, expected, and frequent.
+3) Silence must not be treated as stagnation or failure.
 
 ---
 
-### IX.2 Single Present
+## ARTICLE IX — SUMMARIES (READING AIDS ONLY)
 
-There is exactly one present moment.
+### IX.1 Summaries Are Non-Authoritative
 
-All observers see the same present.
+1) Summaries may be derived from existing written text only.
+2) Summaries must never introduce:
+   - new facts,
+   - interpretations,
+   - conclusions,
+   - causal claims not already written.
+3) Summaries are epistemic tools for reading context, not causal inputs.
+
+### IX.2 Summary Constraints
+
+1) Every summary must be traceable to a specific source span of authoritative text.
+2) If a summary conflicts with authoritative text, the authoritative text wins automatically.
+3) Summaries may be used to aid reading or context loading, but action must remain grounded in what is written.
 
 ---
 
 ## ARTICLE X — PROHIBITIONS (ABSOLUTE)
 
-This system forbids:
+The following are absolutely forbidden:
 
-- background ticking
-- schedulers
-- hidden state
-- numeric meters
-- thresholds
-- decay functions
-- decision trees
-- optimisation logic
-- memory compression
-- off-screen simulation
-- forced closure
-- polite completion
-
-If it cannot be reread later as text, it does not exist.
+1) **Hidden state variables:** meters, flags, counters, decay systems, refresh cycles, background updates.
+2) **Simulation engines:** continuous ticking, background evolution, silent progression that becomes real without writing.
+3) **Director/Explainer machinery:** any component that evaluates relevance, interest, pacing, or “chooses moments.”
+4) **Semantic scheduling as outcome engine:** systems that decide events should occur now.
+5) **Prewriting outcomes:** guaranteeing future events or writing countdown hooks into reality.
+6) **Retroactive alteration:** rewriting or erasing past authoritative text.
+7) **Summary-as-reality:** summaries introducing facts or functioning as the authoritative record.
 
 ---
 
 ## FINAL CLAUSE
 
-Reality is not what is efficient.
-Reality is not what is neat.
-Reality is not what is simulated.
-
-Reality is what is written.
-
----
-
-END OF CONSTITUTION
+What exists is what is written.
+What changes is what gets written next.
+Everything else is only an opportunity to write—never a cause.
