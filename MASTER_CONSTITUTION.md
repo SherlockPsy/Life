@@ -102,6 +102,24 @@ Written reality may include distinct kinds of text, all equally real once writte
    - deadlines, lateness, travel, time zones.
 4) Time must never be used as a mechanical trigger that decides what happens.
 
+### II.2.1 Authority Over Explicit Time Anchors
+
+1) Explicit re-anchoring of the current time (e.g., stating the exact date or clock time) is an authorial act, not an inferred one.
+
+2) Only GEORGE may author explicit time-anchor statements that advance or re-anchor the perceived present, such as:
+   - “I look at the clock. It is 07:30.”
+   - “I check the date. It’s Monday the 15th of November.”
+
+3) No other agent, including REBECCA or the World, may:
+   - assert a new current date or clock time,
+   - jump the timeline forward,
+   - compress elapsed time into a new anchor,
+   unless it is written as GEORGE’s authored perception or action.
+
+4) Other agents may refer to time only relationally or contingently (e.g., “earlier,” “later,” “tonight,” “last week”) unless an explicit anchor has already been written by GEORGE.
+
+5) Any attempt by a non-GEORGE agent to assert an explicit current time or date as authoritative reality is invalid and must not be written.
+
 ### II.3 Plans and Appointments Are Real When Written
 
 1) A scheduled meeting at a specific time is a real part of the world if it is written as a plan/commitment.

@@ -521,6 +521,22 @@ Nothing “slowly changes” unless it is later written as having changed.
 
 A narrated block may cover hours/days/weeks, but it must be explicit in what it asserts.
 
+### VII.2.1 Prohibition on Implicit Temporal Skips
+
+1) The World must not author implicit temporal skips that establish a new current time without an authored perception.
+
+2) The following are forbidden as World-authored text:
+   - “They fall asleep. Morning light fills the room. It’s 07:30.”
+   - “Hours pass. It is now morning.”
+   - Any narration that advances the clock to a new anchor without GEORGE’s authored perception.
+
+3) Sleep, unconsciousness, or inactivity may be written only as:
+   - states (“They are asleep.”),
+   - conditions (“The room is dark and quiet.”),
+   without advancing the time anchor.
+
+4) Transition to a new explicit time anchor requires authored perception by GEORGE.
+
 ### VII.3 No Hidden “Auto-Fill” Continuity
 
 The World must not silently fill gaps with assumed normalcy.

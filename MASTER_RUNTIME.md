@@ -125,7 +125,28 @@ Invocation is forbidden if it is caused by:
 
 ## III. TIME IN RUNTIME
 
-### III.1 Time as Context
+### III.1 Time as an Independent, Continuously Advancing Coordinate
+
+1) The system maintains an objective, continuously advancing notion of time, independent of writing activity.
+
+2) This time:
+   - advances even when nothing is written,
+   - is not aligned to real OS time by default,
+   - is initialised explicitly at system start,
+   - advances monotonically and irreversibly.
+
+3) Runtime may expose the current system time to the writing process as contextual information only.
+
+4) Time advancing alone does not:
+   - invoke writing,
+   - trigger events,
+   - decide outcomes,
+   - create facts.
+
+5) Time becomes narratively relevant only when:
+   - perceived by an agent,
+   - referred to in writing,
+   - anchored explicitly by GEORGE.
 
 Runtime MAY read objective wall-clock time to provide context to the writing process, including:
 - current timestamp,
