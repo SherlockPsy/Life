@@ -1,238 +1,120 @@
 COPILOT WORK ORDER PACKET — MILESTONE 14
 Project: SherlockPsy Life
-Authority:
-- TOTAL_PLAN.md (Execution Canon)
+
+Authority Order (binding, descending):
 - MASTER_CONSTITUTION.md
 - MASTER_INFRASTRUCTURE.md
 - MASTER_RUNTIME.md
 - MASTER_WORLD.md
+- TOTAL_PLAN.md
 - copilot-instructions.md
+- THIS WORK ORDER (M14)
 
 Milestone Target: M14 — SYSTEM IS PRODUCTION-READY
-Scope: This milestone LOCKS behavior. It introduces NO new mechanics. It only enforces final boundaries and removes remaining ambiguity.
+Scope: Lock v6 boundaries. Introduce no new “meaning-making machinery.” Remove ambiguity. Ensure system behavior matches v6 law.
 
 ======================================================================
 0) ABSOLUTE META-CONSTRAINTS (FINAL)
 ======================================================================
 
-From this milestone onward:
+A) Written reality and rendering separation
+- Written text is the only reality.
+- Written does not mean rendered.
+- Rendering must not create facts.
 
-- The system is considered complete.
-- No architectural layers may be introduced.
-- No new categories of data may be created.
-- No new execution models may be added.
-- No background behavior may be introduced.
-- No performance “optimizations” that alter semantics are permitted.
+B) Time under v6
+- Objective time exists and advances continuously.
+- Time is context only; time must never decide outcomes.
 
-Copilot MUST treat this milestone as a **lock**, not a build.
+C) Background life under v6
+Allowed:
+- Off-screen developments as written text (narrated, not simulated).
+Forbidden:
+- background simulation
+- ticking gradual evolution
+- hidden progression that becomes real without writing
+
+D) Opportunity triggers under v6 Runtime
+Allowed (if implemented):
+- content-agnostic opportunity triggers via time passing and/or irregular randomness
+Constraints:
+- opaque
+- content-agnostic
+- non-semantic
+- non-predictable
+- non-obligating
+Forbidden:
+- semantic schedulers (“if user inactive then inject drama”)
+- fixed-interval “something happens” engines
+- triggers that inspect world content to decide when to invoke
+- triggers that select outcomes
+
+E) No director / no explainer
+Forbidden:
+- relevance/pacing engines
+- “moment selection”
+- “keep things interesting”
+- “now is important”
+- “the story needs…”
+Everything must remain blind and content-agnostic outside the model’s interpretation during an opportunity.
+
+F) No hidden state machinery
+Forbidden:
+- meters
+- flags
+- counters
+- decay
+- refresh cycles
+- “relationship points”
+- “boredom scores”
+- “momentum”
+
+G) Summaries under v6
+Allowed:
+- Non-authoritative reading aids derived from written text, traceable to spans.
+Forbidden:
+- summary-as-authority
+- replacing history with summaries
+- compressing the authoritative record into a new truth layer
 
 ======================================================================
 1) YOUR TASK (MILESTONE 14 IMPLEMENTATION)
 ======================================================================
 
-Your task is to ensure the following properties are TRUE IN CODE, not just described:
+1) Audit the codebase for any remaining v5-era contradictions:
+   - “time does not pass unless written” as a runtime rule
+   - “no summaries ever” as a blanket prohibition
+   - “off-screen evolution forbidden” (off-screen writing is allowed; simulation is not)
+   - “no timers ever” if opportunity triggers are implemented (they are allowed only as non-semantic opportunities)
 
-----------------------------------------------------------------------
-A) INVOCATION DISCIPLINE (HARD LOCK)
-----------------------------------------------------------------------
+2) Ensure the runtime conforms to v6:
+   - Invocation is permission, not obligation.
+   - Silence is valid.
+   - Idempotency prevents duplicate public/private writes.
 
-- NOTHING happens unless an HTTP invocation occurs.
-- No code path may write text except during:
-  - POST /say
-  - POST /beat
-  - POST /world/seed
-  - POST /world/person
-  - POST /admin/reset
-  - archival annotation
+3) Ensure the world conforms to v6:
+   - World facts are grounded (no floating stimuli).
+   - No internal-state authority.
+   - No guaranteed outcomes.
 
-- There must be:
-  - no background loops
-  - no timers
-  - no schedulers
-  - no async workers that write text independently
+4) Ensure production boundaries are enforced:
+   - No CI/CD shenanigans in repo.
+   - No localhost assumptions in docs or defaults.
+   - No hidden background writers.
 
-If any such mechanism exists, REMOVE IT.
-
-----------------------------------------------------------------------
-B) OUTPUT DISCIPLINE (HARD LOCK)
-----------------------------------------------------------------------
-
-For every invocation:
-
-- At most ONE perceptible beat may be written.
-- A beat is defined as:
-  - zero or one public block written by an agent
-  - plus zero or more SYSTEM blocks required for causality
-
-- Output length is UNRESTRICTED.
-- However:
-  - no summaries
-  - no future narration
-  - no “meanwhile” constructions
-  - no multi-scene output
-
-Copilot MUST NOT introduce artificial truncation.
-Copilot MUST NOT introduce artificial expansion.
-
-----------------------------------------------------------------------
-C) SILENCE IS VALID (HARD LOCK)
-----------------------------------------------------------------------
-
-- wrote:false MUST be treated as a successful outcome.
-- wrote:false MUST NOT be logged as an error.
-- wrote:false MUST NOT trigger retries.
-- wrote:false MUST NOT cause follow-up behavior.
-
-Silence is a first-class state.
-
-----------------------------------------------------------------------
-D) AGENT SOVEREIGNTY (HARD LOCK)
-----------------------------------------------------------------------
-
-- Agents are readers, not functions.
-- Agents may:
-  - ignore user input
-  - change topic
-  - initiate speech
-  - remain silent
-
-The system MUST NOT:
-- force replies
-- enforce politeness
-- enforce conversational turn-taking
-- enforce relevance
-
-----------------------------------------------------------------------
-E) WORLD WITHDRAWAL (HARD LOCK)
-----------------------------------------------------------------------
-
-- The World may only assert existence.
-- After asserting a fact, the World MUST NOT:
-  - react
-  - comment
-  - follow up
-  - remember
-
-If any World logic performs reasoning, REMOVE IT.
-
-----------------------------------------------------------------------
-F) STORAGE LAW (FINAL)
-----------------------------------------------------------------------
-
-- Postgres is the authoritative store.
-- All public blocks are append-only.
-- All private ledger entries are append-only.
-- No row is ever updated.
-- No row is ever deleted.
-
-Archival is annotation only.
-Reset is new run only.
-
-----------------------------------------------------------------------
-G) RETRIEVAL LAW (FINAL)
-----------------------------------------------------------------------
-
-- Recent window retrieval remains in force.
-- Qdrant selective rereading remains in force.
-- Qdrant payloads are never truth.
-- Retrieved blocks are fetched verbatim from Postgres.
-
-No summaries.
-No compression.
-No learned embeddings become state.
-
-----------------------------------------------------------------------
-H) CLIENT IGNORANCE (FINAL)
-----------------------------------------------------------------------
-
-- Clients are passive observers.
-- Reconnecting does NOT advance time.
-- Multiple clients do not imply multiple timelines.
-- The system does not “wait” for a client.
-
-----------------------------------------------------------------------
-I) FRONTEND STATUS (EXPLICIT)
-----------------------------------------------------------------------
-
-- A frontend MAY exist.
-- A frontend MUST:
-  - only call HTTP endpoints
-  - never write text directly
-  - never invent state
-
-The system MUST function fully with curl alone.
+(Anything not required to enforce these boundaries is out of scope.)
 
 ======================================================================
-2) REQUIRED VERIFICATION (CURL-ONLY)
-======================================================================
-
-You MUST verify, and provide proof commands for, all of the following:
-
-A) Silence does not error
-- POST /beat → wrote:false → HTTP 200
-
-B) No background behavior
-- Wait without invoking endpoints → no new text appears
-
-C) Reset creates a new run
-- After reset → /public/latest returns empty
-- Old run remains untouched
-
-D) Archived blocks remain retrievable
-- Archived block not in latest
-- Archived block resurfaces when semantically relevant
-
-E) Agents can initiate speech
-- POST /beat may produce REBECCA text without prior /say
-
-======================================================================
-3) DELIVERABLES
-======================================================================
-
-You MUST produce:
-
-1) A final commit that:
-   - removes dead code
-   - removes unused scaffolding
-   - removes any future-milestone placeholders
-
-2) A short verification section containing:
-   - curl commands only
-   - no prose explanation
-
-You MUST NOT produce:
-- refactors for elegance
-- performance optimizations
-- “nice-to-have” changes
-- new abstractions
-
-======================================================================
-4) FINAL PROHIBITIONS (FOREVER)
-======================================================================
-
-From this milestone onward, the following are PERMANENTLY BANNED:
-
-- schedulers
-- planners
-- game loops
-- decay functions
-- hidden state
-- numeric meters
-- decision trees
-- goal optimizers
-- world simulation
-- off-screen evolution
-
-If Copilot introduces any of these, it is WRONG.
-
-======================================================================
-5) COMPLETION CONDITION
+2) COMPLETION CONDITION
 ======================================================================
 
 Milestone 14 is complete when:
 
-- All prior milestones still pass their curl acceptance tests
-- No new behavior exists beyond what is specified
-- The system behaves as a continuous life, not a machine
+- All prior milestones still pass their curl acceptance tests.
+- No new behavior exists beyond what is specified by authority docs.
+- The system behaves as a continuous life (time exists) without becoming a machine (no outcome engines).
+- Any opportunity trigger mechanism (if present) is demonstrably content-agnostic and non-obligating.
+- No hidden state machinery exists.
+- No director logic exists.
 
 END WORK ORDER PACKET — MILESTONE 14

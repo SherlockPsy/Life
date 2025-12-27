@@ -1,57 +1,106 @@
 COPILOT WORK ORDER PACKET — MILESTONE 4
 Project: SherlockPsy Life
-Authority: TOTAL_PLAN.md + MASTER_RUNTIME.md + copilot-instructions.md
-Milestone Target: M4 — CONTINUITY FROM RECENT TEXT
-Scope: Implement ONLY recent-window rereading.
+
+Authority Order (binding, descending):
+- MASTER_CONSTITUTION.md
+- MASTER_INFRASTRUCTURE.md
+- MASTER_RUNTIME.md
+- MASTER_WORLD.md
+- TOTAL_PLAN.md
+- copilot-instructions.md
+- THIS WORK ORDER (M4)
+
+Milestone Target: M4 — MEMORY WINDOW EXISTS
+Scope: Implement ONLY recent-window rereading. Do not implement long-term retrieval. Do not implement summaries as a feature.
 
 ======================================================================
 0) ABSOLUTE CONSTRAINTS
 ======================================================================
 
-- No long-term memory yet.
-- No Qdrant yet.
-- No summaries.
-- No thread objects.
+A) What you are implementing
+- Implement a strict “recent window” reread for public blocks.
+- LOCKED VALUE: N = 60 public blocks.
+
+B) What you are NOT implementing
+- No long-term memory beyond the recent window.
+- No Qdrant (vector store) integration at this milestone.
+- No archival behavior.
+- No new endpoints.
+- No refactors “while you’re here.”
+
+C) Summaries under v6 (do not get clever)
+- V6 allows summaries ONLY as non-authoritative reading aids derived from written text.
+- This milestone does NOT introduce a summary feature.
+- Therefore:
+  - Do NOT implement any summary generation.
+  - Do NOT store summaries.
+  - Do NOT treat summaries as authoritative reality.
+  - Do NOT “compress” the authoritative record in any way.
+
+D) Time under v6 (context only)
+- Objective time exists and advances, but time must not force outcomes.
+- This milestone may pass current time as context to the model, but must not use time as a rule engine.
+
+E) Silence is valid
+- POST /say does not obligate REBECCA to write.
+- POST /beat does not obligate REBECCA to write.
+- Silence is expected and valid.
 
 ======================================================================
 1) YOUR TASK (MILESTONE 4 IMPLEMENTATION)
 ======================================================================
 
-Before Rebecca writes a block (in POST /say or POST /beat):
+Implement “recent-window rereading” exactly as required:
 
-- Retrieve recent public blocks.
-- Limit to a fixed window.
+1) When generating REBECCA output:
+   - Provide ONLY:
+     - Identity text (binding)
+     - The last N=60 public blocks (chronological)
+     - The immediate user utterance (if any)
+     - Objective time context (optional; context only)
 
-LOCKED VALUE:
-RECENT_PUBLIC_N = 80
+2) Ensure the system never loads public blocks older than the last 60 into REBECCA’s context at this milestone.
 
-Order:
-- OLDEST → NEWEST
-
-Rebecca’s generation may depend ONLY on:
-- recent public window
-- immediate user text (if any)
-- identity text (if present)
-
-======================================================================
-2) DATABASE REQUIREMENTS
-======================================================================
-
-- Query public_evidence_blocks ordered by created_at_utc ascending.
-- LIMIT RECENT_PUBLIC_N.
+3) Ensure idempotency still holds:
+   - Repeating the same request_id returns the same response.
+   - Repeating the same request_id performs no new writes (public or private).
 
 ======================================================================
-3) ACCEPTANCE TESTS
+2) ACCEPTANCE TEST (CURL + INSPECTION)
 ======================================================================
 
-After more than 80 blocks exist:
-- Rebecca must not reference block #1 unless it reappears later.
+A) Build > 60 public blocks
+- Repeatedly call POST /say with unique request_id to create > 60 public blocks.
+
+B) Confirm /public/latest returns newest first correctly
+curl -s "$BASE/public/latest?n=20"
+
+Expected:
+- HTTP 200
+- 20 blocks returned
+- Ordered oldest → newest (chronological)
+- Contains the most recent entries
+
+C) Confirm REBECCA context construction is capped
+This is validated by code inspection and/or logging (internal only):
+- The context fed to REBECCA includes at most:
+  - Identity
+  - 60 public blocks
+  - Immediate input (if any)
+  - Optional time context
+
+Forbidden:
+- Including blocks older than the last 60
+- Including any derived “summary memory”
+- Including any “compressed history”
 
 ======================================================================
-4) COMMIT DISCIPLINE
+3) COMMIT DISCIPLINE
 ======================================================================
 
-- Commit only recent-window logic.
-- No future retrieval logic.
+- If no code changes are required, DO NOT COMMIT.
+- If changes are required:
+  - Commit only what enforces N=60 public window reread.
+  - Do not bundle any other milestone work.
 
 END WORK ORDER PACKET — MILESTONE 4

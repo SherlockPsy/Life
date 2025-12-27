@@ -1,89 +1,118 @@
 COPILOT WORK ORDER PACKET — MILESTONE 7
 Project: SherlockPsy Life
-Authority: TOTAL_PLAN.md + MASTER_WORLD.md + MASTER_RUNTIME.md + copilot-instructions.md
-Milestone Target: M7 — THE WORLD INTRODUCES FACTS
-Scope: Implement ONLY Milestone 7. Keep M0–M6 intact.
+
+Authority Order (binding, descending):
+- MASTER_CONSTITUTION.md
+- MASTER_INFRASTRUCTURE.md
+- MASTER_RUNTIME.md
+- MASTER_WORLD.md
+- TOTAL_PLAN.md
+- copilot-instructions.md
+- THIS WORK ORDER (M7)
+
+Milestone Target: M7 — THE WORLD INTRODUCES FACTS (WORLD FACT SEEDS)
+Scope: Implement ONLY Milestone 7 endpoint and writing rules. Keep M0–M6 intact.
 
 ======================================================================
 0) ABSOLUTE CONSTRAINTS
 ======================================================================
 
-- The World is NOT an agent.
-- The World has no memory.
+A) The World is not an agent
 - The World has no intent.
-- The World writes facts and withdraws.
+- The World has no goals.
+- The World does not choose moments for pacing.
+- The World does not decide outcomes.
+
+B) World writes facts only
+- Existence-only facts.
+- No internal-state authority.
+- No guaranteed outcomes.
+
+C) V6 grounding rule MUST be enforced (no floating stimuli)
+If a fact introduces a stimulus (doorbell, knock, vibration, notification, email, call), the fact must be grounded in the same writing act by including:
+- where it happens (location)
+- what is stimulated (which door/which phone/which device)
+- who can perceive it (or that it is objectively occurring in the space)
+
+Floating stimuli are forbidden.
+
+D) No countdown plotting
+- No “in N beats/minutes/hours…” hooks unless it is a written real-life commitment.
 
 ======================================================================
 1) YOUR TASK (MILESTONE 7 IMPLEMENTATION)
 ======================================================================
 
-Implement endpoint:
+1) Implement the endpoint exactly as per TOTAL_PLAN:
 
-POST /world/seed
+POST /world/fact
 
-Purpose:
-- Introduce a bare fact into public reality.
+Request JSON:
+- fact_text: string (required)
+- request_id: string (required)
 
-Request:
-- Content-Type: application/json
-- Body:
-  - fact_text: string (required)
-  - request_id: string (required)
+Response JSON:
+- wrote: true
+- request_id
+- public_blocks: array containing exactly one WORLD block
 
-Writing rules:
-- Write exactly ONE public block.
-- source MUST equal "WORLD".
-- evidence_text MUST equal fact_text.
-- fact_text MUST:
-  - assert existence only
-  - imply no awareness
-  - imply no outcome
+2) Writing:
+- Write a single public block:
+  - source = "WORLD"
+  - evidence_text = fact_text
 
-Examples of valid facts:
-- "The doorbell rings."
-- "It starts raining outside."
+3) Validation:
+- Reject (HTTP 400) if:
+  - request is missing required fields, OR
+  - fact_text violates the v6 grounding rule in an obvious “floating stimulus” way.
 
-Examples of forbidden facts:
-- "Rebecca hears the doorbell."
-- "The rain makes George nostalgic."
-
-Response:
-- HTTP 200
-- JSON:
-  - wrote: true
-  - request_id
-  - public_blocks: array containing exactly the WORLD block
-
-Idempotency:
-- Same request_id must not create duplicate blocks.
+This validation is not “director logic.”
+This is integrity enforcement to prevent invalid world writes.
 
 ======================================================================
-2) DATABASE REQUIREMENTS
+2) ACCEPTANCE TEST (CURL)
 ======================================================================
 
-- Reuse public_evidence_blocks.
-- Embed WORLD blocks into Qdrant like any other public block.
-
-======================================================================
-3) ACCEPTANCE TESTS
-======================================================================
-
-curl -i -X POST "$BASE/world/seed" \
+A) Valid grounded stimulus
+curl -i -X POST "$BASE/world/fact" \
   -H "Content-Type: application/json" \
   -d '{
-    "fact_text":"The phone vibrates on the table.",
+    "fact_text":"From the hallway, the flat’s front doorbell rings once.",
     "request_id":"m7-test-0001"
   }'
 
 Expected:
-- One WORLD block written
+- HTTP 200
+- JSON shows one WORLD block written
 - No follow-up behavior
+- No agent reaction is forced
+
+B) Invalid floating stimulus (must be rejected)
+curl -i -X POST "$BASE/world/fact" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fact_text":"The doorbell rings.",
+    "request_id":"m7-test-0002"
+  }'
+
+Expected:
+- HTTP 400
+- wrote: false
+- error: "invalid_world_fact" (or equivalent)
+
+C) Idempotency
+- Repeat request_id m7-test-0001
+Expected:
+- The exact stored response is returned
+- No new write occurs
 
 ======================================================================
-4) COMMIT DISCIPLINE
+3) COMMIT DISCIPLINE
 ======================================================================
 
-- Commit only /world/seed.
+- Commit only the /world/fact endpoint and its write/validation path.
 - No agent reactions.
+- No additional world logic.
+- No refactors outside this endpoint.
 
 END WORK ORDER PACKET — MILESTONE 7
