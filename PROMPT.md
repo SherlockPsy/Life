@@ -11,10 +11,11 @@ Before writing any code, you MUST:
    - TOTAL_PLAN.md
    - copilot-instructions.md
    - /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md
-5) Quote the Acceptance Tests section from /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md verbatim.
+5) Quote the Acceptance Tests section from /work_orders/WORK_ORDER_<MILESTONE_NUMBER>.md verbatim. Do not paraphrase any requirements.
 6) List the exact files you will modify (paths). If you cannot list them yet, STOP and ASK.
+7) If you later discover you must modify any file outside the list from step 6, STOP immediately and ASK before touching anything.
 
-Do not proceed until steps 1–6 are completed.
+Do not proceed until steps 1–7 are completed.
 
 ────────────────────────────────────────
 LOCKED REPOSITORY / LOCKED ARCHITECTURE
