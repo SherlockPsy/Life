@@ -1,6 +1,6 @@
 TOTAL_PLAN.md
 Execution Canons — Authoritative and Binding
-Text-only Continuous Life System
+Text-only Virtual Life System (V6-aligned)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 0 — THE WORLD CAN EXIST
@@ -10,40 +10,47 @@ Status: Binding / Non-negotiable
 0. Purpose
 A deployed place exists where invocations are possible and nothing about life is implied.
 
-Nothing is assumed. Nothing becomes real unless it is written.
-
-Objective time exists and advances, but time never decides outcomes.
+Written text is the only reality.
+Written does not mean rendered.
+Objective time exists and advances continuously, but time never decides outcomes.
 If nothing is written, the authoritative record does not change.
 
 1. Allowed invocations (HTTP surface)
 1.1 GET /health
+- Purpose: confirm reachability only.
 
-2. Response truth — GET /health
-- HTTP 200
-- JSON:
+2. Response truth
+2.1 GET /health
+- Must return HTTP 200.
+- Must return JSON body with exactly these keys:
   - ok: true
   - service_time_utc: string (ISO 8601)
+  - version: string (git commit hash or tag)
 
 3. Behavioural constraints
 - /health must not write.
-- /health must not read any stored text.
-- /health must not access stored text.
+- /health must not read the authoritative record.
+- /health must not read summaries.
+- /health must not read private ledgers.
+- /health must not infer or invent facts.
 
 4. Failure posture
-5.1 If /health fails:
+4.1 If /health fails:
 - HTTP 500
-- JSON:
+- JSON body with exactly these keys:
   - ok: false
   - error: "unavailable"
 
-6. Proof by curl
+5. Proof by curl
 curl -i "$BASE/health"
 
-7. Forbidden forever at this milestone
+6. Forbidden forever at this milestone
 - No seed data
 - No test writes
 - No background simulation or hidden state evolution
 - No time-driven outcome engine (time is context only)
+- No semantic schedulers (no “because it is 9am, force breakfast”)
+- No director logic
 
 ================================================================================
 EXECUTION CANON — MILESTONE 1 — YOU CAN SPEAK TO REBECCA
@@ -51,7 +58,7 @@ Status: Binding / Non-negotiable
 ================================================================================
 
 0. Purpose
-A first exchange exists as written public text.
+A first exchange exists as written public evidence.
 You write. Rebecca may or may not write.
 
 1. Required invocations
@@ -60,21 +67,22 @@ You write. Rebecca may or may not write.
 
 2. POST /say request
 - Content-Type: application/json
-- Body:
+- Body keys:
   - speaker: string (required). Must equal "GEORGE".
   - utterance_text: string (required).
   - request_id: string (required).
 
 3. Writing rules
-3.1 The system MUST write a GEORGE block:
+3.1 The system MUST write a GEORGE public block:
 - source = "GEORGE"
 - evidence_text = utterance_text
 
-3.2 The system MAY write a REBECCA block immediately after:
+3.2 The system MAY write a REBECCA public block immediately after:
 - source = "REBECCA"
-- evidence_text = (Rebecca’s response)
+- evidence_text = Rebecca’s response
 
-3.3 No other block types may be written at this milestone.
+3.3 The system MAY write nothing beyond the required GEORGE block.
+3.4 No other block types may be written at this milestone.
 
 4. Retrieval rules — GET /public/latest
 - Returns the most recent public blocks.
@@ -85,18 +93,18 @@ You write. Rebecca may or may not write.
 
 Outcome A: GEORGE written, REBECCA written
 - HTTP 200
-- JSON:
+- JSON must include:
   - wrote: true
-  - request_id
+  - request_id: string
   - public_blocks: chronological array containing:
     - exactly one GEORGE block
     - exactly one REBECCA block
 
 Outcome B: GEORGE written, REBECCA not written
 - HTTP 200
-- JSON:
+- JSON must include:
   - wrote: true
-  - request_id
+  - request_id: string
   - public_blocks: chronological array containing:
     - exactly one GEORGE block
 
@@ -107,25 +115,27 @@ Outcome B: GEORGE written, REBECCA not written
 7. Failure posture
 7.1 If request invalid:
 - HTTP 400
-- JSON:
+- JSON must include:
   - wrote: false
   - error: "invalid_request"
 
-8.2 If GEORGE block fails to write:
+7.2 If required GEORGE block fails to write:
 - HTTP 500
 - wrote: false
 - write nothing
 
-8.2 If REBECCA block fails:
-- Return only GEORGE block
-- wrote: false
+7.3 If optional REBECCA block fails:
+- Return only the GEORGE block
+- HTTP 200 is allowed (the write succeeded)
+- wrote: true
 
-9. Forbidden improvisations
-- No system narration
-- No future writing
-- No summaries as authoritative reality (summaries, if present, are non-authoritative reading aids derived from written text)
-- No injected people
-- No world facts
+8. Forbidden improvisations
+- No system narrator output
+- No director logic
+- No world facts at this milestone
+- No guaranteed future outcomes
+- No “in N beats…” countdown hooks
+- No summaries as authoritative reality (summaries may exist only as non-authoritative reading aids derived from written text)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 2 — REBECCA CAN SPEAK WITHOUT YOU
@@ -133,7 +143,10 @@ Status: Binding / Non-negotiable
 ================================================================================
 
 0. Purpose
-Rebecca may initiate a beat without user speech.
+Rebecca may initiate writing without user speech.
+
+Invocation is opportunity, not causation.
+Silence is valid.
 
 1. Required invocations
 1.1 POST /beat
@@ -141,13 +154,13 @@ Rebecca may initiate a beat without user speech.
 
 2. POST /beat request
 - Content-Type: application/json
-- Body:
-  - request_id: string (required).
+- Body keys:
+  - request_id: string (required)
 
 3. Writing rules
-3.1 The system MAY write a REBECCA block:
+3.1 The system MAY write a REBECCA public block:
 - source = "REBECCA"
-- evidence_text = (Rebecca’s speech/action as text)
+- evidence_text = Rebecca’s speech/action as text
 
 3.2 The system MAY write nothing.
 
@@ -157,17 +170,17 @@ Rebecca may initiate a beat without user speech.
 
 Outcome A: Rebecca writes
 - HTTP 200
-- JSON:
+- JSON must include:
   - wrote: true
-  - request_id
+  - request_id: string
   - public_blocks: chronological array containing:
     - exactly one REBECCA block
 
-Outcome B: Rebecca does not write
+Outcome B: Silence
 - HTTP 200
-- JSON:
+- JSON must include:
   - wrote: false
-  - request_id
+  - request_id: string
   - public_blocks: []
 
 5. Idempotency
@@ -175,10 +188,11 @@ Outcome B: Rebecca does not write
 - Perform no new writes.
 
 6. Forbidden improvisations
-- No system narration
-- No world facts
-- No injected people
-- No summaries as authoritative reality (summaries, if present, are non-authoritative reading aids derived from written text)
+- No system narrator output
+- No director logic
+- No world facts at this milestone
+- No “because time passed, force a response”
+- No summaries as authoritative reality (summaries may exist only as non-authoritative reading aids derived from written text)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 3 — REBECCA DOES NOT WAIT FOR YOU
@@ -197,11 +211,13 @@ Conversation is not turn-based. Silence is valid.
 2.1 POST /say does NOT obligate a response.
 2.2 POST /beat does NOT obligate a response.
 2.3 Silence MUST be a normal outcome.
+2.4 Multiple consecutive REBECCA beats may occur across time, but only via invocations.
 
 3. Forbidden improvisations
 - No turn-taking enforcement
 - No “always respond”
-- No “must progress”
+- No forced pacing
+- No director logic
 
 ================================================================================
 EXECUTION CANON — MILESTONE 4 — MEMORY WINDOW EXISTS
@@ -219,18 +235,20 @@ N = 60
 
 2. Continuity rule
 Rebecca’s writing may depend ONLY on:
-- identity text
+- binding identity text
 - recent public window
 - immediate user utterance (if any)
+- objective time context (as context only, not as an outcome engine)
 
 3. Writing rules
 3.1 No new text types introduced.
-3.2 Write-before-show remains absolute.
+3.2 Written is reality; rendering is projection remains absolute.
 
 4. Forbidden
 - No memory beyond window
-- No authorial summarisation used as memory substitution (summaries may exist only as non-authoritative reading aids)
-- No threads as objects
+- No hidden state variables
+- No director logic
+- No summaries used as replacement for authoritative text (summaries may exist only as non-authoritative reading aids)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 5 — PRIVATE LEARNING EXISTS
@@ -241,10 +259,11 @@ Status: Binding / Non-negotiable
 Agents may learn privately without display.
 
 1. Private ledger definition
-- Text
-- One agent only
-- Never shown
-- Never returned
+- Text only
+- Owned by one agent only
+- Not rendered to the user
+- Not returned by any endpoint
+- Append-only and immutable
 
 2. Writing rules
 2.1 Private entries MAY be written only when public text is written.
@@ -254,14 +273,15 @@ Agents may learn privately without display.
 3. Visibility rules
 - No HTTP access
 - No inference via metadata
+- No “private ledger count” exposed
 
 4. Rereading rules
 4.1 Only the owning agent may reread their private ledger.
 
 5. Forbidden
-- No summaries as authoritative reality (summaries, if present, are non-authoritative reading aids derived from written text)
-- No tagging
-- No importance flags
+- No behavioural meters, flags, or counters
+- No director logic
+- No summaries as authoritative reality (summaries may exist only as non-authoritative reading aids derived from written text)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 6 — PRIVATE LEARNING INFLUENCES SPEECH
@@ -282,37 +302,90 @@ Private learning may influence expression.
 2. Prohibitions
 - No “private ledger dump”
 - No “explain why” requirement
+- No director logic
+- No hidden meters
 
 ================================================================================
-EXECUTION CANON — MILESTONE 7 — THE WORLD INTRODUCES FACTS
+EXECUTION CANON — MILESTONE 7 — THE WORLD INTRODUCES FACTS (WORLD FACT SEEDS)
 Status: Binding / Non-negotiable
 ================================================================================
 
 0. Purpose
-Facts may occur without intent.
+The World may introduce facts without intent, without being a director, and without forcing outcomes.
 
 1. Required invocation
 1.1 POST /world/fact
 
 2. Request
-- fact_text: string
-- request_id: string
+- Content-Type: application/json
+- Body keys:
+  - fact_text: string (required)
+  - request_id: string (required)
 
 3. Writing rules
-3.1 Written as public block:
+3.1 The system MUST write a WORLD public block:
 - source = "WORLD"
 - evidence_text = fact_text
 
-3.2 fact_text MUST:
-- assert existence only
-- imply no awareness
-- imply no outcome
+3.2 fact_text MUST obey all of the following:
 
-4. Forbidden
-- No internal state claims
-- No guaranteed future outcomes
+A) Existence-only
+- It asserts existence of external conditions/events only.
+- It does not encode “what should happen next.”
+
+B) No internal-state authority
+- It must not authoritatively state anyone’s internal experience as a world fact.
+  Forbidden examples:
+  - “Rebecca misses George.”
+  - “George feels anxious.”
+  Allowed alternatives:
+  - private thought text (unrendered) written as internal experience
+  - public evidence written as speech/action (“I miss you.”)
+
+C) No outcome guarantees
+- It must not guarantee future outcomes.
+  Forbidden examples:
+  - “This will lead to an argument.”
+  - “She will definitely call later.”
+
+D) The v6 grounding rule (no floating stimuli)
+- If the fact introduces a stimulus (doorbell, knock, vibration, notification, email, call), it MUST be grounded in the same writing act by including, at minimum:
+  - where it happens (location)
+  - what is stimulated (which door/which phone/which device)
+  - who can perceive it (or that it is objectively occurring in the space)
+
+  VALID examples:
+  - “From the hallway, the flat’s front doorbell rings once.”
+  - “George’s phone vibrates on the coffee table beside the TV.”
+  - “There’s a knock on the dressing-room door—two quick taps.”
+
+  INVALID examples:
+  - “The doorbell rings.”
+  - “Someone knocks.”
+  - “A phone vibrates.”
+  - “An email arrives.”
+
+E) No countdown plotting
+- It must not introduce “in N beats/minutes/hours…” countdown hooks unless it is a written real-life commitment (e.g., “Martha said she’d be here at 10:00”).
+
+4. Response truth — POST /world/fact
+Outcome: WORLD written
+- HTTP 200
+- JSON must include:
+  - wrote: true
+  - request_id: string
+  - public_blocks: chronological array containing:
+    - exactly one WORLD block
+
+5. Idempotency
+- If request_id repeats, return the exact previously stored response.
+- Perform no new writes.
+
+6. Forbidden
 - No director commentary
-- No “in N beats…” countdown hooks
+- No hidden state updates
+- No “plot scheduler”
+- No summaries as authoritative reality (summaries may exist only as non-authoritative reading aids derived from written text)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 8 — IDENTITY TEXT IS BINDING
@@ -329,11 +402,13 @@ Agents exist under binding identity documents.
 2. Rule
 - Identity governs behaviour.
 - Identity is not “tuned” by runtime.
+- Identity is not replaced by summaries.
 
 3. Forbidden
 - No identity drift
 - No “helpful personality changes”
 - No “assistant voice”
+- No director logic
 
 ================================================================================
 EXECUTION CANON — MILESTONE 9 — MULTIPLE THREADS COEXIST
@@ -344,7 +419,7 @@ Status: Binding / Non-negotiable
 Life contains many unresolved matters.
 
 1. Definition
-Threads are not stored.
+Threads are not stored as objects.
 Threads exist only as recurring text.
 
 2. Rules
@@ -352,9 +427,10 @@ Threads exist only as recurring text.
 - No IDs
 - No priority
 - No decay
+- No “thread manager” component
 
 3. Rereading
-Agents may surface any plausible matter.
+Agents may surface any plausible matter from written continuity.
 
 ================================================================================
 EXECUTION CANON — MILESTONE 10 — PEOPLE CHANGE OVER TIME
@@ -371,6 +447,7 @@ Written as new private text.
 2. No overwrites
 - No updated profiles
 - No versioning
+- No replacement summaries
 
 ================================================================================
 EXECUTION CANON — MILESTONE 11 — SHARED KNOWLEDGE EMERGES
@@ -384,7 +461,7 @@ Public text can influence others.
 Anything public may be reread and learned.
 
 2. Quirks
-Preferences and aversions may be written as standing observations.
+Preferences and aversions may be written as standing observations (as text, not variables).
 
 ================================================================================
 EXECUTION CANON — MILESTONE 12 — RESET VIA NEW RUN
@@ -396,11 +473,9 @@ Enable iterative testing and development without erasing reality.
 
 Reset does NOT delete text.
 Reset creates a new, empty run.
-
 Past runs persist indefinitely but are no longer active.
 
 1. Definitions
-
 A Run is a named, isolated timeline namespace.
 Exactly one Run is active at any time.
 
@@ -408,8 +483,10 @@ Exactly one Run is active at any time.
 POST /reset/run
 
 3. Request
-- run_name: string
-- request_id: string
+- Content-Type: application/json
+- Body keys:
+  - run_name: string (required)
+  - request_id: string (required)
 
 4. Rules
 - Reset creates a new run_id.
@@ -443,6 +520,7 @@ A block may be marked archived.
 - No public block is deleted.
 - No private ledger entry is deleted.
 - No identity text is deleted.
+- Archival NEVER replaces history with summaries.
 
 3. Visibility rules (mandatory)
 3.1 Default reread window prioritises non-archived.
@@ -450,22 +528,14 @@ A block may be marked archived.
 - explicitly referenced by block_id
 - explicitly mentioned by an agent
 - semantically similar above retrieval threshold
-- required for continuity by Qdrant retrieval
+- required for continuity
 
 4. Retrieval rules (mandatory)
-
-4.1 Vector retrieval MUST include archived blocks.
-- Archival does NOT remove vectors from Qdrant.
-- Archival does NOT exclude blocks from semantic search.
-
-4.2 Post-retrieval filtering:
-- Retrieved blocks are fetched verbatim from Postgres.
-- Visibility rules are applied AFTER retrieval, not before.
-
-5.2 Archival NEVER replaces history with summaries.
+4.1 Retrieval returns verbatim authoritative text.
+4.2 Archival does not remove reality from the record.
 
 5. Forbidden
-- No authorial summarization that replaces or alters authoritative text (summaries may exist only as non-authoritative reading aids)
+- No authorial summarization that replaces or alters authoritative text
 - No “expired” flags
 - No hard exclusion from retrieval
 
@@ -478,30 +548,42 @@ Status: Binding / Final
 ================================================================================
 
 0. Properties
-- One irreversible timeline
-- Objective time exists and advances (time is context only; never an outcome engine)
-- No background simulation or hidden state evolution
-- No hidden state
-- Silence is meaningful
-- Agents are sovereign readers
-- World asserts facts only
+- One irreversible timeline (append-only authoritative record)
+- Written text is the only reality
+- Written does not mean rendered
+- Objective time exists and advances continuously, but time is context only (never an outcome engine)
+- Off-screen life is narrated, not simulated (becomes real only when written)
+- No hidden state (no meters/flags/counters/decay)
+- No director logic (no pacing, no “should happen now”)
+- Invocation is opportunity, not causation
+- Silence is valid and expected
+- Summaries are allowed only as non-authoritative reading aids derived from authoritative text with traceability
+- World facts are existence-only, grounded, non-directorial, and non-outcome-forcing
 
 1. Invocation posture
 - Invocation is permission
 - Not obligation
 
-2. Output discipline
-- One invocation → at most one beat
+2. Time/random opportunity law (alignment with Runtime v6)
+- The system MAY support content-agnostic opportunity invocations initiated by time passing and/or irregular randomness.
+- These triggers MUST be opaque, content-agnostic, non-semantic, and non-obligating.
+- They MUST NOT select outcomes or imply something should happen.
+- They MUST NOT inspect world content to decide when to invoke.
+
+3. Output discipline
+- One invocation → at most one writing opportunity
 - Output length unrestricted
 
-3. Verification
+4. Verification
 - curl only
 - no UI assumptions
 
-4. Forbidden forever
+5. Forbidden forever
 - semantic schedulers / director schedulers / fixed-interval “something happens” engines
 - planners
 - simulation machinery
 - optimisation logic
+- summary-as-authority
+- countdown plotting (“in N beats/minutes…”) unless it is a written real-life commitment
 
 End of document.

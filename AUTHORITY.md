@@ -9,7 +9,7 @@ Copilot (and any other automated agent) MUST interpret all documents using the f
 3. MASTER_RUNTIME.md  
 4. MASTER_WORLD.md  
 5. TOTAL_PLAN.md  
-6. Work Order files (WORK_ORDER_*.md)  
+6. Work Orders in work_orders/  
 7. copilot-instructions.md  
 8. README.md  
 

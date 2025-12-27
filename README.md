@@ -74,7 +74,7 @@ When documents conflict, the higher one wins. The order is:
 3) `MASTER_RUNTIME.md`  
 4) `MASTER_WORLD.md`  
 5) `TOTAL_PLAN.md`  
-6) `work_orders/*` (active Work Order governs the milestone implementation)  
+6) Work Orders in `work_orders/`  
 7) `copilot-instructions.md`  
 8) `README.md`
 
@@ -132,4 +132,4 @@ Reality is written, preserved, and lived through continuity.
 - `MASTER_RUNTIME.md` — invocation, opportunity, recording, rendering boundaries  
 - `MASTER_WORLD.md` — what the world may introduce, and what it must never become  
 - `TOTAL_PLAN.md` — milestone canons and acceptance constraints  
-- `work_orders/*` — the current implementation mandate
+- `work_orders/` — the current implementation mandate
