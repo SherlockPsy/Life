@@ -10,37 +10,26 @@ Status: Binding / Non-negotiable
 0. Purpose
 A deployed place exists where invocations are possible and nothing about life is implied.
 
-Nothing happens. Nothing is assumed. Nothing advances.
+Nothing is assumed. Nothing becomes real unless it is written.
+
+Objective time exists and advances, but time never decides outcomes.
+If nothing is written, the authoritative record does not change.
 
 1. Allowed invocations (HTTP surface)
 1.1 GET /health
-- Purpose: confirm reachability only.
 
-2. Response truth
-2.1 GET /health
-- Must return HTTP 200.
-- Must return JSON body with exactly these keys:
+2. Response truth — GET /health
+- HTTP 200
+- JSON:
   - ok: true
   - service_time_utc: string (ISO 8601)
-  - version: string (git commit hash or tag)
-- Must NOT include:
-  - secrets
-  - connection strings
-  - internal paths
-  - stack traces
 
-3. Writing rules
-3.1 No writing is permitted.
-- No public blocks.
-- No private ledger entries.
-- No identity text.
-- No world facts.
-
-4. Rereading rules
-4.1 No rereading is permitted.
+3. Behavioural constraints
+- /health must not write.
+- /health must not read any stored text.
 - /health must not access stored text.
 
-5. Failure posture
+4. Failure posture
 5.1 If /health fails:
 - HTTP 500
 - JSON:
@@ -53,8 +42,8 @@ curl -i "$BASE/health"
 7. Forbidden forever at this milestone
 - No seed data
 - No test writes
-- No background activity
-- No implicit time
+- No background simulation or hidden state evolution
+- No time-driven outcome engine (time is context only)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 1 — YOU CAN SPEAK TO REBECCA
@@ -73,57 +62,56 @@ You write. Rebecca may or may not write.
 - Content-Type: application/json
 - Body:
   - speaker: string (required). Must equal "GEORGE".
-  - addressee: string (required). Must equal "REBECCA".
-  - text: string (required).
-  - request_id: string (required, unique).
+  - utterance_text: string (required).
+  - request_id: string (required).
 
-3. GET /public/latest request
-- Query:
-  - n: integer (required, 1..200).
+3. Writing rules
+3.1 The system MUST write a GEORGE block:
+- source = "GEORGE"
+- evidence_text = utterance_text
 
-4. Response truth — POST /say
+3.2 The system MAY write a REBECCA block immediately after:
+- source = "REBECCA"
+- evidence_text = (Rebecca’s response)
 
-Outcome A: Rebecca writes
+3.3 No other block types may be written at this milestone.
+
+4. Retrieval rules — GET /public/latest
+- Returns the most recent public blocks.
+- Default n = 20.
+- Ordered chronologically.
+
+5. Response truth — POST /say
+
+Outcome A: GEORGE written, REBECCA written
 - HTTP 200
 - JSON:
   - wrote: true
   - request_id
-  - public_blocks: array of exactly two blocks, chronological:
-    1. GEORGE block
-    2. REBECCA block
+  - public_blocks: chronological array containing:
+    - exactly one GEORGE block
+    - exactly one REBECCA block
 
-Outcome B: Rebecca does not write
+Outcome B: GEORGE written, REBECCA not written
 - HTTP 200
+- JSON:
+  - wrote: true
+  - request_id
+  - public_blocks: chronological array containing:
+    - exactly one GEORGE block
+
+6. Idempotency
+- If request_id repeats, return the exact previously stored response.
+- Perform no new writes.
+
+7. Failure posture
+7.1 If request invalid:
+- HTTP 400
 - JSON:
   - wrote: false
-  - request_id
-  - public_blocks: array of exactly one block (GEORGE)
+  - error: "invalid_request"
 
-Each public block contains:
-- id: integer
-- source: string
-- location_token: string
-- evidence_text: string
-- created_at_utc: ISO 8601 string
-
-5. Response truth — GET /public/latest
-- HTTP 200
-- JSON:
-  - blocks: array ordered OLDEST → NEWEST
-
-6. Writing rules
-6.1 Your utterance MUST always be written.
-6.2 Rebecca may write 0 or 1 block only.
-6.3 No block may ever be updated or deleted.
-6.4 Write-before-show is absolute.
-6.5 request_id enforces idempotency.
-
-7. Rereading rules
-7.1 Rebecca may reread a minimal recent public window.
-7.2 No Qdrant retrieval permitted yet.
-
-8. Failure posture
-8.1 If GEORGE block fails to write:
+8.2 If GEORGE block fails to write:
 - HTTP 500
 - wrote: false
 - write nothing
@@ -135,7 +123,7 @@ Each public block contains:
 9. Forbidden improvisations
 - No system narration
 - No future writing
-- No summaries
+- No summaries as authoritative reality (summaries, if present, are non-authoritative reading aids derived from written text)
 - No injected people
 - No world facts
 
@@ -149,25 +137,21 @@ Rebecca may initiate a beat without user speech.
 
 1. Required invocations
 1.1 POST /beat
-1.2 GET /public/latest
+1.2 GET /public/latest?n=<int>
 
 2. POST /beat request
 - Content-Type: application/json
 - Body:
-  - focus: string (required). Must equal "REBECCA".
   - request_id: string (required).
-  - system_direction: string (optional).
 
-3. system_direction rules (binding)
-3.1 If system_direction is present:
-- It MUST be written as a public block.
-- source = "SYSTEM"
-- evidence_text = system_direction
-3.2 system_direction:
-- Is not user speech.
-- Is not world intent.
-- Must not imply outcomes.
-- Exists solely to preserve causality.
+3. Writing rules
+3.1 The system MAY write a REBECCA block:
+- source = "REBECCA"
+- evidence_text = (Rebecca’s speech/action as text)
+
+3.2 The system MAY write nothing.
+
+3.3 No other block types may be written at this milestone.
 
 4. Response truth — POST /beat
 
@@ -177,7 +161,6 @@ Outcome A: Rebecca writes
   - wrote: true
   - request_id
   - public_blocks: chronological array containing:
-    - optional SYSTEM block
     - exactly one REBECCA block
 
 Outcome B: Rebecca does not write
@@ -185,23 +168,17 @@ Outcome B: Rebecca does not write
 - JSON:
   - wrote: false
   - request_id
-  - public_blocks: empty OR containing only SYSTEM block if written
+  - public_blocks: []
 
-5. Writing rules
-5.1 POST /beat must never write a GEORGE block.
-5.2 Write-before-show is absolute.
-5.3 request_id enforces idempotency.
+5. Idempotency
+- If request_id repeats, return the exact previously stored response.
+- Perform no new writes.
 
-6. Rereading rules
-6.1 Rebecca may reread:
-- recent public window
-- her private ledger (if any)
-6.2 No Qdrant retrieval yet.
-
-7. Forbidden improvisations
-- No hidden prompts
-- No ghost inputs
-- No implicit influence
+6. Forbidden improvisations
+- No system narration
+- No world facts
+- No injected people
+- No summaries as authoritative reality (summaries, if present, are non-authoritative reading aids derived from written text)
 
 ================================================================================
 EXECUTION CANON — MILESTONE 3 — REBECCA DOES NOT WAIT FOR YOU
@@ -218,41 +195,27 @@ Conversation is not turn-based. Silence is valid.
 
 2. Behavioural constraints
 2.1 POST /say does NOT obligate a response.
-2.2 POST /say does NOT obligate relevance.
-2.3 Rebecca may:
-- respond
-- redirect
-- ignore
-- stay silent
+2.2 POST /beat does NOT obligate a response.
+2.3 Silence MUST be a normal outcome.
 
-3. Writing rules
-3.1 No new writing types.
-3.2 Silence must return wrote:false.
-
-4. Rereading rules
-4.1 Bounded recent public window only.
-4.2 No Qdrant retrieval yet.
-
-5. Forbidden improvisations
-- No forced replies
-- No conversational closure
-- No UX-driven responses
+3. Forbidden improvisations
+- No turn-taking enforcement
+- No “always respond”
+- No “must progress”
 
 ================================================================================
-EXECUTION CANON — MILESTONE 4 — CONTINUITY FROM RECENT TEXT
+EXECUTION CANON — MILESTONE 4 — MEMORY WINDOW EXISTS
 Status: Binding / Non-negotiable
 ================================================================================
 
 0. Purpose
-Recent text influences present writing.
+The system can reread a limited recent public window.
 
-1. Rereading contract
-1.1 Before Rebecca writes:
-- Assemble recent public window
-- Bounded by count
+1. Definition
+- The “recent window” is the last N public blocks.
 
 LOCKED VALUE:
-RECENT_PUBLIC_N = 80 blocks
+N = 60
 
 2. Continuity rule
 Rebecca’s writing may depend ONLY on:
@@ -266,7 +229,7 @@ Rebecca’s writing may depend ONLY on:
 
 4. Forbidden
 - No memory beyond window
-- No summarisation
+- No authorial summarisation used as memory substitution (summaries may exist only as non-authoritative reading aids)
 - No threads as objects
 
 ================================================================================
@@ -296,7 +259,7 @@ Agents may learn privately without display.
 4.1 Only the owning agent may reread their private ledger.
 
 5. Forbidden
-- No summaries
+- No summaries as authoritative reality (summaries, if present, are non-authoritative reading aids derived from written text)
 - No tagging
 - No importance flags
 
@@ -309,38 +272,16 @@ Status: Binding / Non-negotiable
 Private learning may influence expression.
 
 1. Influence rules
-1.1 When writing, an agent may reread:
-- recent public window
-- its private ledger
+1.1 Private learning MUST NOT be directly exposed.
+1.2 Private learning MAY alter:
+- tone
+- word choice
+- topic selection
+- boundary decisions
 
-1.2 Influence must be indirect.
-- No quoting private text.
-- No explicit “I remember”.
-
-2. Consistency rule
-Private influence must not contradict public evidence without intervening cause.
-
-3. Qdrant activation (mandatory)
-3.1 Every public block MUST be embedded.
-3.2 Embeddings MUST be stored in Qdrant with payload:
-- block_id
-- source
-- location_token
-- created_at_utc
-
-3.3 Before writing, the agent MUST retrieve:
-- recent window
-- top-K semantically similar older blocks
-
-LOCKED VALUE:
-TOP_K = 12
-
-3.4 Retrieved blocks MUST be fetched verbatim from Postgres.
-
-4. Forbidden
-- No compression
-- No summaries
-- No global recall
+2. Prohibitions
+- No “private ledger dump”
+- No “explain why” requirement
 
 ================================================================================
 EXECUTION CANON — MILESTONE 7 — THE WORLD INTRODUCES FACTS
@@ -351,7 +292,7 @@ Status: Binding / Non-negotiable
 Facts may occur without intent.
 
 1. Required invocation
-POST /world/seed
+1.1 POST /world/fact
 
 2. Request
 - fact_text: string
@@ -368,39 +309,31 @@ POST /world/seed
 - imply no outcome
 
 4. Forbidden
-- No reactions
-- No follow-up
-- No interpretation
+- No internal state claims
+- No guaranteed future outcomes
+- No director commentary
+- No “in N beats…” countdown hooks
 
 ================================================================================
-EXECUTION CANON — MILESTONE 8 — NEW PEOPLE ENTER LIFE
+EXECUTION CANON — MILESTONE 8 — IDENTITY TEXT IS BINDING
 Status: Binding / Non-negotiable
 ================================================================================
 
 0. Purpose
-New agents appear via text.
+Agents exist under binding identity documents.
 
-1. Invocation
-POST /world/person
+1. Identity sources
+- Identity text is loaded from the repository.
+- Identity text is immutable at runtime.
 
-2. Request
-- name: string
-- introduction_text: string
-- request_id: string
+2. Rule
+- Identity governs behaviour.
+- Identity is not “tuned” by runtime.
 
-3. Writing rules
-3.1 Public block:
-- source = "WORLD"
-- evidence_text includes name
-
-3.2 Internal linkage:
-- personality template reference
-- empty private ledger
-
-4. Forbidden
-- No backstory
-- No auto-dialogue
-- No omniscience
+3. Forbidden
+- No identity drift
+- No “helpful personality changes”
+- No “assistant voice”
 
 ================================================================================
 EXECUTION CANON — MILESTONE 9 — MULTIPLE THREADS COEXIST
@@ -468,67 +401,23 @@ Past runs persist indefinitely but are no longer active.
 
 1. Definitions
 
-1.1 Run
 A Run is a named, isolated timeline namespace.
-Each Run has:
-- its own public evidence stream
-- its own private ledgers
-- its own identities as they evolve within that run
-
-1.2 Active Run
 Exactly one Run is active at any time.
-All writes and reads apply only to the active Run.
 
 2. Invocation
+POST /reset/run
 
-2.1 POST /admin/reset
+3. Request
+- run_name: string
+- request_id: string
 
-- Content-Type: application/json
-- Body:
-  - reason: string (required)
-  - request_id: string (required)
+4. Rules
+- Reset creates a new run_id.
+- New run contains no public blocks.
+- New run contains no private ledger entries.
+- Identity text remains constant.
 
-3. Writing rules (absolute)
-
-3.1 On reset invocation:
-- A new Run MUST be created.
-- The new Run MUST start empty:
-  - no public blocks
-  - no private ledger entries
-- Personality templates remain available.
-- No text from previous runs is copied forward.
-
-3.2 A public block MUST be written in the OLD run:
-- source = "SYSTEM"
-- evidence_text = "RESET: new run started. Reason: <reason>"
-
-3.3 No deletion is permitted.
-- No public block is deleted.
-- No private ledger entry is deleted.
-- No identity text is deleted.
-
-4. Rereading rules
-
-4.1 After reset:
-- All endpoints read ONLY from the new active Run.
-- Previous runs are not reread by default.
-
-4.2 Previous runs:
-- Remain persisted.
-- Are never implicitly surfaced.
-- May be accessed only via explicit administrative inspection (out of scope).
-
-5. Failure posture
-
-5.1 If a new Run cannot be created:
-- HTTP 500
-- No partial reset
-- Active Run remains unchanged
-
-6. Forbidden forever
-
-- No wiping tables
-- No truncation
+5. Prohibitions
 - No deletion-by-reset
 - No merging runs
 - No “soft delete” flags
@@ -544,39 +433,20 @@ Status: Binding / Non-negotiable
 Reduce routine rereading load while preserving the full record of reality.
 
 Archival changes visibility defaults.
-Archival never removes truth.
+Archival does not erase.
 
-1. Core law
+1. Definition
+Archival is a visibility classification.
+A block may be marked archived.
 
-1.1 No deletion ever.
+2. Rules
 - No public block is deleted.
 - No private ledger entry is deleted.
 - No identity text is deleted.
 
-2. Archival definition
-
-2.1 Archival is an annotation, not a mutation.
-
-2.2 To archive a block:
-- Write a NEW public block with:
-  - source = "SYSTEM"
-  - evidence_text = 
-    "ARCHIVE: block_id=<id> reason=<free text>"
-
-2.3 The archived block:
-- Remains immutable.
-- Retains its original block_id.
-- Retains its embeddings.
-- Retains full retrievability.
-
-3. Visibility rules
-
-3.1 Default recent views MAY skip archived blocks.
-- GET /public/latest may omit archived blocks by default.
-
-3.2 Archival MUST NOT make a block unreachable.
-
-Archived blocks MUST remain eligible for retrieval when:
+3. Visibility rules (mandatory)
+3.1 Default reread window prioritises non-archived.
+3.2 Archived blocks MUST remain eligible for retrieval when:
 - explicitly referenced by block_id
 - explicitly mentioned by an agent
 - semantically similar above retrieval threshold
@@ -592,17 +462,10 @@ Archived blocks MUST remain eligible for retrieval when:
 - Retrieved blocks are fetched verbatim from Postgres.
 - Visibility rules are applied AFTER retrieval, not before.
 
-5. Writing discipline
+5.2 Archival NEVER replaces history with summaries.
 
-5.1 Archival NEVER rewrites history.
-5.2 Archival NEVER summarizes history.
-5.3 Archival NEVER replaces rereading judgment with rules.
-
-6. Forbidden forever
-
-- No deletion
-- No compaction
-- No summarization
+5. Forbidden
+- No authorial summarization that replaces or alters authoritative text (summaries may exist only as non-authoritative reading aids)
 - No “expired” flags
 - No hard exclusion from retrieval
 
@@ -616,7 +479,8 @@ Status: Binding / Final
 
 0. Properties
 - One irreversible timeline
-- No background activity
+- Objective time exists and advances (time is context only; never an outcome engine)
+- No background simulation or hidden state evolution
 - No hidden state
 - Silence is meaningful
 - Agents are sovereign readers
@@ -635,7 +499,7 @@ Status: Binding / Final
 - no UI assumptions
 
 4. Forbidden forever
-- schedulers
+- semantic schedulers / director schedulers / fixed-interval “something happens” engines
 - planners
 - simulation machinery
 - optimisation logic

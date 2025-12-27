@@ -1,114 +1,135 @@
 # SherlockPsy Life
 
-This repository contains the implementation of **Life**, a text-only, real-time, continuous-life simulation system.
+This repository contains the implementation of **Life** — a text-only virtual world designed to replicate real life as closely as possible **without** becoming a hidden simulation engine, a game system, or a story director.
 
 This is **not** a game engine.  
 This is **not** a chatbot.  
-This is **not** a narrative generator.
+This is **not** a narrative generator.  
 
-It is a system where **written text is the only substrate of reality**, and where time, memory, and change exist only when something is written.
+It is a system where **written text is the only substrate of reality** — and **written does not mean rendered**.
+
+What exists is what is written.  
+What changes is what gets written next.  
+Everything else is only an opportunity to write — never a cause.
 
 ---
 
 ## Core Principles (Read Before Touching Anything)
 
-Life operates under a locked constitution. The most important rules are:
+Life operates under an authoritative constitution (see `MASTER_CONSTITUTION.md`). The most important rules are:
 
-- Text is the only thing that exists.
-- There is exactly one irreversible timeline.
-- Time does not pass unless new text is written.
-- Silence is valid and meaningful.
-- Nothing happens “in the background”.
-- No schedulers, timers, loops, or hidden state exist.
-- Agents are autonomous readers of text, not functions that respond on demand.
-- The World is not an agent and has no awareness or intent.
-- All persistence is append-only.
+- **Written text is the only reality.**
+  - If it is not written, it does not exist in the system.
+  - Written does **not** mean “shown to the user.”
+  - Many written facts may never be rendered.
 
-If a fact is not written, it does not exist.  
-If something exists, it must be written.
+- **Rendering is a projection choice, not existence.**
+  - UI does not define reality.
+  - Display is downstream of writing.
 
----
+- **Time exists objectively and advances continuously — but time does not decide outcomes.**
+  - Time is a shared coordinate used for continuity (days, fatigue, lateness, plans).
+  - Time must never be used as a rule engine that forces events.
 
-## Repository Structure
+- **Background life is narrated, not simulated.**
+  - Life may advance off-screen.
+  - Off-screen developments become real only when written as text.
+  - There is no continuous ticking simulation and no hidden gradual progression.
 
-This repository is governed by a small set of authoritative documents:
+- **Invocation is separated from causation.**
+  - Invocation only grants an opportunity for writing.
+  - Invocation never implies writing must happen.
+  - Silence is valid, expected, and frequent.
 
-- `MASTER_CONSTITUTION.md`  
-  The highest authority. Defines what is allowed to exist at all.
+- **Initiative belongs to people, not the system.**
+  - The system does not decide someone “should act.”
+  - No meters, flags, momentum scores, boredom counters, relationship points, or decay timers.
+  - People act because the written continuity contains reasons — not because a rule fired.
 
-- `MASTER_INFRASTRUCTURE.md`  
-  Defines storage, persistence, and retrieval laws.
+- **There is no director.**
+  - No component evaluates relevance, interest, pacing, or narrative momentum.
+  - No component chooses “now is a moment.”
+  - Only the model interprets context when an opportunity exists.
+  - Everything else is blind, dumb, and content-agnostic.
 
-- `MASTER_RUNTIME.md`  
-  Defines when the system may act, and when it must remain silent.
+- **Summaries are allowed — but only as non-authoritative reading aids.**
+  - Summaries may be derived from existing written text only.
+  - Summaries must never introduce new facts or interpretations.
+  - Summaries do not replace the authoritative record.
 
-- `MASTER_WORLD.md`  
-  Defines what the World may and may not do.
+- **The authoritative record is append-only.**
+  - Past text is not rewritten, “cleaned up,” or replaced.
+  - Corrections happen only by writing new text that supersedes prior text.
 
-- `TOTAL_PLAN.md`  
-  The execution canon. Milestones, endpoints, and behavioral locks.
-
-- `copilot-instructions.md`  
-  Enforcement instructions for automated code generation.
-
-These documents are **not guidelines**. They are law.
-
----
-
-## How the System Is Built
-
-Development follows a strict milestone process:
-
-- Each milestone has a dedicated Work Order file.
-- Milestones are implemented sequentially.
-- No future behavior is anticipated.
-- No refactoring “for cleanliness”.
-- No optimizations that change semantics.
-- No local development environments.
-- No localhost usage.
-- No scripts that bypass the running system.
-
-All interaction with the system is done through HTTP endpoints and verified using `curl`.
-
-Railway is used for deployment.  
-PostgreSQL is the authoritative store.  
-Qdrant is used only for selective rereading.
+If you want “real life,” you have to accept a brutal truth: real life is messy, continuous, and not optimised. This system is built to preserve that, not to tidy it up.
 
 ---
 
-## What This Repository Is *Not*
+## Authority Stack (What Must Be Obeyed)
 
-This repository is **not**:
+When documents conflict, the higher one wins. The order is:
 
-- A reusable framework
-- A library
-- A template project
-- An AI assistant playground
-- A multi-user system
-- A product with accounts, logins, or permissions
+1) `MASTER_CONSTITUTION.md`  
+2) `MASTER_INFRASTRUCTURE.md`  
+3) `MASTER_RUNTIME.md`  
+4) `MASTER_WORLD.md`  
+5) `TOTAL_PLAN.md`  
+6) `work_orders/*` (active Work Order governs the milestone implementation)  
+7) `copilot-instructions.md`  
+8) `README.md`
 
-There is exactly one user.  
-There is no account system by design.
-
----
-
-## Status
-
-The system is being built incrementally, milestone by milestone, toward a production-ready continuous-life environment.
-
-History may be reset during development runs.  
-The architecture itself is not experimental.
+Do not invent rules. If something is not explicitly permitted by higher authority, assume it is forbidden.
 
 ---
 
-## Important Note
+## How Work Proceeds (No Heroics)
+
+Implementation is driven by:
+
+- `TOTAL_PLAN.md` (the canonical milestone canons)
+- the active Work Order under `work_orders/`
+
+Rules of engagement:
+
+- Implement **one** milestone / work order at a time.
+- Touch only what the acceptance tests require.
+- Avoid refactors “while you’re here.”
+- Prefer direct, boring solutions over clever architecture.
+
+---
+
+## Testing Philosophy
+
+Testing is procedural and external:
+
+- Proof is by simple HTTP calls (curl) against the deployed service.
+- No UI assumptions are required for correctness.
+- If the record is correct and the runtime rules are enforced, rendering can be added later.
+
+---
+
+## What You Must NOT Add
 
 If you are reading this and thinking:
 
 > “I could simplify this”  
-> “I could optimize this”  
+> “I could optimise this”  
 > “I could add a small helper”  
+> “I could add a pacing engine”  
+> “I could add a scheduler that makes it feel alive”
 
 You have already misunderstood the project.
 
-Reality is not optimized.
+Reality is not optimised.  
+Reality is not directed.  
+Reality is written, preserved, and lived through continuity.
+
+---
+
+## Where To Read Next
+
+- `MASTER_CONSTITUTION.md` — the physics of reality  
+- `MASTER_RUNTIME.md` — invocation, opportunity, recording, rendering boundaries  
+- `MASTER_WORLD.md` — what the world may introduce, and what it must never become  
+- `TOTAL_PLAN.md` — milestone canons and acceptance constraints  
+- `work_orders/*` — the current implementation mandate
