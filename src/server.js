@@ -47,10 +47,12 @@ function buildSystemPrompt(scenePackage, retrievedBlocks, constraints) {
   // JSON output format
   parts.push(`OUTPUT FORMAT (strict JSON):
 {
+  "speaker": "REBECCA",
   "outward_text": "string",
-  "blocks_to_write": [{ "source": "REBECCA|SYSTEM|OTHER", "text": "...", "visibility": "public|private" }],
+  "public_blocks": [{ "source": "REBECCA|SYSTEM|OTHER", "text": "...", "visibility": "public" }],
   "scene_update": "string|null",
-  "wrote": true|false
+  "wrote": true|false,
+  "scene_refreshed": false
 }`);
   
   return parts.join("\n\n");
@@ -151,12 +153,18 @@ app.post("/say", async (request, reply) => {
 
     const cognitionResult = await runCognition(systemPrompt, userPrompt);
 
+    // Validate cognition result
+    if (cognitionResult.wrote) {
+      if (!cognitionResult.speaker || !cognitionResult.outward_text) {
+        reply.code(500);
+        return { error: "invalid_cognition_json" };
+      }
+    }
+
     // Write blocks if any
-    if (
-      cognitionResult.blocks_to_write &&
-      cognitionResult.blocks_to_write.length > 0
-    ) {
-      await writeBlocks(cognitionResult.blocks_to_write, requestId);
+    const blocksToWrite = cognitionResult.public_blocks || cognitionResult.blocks_to_write || [];
+    if (blocksToWrite.length > 0) {
+      await writeBlocks(blocksToWrite, requestId);
     }
 
     // Update scene if changed
@@ -167,12 +175,15 @@ app.post("/say", async (request, reply) => {
     }
 
     // Render output
-    const renderedText = await renderText(cognitionResult.outward_text);
+    const renderedText = cognitionResult.wrote 
+      ? await renderText(cognitionResult.outward_text)
+      : "";
 
     // Build response
     const response = {
       request_id: requestId,
       wrote: cognitionResult.wrote || false,
+      speaker: cognitionResult.wrote ? cognitionResult.speaker : "",
       text: renderedText,
       scene_refreshed: sceneRefreshed,
     };
@@ -224,12 +235,18 @@ app.post("/beat", async (request, reply) => {
 
     const cognitionResult = await runCognition(systemPrompt, userPrompt);
 
+    // Validate cognition result
+    if (cognitionResult.wrote) {
+      if (!cognitionResult.speaker || !cognitionResult.outward_text) {
+        reply.code(500);
+        return { error: "invalid_cognition_json" };
+      }
+    }
+
     // Write blocks if any
-    if (
-      cognitionResult.blocks_to_write &&
-      cognitionResult.blocks_to_write.length > 0
-    ) {
-      await writeBlocks(cognitionResult.blocks_to_write, requestId);
+    const blocksToWrite = cognitionResult.public_blocks || cognitionResult.blocks_to_write || [];
+    if (blocksToWrite.length > 0) {
+      await writeBlocks(blocksToWrite, requestId);
     }
 
     // Update scene if changed
@@ -240,12 +257,15 @@ app.post("/beat", async (request, reply) => {
     }
 
     // Render output
-    const renderedText = await renderText(cognitionResult.outward_text);
+    const renderedText = cognitionResult.wrote 
+      ? await renderText(cognitionResult.outward_text)
+      : "";
 
     // Build response
     const response = {
       request_id: requestId,
       wrote: cognitionResult.wrote || false,
+      speaker: cognitionResult.wrote ? cognitionResult.speaker : "",
       text: renderedText,
       scene_refreshed: sceneRefreshed,
     };

@@ -30,6 +30,7 @@ PORT=3000
 ### Health Check
 ```bash
 curl https://life-production-1b7b.up.railway.app/health
+# Response: {"status":"ok","timestamp":"..."}
 ```
 
 ### Say (User Input)
@@ -37,6 +38,7 @@ curl https://life-production-1b7b.up.railway.app/health
 curl -X POST https://life-production-1b7b.up.railway.app/say \
   -H "Content-Type: application/json" \
   -d '{"text": "Hello, how are you?", "request_id": "test-123"}'
+# Response: {"request_id":"test-123","wrote":true,"speaker":"REBECCA","text":"...","scene_refreshed":false}
 ```
 
 ### Beat (Autonomous Tick)
@@ -44,6 +46,7 @@ curl -X POST https://life-production-1b7b.up.railway.app/say \
 curl -X POST https://life-production-1b7b.up.railway.app/beat \
   -H "Content-Type: application/json" \
   -d '{"request_id": "beat-456"}'
+# Response: {"request_id":"beat-456","wrote":false,"speaker":"","text":"","scene_refreshed":false}
 ```
 
 ### Idempotency Replay (same request_id returns cached response)
@@ -61,5 +64,4 @@ curl -X POST https://life-production-1b7b.up.railway.app/say \
 
 ## Constraints
 
-Place prohibition documents in `/constraints` directory (`.txt` or `.md` files).
-These are loaded at startup and included in the DeepSeek system prompt.
+Only `constraints/00_KERNEL.md` is loaded at startup. All other constraint files are ignored.
