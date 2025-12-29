@@ -12,7 +12,7 @@ import {
 import { ensureCollection, upsertPoint, searchSimilar } from "./qdrant.js";
 import { generateEmbedding } from "./embeddings.js";
 import { runCognition } from "./cognition.js";
-import { renderText } from "./renderer.js";
+import { renderText, setRendererConstraints } from "./renderer.js";
 import { loadConstraints } from "./constraints.js";
 
 const app = Fastify({ logger: true });
@@ -25,36 +25,33 @@ function buildSystemPrompt(scenePackage, retrievedBlocks, constraints) {
     .map((b) => `[${b.ts}] ${b.source}: ${b.text} (${b.visibility})`)
     .join("\n");
 
-  return `You are REBECCA, an autonomous cognitive agent. You process inputs and produce structured JSON responses.
-
-CURRENT SCENE:
-${scenePackage || "(no scene set)"}
-
-RETRIEVED MEMORY CONTEXT:
-${blockContext || "(no memories retrieved)"}
-
-${
-  constraints
-    ? `PROHIBITIONS AND CONSTRAINTS:\n${constraints}\n\nYou MUST follow these constraints. If retrieved context indicates irritants or ownership violations, react with first-order protective responses.`
-    : ""
-}
-
-You MUST respond with STRICT JSON in this exact format:
+  const parts = [];
+  
+  // Base control rules from constraints (identity comes from retrieval/scene)
+  if (constraints) {
+    parts.push(constraints);
+  }
+  
+  // Scene context
+  if (scenePackage) {
+    parts.push(`SCENE:\n${scenePackage}`);
+  }
+  
+  // Retrieved memory
+  if (blockContext) {
+    parts.push(`MEMORY:\n${blockContext}`);
+  }
+  
+  // JSON output format
+  parts.push(`OUTPUT FORMAT (strict JSON):
 {
-  "outward_text": "text to speak externally, or empty string if silent",
-  "blocks_to_write": [
-    { "source": "REBECCA", "text": "memory or thought to record", "visibility": "public" }
-  ],
-  "scene_update": "new scene description or null if no change",
-  "wrote": true
-}
-
-Rules:
-- source must be one of: REBECCA, SYSTEM, OTHER
-- visibility must be one of: public, private
-- blocks_to_write can be empty array if nothing to record
-- wrote must be true if blocks_to_write is non-empty, false otherwise
-- scene_update should be null unless the scene context changes significantly`;
+  "outward_text": "string",
+  "blocks_to_write": [{ "source": "REBECCA|SYSTEM|OTHER", "text": "...", "visibility": "public|private" }],
+  "scene_update": "string|null",
+  "wrote": true|false
+}`);
+  
+  return parts.join("\n\n");
 }
 
 // Retrieve context: Qdrant semantic + recent blocks
@@ -257,6 +254,7 @@ async function start() {
   try {
     // Load constraints
     CONSTRAINTS = loadConstraints();
+    setRendererConstraints(CONSTRAINTS);
 
     // Ensure Qdrant collection exists
     await ensureCollection();

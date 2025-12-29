@@ -9,20 +9,19 @@ export function loadConstraints() {
   const constraintsDir = path.join(__dirname, '..', 'constraints');
   
   if (!fs.existsSync(constraintsDir)) {
-    console.log('No constraints directory found');
+    console.log('constraints empty');
     return '';
   }
 
-  const files = fs.readdirSync(constraintsDir).filter(f => f.endsWith('.txt') || f.endsWith('.md'));
+  const files = fs.readdirSync(constraintsDir).filter(f => f.endsWith('.md'));
   
   if (files.length === 0) {
-    console.log('No constraint files found');
+    console.log('constraints empty');
     return '';
   }
 
   const constraints = files.map(file => {
-    const content = fs.readFileSync(path.join(constraintsDir, file), 'utf-8');
-    return `=== ${file} ===\n${content}`;
+    return fs.readFileSync(path.join(constraintsDir, file), 'utf-8');
   }).join('\n\n');
 
   console.log(`Loaded ${files.length} constraint file(s)`);
