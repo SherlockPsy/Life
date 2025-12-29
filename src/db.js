@@ -1,14 +1,22 @@
 import pkg from 'pg';
 const { Pool } = pkg;
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL environment variable is required');
+const connectionString = process.env.DATABASE_URL || process.env.DATABASE_PUBLIC_URL;
+
+if (!connectionString) {
+  throw new Error('DATABASE_URL missing in environment');
 }
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: false
+  connectionString,
+  max: 5,
+  idleTimeoutMillis: 30_000,
+  connectionTimeoutMillis: 10_000
 });
+
+export async function pingDb() {
+  await pool.query('SELECT 1');
+}
 
 export async function insertBlock(block) {
   const { id, source, text, visibility, request_id } = block;

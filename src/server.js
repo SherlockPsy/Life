@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import { v4 as uuidv4 } from "uuid";
 import {
+  pingDb,
   insertBlock,
   getBlocksByIds,
   getRecentBlocks,
@@ -18,6 +19,7 @@ import { loadConstraints } from "./constraints.js";
 const app = Fastify({ logger: true });
 
 let CONSTRAINTS = "";
+let dbAvailable = false;
 
 // Build system prompt for DeepSeek cognition
 function buildSystemPrompt(scenePackage, retrievedBlocks, constraints) {
@@ -120,6 +122,11 @@ app.get("/health", async () => {
 
 // POST /say - Handle user input
 app.post("/say", async (request, reply) => {
+  if (!dbAvailable) {
+    reply.code(503);
+    return { error: "db_unavailable" };
+  }
+  
   try {
     const { text, request_id } = request.body || {};
     const requestId = request_id || uuidv4();
@@ -183,6 +190,11 @@ app.post("/say", async (request, reply) => {
 
 // POST /beat - Autonomous tick
 app.post("/beat", async (request, reply) => {
+  if (!dbAvailable) {
+    reply.code(503);
+    return { error: "db_unavailable" };
+  }
+  
   try {
     const { request_id } = request.body || {};
     const requestId = request_id || uuidv4();
@@ -256,7 +268,17 @@ async function start() {
     CONSTRAINTS = loadConstraints();
     setRendererConstraints(CONSTRAINTS);
 
-    // Ensure Qdrant collection exists
+    // Ping database
+    try {
+      await pingDb();
+      dbAvailable = true;
+      console.log("Database connected");
+    } catch (error) {
+      console.error("Database unavailable:", error.message);
+      dbAvailable = false;
+    }
+
+    // Ensure Qdrant collection exists (handles its own errors)
     await ensureCollection();
 
     const port = Number(process.env.PORT || 3000);
