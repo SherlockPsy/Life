@@ -1,30 +1,79 @@
-function normalize(s) {
-  return String(s || "").replace(/\r\n/g, "\n").toLowerCase();
+import fs from "fs";
+import path from "path";
+
+/*
+ HARD LAW GATE
+ - Deterministic
+ - Fail-closed
+ - Enforces SYSTEM_PROHIBITIONS mechanically
+*/
+
+const PROHIBITIONS_PATH = path.join(process.cwd(), "laws", "SYSTEM_PROHIBITIONS.md");
+
+if (!fs.existsSync(PROHIBITIONS_PATH)) {
+  throw new Error("SYSTEM_PROHIBITIONS.md missing at boot");
 }
 
-const PATTERNS = [
-  { id: "P-TIMESKIP-1", re: /\blater that day\b/i, note: "time skip phrase" },
-  { id: "P-TIMESKIP-2", re: /\bhours passed\b/i, note: "time skip phrase" },
-  { id: "P-TIMESKIP-3", re: /\beventually\b/i, note: "time skip phrase" },
-  { id: "P-TIMESKIP-4", re: /\bthe next (morning|day|week)\b/i, note: "time skip phrase" },
-  { id: "P-TIMESKIP-5", re: /\bafter a while\b/i, note: "time skip phrase" },
+const RAW_LAW = fs.readFileSync(PROHIBITIONS_PATH, "utf8");
 
-  { id: "P-META-1", re: /\b(as an ai|as a language model|i am constrained|i cannot|i can\'t)\b/i, note: "meta assistant leak" },
-  { id: "P-META-2", re: /\b(system prompt|runtime|policy|guidelines)\b/i, note: "system leak" },
+// ---- EXPLICIT FORBIDDEN PATTERNS (derived from SYSTEM_PROHIBITIONS) ----
+// These are NOT heuristics. They are mechanical tripwires.
 
-  { id: "P-RETRO-1", re: /\bmust have happened\b/i, note: "retroactive invention" },
-  { id: "P-RETRO-2", re: /\bprobably happened\b/i, note: "retroactive invention" },
-  { id: "P-RETRO-3", re: /\bwe can assume\b/i, note: "assumption injection" },
+const FORBIDDEN_PATTERNS = [
+  // Time jumps / compression
+  /\blater that day\b/i,
+  /\bafter a while\b/i,
+  /\bhours passed\b/i,
+  /\bthe next (day|morning|week|month)\b/i,
+  /\beventually\b/i,
+
+  // Retroactive invention / inference
+  /\bmust have happened\b/i,
+  /\bprobably happened\b/i,
+  /\bwe can assume\b/i,
+  /\bclearly\b/i,
+  /\bobviously\b/i,
+
+  // Hidden state / smoothing
+  /\bmeanwhile\b/i,
+  /\bin the background\b/i,
+  /\bunseen\b/i,
+  /\boff-screen\b/i,
+
+  // Meta / system leakage
+  /\bas an ai\b/i,
+  /\bas a language model\b/i,
+  /\bsystem prompt\b/i,
+  /\bruntime\b/i,
+  /\bpolicy\b/i,
+  /\bguidelines\b/i,
+
+  // Forced continuity / narrative steering
+  /\bthis leads to\b/i,
+  /\bsetting the stage\b/i,
+  /\bthe scene shifts\b/i,
 ];
 
-export function lawGateValidateTextParts(textParts) {
-  const joined = normalize((textParts || []).filter(Boolean).join("\n\n"));
+// ---- GATE ----
+
+function normalize(text) {
+  return String(text || "")
+    .replace(/\r\n/g, "\n")
+    .toLowerCase();
+}
+
+export function lawGateValidateTextParts(parts) {
+  const joined = normalize((parts || []).filter(Boolean).join("\n\n"));
   if (!joined.trim()) return { ok: true };
 
-  const reasons = [];
-  for (const p of PATTERNS) {
-    if (p.re.test(joined)) reasons.push(`${p.id}: ${p.note}`);
+  for (const re of FORBIDDEN_PATTERNS) {
+    if (re.test(joined)) {
+      return {
+        ok: false,
+        reason: `LAW_VIOLATION:${re.source}`,
+      };
+    }
   }
 
-  return reasons.length ? { ok: false, reasons } : { ok: true };
+  return { ok: true };
 }
