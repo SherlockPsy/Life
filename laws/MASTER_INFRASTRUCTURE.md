@@ -1,375 +1,444 @@
-# MASTER_INFRASTRUCTURE
-## Storage, Deployment, and System Plumbing
+# MASTER_INFRASTRUCTURE (v7)
+## Storage, Deployment, Invocation Plumbing, and Mechanical Integrity
 
-Version: 6.0 (Constitutional Lock)
+Version: 7.0  
 Status: AUTHORITATIVE
+
+Infrastructure defines the physical and technical substrate of the system.
+
+Infrastructure exists to:
+- store text,
+- retrieve text,
+- forward text,
+- persist text,
+- enforce mechanical integrity.
+
+Infrastructure does NOT:
+- interpret,
+- infer,
+- optimise,
+- simulate,
+- decide,
+- evaluate meaning,
+- shape behaviour,
+- manage narrative.
+
+If infrastructure appears intelligent, the system is broken.
 
 ---
 
 ## PREAMBLE
 
-This document defines the **technical substrate** of the system.
+This document governs databases, storage rules, invocation plumbing, model invocation boundaries, and transport.
 
-It does NOT define:
-- cognition
-- agency
-- psychology
-- behaviour
-- realism
-- pacing
-- outcomes
-- “what should happen”
+It explicitly does NOT define:
+- agency,
+- psychology,
+- realism,
+- pacing,
+- motivation,
+- initiative,
+- outcomes.
 
-Those are constitutional concerns handled elsewhere.
+Those belong to constitutional and world law.
 
-Infrastructure exists to **support**, not to decide.
+Infrastructure is intentionally stupid.
 
 ---
 
-## ARTICLE I — PRINCIPLES
+## ARTICLE I — CORE PRINCIPLES
 
-### I.1 Infrastructure Is Dumb
+### I.1 Infrastructure Is Dumb (Non-Negotiable)
 
-Infrastructure:
-- stores text
-- retrieves text
-- forwards text
-- persists text
+Infrastructure may only:
 
-Infrastructure does not:
-- interpret
-- infer
-- optimise
-- simulate
-- decide
+- store text,
+- retrieve text,
+- stream text,
+- forward text,
+- enforce constraints.
 
-If infrastructure begins to “understand”, the system is broken.
+Infrastructure MUST NOT:
+
+- infer state,
+- derive meaning,
+- collapse text into variables,
+- summarise authority,
+- rank importance,
+- decide relevance.
+
+Any system component that “understands” text is violating this law.
 
 ---
 
 ### I.2 Text Fidelity
 
 All authoritative text:
-- is stored verbatim
-- is retrieved verbatim
-- is forwarded verbatim
 
-There is no rewriting layer.
-There is no compression layer.
-There is no semantic normalisation.
+- is stored verbatim,
+- is retrieved verbatim,
+- is forwarded verbatim.
+
+There is:
+- no rewriting layer,
+- no compression layer,
+- no semantic normalisation,
+- no cleanup pass.
+
+Spelling errors persist.
+Contradictions persist.
+Mess persists.
+
+Reality is not hygienic.
 
 ---
 
 ### I.3 Append-Only Reality
 
-The authoritative record is append-only.
+The authoritative record is strictly append-only.
 
 Infrastructure MUST NOT:
-- mutate prior rows,
-- “clean up” text,
-- rewrite for readability,
-- merge entries,
+
+- mutate past rows,
+- delete rows,
+- merge rows,
+- reorder rows,
+- “fix” text,
 - replace history with summaries.
 
 Corrections exist only as new rows.
 
 ---
 
-## ARTICLE II — DATA STORES
+## ARTICLE II — AUTHORITATIVE DATA STORES
 
-### II.1 Authoritative Store (PostgreSQL)
+### II.1 Authoritative Ledger (PostgreSQL)
 
-PostgreSQL is the **authoritative ledger**.
+PostgreSQL is the sole authority on existence.
 
 It stores:
-- Public Evidence (Recorder)
-- Private / Unrendered Reality (private text)
-- World Fact Seeds / World Facts (as text)
-- Identity Documents
-- System Configuration (non-behavioural)
-- Invocation Events (as operational audit, not narrative)
+
+- public evidence,
+- private / unrendered text,
+- world facts and fact seeds,
+- plans and commitments,
+- identity constraint documents,
+- invocation audit records.
 
 It does NOT store:
-- inferred state
-- scores
-- counters
-- metrics
-- derived psychology
-- pacing variables
-- “importance” labels
+
+- inferred state,
+- counters,
+- meters,
+- decay values,
+- importance labels,
+- emotional tags,
+- behavioural flags.
 
 ---
 
-### II.2 Recorder Table (Conceptual)
+### II.2 Recorder Rows (Conceptual Model)
 
-The Recorder table is append-only.
+Each recorder row contains:
 
-Each row contains:
-- sequential index (monotonic ordering key)
-- timestamp (anchored to system time for ordering/audit; not a simulation engine)
-- raw text content
-- authorship attribution (participant / agent / world)
-- visibility classification (renderable vs unrendered)
-- invocation reference (linking a row to the invocation that permitted it)
+- monotonic ordering key,
+- timestamp (system time, not simulation),
+- raw text content,
+- authorship attribution,
+- visibility classification,
+- invocation reference.
 
 No row is ever updated.
 No row is ever deleted.
 
 ---
 
-### II.3 System Time (Independent, Continuous)
+### II.3 Atomic Bundles (Hard Integrity)
+
+1) A single invocation may produce multiple rows.
+2) These rows form one atomic bundle.
+3) Either all rows commit, or none do.
+4) Ordering inside a bundle is preserved exactly.
+5) Bundles MUST NOT interleave.
+
+Retries MUST NOT duplicate rows.
+Idempotency is mandatory.
+
+---
+
+## ARTICLE III — SYSTEM TIME (MECHANICAL ONLY)
+
+### III.1 System Time Coordinate
 
 Infrastructure maintains a system time coordinate that:
-- advances continuously and monotonically,
-- is independent of writing activity,
-- is not aligned to OS wall-clock by default,
-- is initialised explicitly at system start (or run start),
-- is irreversible.
 
-System time exists regardless of whether anything is written.
+- advances continuously,
+- advances independently of writing,
+- is monotonic and irreversible,
+- is initialised explicitly at system start,
+- is not aligned to OS time by default.
 
-Infrastructure MUST NOT:
-- pause time because nothing is written,
-- advance time by narration,
-- treat time advancement as an outcome engine.
-
-System time is an independent number used for:
-- timestamps,
-- ordering,
-- contextual reference when loaded into an invocation.
+System time exists even if nothing is written.
 
 ---
 
-### II.4 “Last Written” Pointer (Operational Only)
+### III.2 What System Time Is For
 
-Infrastructure may maintain a pointer referencing the last written Recorder row.
+System time is used ONLY for:
+
+- timestamps,
+- ordering guarantees,
+- auditability,
+- contextual reference when permitted.
+
+System time MUST NOT:
+
+- advance reality,
+- trigger events,
+- force writing,
+- simulate life.
+
+---
+
+### III.3 “Last Written” Pointer
+
+Infrastructure may maintain a pointer to the last written row.
 
 This pointer:
-- exists for efficient streaming and polling,
-- advances only when a new row is written,
-- has no special narrative meaning.
 
-This pointer MUST NOT be defined as “the present” in a way that overrides:
-- the independent system time coordinate,
-- the Constitution’s time rules,
-- lived perception requirements.
+- exists for streaming efficiency only,
+- has no narrative meaning,
+- MUST NOT be treated as “the present.”
+
+Reality is not defined by a pointer.
 
 ---
 
-### II.5 Atomic Bundles (Write Integrity)
+## ARTICLE IV — VECTOR STORE (QDRANT)
 
-A single invocation may produce multiple writes (public and/or private).
-
-Infrastructure MUST support committing these writes as an atomic bundle:
-- either all rows in the bundle are written, or none are,
-- bundle ordering is preserved exactly as produced,
-- each row is linked to the invocation reference.
-
-Infrastructure MUST NOT:
-- partially commit a bundle,
-- reorder within a bundle,
-- duplicate rows via retries.
-
-Idempotency and bundling are integrity constraints, not behaviour logic.
-
----
-
-## ARTICLE III — VECTOR STORE (QDRANT)
-
-### III.1 Purpose
+### IV.1 Purpose
 
 Qdrant exists solely to support **selective rereading**.
 
-It is used for:
-- retrieving relevant past text
-- based on semantic similarity
+It supports:
 
-It is NOT used for:
-- memory compression
-- summarisation into authority
-- state inference
-- behaviour shaping
-- salience ranking as “importance”
+- semantic similarity retrieval,
+- mechanical relevance search.
 
----
+It does NOT support:
 
-### III.2 Indexing Rules
-
-Only raw authoritative text blocks may be indexed.
-
-No metadata labels that encode:
-- emotion
-- intent
-- priority
-- importance
-- decay
-- truth
-- “thread IDs”
-
-Text in equals text out.
+- memory compression,
+- summarisation into authority,
+- importance ranking,
+- decay modelling,
+- behavioural shaping.
 
 ---
 
-### III.3 Retrieval Discipline
+### IV.2 Indexing Rules
+
+Only raw authoritative text may be indexed.
+
+Indexes MUST NOT include metadata encoding:
+
+- emotion,
+- intent,
+- priority,
+- truth,
+- importance,
+- identity IDs,
+- scene IDs,
+- thread IDs.
+
+Text in.
+Text out.
+
+---
+
+### IV.3 Retrieval Discipline
 
 Retrieval:
-- is mechanical
-- is relevance-based
-- asserts no correctness
 
-Failure to retrieve is meaningful.
-The system does not compensate by inventing missing context.
+- asserts no correctness,
+- asserts no completeness,
+- may fail silently.
 
----
-
-## ARTICLE IV — MODEL INVOCATION
-
-### IV.1 Models Used
-
-The system uses models as stateless services (names may change by implementation), including:
-- a renderer model
-- a reasoning/agent-writing model (if separated)
-
-Models are invoked as:
-- stateless services
-- with explicit input
-- producing explicit output
+Failure to retrieve context is meaningful.
+Infrastructure MUST NOT compensate by inventing context.
 
 ---
 
-### IV.2 No Persistent Model State
+## ARTICLE V — MODEL INVOCATION BOUNDARIES
+
+### V.1 Models Are Stateless Services
+
+All models are invoked as stateless services.
 
 Models:
-- do not retain memory
-- do not maintain continuity
-- do not store state
 
-All continuity lives in stored text.
+- retain no memory,
+- hold no continuity,
+- store no state.
 
----
-
-### IV.3 Prompt Discipline (Critical)
-
-Infrastructure MUST ensure that prompts contain:
-- only text that is permitted to be loaded for that invocation,
-- only text that exists in the authoritative record (or is being proposed to be written in that invocation),
-- no injected labels that behave like hidden state,
-- no inferred facts presented as if they were written.
-
-Infrastructure MUST NOT enforce the false rule “if it wouldn’t appear on screen, it must not appear in the prompt”.
-
-Written ≠ rendered.
-
-Unrendered/private text is real and may be included in prompts when:
-- it is authorised for that agent’s context,
-- it is required for continuity of that agent,
-- it is loaded as text, not as variables.
-
-Infrastructure MUST NOT:
-- leak another agent’s private text into a different agent’s prompt,
-- collapse private text into behavioural meters,
-- add “helpful” commentary about what should happen.
+All continuity lives exclusively in written text.
 
 ---
 
-## ARTICLE V — STREAMING AND DEVICES
+### V.2 Prompt Assembly Discipline
 
-### V.1 Live Observation
+Infrastructure MUST ensure prompts contain ONLY:
 
-Clients connect via:
-- streaming (SSE or WebSocket)
+- text that exists in the authoritative record,
+- text permitted for the invoked agent,
+- text relevant to the invocation context,
+- the current Scene Anchor when required.
 
-They receive:
-- newly written Recorder rows
-- in order
-- without buffering future content
+Infrastructure MUST NOT inject:
+
+- inferred facts,
+- behavioural hints,
+- summaries as authority,
+- “helpful” framing,
+- identity demonstrations,
+- internal system commentary.
 
 ---
 
-### V.2 Cross-Device Continuity
+### V.3 Identity Handling (Critical)
+
+Infrastructure MUST NOT expose numeric IDs to models.
+
+Identity is conveyed only via:
+
+- semantic descriptors,
+- persistent constraints,
+- accumulated written continuity.
+
+Full biographies MUST NOT be re-injected every turn.
+
+Identity persistence is enforced by constraint, not repetition.
+
+---
+
+## ARTICLE VI — SCENE CONTEXT MECHANICS
+
+### VI.1 Scene Anchor Handling
+
+Infrastructure MUST support:
+
+- Scene Anchor caching,
+- single-send semantics,
+- explicit re-injection only on:
+  - context exhaustion, OR
+  - explicit scene change.
+
+Scene Anchors are:
+
+- total,
+- never partial,
+- never diff-based.
+
+---
+
+### VI.2 Context Exhaustion Tracking
+
+1) Token tracking exists outside the LLM.
+2) Infrastructure MUST track remaining usable context.
+3) When remaining context drops below threshold:
+   - full Scene Anchor is re-injected.
+4) The LLM MUST NOT detect or manage its own limits.
+
+---
+
+## ARTICLE VII — STREAMING & CLIENTS
+
+### VII.1 Observation Is Passive
+
+Client connections:
+
+- do not trigger invocation,
+- do not advance time,
+- do not generate output,
+- do not cause writes.
+
+Watching is inert.
+
+---
+
+### VII.2 Cross-Device Continuity
 
 Because:
-- Recorder is authoritative,
-- ordering keys are global,
-- system time is global per active run,
 
-Any device may disconnect and reconnect and see:
-- the same accumulated reality
-- the same ordering
-- the same authoritative text
+- the ledger is authoritative,
+- ordering is global,
+- system time is global,
 
-No session state exists on the client.
+any client may disconnect and reconnect without loss of reality.
+
+No client session state exists.
 
 ---
 
-### V.3 Observation Is Passive
+## ARTICLE VIII — SECURITY & ACCESS
 
-Client connection:
-- does not trigger invocation
-- does not advance time
-- does not generate output
-- does not cause writes
+### VIII.1 Administrative Access
 
-Watching is passive.
+Administrative access may inspect:
 
----
-
-## ARTICLE VI — SECURITY AND ACCESS
-
-### VI.1 Administrative Access
-
-Administrative access may allow:
-- inspection of Recorder
-- inspection of Identity Documents
-- inspection of World Fact Seeds / World Facts
-- inspection of invocation logs (operational)
+- ledger contents,
+- invocation logs,
+- identity constraint documents.
 
 Administrative access MUST NOT:
-- alter past evidence
-- inject hidden state
-- manipulate outcomes
-- rewrite or “fix” contradictions
+
+- alter past text,
+- inject hidden state,
+- rewrite contradictions,
+- influence outcomes.
 
 ---
 
-### VI.2 Separation of Concerns
+### VIII.2 Separation of Concerns
 
 Infrastructure enforces:
-- access control
-- rate limiting
-- API boundaries
-- integrity constraints (append-only, idempotency, atomic bundles)
 
-It does NOT enforce:
-- realism
-- behaviour
-- pacing
-- narrative quality
-- “correctness” of beliefs
+- access control,
+- rate limiting,
+- transport integrity,
+- append-only guarantees.
+
+Infrastructure does NOT enforce:
+
+- realism,
+- narrative quality,
+- psychological correctness,
+- behavioural appropriateness.
 
 ---
 
-## ARTICLE VII — FAILURE MODES (GUARDS)
+## ARTICLE IX — FAILURE MODES
 
-Infrastructure MUST actively avoid:
+Infrastructure MUST fail explicitly when:
 
-- background jobs that simulate life
-- cron-based advancement of reality
-- implicit state creation
-- caching that alters order
-- retries that duplicate authoritative writes
-- auto-healing that invents data
+- atomicity cannot be guaranteed,
+- idempotency is threatened,
+- ordering cannot be preserved,
+- forbidden mechanisms are attempted.
 
-If infrastructure starts “helping”, it is wrong.
+Infrastructure MUST NOT:
+
+- auto-heal,
+- invent missing data,
+- “do something reasonable.”
+
+If it cannot uphold law, it must stop.
 
 ---
 
 ## FINAL RULE
 
-Infrastructure exists to move text safely and preserve integrity.
+Infrastructure moves text.
+It preserves order.
+It enforces nothing else.
 
-Anything beyond that belongs elsewhere and is forbidden here.
-
----
-
-END OF INFRASTRUCTURE SPEC
+Anything smarter belongs elsewhere and is forbidden here.

@@ -1,7 +1,7 @@
-# MASTER_WORLD (v6)
-## World Definition, Facts, People, and Non-Directorial Reality
+# MASTER_WORLD (v7)
+## World Definition, Facts, Scene, Time, and Non-Directorial Reality
 
-Version: 6.0  
+Version: 7.0  
 Status: AUTHORITATIVE
 
 ---
@@ -10,22 +10,23 @@ Status: AUTHORITATIVE
 
 This document defines:
 
-- what the **World** may introduce as written reality,
-- what **counts as a fact** even if nobody notices it,
-- how **perception** differs from objective reality,
-- how **belief** differs from fact,
-- how **time** exists without becoming a rule engine,
-- how **life continues** without simulation.
+- what the World may introduce as written reality,
+- what counts as a fact even if nobody perceives it,
+- how scenes exist continuously without resets,
+- how time exists without becoming a rule engine,
+- how off-screen life continues without simulation,
+- how reality remains non-directorial at all times.
 
-This document does **NOT** define:
+This document does NOT define:
 
 - how people decide what to do,
-- how behaviour is chosen,
-- how outcomes are selected,
+- how behaviour is selected,
+- how initiative is triggered,
+- how outcomes are chosen,
 - what should happen next.
 
 If it feels like a director, it is wrong.  
-If it feels like a simulation, it is wrong.  
+If it feels like a simulator, it is wrong.  
 If it feels like psychology software, it is wrong.
 
 ---
@@ -40,12 +41,12 @@ The World is not:
 - intentional,
 - strategic,
 - evaluative,
-- aware of narrative flow,
+- narratively aware,
 - aware of participant goals.
 
 The World does not “try” to do anything.
 
-The World may introduce **facts**, not decisions.
+The World may introduce facts only.
 
 ---
 
@@ -55,22 +56,22 @@ The World does not simulate gradual change.
 
 There is no background engine that updates:
 
-- time-based states,
 - moods,
 - relationships,
 - probabilities,
-- tendencies.
+- tendencies,
+- time-based states.
 
 Nothing evolves unless written.
 
 ---
 
-### I.3 Written Reality Is Larger Than What Is Shown
+### I.3 Written Reality Exceeds Rendering
 
 Written reality may include:
 
 - public evidence,
-- private/unrendered reality,
+- private or unrendered reality,
 - off-screen developments,
 - plans and commitments.
 
@@ -82,17 +83,21 @@ Rendering is irrelevant to existence.
 
 ## ARTICLE II — WORLD FACTS
 
-### II.1 What a World Fact Is
+### II.1 Definition of a World Fact
 
-A World Fact is a written external condition or event that is **not decision logic**.
+A World Fact is a written external condition or event that:
+
+- exists independently of any person’s will,
+- does not encode decision logic,
+- does not imply behaviour,
+- does not guarantee outcomes.
 
 Examples:
 
-- a rehearsal is delayed,
-- a train is cancelled,
-- a phone battery is dead,
+- a flight is delayed,
 - a storm is approaching,
-- someone is in town.
+- someone has arrived in town,
+- a phone battery is dead.
 
 World Facts may exist without being perceived.
 
@@ -105,27 +110,25 @@ Ignorance does not erase existence.
 World Facts may include:
 
 1) **Structural Facts**
-   - places, institutions, careers, public status
+   - locations, institutions, careers, public roles.
 
 2) **Situational Facts**
    - who is present,
-   - where someone is,
-   - what objects are available
+   - where people are,
+   - what objects are available.
 
 3) **Event Facts**
-   - something occurred
+   - something occurred.
 
 4) **Plans and Commitments**
-   - scheduled meetings,
-   - flights,
-   - promises
+   - appointments, promises, scheduled actions.
 
 5) **Off-Screen Developments**
-   - narrated continuity when unobserved
+   - events occurring outside the current scene.
 
 6) **Summaries**
-   - reading aids only
-   - non-authoritative
+   - reading aids only,
+   - never authoritative.
 
 ---
 
@@ -141,30 +144,27 @@ Time:
 - is not paused by silence,
 - is not controlled by narration.
 
-Time anchors continuity.  
-Time does not decide outcomes.
+Time anchors continuity.
+Time never decides outcomes.
 
 ---
 
-### III.2 Perception of Time (Critical Clarification)
+### III.2 Perception of Time
 
-1) Any person may:
-   - look at a clock,
-   - check a phone,
-   - read a watch,
-   - notice daylight or darkness,
-   - infer lateness or duration.
+Any person may:
 
-2) Writing about **perceived or read time** is allowed for all people.
+- read a clock,
+- check a phone,
+- notice daylight or darkness,
+- infer lateness or duration.
 
-This includes explicit clock readings when perceived.
+Writing perceived time is allowed.
 
-Valid examples:
+Examples:
 - “She checks the clock. It’s 08:10.”
-- “His phone says 23:47.”
-- “It’s later than she expected.”
+- “His phone reads 23:47.”
 
-3) Time awareness is not time control.
+Perception of time is not control of time.
 
 ---
 
@@ -176,45 +176,68 @@ The World must NOT:
 - compress lived time into a new present,
 - re-anchor “now” without lived continuity.
 
-Forbidden examples:
-- “They fall asleep. Morning light fills the room. It’s 07:30.”
-- “Hours pass. It is now morning.”
+Forbidden:
+- “Later that day…”
+- “Three hours passed…”
+- “Morning comes. It’s 07:30.”
 
-Allowed alternatives:
+Allowed:
 - “They are asleep.”
 - “The room is dark and quiet.”
-- “Morning light filters through the curtains.”
+- “Light begins to filter through the curtains.”
 
-A new explicit time anchor must emerge through **lived perception**, not narrative compression.
-
----
-
-## ARTICLE IV — SCENE-LOCAL PERCEPTION (MANDATORY)
-
-### IV.1 Scene Locality
-
-All writing occurs within a **scene-local context**, defined by:
-
-- where someone is,
-- what they can perceive,
-- who is present or relevant,
-- what conditions are salient.
-
-This is **not** a data structure.  
-It is a grounding obligation.
+Sleep is not a time skip.
+Sleep is a passive continuation of the current scene.
 
 ---
 
-### IV.2 Scene Anchor vs Global Reality
+## ARTICLE IV — SCENE CONTINUITY (MANDATORY)
 
-1) Global reality may contain facts not present in the current scene.
-2) A scene contains only what is perceptually, situationally, or contextually relevant.
+### IV.1 Always-On Scene Invariant
+
+There is always an active scene.
+
+“No scene” is a forbidden state.
+
+Sleeping, waiting, unconsciousness, silence, and inactivity
+are all valid scene states.
+
+---
+
+### IV.2 Scene Definition
+
+A scene is the continuous lived context defined by:
+
+- location,
+- relevant people,
+- perceptual conditions,
+- temporal context relevant to perception.
+
+A scene is:
+
+- not episodic,
+- not turn-based,
+- not a container,
+- not a technical object.
+
+---
+
+### IV.3 Scene Continuity Rules
+
+1) Scenes do not reset unless explicitly written.
+2) Micro-location changes (e.g. room to room) do NOT create new scenes.
+3) Scene changes are explicit, total, and written.
+4) Partial scene updates are forbidden.
+5) Scene updates replace the full scene context, not a diff.
+
+---
+
+### IV.4 Scene vs Global Reality
+
+1) Global reality may contain facts outside the scene.
+2) A scene contains only what is perceptually or situationally relevant.
 3) Facts outside the scene do not influence it unless written as intersecting.
-
-The World must not:
-- leak global facts into a scene,
-- grant awareness implicitly,
-- assume knowledge because something exists elsewhere.
+4) Awareness is never implied by existence.
 
 ---
 
@@ -222,7 +245,7 @@ The World must not:
 
 ### V.1 Perception Is Not Reality
 
-1) A fact may exist without being perceived.
+1) Facts may exist without perception.
 2) Perception must be written to exist as experience.
 3) Lack of perception preserves ignorance.
 
@@ -230,12 +253,12 @@ The World must not:
 
 ### V.2 Belief Is Not Fact
 
-1) People may hold beliefs that are false.
+1) People may hold false beliefs.
 2) False beliefs do not alter objective reality.
-3) The World must not correct beliefs automatically.
+3) The World does not correct beliefs automatically.
 4) Correction requires new writing.
 
-Belief, disagreement, and misunderstanding are part of reality, not bugs.
+Misunderstanding is part of reality.
 
 ---
 
@@ -247,23 +270,21 @@ A World Fact Seed is a written introduction of external reality that:
 
 - establishes existence,
 - provides constraints,
-- does not decide behaviour,
+- does not encode decisions,
 - does not imply outcomes.
-
-Fact Seeds may surprise.  
-They may not direct.
 
 ---
 
-### VI.2 Grounding Rule (Mandatory)
+### VI.2 Grounding Rule (MANDATORY)
 
-Any stimulus introduced must include:
+Any World Fact Seed must specify:
 
 - where it occurs,
 - what is affected,
-- who can perceive it (or that it is objectively occurring).
+- who can perceive it,
+  or that it exists objectively without perception.
 
-Floating stimuli are forbidden.
+Floating facts are forbidden.
 
 ---
 
@@ -276,9 +297,9 @@ Forbidden:
 - “He misses her.”
 
 Allowed:
-- private thought text,
-- spoken admission,
-- observable behaviour.
+- observable behaviour,
+- spoken admissions,
+- private thought text.
 
 ---
 
@@ -299,24 +320,36 @@ People exist through written continuity.
 ### VII.2 No Behaviour Enforcement
 
 The World must not encode:
-- “if X then Y behaviour.”
 
-People may act.  
-They are not compelled.
+- “if X then Y behaviour,”
+- incentives,
+- pressure,
+- nudges.
 
----
-
-## ARTICLE VIII — OFF-SCREEN LIFE (PARALLEL CONTINUITY)
-
-### VIII.1 Off-Screen Life Is Allowed
-
-Life may advance unobserved.
-
-It becomes real **only when written**.
+People may act.
+They are never compelled.
 
 ---
 
-### VIII.2 Parallel Off-Screen Writing (Critical)
+## ARTICLE VIII — OFF-SCREEN LIFE
+
+### VIII.1 Off-Screen Life Exists
+
+Life continues when not observed.
+
+Off-screen life is not paused.
+
+---
+
+### VIII.2 Writing Off-Screen Developments
+
+1) Off-screen developments become real only when written.
+2) They must be written when they occur, not reconstructed later.
+3) Retroactive plausibility generation is forbidden.
+
+---
+
+### VIII.3 Parallel Off-Screen Writing
 
 During any writing opportunity, the World MAY write:
 
@@ -324,9 +357,9 @@ During any writing opportunity, the World MAY write:
 - events in other locations,
 - unrelated ongoing life,
 
-provided that:
+provided:
 
-- they do not depend on the current participant’s actions,
+- they do not depend on current participant actions,
 - they do not causally interfere with the current scene,
 - they obey all grounding and non-directorial rules.
 
@@ -334,21 +367,11 @@ This allows parallel life without simulation.
 
 ---
 
-### VIII.3 No Background Simulation
-
-Nothing evolves automatically.
-
-No ticking world.
-No “meanwhile” engine.
-No silent progression.
-
----
-
 ## ARTICLE IX — SUMMARIES
 
-Summaries are reading aids only.
+Summaries:
 
-They:
+- are reading aids only,
 - derive from written text,
 - introduce nothing new,
 - never replace reality.
@@ -362,17 +385,19 @@ Forbidden forever:
 1) World-as-director  
 2) World-as-psychology  
 3) Simulation machinery  
-4) Implicit time skips  
-5) Underspecified stimuli  
-6) Outcome guarantees  
-7) Summary-as-reality  
+4) Implicit scene resets  
+5) Implicit time skips  
+6) Underspecified facts  
+7) Outcome guarantees  
+8) Retroactive plausibility  
+9) Partial scene updates  
 
 ---
 
 ## FINAL CLAUSE
 
-The World introduces facts.  
-People live through them.  
-Time passes regardless.
-
+The World introduces facts.
+People live through them.
+Scenes persist.
+Time passes.
 Nothing decides what living looks like.

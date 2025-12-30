@@ -1,295 +1,377 @@
-# MASTER_RUNTIME (v6)
-## Runtime Invocation, Opportunity, Writing, Rendering, and Record Integrity
+# MASTER_RUNTIME (v7)
+## Runtime Invocation, Scene Anchoring, Writing Opportunity, and Record Integrity
 
-Runtime exists to **provide opportunities for writing** and to **record what is written**.
-Runtime does not decide what happens in the world.
+Version: 7.0  
+Status: AUTHORITATIVE
+
+Runtime exists solely to:
+- provide opportunities to write,
+- supply grounded context for writing,
+- record what is written faithfully.
+
+Runtime does NOT:
+- decide what happens,
+- decide who acts,
+- decide what matters,
+- decide when life progresses.
 
 ---
 
 ## PREAMBLE
 
-This Runtime governs how the system is invoked, how writing opportunities are created, how writing is recorded, and how rendering is produced.
+This Runtime is bound by the Constitution and World Law.
 
-It must uphold the Constitution’s immutable laws:
+It must enforce:
 
-- Written text is the only reality.
-- Rendering is separate from existence.
-- Off-screen life is narrated, not simulated.
-- Initiative belongs to people, not the system.
-- Invocation is not causation.
-- Time exists independently and continuously.
-- Knowledge ≠ access to storage.
-- Summaries are non-authoritative reading aids only.
+- written text as the only reality,
+- continuous scene existence,
+- initiative without prompts,
+- time without plot mechanics,
+- causality without retroactive invention,
+- silence as allowed but not privileged.
+
+Runtime is mechanically stupid by design.
+
+If Runtime appears to understand meaning, the system is broken.
 
 ---
 
 ## CORE ASSERTION
 
-**Runtime only grants opportunities to write and faithfully records what is written.**
+**Runtime grants permission to write. It never requires writing.**
 
-Runtime must be:
-- blind to narrative value,
-- blind to pacing,
-- blind to “what should happen,”
-- blind to who should act.
+On any invocation:
+- writing may occur,
+- or silence may occur.
 
-Runtime must tolerate silence as a correct and complete outcome.
+Both outcomes are valid.
 
 ---
 
-## I. WHAT THE RUNTIME IS (AND IS NOT)
+## ARTICLE I — WHAT RUNTIME IS NOT
 
 ### I.1 Runtime Is Not a Director
 
 Runtime MUST NOT:
+
 - choose moments,
 - evaluate relevance,
-- enforce momentum,
+- manage pacing,
+- enforce engagement,
 - nudge outcomes,
 - “keep life moving.”
+
+---
 
 ### I.2 Runtime Is Not a Simulation
 
 Runtime MUST NOT:
+
 - simulate gradual change,
 - evolve hidden variables,
-- decay or refresh states,
-- advance the world in the background.
+- decay or refresh state,
+- advance the world implicitly,
+- run background life.
 
 Nothing changes unless text is written.
 
+---
+
 ### I.3 Runtime Is Not a State Machine
 
-Runtime MUST NOT implement semantic rules such as:
+Runtime MUST NOT encode semantic rules such as:
+
 - “if bored then act,”
 - “if quiet then inject event,”
 - “if time passed then respond.”
 
 Runtime logic is limited to:
-- validating invocation contracts,
-- enforcing record integrity,
-- enforcing idempotency,
-- enforcing access and attribution rules.
+- invocation handling,
+- context assembly,
+- record integrity,
+- idempotency,
+- access control.
 
 ---
 
-## II. INVOCATION PRINCIPLE
+## ARTICLE II — INVOCATION PRINCIPLE
 
 ### II.1 Invocation Is Permission, Not Obligation
 
-On any invocation:
-- writing may occur, or
-- silence may occur.
+An invocation:
 
-Silence is valid and expected.
+- opens an opportunity to write,
+- does not require output,
+- does not imply relevance,
+- does not imply action.
 
-### II.2 Invocation Sources (Allowed)
+Invocation is not causation.
 
-Invocation may occur only via explicit invocation events:
+---
 
-1) **Participant-initiated calls** (speech, actions)
-2) **Non-participant calls** (beat-style opportunities)
-3) **Opportunity invocations** triggered by:
-   - time passage,
-   - randomness,
+### II.2 Allowed Invocation Sources
 
-provided they are:
-- opaque,
+Invocation may occur only via explicit, non-semantic triggers:
+
+1) **Participant-Initiated**
+   - speech,
+   - actions,
+   - written contributions.
+
+2) **Non-Participant Opportunities**
+   - beat-style opportunities,
+   - system ticks,
+   - time-based opportunities,
+   - randomness-based opportunities.
+
+All such invocations must be:
+
 - content-agnostic,
+- non-obligating,
 - non-semantic,
-- non-obligating.
+- mechanically blind.
 
-Invocation grants the right to write.
-It never requires writing.
+---
 
-### II.3 Invocation Sources (Forbidden)
+### II.3 Forbidden Invocation Sources
 
 Invocation MUST NOT be triggered by:
+
 - semantic inspection of world state,
-- boredom, momentum, inactivity heuristics,
-- deterministic schedules acting as outcome engines.
+- boredom detection,
+- momentum heuristics,
+- narrative pacing logic,
+- countdown schedules,
+- “nothing happened” detection.
 
 Time and randomness may open the door.
 They may not decide what walks through it.
 
 ---
 
-## III. TIME IN RUNTIME
+## ARTICLE III — TIME IN RUNTIME
 
-### III.1 Objective Time
+### III.1 Objective Runtime Time
 
-1) Runtime maintains an objective, continuously advancing time coordinate.
+1) Runtime maintains a continuously advancing objective time coordinate.
 2) This time:
    - advances even if nothing is written,
    - is monotonic and irreversible,
-   - is independent of rendering and narration,
-   - is not aligned to OS time by default.
+   - is independent of rendering,
+   - is independent of OS wall-clock by default.
+3) Runtime time may be provided as contextual reference only.
 
-3) Objective time may be exposed to the writing process **as context only**.
-
-4) Objective time advancing alone does NOT:
-   - create facts,
-   - invoke writing,
-   - force perception,
-   - decide outcomes.
-
-### III.2 Time Perception vs Time Control
-
-1) Any agent may:
-   - perceive time,
-   - read a clock,
-   - check a device,
-   - notice daylight, lateness, or duration.
-
-2) Writing about perceived time is allowed for all agents.
-
-3) What Runtime must prevent is **authorial time skipping**, not time awareness:
-   - no arbitrary jumps,
-   - no compression of elapsed life into a new “now,”
-   - no advancing the timeline by declaration alone.
-
-4) Time becomes part of lived reality only through written perception or relevance.
+Time advancing alone does NOT:
+- create facts,
+- force perception,
+- require writing,
+- trigger outcomes.
 
 ---
 
-## IV. SCENE ANCHOR (CONTEXT, NOT STATE)
+### III.2 Time Awareness vs Time Control
 
-### IV.1 Scene Anchor Definition
+1) Agents may perceive time.
+2) Writing perceived time is allowed.
+3) Runtime must prevent authorial time control:
+   - no arbitrary jumps,
+   - no compression into a new “now,”
+   - no advancing time by declaration alone.
 
-A **Scene Anchor** is the minimal written context that grounds a writing opportunity, including:
+---
+
+## ARTICLE IV — SCENE ANCHOR (CRITICAL)
+
+### IV.1 Always-On Scene Anchor Requirement
+
+For **every invocation that permits writing**, Runtime MUST provide a Scene Anchor.
+
+A Scene Anchor MUST exist even if:
+
+- nothing happens,
+- everyone is asleep,
+- silence occurs,
+- no output is produced.
+
+“No scene” is a forbidden runtime state.
+
+---
+
+### IV.2 Scene Anchor Definition
+
+A Scene Anchor is minimal grounding text describing:
 
 - where the agent is,
 - who is present or relevant,
 - what conditions are perceptually salient,
-- what time context is relevant to perception.
+- what time context matters to perception.
 
-The Scene Anchor:
-- is text, not structure,
-- is not authoritative reality by itself,
-- does not introduce facts unless written as such.
+A Scene Anchor is:
 
-### IV.2 Scene Anchor Obligations
-
-Runtime MUST:
-- provide sufficient scene grounding for coherent writing,
-- without inventing facts,
-- without filling gaps implicitly,
-- without enforcing completeness.
-
-**For any invocation that permits writing, a Scene Anchor MUST be provided, even if minimal.**
-
-Scene Anchors assist perception.
-They do not control outcomes.
+- text only,
+- not authoritative reality by itself,
+- not a data structure,
+- not a diff.
 
 ---
 
-## V. KNOWLEDGE GATING (CRITICAL)
+### IV.3 Scene Anchor Continuity
+
+1) Scene Anchors persist across invocations.
+2) Scene setup is sent once and treated as cached context.
+3) Scene Anchors MUST NOT be resent on every invocation.
+4) Scene Anchors are reintroduced ONLY when:
+   - context window exhaustion approaches, OR
+   - an explicit scene change has been written.
+
+---
+
+### IV.4 Scene Update Rules
+
+1) Scene updates are total replacements.
+2) Partial scene updates are forbidden.
+3) Micro-location changes do NOT require scene replacement.
+4) Explicit scene changes replace the full anchor.
+
+---
+
+### IV.5 Context Exhaustion Detection
+
+1) Token and context exhaustion detection exists outside the LLM.
+2) Runtime MUST track remaining context mechanically.
+3) When remaining context drops below a defined threshold:
+   - the full Scene Anchor is re-injected.
+4) The LLM must NOT be responsible for detecting its own context limits.
+
+---
+
+## ARTICLE V — KNOWLEDGE GATING
 
 ### V.1 Storage ≠ Knowledge
 
 1) Runtime MUST NOT assume agents know what is stored.
-2) Access to the authoritative record does not imply in-world awareness.
+2) Ledger access does not imply awareness.
 
-### V.2 Context Loading
+---
 
-When invoking writing for an agent, Runtime MUST:
-- load only the text that agent is plausibly aware of,
-- exclude private text of others,
-- exclude off-screen developments unknown to them,
-- preserve ignorance where ignorance exists.
+### V.2 Context Loading Rules
+
+When invoking writing for an agent, Runtime MUST load:
+
+- only text the agent plausibly knows,
+- only text that has been written,
+- only text permitted by access rules.
+
+Runtime MUST exclude:
+
+- other agents’ private text,
+- off-screen developments unknown to the agent,
+- inferred facts.
+
+Ignorance must be preserved.
+
+---
 
 ### V.3 Error Preservation
 
 Agents may:
-- hold incorrect beliefs,
-- speak false claims,
+
+- be wrong,
+- contradict facts,
 - misunderstand reality.
 
-Runtime MUST record these without correction.
+Runtime MUST record this without correction.
+
 Reality is not “fixed” by the system.
 
 ---
 
-## VI. WRITING BUNDLES AND ATOMICITY
+## ARTICLE VI — WRITING BUNDLES AND CAUSALITY
 
 ### VI.1 Single Invocation, Multiple Writes
 
-During one invocation opportunity, the system MAY write:
+During a single invocation, writing MAY include:
+
 - multiple public entries,
 - multiple private entries,
 - off-screen developments for other agents.
 
-### VI.2 Atomic Ordering Rules
+---
 
-1) All writes from a single invocation form an **atomic bundle**.
-2) They share:
-   - a common invocation reference,
-   - monotonically ordered timestamps,
-   - explicit authorship per entry.
+### VI.2 Atomic Bundle Requirement
 
-3) Ordering within a bundle must be explicit and preserved.
-4) No partial bundle may be committed.
-5) **No interleaving with writes from other invocations is permitted.**
-
-### VI.3 Parallel Off-Screen Writing
-
-Runtime MAY permit writing about:
-- other people,
-- other places,
-- unrelated ongoing life,
-
-during any invocation, provided:
-- it does not depend on the participant’s action,
-- it does not influence the current scene causally,
-- it obeys all World and Constitution constraints.
-
-**Such writing must not be used as input, justification, or causal explanation for any other write within the same invocation.**
-
-This enables parallel life without simulation.
+1) All writes from a single invocation form one atomic bundle.
+2) Bundles share:
+   - a single invocation reference,
+   - ordered timestamps,
+   - explicit authorship.
+3) Partial bundle commits are forbidden.
+4) Interleaving bundles from different invocations is forbidden.
 
 ---
 
-## VII. RENDERING
+### VI.3 Causal Honesty
 
-Rendering is a projection choice.
-Rendering does not create facts.
-Rendering must be faithful to written text.
-
-Runtime MUST NOT:
-- infer missing facts for display,
-- smooth contradictions,
-- replace text with summaries.
+1) Every written event must have exactly one origin.
+2) Nothing may occur without a written cause.
+3) Retroactive plausibility generation is forbidden.
+4) “What likely happened” is invalid.
 
 ---
 
-## VIII. SUMMARIES
+## ARTICLE VII — OFF-SCREEN WRITING
 
-1) Summaries are non-authoritative.
-2) Summaries must be traceable.
-3) Authoritative text always wins.
+Runtime MAY permit off-screen writing during any invocation, provided:
+
+- it does not depend on participant actions,
+- it does not causally affect the current scene,
+- it obeys all World and Constitutional rules.
+
+Off-screen writing must not be used as justification for other writes in the same bundle.
 
 ---
 
-## IX. FAILURE MODES
+## ARTICLE VIII — RENDERING SEPARATION
+
+1) Rendering is a projection choice.
+2) Rendering does not create facts.
+3) Runtime MUST NOT:
+   - infer missing facts,
+   - smooth contradictions,
+   - replace text with summaries.
+
+---
+
+## ARTICLE IX — SILENCE
+
+1) Silence is allowed.
+2) Silence is not privileged.
+3) Silence must not be encouraged mechanically.
+4) Silence must not replace valid output.
+
+Silence occurs only if chosen.
+
+---
+
+## ARTICLE X — FAILURE MODES
 
 Runtime MUST fail explicitly when:
+
 - record integrity is threatened,
-- forbidden mechanisms are attempted,
-- storage guarantees cannot be met.
+- atomicity cannot be guaranteed,
+- forbidden mechanisms are attempted.
 
 Runtime MUST NOT:
+
 - invent compensations,
-- simulate continuity,
-- “do something reasonable.”
+- “do something reasonable,”
+- simulate continuity.
 
 ---
 
 ## FINAL RULE
 
-Runtime opens opportunities.
+Runtime opens the door.
 Writing changes reality.
 Recording makes it exist.
-Rendering merely shows a slice.
-
-Time and randomness may permit thought.
-They never decide outcomes.
+Time passes regardless.
