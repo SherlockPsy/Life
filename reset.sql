@@ -1,3 +1,0 @@
-DROP TABLE IF EXISTS entries;
-DROP TABLE IF EXISTS bundles;
-DROP TABLE IF EXISTS invocations;
