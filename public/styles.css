@@ -1,0 +1,144 @@
+:root {
+    --bg-color: #111;
+    --text-color: #eee;
+    --accent-color: #0f0;
+    --user-color: #aaa;
+    --voice-color: #fff;
+    --people-color: #f0f;
+    --font-main: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+    height: 100%;
+}
+
+#stream-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#stream-entries {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.entry {
+    padding: 10px;
+    border-left: 2px solid #333;
+}
+
+.entry.channel-USER {
+    border-color: var(--user-color);
+    color: var(--user-color);
+}
+
+.entry.channel-VOICE {
+    border-color: var(--voice-color);
+    color: var(--voice-color);
+    font-style: italic;
+}
+
+.entry.channel-PEOPLE {
+    border-color: var(--people-color);
+    color: var(--people-color);
+}
+
+.author-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+#stream-input-area {
+    display: flex;
+    gap: 10px;
+    height: 60px;
+}
+
+#operator-input {
+    flex: 1;
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px;
+    font-family: inherit;
+    resize: none;
+}
+
+#invoke-btn {
+    background: #333;
+    color: #fff;
+    border: 1px solid #444;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+#invoke-btn:hover {
+    background: #444;
+}
+
+/* Pocket */
+#pocket-container {
+    width: 300px;
+    background: #1a1a1a;
+    border-left: 1px solid #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#pocket-container.hidden {
+    display: none;
+}
+
+#pocket-clock {
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.pocket-section-title {
+    font-size: 0.8em;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.pocket-item {
+    background: #222;
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+/* Debug */
+#debug-overlay {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.7em;
+    color: #444;
+}

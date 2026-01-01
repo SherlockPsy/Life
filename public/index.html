@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life - Perceptual Stream</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Stream Area -->
+        <main id="stream-container">
+            <div id="stream-entries">
+                <!-- Entries will be rendered here -->
+            </div>
+            <div id="stream-input-area">
+                <textarea id="operator-input" placeholder="Type to invoke..."></textarea>
+                <button id="invoke-btn">Invoke (BEAT)</button>
+            </div>
+        </main>
+
+        <!-- Pocket Overlay (Hidden by default) -->
+        <aside id="pocket-container" class="hidden">
+            <div id="pocket-clock">
+                <span id="world-time">--:--</span>
+            </div>
+            <div id="pocket-calendar">
+                <!-- Calendar items -->
+            </div>
+            <div id="pocket-messages">
+                <!-- Messages -->
+            </div>
+        </aside>
+
+        <!-- Debug Info -->
+        <div id="debug-overlay">
+            <span id="debug-status">Ready</span>
+            <span id="debug-request-id"></span>
+        </div>
+    </div>
+
+    <script src="js/renderers.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
