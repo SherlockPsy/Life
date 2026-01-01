@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const { v4: uuidv4 } = require('uuid');
+const Engine2 = require('./engines/ENGINE_2_BEAT_AND_OPPORTUNITY_COORDINATOR/core');
+const Engine3 = require('./engines/ENGINE_3_TIME_AND_CALENDAR_ENGINE/core');
 
 const app = express();
 app.use(bodyParser.json());
@@ -46,11 +48,29 @@ app.post('/invocations', async (req, res) => {
     // A. Record Invocation
     await client.query('INSERT INTO invocations (request_id, envelope) VALUES ($1, $2)', [requestId, envelope]);
 
-    // B. Construct Write Bundle (Phase 4: Echo Operator Input)
+    // B. Resolve Time (Engine 3) - EXPLICIT ONLY
+    let worldTime;
+    const overrides = envelope.declared_overrides || {};
+    const timeDeclared = overrides.time && (overrides.time.declared_world_time !== undefined || overrides.time.advance_by !== undefined);
+
+    if (overrides.time && overrides.time.declared_world_time !== undefined) {
+      worldTime = await Engine3.setTime(client, overrides.time.declared_world_time);
+    } else if (overrides.time && overrides.time.advance_by !== undefined) {
+      worldTime = await Engine3.advanceTime(client, overrides.time.advance_by);
+    } else {
+      // No change, just read for the beat record
+      worldTime = await Engine3.getWorldTime(client);
+    }
+
+    // C. Coordinate Beat (Engine 2)
+    // We pass the resolved time, Engine 2 does NOT coordinate it.
+    const beatContext = await Engine2.handleBeat(client, envelope, worldTime);
+
+    // D. Construct Write Bundle (Phase 4: Echo Operator Input)
     const bundleId = uuidv4();
     const entryId = uuidv4();
-    // CORRECTION: Do not infer world time. Use declared time or null.
-    const declaredTime = envelope.declared_overrides?.time?.declared_world_time || null;
+    
+    // Use the authoritative world time from the beat context
     const inputText = envelope.operator?.input_text || "";
     
     const shouldWrite = inputText.length > 0; 
@@ -74,7 +94,7 @@ app.post('/invocations', async (req, res) => {
         entry_id: entryId,
         bundle_id: bundleId,
         request_id: requestId,
-        created_at_world: declaredTime,
+        created_at_world: worldTime,
         // CORRECTION: Do not infer author identity.
         author: null,
         visibility: { scope: "PUBLIC", visible_to: [] },
@@ -92,7 +112,8 @@ app.post('/invocations', async (req, res) => {
     await client.query('COMMIT');
 
     // 3. RETURN PROJECTION
-    res.json(constructProjection(requestId, bundle, entries));
+    // Only expose time if explicitly declared/modified
+    res.json(constructProjection(requestId, bundle, entries, beatContext, timeDeclared));
 
   } catch (e) {
     await client.query('ROLLBACK');
@@ -103,7 +124,7 @@ app.post('/invocations', async (req, res) => {
   }
 });
 
-function constructProjection(requestId, bundle, entries) {
+function constructProjection(requestId, bundle, entries, beatContext = null, timeDeclared = false) {
   return {
     request_id: requestId,
     stream: {
@@ -119,13 +140,17 @@ function constructProjection(requestId, bundle, entries) {
     },
     pocket: {
       is_available: false,
-      clock: { world_time: null, timezone: null },
+      clock: { 
+        world_time: (beatContext && timeDeclared) ? beatContext.world_time : null, 
+        timezone: null 
+      },
       calendar: { items: [] },
       messages: { items: [] }
     },
     debug: {
       wrote: bundle ? bundle.wrote : false,
-      bundle_id: bundle ? bundle.bundle_id : null
+      bundle_id: bundle ? bundle.bundle_id : null,
+      beat_id: beatContext ? beatContext.beat_id : null
     }
   };
 }
