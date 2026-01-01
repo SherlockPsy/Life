@@ -1,509 +1,666 @@
-# ENGINE INVENTORY v2 — PROMPT-HEAVY / TOOL-REQUEST-DRIVEN / CAPSULE-BASED
-# STATUS: REPLACES PRIOR ENGINE LISTS
-# AUTHORITY NOTES
-# - Reality remains text-only, append-only, atomic, idempotent.
-# - No labels/values/meters as world-state.
-# - “Tools” are LLM-issued retrieval requests (questions) executed by the system.
-# - “Capsules” are text bundles (per-person) used for identity continuity and scalable recall.
-# - “Scene Pack / Rehydration Pack” is a text-only view used when context limits approach.
-# - Redis and Qdrant are implementation substrates for caching and semantic retrieval ONLY.
-# - Qdrant is an index, not truth. Redis is a cache, not truth. The ledger is truth.
+# ENGINE INVENTORY v3 — AUDITED + RECREATED (NO COMPRESSION)
+# BASIS OF TRUTH
+# - The authoritative sources are the locked files you provided:
+#   - NON_NEGOTIABLE_SYSTEM_DECISIONS.md (primary)
+#   - MASTER_CONSTITUTION.md / MASTER_RUNTIME.md / MASTER_INFRASTRUCTURE.md / MASTER_WORLD.md
+#   - SYSTEM_PROHIBITIONS.md (secondary; subordinate; conflicts do not override primary)
+# - Author overrides (you stated) can supersede anything in the files.
+#
+# CORE AXIOMS THIS INVENTORY MUST SATISFY (RESTATED, NOT NEW)
+# - Text-only reality: only stored written text exists as reality.
+# - Append-only: past text is never altered; corrections are new text only.
+# - Atomic bundles: multi-write commits are all-or-nothing.
+# - Idempotency: same invocation must not create new reality.
+# - Time exists objectively; system must not time-skip or “keep things moving”.
+# - Always an active scene; scene setup cached; rehydration near token limits.
+# - Storage ≠ knowledge; ignorance preserved; private text must not leak.
+# - Orchestrator / runtime is mechanically stupid: no semantic decisions.
+# - Rendering is projection only: never creates facts, never smooths contradictions.
+# - “Tools” are LLM-issued retrieval requests (questions/requests), not extra narrative engines.
+# - No labels/meters/values as world-state; no game/simulation state machines.
+#
+# IMPORTANT: “metadata” (timestamps, authorship, visibility) is allowed as *non-semantic* infrastructure data.
+# Reality remains the written text; metadata supports ordering, attribution, and access boundaries.
 
 ---
 
-## ENGINE 0 — MECHANICAL SPINE (THE ONLY “DUMB SYSTEM” CORE)
+# DEFINITIONS (TERMS USED CONSISTENTLY IN THIS INVENTORY)
 
-### PURPOSE
-Provide the minimal mechanical substrate:
-- accept invocations,
-- keep a monotonic time coordinate,
-- commit proposed writes into the ledger (append-only),
-- enforce atomicity + idempotency,
-- deliver projections (rendered view) without creating facts.
+## D1. Operator
+The external real human who runs the system (George). Operator input is outside-world control input.
 
-### OWNS
-- Append-only storage contract (reality ledger as authority)
-- Atomic bundle commit contract
-- Idempotency contract (same invocation => same committed result)
-- Authorship attribution metadata (non-semantic)
-- Timestamping metadata (non-semantic)
-- Strict “fail, don’t invent” behaviour when integrity is threatened
-- Event ordering preservation
+## D2. Participant
+A person inside the world. George is a participant in-world. Rebecca is a participant in-world. Any other people are participants.
 
-### MUST NEVER DO
-- Interpret meaning
-- Decide relevance
-- Decide “who should act”
-- Decide “what should happen”
-- Invent missing facts, continuity, or motivation
-- Convert text into state variables that drive behaviour
-- Do semantic scheduling (no “the model needs X” logic)
+## D3. Invoker
+A non-person system identity presented to LLMs as the “user” of the call, specifically to avoid LLM user-favoritism towards the Operator.
 
-### INPUTS
-- Invocation Envelope (from Engine 1)
-- Proposed Write Bundle (from Engine 7)
-- Validation outcomes (from Engine 8)
-- Clock/time coordinate (from Engine 2)
+## D4. Invocation
+A single external opportunity for the system to attempt writing. Invocation grants permission to write, not an obligation.
 
-### OUTPUTS
-- Committed Bundle (ledger entries)
-- Explicit failure (if integrity threatened)
-- Projection request envelope (to Engine 10)
-- Streamable committed entries (to observers)
+## D5. Beat
+A discrete runtime cycle boundary used for atomicity and rehydration safety.
+- Beats are NOT “turn-taking”.
+- Beats are NOT narrative units.
+- Beats are purely mechanical boundaries where the system may:
+  - run tool-request loops,
+  - accept or reject bundles,
+  - commit a bundle,
+  - render projection.
 
-### DEPENDS ON
-- Storage substrate (Postgres or equivalent) for durable ledger
-- Redis for idempotency result cache (optional optimization, not authority)
+## D6. Write Entry
+A single ledger entry of written text (plus non-semantic metadata: timestamp, author/source, visibility).
 
----
+## D7. Bundle
+A set of one or more write entries committed atomically as a unit.
 
-## ENGINE 1 — INVOCATION ENVELOPE ENGINE (NON-PERSON “USER” FOR THE LLM)
+## D8. Visibility / Knowledge Boundary
+A mechanical constraint describing which stored text may be shown to which LLM call.
+This is enforced by inclusion/exclusion of text, not by “the system knowing”.
 
-### PURPOSE
-Ensure the LLM does NOT treat George as its user (to neutralize inherent user-favoritism),
-and instead treats a stable non-person invoker identity as its “user”.
+## D9. Scene Anchor Pack
+A text-only grounding pack describing the current lived scene (place, who is present/relevant, perceptual conditions).
+- It is grounding, not hidden state.
+- It must not invent facts.
+- It is cached and not resent every beat/turn.
 
-### OWNS
-- Stable invoker identity and framing for all LLM calls
-- Separation of:
-  - Operator (real human outside world)
-  - Invoker (non-person system caller presented as “user” to LLM)
-  - Participant (in-world people, including George-as-participant)
-- Removal of “help the user” cues from LLM-facing wrapper
+## D10. Rehydration Pack (Scene Pack for Context Exhaustion)
+A text-only view generated when context token limits approach, enabling continuity without re-reading everything.
+- Must be invisible to lived experience (no “rehydrating…” language).
+- Must occur only at beat boundaries.
+- Must complete atomically (pack fully built or system does not proceed).
 
-### MUST NEVER DO
-- Present George to the LLM as its user
-- Embed goals like “be satisfying”, “be nice”, “keep it moving”
-- Embed narrative direction in the invoker wrapper
+## D11. Capsule (Per-Person Capsule Pack)
+A text bundle that supports identity continuity and scalable recall for a specific person.
+- Capsule content must be record-backed excerpts and/or explicitly marked derived non-authoritative text.
+- Capsules must not replace the ledger as authority.
+- Capsules are pulled into context only when needed (token economy).
 
-### INPUTS
-- External operator request (George) as raw input channel data
+## D12. Tool Request
+A structured question/request emitted by the LLM asking for retrieval.
+Tool requests do not write reality. Tool requests only cause retrieval of existing written text excerpts (bounded by visibility).
 
-### OUTPUTS
-- Invocation Envelope (invoker identity + request metadata, non-semantic)
-
-### DEPENDS ON
-- None (pure wrapper, deterministic)
+## D13. Semantic Search
+Qdrant (or similar) is used only to select candidate written blocks.
+Candidates must always be resolved into verbatim excerpts from the authoritative ledger.
 
 ---
 
-## ENGINE 2 — TIME COORDINATE ENGINE (OBSERVE/ANCHOR, NEVER DIRECT)
+# ENGINE SET — OVERVIEW OF SHAPE
 
-### PURPOSE
-Maintain objective time coordinate and expose it only as a coordinate and/or as written perception,
-without becoming a plot engine or action trigger.
-
-### OWNS
-- Monotonic world time coordinate
-- Handling of explicit operator-authorized time-advance intents (as declared)
-- Pause/resume semantics (if applicable in your locked docs)
-- Time stamping of bundles via Mechanical Spine
-
-### MUST NEVER DO
-- Force outcomes due to time passing
-- Invent “later…” transitions
-- Trigger actions because “it’s been a while”
-- Smooth timelines for coherence
-
-### INPUTS
-- Invocation Envelope
-- Existing ledger entries that reference time perceptions
-
-### OUTPUTS
-- Current time coordinate (for stamping)
-- Optional: allowed time cues for context packs (as text, when grounded)
-
-### DEPENDS ON
-- Mechanical Spine (for stamping consistency)
+This inventory is intentionally “spine + governance + retrieval + packs + LLM writer + acceptance + projection”.
+It is NOT “domain engines” like “story engine”.
+Domain behaviors (world facts vs people actions) live primarily in:
+- prompt packs and contracts,
+- tool-request patterns,
+- write acceptance constraints,
+- and the fact that the runtime remains mechanically stupid.
 
 ---
 
-## ENGINE 3 — SCENE ANCHOR & SCENE PACK ENGINE (GROUNDING + REHYDRATION)
+# ENGINE 0 — REALITY LEDGER ENGINE (AUTHORITATIVE RECORD)
 
-### PURPOSE
-Provide text-only grounding for the active scene and rehydrate near context exhaustion,
-without resets, acknowledgements, or “rehydrating…” meta.
+## PURPOSE
+Maintain the authoritative append-only written record of reality.
 
-### OWNS
-- “Always an active scene” invariant enforcement (as a pack, not state variables)
-- Scene Anchor Pack (sent once; cached; reintroduced only at exhaustion or explicit change)
-- Rehydration Scene Pack (near context limit) as a text-only view
-- Beat-boundary-only rehydration (never mid-utterance/mid-action)
-- Atomic rehydration requirement (pack fully formed or system does not proceed)
+## OWNS (SOLE AUTHORITY)
+- “What exists” = what has been written into the ledger.
+- Append-only invariant (no mutation, no deletion).
+- Attribution metadata (who wrote it).
+- Ordering metadata (timestamps / sequence).
+- Visibility metadata (public vs private classes, where applicable).
+- Atomic bundle commit mechanism.
+- Idempotency mechanism (same invocation => same commit result; no duplicate realities).
 
-### MUST NEVER DO
-- Invent facts
-- Imply outcomes
-- Reset scenes
-- Treat micro-movements as new scenes
-- Insert meta narration (“rehydrating”, “loading context”, etc.)
+## MUST NEVER DO
+- Create facts.
+- Summarise source text into replacement reality.
+- Delete or mutate past text.
+- “Fix” contradictions.
+- Infer missing events.
+- Reorder events.
+- Convert text into gameplay-like state (meters, flags) that drive future outcomes.
 
-### INPUTS
-- Ledger excerpts (from Engine 6)
-- Trigger signals:
-  - token budget near limit (mechanical counter)
-  - explicit scene change written
+## INPUTS
+- Proposed Write Bundle (from Engine 9) + bundle metadata.
+- Invocation ID / request_id (from Engine 1).
+- Author/source identity (from Engine 8; must be explicit).
+- Visibility tags (non-semantic boundary data).
 
-### OUTPUTS
-- Scene Anchor Pack (text)
-- Rehydration Scene Pack (text)
-- “Prior physical configuration replay” snippet (binding continuity, text-only)
+## OUTPUTS
+- Committed Bundle (ledger entries).
+- Explicit commit failure (integrity threat).
+- Ledger query responses (verbatim text, metadata) for retrieval engines.
 
-### DEPENDS ON
-- Engine 5 (Token Budget Monitor)
-- Engine 6 (Retrieval)
-- Engine 4 (Context Gating)
-- Redis cache for packs (optional optimization)
-
----
-
-## ENGINE 4 — CONTEXT GATING ENGINE (KNOWLEDGE BOUNDARIES AS INCLUSION/EXCLUSION)
-
-### PURPOSE
-Assemble the LLM’s context strictly as permitted text, preserving ignorance and privacy,
-and ensuring no semantic “helpfulness” creeps in.
-
-### OWNS
-- Visibility filtering BEFORE anything reaches the LLM
-- Separation of public vs private vs restricted text into allowed context packs
-- Rule: storage ≠ knowledge (enforced by exclusion)
-- “No invention to fill gaps” enforcement at the context level
-- Preventing summaries from becoming evidence (summaries are marked and treated as non-authoritative)
-
-### MUST NEVER DO
-- Include text “because relevant” unless permitted
-- Leak private text across agents/participants
-- Insert inferred bridging context
-- Treat semantic search hits as facts (must be record-backed excerpts)
-
-### INPUTS
-- Invocation Envelope
-- Scene packs (Engine 3)
-- Capsule pulls (Engine 9)
-- Retrieval results (Engine 6)
-
-### OUTPUTS
-- Allowed Context Pack(s) per LLM call:
-  - Scene Anchor Pack
-  - Rehydration Pack (if triggered)
-  - Selected verbatim excerpts
-  - Selected capsules (text)
-  - Explicit “unknown” when retrieval yields nothing
-
-### DEPENDS ON
-- Engine 6 (Retrieval)
-- Engine 9 (Capsules)
-- Engine 3 (Scene packs)
+## DEPENDS ON
+- Infrastructure storage substrate (Postgres or equivalent) for durability.
+- Optional: Redis for idempotency cache (operational cache only; ledger remains authority).
 
 ---
 
-## ENGINE 5 — TOKEN BUDGET MONITOR (MECHANICAL TRIGGER ONLY)
+# ENGINE 1 — INVOCATION & IDEMPOTENCY ENVELOPE ENGINE
 
-### PURPOSE
-Track context window usage mechanically and trigger rehydration near exhaustion,
-without interpreting content.
+## PURPOSE
+Receive invocations and bind them to idempotent identity and mechanical processing constraints.
 
-### OWNS
-- Mechanical token counter thresholds
-- Triggering “rehydration required” at beat boundaries
-- Hysteresis/frequency rules if present (or left unspecified until locked)
+## OWNS
+- Invocation Envelope format (includes request_id, timestamps, invoker identity, any operator input payload).
+- Idempotency keying:
+  - The invocation must have a stable idempotency identifier.
+  - Replays must return identical results.
+- Beat boundary initialization and shutdown for each invocation.
 
-### MUST NEVER DO
-- Trigger based on meaning (“this is complex”)
-- Trigger mid-utterance
-- “Optimize” by dropping context silently
+## MUST NEVER DO
+- Decide meaning of operator input.
+- Decide “what should happen”.
+- Generate narrative.
+- Modify proposed writes.
 
-### INPUTS
-- Current assembled context size (mechanical measure)
+## INPUTS
+- Operator input payload (raw).
+- Any system schedule / beat trigger that creates an invocation opportunity.
 
-### OUTPUTS
-- Rehydration trigger signal to Engine 3 and Engine 4
+## OUTPUTS
+- Invocation Envelope passed into:
+  - Engine 2 (Beat Coordinator),
+  - Engine 8 (Invoker Identity Wrapper),
+  - Engine 4 (Context gating).
 
-### DEPENDS ON
-- None (pure mechanical monitor)
-
----
-
-## ENGINE 6 — RETRIEVAL ENGINE (RECORD-BACKED EXCERPTS + SEMANTIC CANDIDATES)
-
-### PURPOSE
-Execute retrieval requests and produce verbatim excerpts from the authoritative ledger,
-optionally using semantic search for candidate selection.
-
-### OWNS
-- Two-stage retrieval:
-  1) Candidate selection (Qdrant semantic index OPTIONAL)
-  2) Authoritative excerpt extraction (ledger is source of truth)
-- “No results” is allowed and must be explicit
-- Retrieval never fabricates or paraphrases as authority
-
-### MUST NEVER DO
-- Return embeddings as evidence
-- Return paraphrases as authoritative text
-- Invent missing entries
-- Reorder events
-
-### INPUTS
-- Tool Request (from Engine 7; LLM-issued question/request)
-- Visibility constraints (from Engine 4)
-- Cache keys (optional)
-
-### OUTPUTS
-- Retrieval Result Pack:
-  - source block references (ledger IDs/anchors)
-  - verbatim excerpts only
-  - explicit empty result when none / forbidden
-
-### DEPENDS ON
-- Ledger storage (authoritative record)
-- Qdrant (candidate selection index only)
-- Redis (cache only)
+## DEPENDS ON
+- Engine 0 for idempotency replay detection (authoritative) and optional cache.
 
 ---
 
-## ENGINE 7 — TOOL-REQUEST PROTOCOL ENGINE (LLM “QUESTIONS” → RETRIEVAL)
+# ENGINE 2 — BEAT COORDINATOR ENGINE (MECHANICAL ORCHESTRATION)
 
-### PURPOSE
-Provide the contract by which the LLM requests information when it needs it,
-without the system deciding what the LLM “should” know.
+## PURPOSE
+Coordinate the beat lifecycle for an invocation without semantic decision-making.
 
-### OWNS
-- Tool Request schema (question/request format)
-- Allowed classes of request (e.g., “retrieve memory about X”, “retrieve last mention of Y”, “retrieve capsule for person Z”)
-- Rate limits / guardrails (mechanical) if required
-- Routing requests to Engine 6 through Engine 4 (visibility gating first)
+## OWNS
+- Beat boundaries:
+  - start-of-beat
+  - tool-request loop (bounded)
+  - propose-write phase
+  - accept/reject phase
+  - commit phase
+  - projection phase (optional)
+- Ensuring rehydration can only occur at beat boundaries.
+- Ensuring no mid-utterance / mid-action context surgery.
 
-### MUST NEVER DO
-- Allow tool calls to write reality
-- Allow tool calls to introduce new facts
-- Allow unrestricted browsing across visibility boundaries
-- Allow semantic search to bypass ledger excerpting
+## MUST NEVER DO
+- Decide who acts.
+- Decide what matters.
+- Create events to keep things moving.
+- Choose tool requests (LLM chooses requests; this engine only executes them).
+- Decide relevance of retrieved results.
 
-### INPUTS
-- LLM Tool Request (structured text)
-- Identity context (whose boundary applies)
-- Invocation Envelope
+## INPUTS
+- Invocation Envelope (Engine 1).
+- Token budget status (Engine 3).
+- Tool requests (Engine 7) emitted by LLM.
+- Acceptance decisions (Engine 10).
 
-### OUTPUTS
-- Retrieval execution request to Engine 6 (with constraints)
-- Retrieval results returned to LLM via Engine 4 context pack
+## OUTPUTS
+- Calls to:
+  - Engine 4 (Context gating) for each LLM call,
+  - Engine 7 (Tool execution pipeline),
+  - Engine 9 (LLM Writer),
+  - Engine 10 (Write acceptance),
+  - Engine 0 (Commit),
+  - Engine 12 (Projection).
 
-### DEPENDS ON
-- Engine 4 (Context gating)
-- Engine 6 (Retrieval)
-
----
-
-## ENGINE 8 — WRITE ACCEPTANCE ENGINE (STRUCTURAL ADMISSIBILITY ONLY)
-
-### PURPOSE
-Decide whether a proposed write bundle is admissible for commitment,
-without rewriting it or semantically judging it.
-
-### OWNS
-- Bundle shape checks:
-  - attribution present
-  - bundle boundaries respected
-  - no retroactive mutation attempts
-  - no partial commit allowance
-- Idempotency coordination: same invocation must not create new reality
-- Detection of explicitly forbidden meta-output patterns (where applicable and locked)
-
-### MUST NEVER DO
-- Rewrite content to comply
-- “Improve” outputs
-- Decide relevance
-- Convert content into state variables
-
-### INPUTS
-- Proposed Write Bundle (from Engine 11)
-- Invocation Envelope
-- Ledger state references for idempotency
-
-### OUTPUTS
-- Accept/Reject with explicit reason
-- Validated bundle forwarded to Mechanical Spine
-
-### DEPENDS ON
-- Engine 0 (Mechanical spine / commit)
-- Redis idempotency cache (optional)
-- Ledger for replay detection
+## DEPENDS ON
+- Engine 0 (ledger), Engine 3 (token budget), Engine 4 (context gating), Engine 7/9/10/12.
 
 ---
 
-## ENGINE 9 — CAPSULE ENGINE (PER-PERSON TEXT BUNDLES)
+# ENGINE 3 — TOKEN BUDGET MONITOR ENGINE (MECHANICAL TRIGGER ONLY)
 
-### PURPOSE
-Maintain scalable identity continuity via per-person text capsules,
-pulled into context when a person appears or becomes relevant.
+## PURPOSE
+Detect approaching context window exhaustion and trigger rehydration mechanically.
 
-### OWNS
-- Capsule definition as TEXT BUNDLE (no numeric fields required)
-- Capsule generation policy:
-  - derived from authoritative record
-  - reproducible (no invention)
-  - non-authoritative unless explicitly written as reality
-- Capsule retrieval and inclusion triggers (policy-driven, not semantic)
-- Capsule caching (Redis) as optimization
+## OWNS
+- Mechanical measurement of current context size vs limit.
+- Trigger condition for rehydration.
+- Guarantee: trigger does not occur mid-beat action emission; only at beat boundary.
 
-### MUST NEVER DO
-- Invent biography content
-- Replace ledger reality
-- Collapse identities
-- Treat capsule as truth if it is derived
+## MUST NEVER DO
+- Trigger because “content is complex”.
+- Drop context silently.
+- Decide what is important to keep.
+- Invent rehydration content.
 
-### INPUTS
-- Person identity reference (text anchor / name / stable identity token)
-- Ledger excerpts
-- Optional: tool requests for capsule retrieval
+## INPUTS
+- Assembled context size metrics from Engine 4.
+- Current context window limit (model-specific constant, treated as configuration).
 
-### OUTPUTS
-- Person Capsule Pack (text), marked:
-  - SOURCE-BACKED (excerpts) and/or
-  - DERIVED (non-authoritative) sections, if present
+## OUTPUTS
+- RehydrationRequired = true/false signal to Engine 2 and Engine 5.
 
-### DEPENDS ON
-- Engine 6 (Retrieval)
-- Engine 4 (Context gating)
+## DEPENDS ON
+- None beyond measurement input.
+
+---
+
+# ENGINE 4 — KNOWLEDGE BOUNDARY & CONTEXT GATING ENGINE
+
+## PURPOSE
+Assemble allowed LLM context strictly as permitted text, preserving ignorance and preventing leaks.
+
+## OWNS
+- Knowledge boundary enforcement:
+  - storage ≠ knowledge
+  - private text does not leak into other agents
+- Visibility filtering BEFORE retrieval results enter context.
+- “Allowed Context Pack” assembly rules:
+  - includes scene anchor pack (Engine 5),
+  - includes rehydration pack if required (Engine 5),
+  - includes retrieved excerpts (Engine 6/7),
+  - includes capsules (Engine 6),
+  - includes minimal recent continuity replay (Engine 5).
+- Determinism:
+  - same inputs => same context pack (within allowed nondeterminism such as model randomness, but context assembly is deterministic).
+
+## MUST NEVER DO
+- Include text because it “seems relevant” unless permitted by boundary.
+- Leak private inner thoughts.
+- Include derived summaries as authoritative.
+- Insert invented bridging text.
+- Smooth contradictions.
+- Add narrative direction.
+
+## INPUTS
+- Invocation Envelope (Engine 1).
+- Target LLM call type (Writer call vs Tool-Request parsing vs Renderer).
+- Scene packs (Engine 5).
+- Capsules (Engine 6).
+- Retrieval results (Engine 7).
+- Ledger excerpts (Engine 7/0).
+
+## OUTPUTS
+- Allowed Context Pack (text-only + explicit block references).
+- Context assembly log (for reproducibility / debugging; does not enter world reality).
+
+## DEPENDS ON
+- Engine 5 (Scene pack engine)
+- Engine 6 (Capsules)
+- Engine 7 (Retrieval)
+- Engine 0 (Ledger)
+
+---
+
+# ENGINE 5 — SCENE ANCHOR + REHYDRATION PACK ENGINE
+
+## PURPOSE
+Provide text-only grounding of the always-active scene and build rehydration packs near token limits.
+
+## OWNS
+- “Always an active scene” invariant support via packs.
+- Scene Anchor Pack:
+  - sent once then cached,
+  - reintroduced only near context exhaustion or explicit scene change.
+- Rehydration Pack:
+  - built when Engine 3 triggers,
+  - must be invisible (no meta),
+  - must be beat-boundary only,
+  - must be atomic (fully built or system does not proceed).
+- Immediate physical configuration replay:
+  - a compact replay of immediately preceding physical configuration included in next beat context to prevent teleportation/continuity glitches.
+  - This replay is binding reality because it is sourced from written ledger entries.
+
+## MUST NEVER DO
+- Invent scene facts.
+- Imply outcomes.
+- Reset scenes.
+- Treat micro-location changes as new scenes.
+- Insert “three hours later” style narrative shortcuts.
+
+## INPUTS
+- Trigger: RehydrationRequired (Engine 3).
+- Ledger excerpts (Engine 7/0).
+- Optional derived rehydration summary (Engine 11) marked non-authoritative.
+- Explicit scene change signals written into ledger (detected mechanically via retrieval).
+
+## OUTPUTS
+- Scene Anchor Pack (text-only).
+- Rehydration Pack (text-only).
+- Physical continuity replay snippet (text-only).
+- Cacheable artifacts (Redis) as optimization only.
+
+## DEPENDS ON
+- Engine 0 (ledger for authoritative excerpts)
+- Engine 7 (retrieval)
+- Engine 11 (derived summaries, optional, non-authoritative)
+- Redis (optional caching)
+
+---
+
+# ENGINE 6 — CAPSULE ENGINE (PER-PERSON TEXT CAPSULES)
+
+## PURPOSE
+Provide scalable, pull-on-demand per-person capsule packs for identity continuity and recall.
+
+## OWNS
+- Capsule schema as TEXT SECTIONS (not numeric fields).
+- Capsule sourcing rules:
+  - source-backed excerpts pulled from ledger,
+  - optional derived capsule sections (non-authoritative and explicitly marked).
+- Capsule pull rules:
+  - pulled when the person appears, is present, or becomes relevant by explicit tool request.
+  - not stuffed into every scene pack by default (token economy).
+- Capsule caching rules:
+  - cache is allowed for performance,
+  - cache is never authority,
+  - cache must be regeneratable.
+
+## MUST NEVER DO
+- Invent biography.
+- Replace ledger reality.
+- Drift identity across time.
+- Collapse identities.
+- Introduce hidden state variables that influence outcomes.
+
+## INPUTS
+- Person identifier reference (text anchor, stable identity token, or equivalent).
+- Tool requests for capsule retrieval (Engine 7).
+- Ledger excerpts (Engine 7/0).
+- Optional Qdrant candidate list for capsule assembly (Engine 7).
+
+## OUTPUTS
+- Person Capsule Pack (text), structured as:
+  - SOURCE EXCERPTS (verbatim, with block references)
+  - OPTIONAL DERIVED SECTION (explicitly non-authoritative; reproducible from sources)
+- Capsule assembly provenance log (non-world, for reproducibility).
+
+## DEPENDS ON
+- Engine 7 (retrieval pipeline)
+- Engine 4 (context gating)
 - Redis (optional cache)
-- Qdrant (optional candidate selection for capsule assembly)
+- Qdrant (optional candidate selection)
 
 ---
 
-## ENGINE 10 — DERIVED TEXT ENGINE (SUMMARIES / INDEXES / REHYDRATION AIDS)
+# ENGINE 7 — RETRIEVAL ENGINE (LEDGER-BACKED EXCERPTS + SEMANTIC CANDIDATES)
 
-### PURPOSE
-Generate derived reading aids (including rehydration summaries) that never become reality,
-and are always clearly non-authoritative.
+## PURPOSE
+Return record-backed verbatim excerpts in response to retrieval needs, including semantic candidate selection.
 
-### OWNS
-- Derived summaries as non-authoritative text
-- Reproducibility requirement (must be derivable from ledger sources)
-- Marking derived content so it is not treated as evidence
+## OWNS
+- Two-stage retrieval:
+  1) candidate selection (semantic search) limited to allowed visibility domain
+  2) authoritative excerpt extraction from ledger
+- Guarantee: what is returned to the LLM is always ledger text excerpts, not embeddings, not paraphrases.
 
-### MUST NEVER DO
-- Replace source text
-- Create new facts
-- Smooth contradictions
-- Be treated as authoritative reality
+## MUST NEVER DO
+- Fabricate missing text.
+- Return paraphrases as authoritative.
+- Treat semantic search as truth.
+- Leak private text.
+- Reorder the timeline.
 
-### INPUTS
-- Source excerpts list (from Engine 6)
-- Pack purpose (rehydration / browsing / indexing)
+## INPUTS
+- Retrieval query request (from Engine 8 via Engine 4).
+- Visibility boundaries (from Engine 4).
+- Candidate list (optional, Qdrant).
 
-### OUTPUTS
-- Derived Summary Pack (explicitly non-authoritative)
+## OUTPUTS
+- Retrieval Result Pack:
+  - block references
+  - verbatim excerpts
+  - explicit “no results” when none or forbidden
 
-### DEPENDS ON
-- Engine 6 (Retrieval)
-- Engine 4 (Context gating)
+## DEPENDS ON
+- Engine 0 (ledger is authority)
+- Qdrant (candidate selection only)
+- Redis (optional caching)
 
 ---
 
-## ENGINE 11 — LLM WRITING ENGINE (PROPOSES WRITES OR SILENCE)
+# ENGINE 8 — TOOL-REQUEST PROTOCOL ENGINE (LLM QUESTIONS → RETRIEVAL EXECUTION)
 
-### PURPOSE
-Given an invocation, allowed context, and scene/capsule packs,
-the LLM produces either:
-- Proposed Write Bundle (one or more writes), OR
+## PURPOSE
+Allow the LLM to ask for information when it needs it, without the system deciding what it “should” know.
+
+## OWNS
+- Tool Request format/schema (structured question/request text).
+- Allowed tool request classes (examples, not a fixed list unless you later lock it):
+  - “Retrieve the last time X was mentioned”
+  - “Retrieve capsule for person Y”
+  - “Retrieve my recent commitments/plans”
+  - “Retrieve relevant prior physical configuration”
+  - “Retrieve what I perceived about Z”
+- Routing:
+  - tool requests go through context gating first,
+  - then retrieval executes,
+  - results return as excerpts into context.
+
+## MUST NEVER DO
+- Allow tool calls to write reality.
+- Allow tool calls to introduce new facts.
+- Allow unrestricted search across visibility boundaries.
+- Let the orchestrator decide tool requests.
+- Convert tool requests into semantic “importance” rules.
+
+## INPUTS
+- LLM-emitted Tool Request.
+- Current identity boundary (who is asking; whose knowledge boundary applies).
+- Invocation Envelope.
+
+## OUTPUTS
+- Retrieval execution request to Engine 7 (bounded).
+- Retrieval results returned to Engine 4 for inclusion into context.
+
+## DEPENDS ON
+- Engine 4 (context gating)
+- Engine 7 (retrieval)
+
+---
+
+# ENGINE 9 — LLM WRITER ENGINE (PROPOSE WRITES OR SILENCE)
+
+## PURPOSE
+Given allowed context, produce either:
+- Proposed Write Bundle (one or more write entries), or
 - NoWrite (silence).
 
-This is where “semantic work” happens, but it is constrained by the packs and contracts.
+## OWNS
+- Producing proposed writes (text) that will become reality only if committed.
+- Emitting tool requests (Engine 8) when information is needed.
+- Choosing silence when appropriate (silence is valid outcome).
 
-### OWNS
-- Producing proposed writes under prompt contract
-- Choosing silence when appropriate
-- Emitting tool requests when information is needed (via Engine 7)
+## MUST NEVER DO
+- Treat Operator (George) as its user (Invoker identity must be used).
+- Invent facts to fill gaps.
+- Skip time with narrative shortcuts.
+- Smooth contradictions.
+- Declare system mechanics in-world.
+- Force action because an invocation occurred.
 
-### MUST NEVER DO
-- Treat George as its user (enforced by Engine 1 wrapper)
-- Invent facts to fill missing context
-- Skip time narratively
-- Smooth contradictions
-- Declare system mechanics
+## INPUTS
+- Invocation Envelope (Engine 1 + Engine 8 for invoker wrapper).
+- Allowed Context Pack (Engine 4).
+- Scene packs (Engine 5).
+- Capsules (Engine 6).
+- Retrieved excerpts (Engine 7 via Engine 4).
 
-### INPUTS
-- Invocation Envelope (Engine 1)
-- Allowed Context Pack (Engine 4)
-- Scene Anchor / Rehydration packs (Engine 3)
-- Capsules (Engine 9)
-- Retrieval results (Engine 6 via Engine 4)
+## OUTPUTS
+- Proposed Write Bundle OR NoWrite.
+- Tool requests (questions/requests) when needed.
 
-### OUTPUTS
-- Proposed Write Bundle OR NoWrite
-- Tool Requests (questions/requests) when needed
-
-### DEPENDS ON
-- Engine 1 (Invoker framing)
-- Engine 4 (Context gating)
-- Engine 7 (Tool-request protocol)
-
----
-
-## ENGINE 12 — RENDERING / PROJECTION ENGINE (DISPLAY ONLY)
-
-### PURPOSE
-Project written reality for display without creating facts.
-
-### OWNS
-- Rendering as projection of ledger content
-- Selection of view slice according to knowledge boundaries
-- No smoothing, no invention, no time skipping
-
-### MUST NEVER DO
-- Create facts
-- Fix gaps
-- Resolve contradictions
-- Re-narrate time as “later…”
-
-### INPUTS
-- Ledger excerpts (Engine 6)
-- Knowledge boundaries (Engine 4)
-
-### OUTPUTS
-- Rendered Output (non-authoritative)
-
-### DEPENDS ON
-- Engine 6 (Retrieval)
-- Engine 4 (Context gating)
+## DEPENDS ON
+- Engine 8 (Invoker wrapper and tool protocol)
+- Engine 4 (context gating)
+- Engine 5/6/7 (packs + retrieval)
 
 ---
 
-## ENGINE 13 — CONTRACT TEST ENGINE (SWAPPABILITY MADE REAL)
+# ENGINE 10 — WRITE ACCEPTANCE ENGINE (STRUCTURAL ADMISSIBILITY + INTEGRITY GATES)
 
-### PURPOSE
-Ensure engines are replaceable without breaking the system by enforcing contract tests,
-especially for prompt packs, retrieval boundaries, and write integrity.
+## PURPOSE
+Accept or reject proposed bundles for commit without rewriting them or semantically judging them.
 
-### OWNS
-- Black-box contract tests for:
-  - idempotency
+## OWNS
+- Structural admissibility checks:
+  - attribution present
+  - bundle well-formed
+  - no attempt to mutate past text
+  - bundle atomicity preserved
+- Idempotency enforcement:
+  - detect replay and return identical result
+  - prevent duplicate reality creation
+- Explicit failure on integrity threats.
+
+## MUST NEVER DO
+- Rewrite content to comply.
+- “Improve” output quality.
+- Decide relevance.
+- Decide outcomes.
+
+## INPUTS
+- Proposed Write Bundle (Engine 9).
+- Invocation Envelope (Engine 1).
+- Ledger state references (Engine 0) for replay detection.
+
+## OUTPUTS
+- Accept (forward to Engine 0 commit) OR Reject (explicit reason).
+- Idempotent replay result (if applicable).
+
+## DEPENDS ON
+- Engine 0 (ledger authority)
+- Redis (optional idempotency cache)
+
+---
+
+# ENGINE 11 — DERIVED TEXT ENGINE (NON-AUTHORITATIVE SUMMARIES / INDEXES / AIDS)
+
+## PURPOSE
+Generate derived text aids that are explicitly non-authoritative and reproducible from ledger sources.
+
+## OWNS
+- Derived summaries for:
+  - rehydration aids
+  - long-history browsing aids
+  - indexing aids
+- Explicit non-authoritative marking.
+- Reproducibility requirement: derived content must be derivable from cited source excerpts.
+
+## MUST NEVER DO
+- Replace source text.
+- Create new facts.
+- Be treated as evidence.
+- Smooth contradictions.
+
+## INPUTS
+- Source excerpts and references (Engine 7).
+- Purpose label (rehydration vs browsing vs indexing) as non-world metadata.
+
+## OUTPUTS
+- Derived Summary Pack (explicitly non-authoritative).
+
+## DEPENDS ON
+- Engine 7 (retrieval)
+- Engine 4 (context gating)
+
+---
+
+# ENGINE 12 — PROJECTION / RENDERING ENGINE (DISPLAY ONLY)
+
+## PURPOSE
+Project written reality for display without changing reality.
+
+## OWNS
+- Rendering as projection only.
+- Selection of view slices bounded by knowledge constraints.
+- Guarantee: rendering never creates facts, never fixes gaps, never smooths contradictions, never time-skips.
+
+## MUST NEVER DO
+- Create facts.
+- Resolve contradictions.
+- Compress time.
+- Fill gaps for coherence.
+- Introduce narrative shortcuts.
+
+## INPUTS
+- Ledger excerpts (Engine 7).
+- Knowledge boundaries (Engine 4).
+- Scene anchor context (Engine 5) if needed purely as selection scaffolding.
+
+## OUTPUTS
+- Rendered Output (non-authoritative projection).
+
+## DEPENDS ON
+- Engine 4 (context gating)
+- Engine 7 (retrieval)
+
+---
+
+# ENGINE 13 — SYSTEM POSTURE & ANTI-DIRECTORSHIP COMPLIANCE ENGINE (CROSS-CUTTING)
+
+## PURPOSE
+Enforce the “mechanically stupid / non-directorial / non-user-centric” posture across all engines and prompt packs.
+
+## OWNS
+- Enforcement that no engine introduces:
+  - director logic
+  - “importance” scoring
+  - semantic scheduling
+  - user-centrism
+  - “keep it moving” behavior
+- Ensuring the orchestrator does not become a hidden narrator.
+
+## MUST NEVER DO
+- Inject content.
+- Rewrite outputs.
+- Become a semantic judge.
+
+## INPUTS
+- Engine configs
+- Prompt pack versions
+- Runtime traces (non-world)
+
+## OUTPUTS
+- Compliance failures flagged explicitly (non-world enforcement artifacts).
+
+## DEPENDS ON
+- None (conceptual cross-cutting; implemented as contract tests + CI gates)
+
+---
+
+# ENGINE 14 — CONTRACT TEST ENGINE (SWAPPABILITY MADE REAL)
+
+## PURPOSE
+Make engine replacement safe by enforcing black-box contract tests derived from the non-negotiable constraints.
+
+## OWNS
+- Contract tests for:
+  - append-only invariants
   - atomic commit
-  - no retroactive mutation
-  - visibility gating (no leaks)
-  - tool request handling returns excerpts only
-  - rehydration triggers only mechanically + beat-boundary only
-  - rendering never creates facts
-  - failure is explicit, not compensated
+  - idempotency
+  - no time skipping
+  - scene cache rules (send-once; reintroduce only on exhaustion or explicit change)
+  - rehydration (mechanical trigger; beat-boundary; atomic; invisible)
+  - knowledge boundary (no leaks; storage ≠ knowledge)
+  - tool request protocol (excerpts only; no new facts; bounded search)
+  - rendering (projection only; no facts)
+  - no director logic / no user-centric behavior
+  - explicit failure instead of invention
 
-### MUST NEVER DO
-- Subjective “quality” judging
-- Style-based pass/fail
-- Hidden scoring
+## MUST NEVER DO
+- Subjective style judging.
+- Hidden scoring.
+- “Seems fine” approvals.
 
-### INPUTS
-- Engine implementations and prompt pack versions
+## INPUTS
+- Engine implementations
+- Prompt pack versions
+- Sample invocation fixtures
 
-### OUTPUTS
-- Pass/Fail results with explicit violating contract references
+## OUTPUTS
+- Pass/Fail with explicit violated constraint references.
 
-### DEPENDS ON
-- All engines (as test subjects)
+## DEPENDS ON
+- All engines as test subjects
 
 ---
 
-# END — ENGINE INVENTORY v2
-# NEXT STEP (WHEN YOU SAY SO):
-# - For EACH engine: formal contract (Inputs, Outputs, Must-Never, Dependencies, Failure modes)
-# - Then: contract test suite definitions per engine (black-box)
-# - THEN: layering as policy knobs (enable/disable engines and widen scope), without rewrites
+# END — ENGINE INVENTORY v3 (AUDITED + RECREATED)
