@@ -98,91 +98,46 @@ Engine 6 MUST NOT emit:
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
 ### 5.1 `build_capsule(person_id, purpose) -> capsule_pack`
-Inputs:
-- person_id
-- purpose (non-semantic label; affects section inclusion rules only)
-
-Behavior:
-- Fetch eligible ledger excerpts via Engine 8 (already filtered).
-- Construct SOURCE_EXCERPTS section using verbatim excerpts.
-- Optionally construct OPTIONAL_DERIVED section:
-  - clearly labeled non-authoritative,
-  - derived strictly from cited excerpts,
-  - no new facts introduced.
-- Attach provenance to every section.
-
-No other operations are permitted.
+- Assembles a capsule for the person.
+- Uses Engine 8 to get evidence.
+- Uses Engine 9 to summarize if needed.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 6 MAY call:
-- ENGINE 8 (Retrieval) to obtain ledger excerpts.
-- ENGINE 4 (Knowledge Surface) indirectly through Engine 8 constraints.
-
-Engine 6 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 7 (Tool Requests) directly
-- ENGINE 0 (Ledger)
-- ENGINE 12 (Projection)
-- ENGINE 5 (Rehydration)
-- ENGINE 3 (Time)
-- ENGINE 2 (Beat)
+Engine 6 may call:
+- Engine 8 (Retrieval) - to get evidence.
+- Engine 9 (LLM Writer) - to summarize evidence into capsule sections.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 6 MAY read:
-- retrieval result packs
-- static personality documents (as reference, not authority)
-- capsule cache (if present)
-
-Engine 6 MAY write:
-- capsule cache entries (non-authoritative, replaceable)
-
-Engine 6 MUST NOT write:
-- ledger entries
-- authoritative state
-- hidden semantic state
+Engine 6 must NEVER call:
+- Engine 0 (Reality Ledger).
+- Engine 12 (Projection).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 6 MUST NEVER:
-- Invent memories, motives, feelings, or facts.
-- Resolve contradictions.
-- Store numeric stats, meters, or labels as “state”.
-- Override ledger evidence.
-- Treat capsules as truth.
-- Leak private knowledge across boundaries.
+Engine 6 may read:
+- Ledger excerpts (via Engine 8).
+- Person identity files.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If no eligible excerpts exist:
-- MUST still return a capsule with empty SOURCE_EXCERPTS.
-- MUST NOT fabricate content.
-
-If provenance cannot be attached:
-- MUST fail explicitly.
+Engine 6 must NEVER read:
+- Raw ledger.
+- Private knowledge of other people.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 6 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 6 MUST pass:
+- **Build Failure**: Return empty/minimal capsule.
+- **Missing Person**: Error.
 
-T1. SOURCE_EXCERPTS are verbatim ledger text.
-T2. OPTIONAL_DERIVED is clearly non-authoritative.
-T3. No new facts introduced.
-T4. Capsule regeneration produces consistent output for same inputs.
-T5. Capsule never leaks private entries.
-T6. Capsule removal does not break system operation.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 6 INTERFACE

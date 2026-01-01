@@ -97,83 +97,39 @@ Engine 13 MUST NOT emit:
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
 ### 5.1 `audit_posture(artifact_set) -> PASS|FAIL`
-Inputs:
-- artifact_set (contracts, engines, code, prompts)
-
-Behavior:
-- Scan for forbidden patterns:
-  - narrative helpers,
-  - engagement metrics,
-  - implicit goal functions,
-  - user-centric defaults,
-  - silent auto-corrections.
-- Fail if any posture rule is violated.
-
-No other operations are permitted.
+- Scans artifacts for posture violations.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 13 MAY call:
-- ENGINE 11 (Infrastructure) for:
-  - file access
-  - CI integration
-
-Engine 13 MUST NOT call:
-- Runtime engines
-- LLMs
-- UI components
+Engine 13 may call:
+- None (Static Analysis).
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 13 MAY read:
-- source files
-- config files
-- contracts
-- engine interfaces
-
-Engine 13 MAY write:
-- audit reports
-- CI failure signals
-
-Engine 13 MUST NOT write:
-- runtime data
-- ledger entries
-- caches
+Engine 13 must NEVER call:
+- Any runtime engine.
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 13 MUST NEVER:
-- Allow “temporary” posture violations.
-- Weigh trade-offs (“it’s probably fine”).
-- Auto-fix violations.
-- Defer enforcement.
+Engine 13 may read:
+- All source code and documentation.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If posture audit fails:
-- MUST block merge.
-- MUST require explicit human intervention.
-
-----------------------------------------------------------------------
-
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 13 SUBJECT)
-
-Engine 13 MUST pass:
-
-T1. Detect narrative pacing logic.
-T2. Detect engagement optimization.
-T3. Detect user-privileging logic.
-T4. Fail builds on posture violation.
-T5. No runtime coupling.
+Engine 13 must NEVER read:
+- Production database (it is not a runtime monitor).
 
 ----------------------------------------------------------------------
 
-END OF ENGINE 13 INTERFACE
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
+
+- **Violation Detected**: Block merge/deploy.
+

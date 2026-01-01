@@ -103,98 +103,48 @@ Engine 12 MUST NOT emit:
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `build_projection(request_id, cursor_before) -> projection_output`
-Inputs:
-- request_id (for idempotency linkage)
-- cursor_before (optional)
-
-Behavior:
-- Fetch committed entries visible to operator (via Engine 4).
-- Apply ordering rules.
-- Assemble stream entries:
-  - channel
-  - author_label (only for PEOPLE)
-  - text verbatim
-- Assemble pocket:
-  - clock from Engine 3
-  - calendar from Engine 3
-  - messages/calendar items only if explicitly present as written facts
-- Produce cursor_after.
-
-No other operations are permitted.
+### 5.1 `render_projection(request_id, cursor) -> projection_output`
+- Fetches entries.
+- Filters by visibility.
+- Formats for UI.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 12 MAY call:
-- ENGINE 0 (Reality Ledger) to fetch committed entries.
-- ENGINE 4 (Knowledge Surface) to filter visibility.
-- ENGINE 3 (Time & Calendar) for pocket data.
-- ENGINE 11 (Infrastructure) for transport/logging.
-
-Engine 12 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 8 (Retrieval)
-- ENGINE 7 (Tool Requests)
-- ENGINE 6 (Capsules)
-- ENGINE 5 (Rehydration)
+Engine 12 may call:
+- Engine 0 (Reality Ledger) - to read entries.
+- Engine 3 (Time) - to get clock.
+- Engine 4 (Knowledge) - to check visibility.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 12 MAY read:
-- ledger entries
-- visibility rules
-- time/calendar views
-- cursor metadata
-
-Engine 12 MAY write:
-- nothing persistent (projection is ephemeral)
-
-Engine 12 MUST NOT write:
-- ledger entries
-- caches treated as authority
-- UI state beyond cursors
+Engine 12 must NEVER call:
+- Engine 9 (LLM Writer).
+- Engine 10 (Write Acceptance).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 12 MUST NEVER:
-- Invent text.
-- Insert connective narration.
-- Collapse or summarize entries.
-- Expose private entries.
-- Modify wording.
-- Infer actions or emotions.
-- Display system/meta information.
+Engine 12 may read:
+- Committed ledger entries.
+- Time state.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If projection cannot be built:
-- MUST fail explicitly.
-- MUST NOT return partial projection.
-
-If cursor is invalid:
-- MUST reset to safe default or fail explicitly (policy-defined).
+Engine 12 must NEVER read:
+- Uncommitted proposals.
+- Private data not authorized for the viewer.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 12 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 12 MUST pass:
+- **Rendering Error**: Return empty stream (safe default).
+- **Missing Data**: Render what is available.
 
-T1. Projection text matches ledger exactly.
-T2. Visibility enforced.
-T3. Cursor-based incremental fetch works.
-T4. Silence renders as empty stream.
-T5. Pocket does not leak knowledge.
-T6. No invented content.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 12 INTERFACE

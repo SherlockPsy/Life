@@ -98,94 +98,47 @@ Engine 11 MUST NOT emit:
 - WriteBundle
 - ProjectionOutput
 - RetrievalResultPack
-- CapsulePack
 
 ----------------------------------------------------------------------
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `execute_storage_operation(op)`
-- Executes database operations requested by engines.
-- Must respect transactional boundaries defined by caller.
-
-### 5.2 `execute_cache_operation(op)`
-- Executes cache get/set/delete.
-- Cache is never authoritative.
-
-### 5.3 `execute_search_operation(op)`
-- Executes vector or text search.
-- Returns raw results only.
-
-### 5.4 `emit_log(event)`
-- Emits logs and metrics.
-- Logs are not world state.
-
-No other operations are permitted.
+### 5.1 `db_query(sql, params) -> rows`
+### 5.2 `cache_get(key) -> value`
+### 5.3 `vector_search(vector) -> results`
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 11 MAY call:
-- External infrastructure services only:
-  - databases
-  - Redis
-  - Qdrant
-  - OS/network primitives
-
-Engine 11 MUST NOT call:
-- Any other engine
-- LLMs
-- UI renderers
+Engine 11 may call:
+- External Services (Postgres, Redis, Qdrant).
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 11 MAY read/write:
-- databases
-- caches
-- indexes
-- logs
-
-Engine 11 MUST NOT read/write:
-- world semantics
-- narrative text
-- capsule meaning
-- constitutional rules
+Engine 11 must NEVER call:
+- Any domain engine (0-10, 12-14).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 11 MUST NEVER:
-- Interpret stored data.
-- Apply business logic.
-- Enforce constitutional rules.
-- Generate text.
-- Modify payloads beyond serialization.
+Engine 11 may read:
+- Raw bytes/rows.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If infrastructure fails:
-- MUST surface explicit error.
-- MUST NOT fabricate results.
-- MUST NOT retry silently unless explicitly instructed.
+Engine 11 must NEVER read:
+- Domain logic.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 11 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 11 MUST pass:
+- **Connection Failure**: Error.
+- **Timeout**: Error.
 
-T1. No domain logic present.
-T2. Cache never treated as authoritative.
-T3. Storage failures surface correctly.
-T4. Search results returned raw.
-T5. No cross-engine calls.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 11 INTERFACE

@@ -99,118 +99,56 @@ A) `/contracts/scene_anchor_pack.md`
 B) `/contracts/rehydration_pack.md`
 - For context regeneration near limits.
 
-Engine 5 MUST NOT emit:
-- WriteEntry
-- WriteBundle
-- ProjectionOutput
-- Narrative continuation text
-
 ----------------------------------------------------------------------
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `ensure_scene_anchor(beat_context) -> scene_anchor_pack|null`
-Inputs:
-- beat_context
+### 5.1 `get_scene_anchor(request_id) -> scene_anchor_pack`
+- Returns cached anchor or generates new one.
 
-Behavior:
-- If no anchor exists for current scene:
-  - generate a scene_anchor_pack using ledger evidence.
-- If anchor exists and is valid:
-  - return null (no action).
-- Scene anchors are sent once and cached.
+### 5.2 `check_rehydration_needed(token_usage) -> boolean`
+- Checks if rehydration is required.
 
-### 5.2 `check_and_rehydrate(beat_context, token_budget_state) -> rehydration_pack|null`
-Inputs:
-- beat_context
-- token_budget_state (mechanical indicator)
-
-Behavior:
-- If token budget below threshold AND at beat boundary:
-  - generate rehydration_pack.
-- If not at beat boundary:
-  - MUST NOT rehydrate.
-- If generation fails:
-  - MUST retry until successful.
-- Rehydration must be atomic.
-
-No other operations are permitted.
+### 5.3 `perform_rehydration(request_id) -> rehydration_pack`
+- Generates rehydration pack.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 5 MAY call:
-- ENGINE 8 (Retrieval) to fetch:
-  - ledger excerpts for anchor construction.
-- ENGINE 6 (Capsules) to fetch:
-  - relevant capsule packs.
-- ENGINE 4 (Knowledge Surface) indirectly via Engine 8 constraints.
-
-Engine 5 MUST NOT call:
-- ENGINE 9 (LLM Writer) for narrative generation.
-- ENGINE 12 (Projection)
-- ENGINE 0 (Ledger) directly
-- ENGINE 3 (Time)
-- ENGINE 2 (Beat) except via boundary signals.
+Engine 5 may call:
+- Engine 8 (Retrieval) - to get recent context.
+- Engine 6 (Capsule) - to get person context.
+- Engine 9 (LLM Writer) - to summarize context into anchor/rehydration pack.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 5 MAY read:
-- cached scene anchors
-- token budget state
-- capsule packs
-- retrieval result packs
-
-Engine 5 MAY write:
-- scene anchor cache
-- rehydration cache
-
-Engine 5 MUST NOT write:
-- ledger entries
-- time state
-- capsule authority data
-- any data treated as world truth
+Engine 5 must NEVER call:
+- Engine 0 (Reality Ledger) - Anchors are not writes.
+- Engine 12 (Projection) - Anchors are not rendered directly.
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 5 MUST NEVER:
-- Mention rehydration, context limits, or memory in text.
-- Introduce new events or facts.
-- Advance time.
-- Change physical configuration.
-- Smooth contradictions.
-- Insert narrative direction (“later”, “suddenly”, “meanwhile”).
+Engine 5 may read:
+- Ledger excerpts (via Engine 8).
+- Token usage stats.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If rehydration fails:
-- MUST retry.
-- MUST NOT proceed with beat.
-
-If anchor generation fails:
-- MUST fail explicitly.
-- MUST NOT produce partial anchors.
+Engine 5 must NEVER read:
+- Raw ledger (bypassing Engine 8).
+- Private knowledge not authorized for the scene view.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 5 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 5 MUST pass:
+- **Generation Failure**: Retry.
+- **Context Too Large**: Fallback to hard truncation (fail safe).
 
-T1. Rehydration only at beat boundaries.
-T2. Rehydration invisible in projection.
-T3. Anchor generated only once per scene unless invalidated.
-T4. No new facts introduced.
-T5. Physical continuity replay always present.
-T6. Failure blocks progression.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 5 INTERFACE

@@ -102,97 +102,48 @@ Engine 4 MUST NOT emit:
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `get_knowledge_surface(actor_id, purpose) -> knowledge_surface`
-Inputs:
-- actor_id (e.g., "GEORGE", "REBECCA", "WORLD")
-- purpose (e.g., "RETRIEVAL", "CAPSULE", "PROJECTION")
+### 5.1 `get_knowledge_surface(actor_id) -> filter_criteria`
+- Returns the filter criteria (e.g., "PUBLIC + PRIVATE(actor_id)") for a given actor.
 
-Behavior:
-- Determine which ledger entries are visible to actor_id.
-- Apply visibility rules:
-  - PUBLIC entries always included.
-  - PRIVATE entries included only if actor_id is explicitly permitted.
-- Return a mechanical descriptor of allowed entry_ids.
-
-### 5.2 `assert_visibility(actor_id, entry_id) -> boolean`
-- Returns true if actor_id is allowed to see entry_id.
-- Used as a guard by other engines.
-
-No other operations are permitted.
+### 5.2 `check_visibility(entry_metadata, actor_id) -> ALLOW|DENY`
+- Checks if a specific entry is visible to an actor.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 4 MAY call:
-- ENGINE 0 (Reality Ledger) to:
-  - fetch visibility metadata for entries
-  - enumerate candidate entries
-
-Engine 4 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 7 (Tool Requests)
-- ENGINE 8 (Retrieval) directly for content
-- ENGINE 6 (Capsules)
-- ENGINE 12 (Projection)
-- ENGINE 5 (Rehydration)
-
-Engine 4 filters. It does not fetch or interpret.
+Engine 4 may call:
+- None. It is a policy engine used by others.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 4 MAY read:
-- visibility metadata from ledger entries
-- knowledge boundary configuration (static rules)
-
-Engine 4 MAY write:
-- nothing that persists as world state
-
-Engine 4 MUST NOT write:
-- ledger entries
-- cache entries treated as authority
-- capsule content
-- summaries
+Engine 4 must NEVER call:
+- Engine 9 (LLM Writer).
+- Engine 12 (Projection).
+- Engine 0 (Reality Ledger).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 4 MUST NEVER:
-- Grant access because it is “convenient”.
-- Infer that an actor “should know” something.
-- Leak private entries into public projection.
-- Allow the LLM Writer to bypass boundaries.
-- Merge private and public knowledge views.
-- Create implicit knowledge through omission or aggregation.
+Engine 4 may read:
+- Visibility metadata of ledger entries.
+- Actor identity.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If actor_id is missing or unknown:
-- MUST fail explicitly.
-- MUST NOT default to full access.
-
-If visibility metadata is inconsistent:
-- MUST fail explicitly.
-- MUST NOT guess.
+Engine 4 must NEVER read:
+- Ledger text content.
+- Narrative context.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 4 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 4 MUST pass:
+- **Unknown Actor**: Error.
+- **Ambiguous Visibility**: Deny access (fail closed).
 
-T1. Public entries visible to all actors.
-T2. Private entries visible only to permitted actors.
-T3. LLM Writer cannot access entries outside its knowledge view.
-T4. Projection does not leak private entries.
-T5. Knowledge surface is stable and reproducible.
-T6. No “global omniscience” path exists.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 4 INTERFACE

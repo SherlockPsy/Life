@@ -98,110 +98,50 @@ Inputs:
 - invocation_envelope: InvocationEnvelope
 
 Behavior:
-1) Validate contract shape:
-   - required fields present
-   - invoker_role == "INVOKER"
-   - operator_id == "GEORGE"
-   - request_id non-empty
-2) Enforce posture constraint:
-   - invoker_id MUST NOT be "GEORGE"
-3) Idempotency check:
-   - ask Engine 0 (or an idempotency store owned by Engine 0) whether request_id already has a committed outcome
-   - if yes: return REPLAY + the previously stored ProjectionOutput exactly
-   - if no: return PROCEED + invocation_envelope (unchanged)
-
-### 5.2 `get_invocation_audit(request_id) -> invocation_audit|null`
-- Returns stored audit metadata for debugging/audit only.
-- Must not be treated as world state.
-
-No other operations are permitted.
+- Validates contract.
+- Checks idempotency against Engine 0.
+- Returns REPLAY + stored output if exists.
+- Returns PROCEED if new.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 1 MAY call:
-- ENGINE 0 (Reality Ledger) for:
-  - `get_committed_outcome_by_request_id(request_id)`
-  - optionally: store invocation audit metadata linked to request_id (mechanical)
-
-Engine 1 MAY call:
-- ENGINE 11 (Infrastructure) for logging/metrics only (non-authoritative).
-
-Engine 1 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 12 (Projection) to generate new content
-- ENGINE 5 (Rehydration)
-- ENGINE 8 (Retrieval)
-- ENGINE 7 (Tools)
-- ENGINE 6 (Capsules)
-- ENGINE 3 (Time)
-- Any engine for “help me decide what to do”
-
-Engine 1 does not “think.” It checks and routes.
+Engine 1 may call:
+- Engine 0 (Reality Ledger) - to check for existing request_id.
+- Engine 2 (Beat Coordinator) - to hand off valid new invocations.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 1 MAY read:
-- invocation_envelope fields only
-- idempotency outcome pointer (from Engine 0)
-
-Engine 1 MAY write:
-- invocation audit record (request_id, invoker_id, operator_id, received_at) as mechanical metadata
-- ONLY if stored in a non-world, audit-only store or in Engine 0’s request table metadata.
-
-Engine 1 MUST NOT write:
-- any WriteEntry
-- any narrative content
-- any time changes
-- any knowledge/capsule content
+Engine 1 must NEVER call:
+- Engine 9 (LLM Writer) - Validation is mechanical.
+- Engine 12 (Projection) - Engine 1 does not render.
+- Engine 3 (Time) - Engine 1 does not advance time.
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 1 MUST NEVER:
-- Treat the operator (George) as LLM user.
-- Modify operator input text.
-- Invent a request_id.
-- Auto-fill missing fields.
-- “Fix” malformed invocations.
-- Decide outcomes, pacing, or narrative direction.
-- Create ledger entries.
-- Bypass idempotency by “recomputing because it’s easier.”
+Engine 1 may read:
+- The incoming InvocationEnvelope.
+- Idempotency records from Engine 0 (metadata only).
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If invocation is invalid:
-- MUST return explicit error (HTTP 400 or equivalent).
-- MUST NOT proceed to beat processing.
-
-If replay outcome exists but cannot be loaded:
-- MUST return explicit failure (HTTP 500 or equivalent).
-- MUST NOT regenerate a “similar” response.
-
-If Engine 0 is unavailable for idempotency lookup:
-- MUST fail explicitly.
-- MUST NOT proceed as if new request.
+Engine 1 must NEVER read:
+- Ledger content (text).
+- World state.
+- User history.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 1 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 1 MUST pass:
+- **Invalid Contract**: Return HTTP 400 (Bad Request).
+- **Idempotency Check Failure**: Return HTTP 500.
+- **Missing Identity**: Return HTTP 403.
 
-T1. Reject missing request_id
-T2. Reject invoker_role != INVOKER
-T3. Reject invoker_id == GEORGE
-T4. Accept valid invocation and route PROCEED
-T5. Replay returns identical ProjectionOutput and blocks new writes
-T6. Replay does not call LLM Writer
-T7. Operator input is preserved verbatim (no mutation)
-
-----------------------------------------------------------------------
-
-END OF ENGINE 1 INTERFACE

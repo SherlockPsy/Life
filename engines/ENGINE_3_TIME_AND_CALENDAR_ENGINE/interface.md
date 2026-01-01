@@ -103,117 +103,51 @@ Engine 3 MUST NOT emit:
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `get_current_world_time() -> string`
-- Returns the current canonical world time.
+### 5.1 `get_current_time() -> iso_string`
+- Returns current world time.
 
-### 5.2 `advance_time_at_beat(beat_context) -> string`
-Inputs:
-- beat_context (from Engine 2)
+### 5.2 `advance_time(delta) -> new_time`
+- Mechanically advances time.
 
-Behavior:
-- If time is paused:
-  - return current time unchanged.
-- If invocation declared explicit world time:
-  - adopt declared time as new canonical time.
-- Otherwise:
-  - advance time mechanically according to system policy
-    (policy defined in configuration, not narrative logic).
-
-Returns:
-- new canonical world time string.
-
-### 5.3 `pause_time()`
-- Enters paused-time mode.
-
-### 5.4 `resume_time()`
-- Exits paused-time mode.
-
-### 5.5 `get_calendar_view() -> calendar_object`
-- Returns mechanical calendar representation for UI pocket.
-- Does not advance time.
-
-No other operations are permitted.
+### 5.3 `set_time_override(time_declaration) -> new_time`
+- Sets time based on operator declaration.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 3 MAY call:
-- ENGINE 11 (Infrastructure) for:
-  - time libraries
-  - timezone conversion
-  - persistence of time state
-
-Engine 3 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 8 (Retrieval)
-- ENGINE 7 (Tools)
-- ENGINE 6 (Capsules)
-- ENGINE 5 (Rehydration)
-- ENGINE 12 (Projection)
-- ENGINE 0 (Ledger)
-
-Engine 3 is authoritative, not consultative.
+Engine 3 may call:
+- Engine 11 (Infrastructure) - for persisting clock state.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 3 MAY read/write:
-- its own time state store (single canonical record)
-- pause/resume flags
-- timezone configuration
-
-Engine 3 MUST NOT read:
-- ledger entries
-- capsule data
-- retrieval results
-- prompt packs
-- UI state
-
-Engine 3 MUST NOT write:
-- ledger entries
-- scene anchors
-- capsule content
-- derived narrative time statements
+Engine 3 must NEVER call:
+- Engine 9 (LLM Writer).
+- Engine 0 (Reality Ledger).
+- Engine 12 (Projection).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 3 MUST NEVER:
-- Infer elapsed time from narrative content.
-- Insert “later”, “after a while”, or similar shortcuts.
-- Advance time because “something happened”.
-- Skip time to make events line up.
-- Rewrite historical created_at_world values.
-- Resolve contradictions in time declarations.
+Engine 3 may read:
+- Its own clock state.
+- Time overrides in Invocation Envelope.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If time cannot be advanced:
-- MUST fail explicitly.
-- MUST NOT invent a fallback time.
-
-If explicit time declaration conflicts with system state:
-- MUST accept the declaration as binding.
-- MUST NOT “smooth” or reinterpret it.
+Engine 3 must NEVER read:
+- Ledger content.
+- Narrative context.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 3 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 3 MUST pass:
+- **Invalid Time Format**: Error.
+- **Negative Time Delta**: Error (time moves forward).
 
-T1. Time monotonicity (unless explicit override).
-T2. Paused time does not advance across beats.
-T3. Explicit operator time declaration is adopted verbatim.
-T4. Time advancement does not create ledger entries.
-T5. Time advancement does not imply events.
-T6. Calendar view reflects canonical time exactly.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 3 INTERFACE

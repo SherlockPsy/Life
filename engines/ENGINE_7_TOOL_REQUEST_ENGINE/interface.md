@@ -98,90 +98,44 @@ Validation steps:
 - request_id matches active beat.
 - requested_by.actor explicit.
 - knowledge_view explicit.
-- tool.name is recognized.
-- constraints are bounded (limit present, time window explicit or null).
-- request does not include semantic directives (“decide relevance”, “summarize truth”).
-
-Behavior:
-- If valid: route to tool executor.
-- If invalid: reject explicitly.
-
-### 5.2 `enforce_tool_limits(request_id, beat_id) -> OK|BLOCK`
-- Ensures per-beat and per-request limits are respected.
-
-No other operations are permitted.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 7 MAY call:
-- ENGINE 4 (Knowledge Surface) to:
-  - validate requested knowledge_view.
-- ENGINE 8 (Retrieval Engine) to:
-  - execute approved tool requests.
-
-Engine 7 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 6 (Capsules)
-- ENGINE 5 (Rehydration)
-- ENGINE 12 (Projection)
-- ENGINE 0 (Ledger)
-- ENGINE 3 (Time)
+Engine 7 may call:
+- Engine 8 (Retrieval) - to execute retrieval tools.
+- Engine 6 (Capsule) - to execute capsule tools.
+- Engine 5 (Scene) - to execute scene tools.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 7 MAY read:
-- tool_request payload
-- tool usage counters (mechanical)
-
-Engine 7 MAY write:
-- tool invocation audit logs (non-world)
-
-Engine 7 MUST NOT write:
-- ledger entries
-- capsule data
-- retrieval results
-- summaries
+Engine 7 must NEVER call:
+- Engine 0 (Reality Ledger) - Tools cannot write.
+- Engine 9 (LLM Writer) - Engine 7 is called BY Engine 9.
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 7 MUST NEVER:
-- Modify the content of a tool request.
-- Decide what the LLM “really wants”.
-- Add implicit constraints.
-- Allow tools to write reality.
-- Allow unbounded loops.
-- Turn tool errors into narrative events.
+Engine 7 may read:
+- The ToolRequest object.
+- Loop counters (internal state).
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If a tool request is invalid:
-- MUST reject explicitly.
-- MUST return control to LLM Writer with failure signal.
-
-If tool limits are exceeded:
-- MUST block further tool requests for this beat.
+Engine 7 must NEVER read:
+- Ledger content.
+- World state.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 7 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 7 MUST pass:
+- **Validation Failure**: Reject request.
+- **Loop Limit Exceeded**: Reject request (Stop).
 
-T1. Reject unbounded tool requests.
-T2. Reject missing knowledge_view.
-T3. Reject unknown tool names.
-T4. Enforce per-beat tool call limits.
-T5. Never modify tool request payloads.
-T6. Never produce narrative output.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 7 INTERFACE

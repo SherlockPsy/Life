@@ -100,103 +100,51 @@ A) `/contracts/write_bundle.md`
 - Proposed write bundle (wrote=true or wrote=false).
 
 B) `/contracts/tool_request.md`
-- Tool requests when evidence is required.
-
-Engine 9 MUST NOT emit:
-- WriteEntry alone (must be bundled)
-- ProjectionOutput
-- RetrievalResultPack
-- CapsulePack
-- SceneAnchorPack
+- Request for more information.
 
 ----------------------------------------------------------------------
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `propose(beat_context, context_materials) -> proposal`
-Inputs:
-- beat_context
-- context_materials (anchors, capsules, retrieval results)
-
-Behavior:
-- Generate ONE of:
-  - a proposed WriteBundle (wrote=true),
-  - an explicit no-write bundle (wrote=false),
-  - one or more ToolRequest objects (if more evidence is required).
-- Must respect all known constraints.
-- Must not assume missing facts.
-
-No other operations are permitted.
+### 5.1 `generate_proposal(context) -> write_bundle | tool_request`
+- Generates the next step.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 9 MAY call:
-- ENGINE 7 (Tool Request Engine) to submit ToolRequest objects.
-
-Engine 9 MUST NOT call:
-- ENGINE 8 (Retrieval) directly
-- ENGINE 6 (Capsules)
-- ENGINE 5 (Rehydration)
-- ENGINE 12 (Projection)
-- ENGINE 3 (Time)
-- ENGINE 0 (Ledger)
+Engine 9 may call:
+- Engine 7 (Tool Request) - to submit a tool request.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 9 MAY read:
-- provided context materials only (anchors, capsules, retrieval packs)
-
-Engine 9 MAY write:
-- nothing persistent
-- proposals only
-
-Engine 9 MUST NOT read:
-- ledger storage
-- caches
-- private entries outside provided packs
+Engine 9 must NEVER call:
+- Engine 0 (Reality Ledger).
+- Engine 10 (Write Acceptance).
+- Engine 12 (Projection).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 9 MUST NEVER:
-- Commit reality directly.
-- Invent past events.
-- Skip time (“later that day”).
-- Resolve contradictions.
-- Force responses.
-- Assume consent or intention.
-- Bypass tool usage to hallucinate knowledge.
-- Leak private knowledge into public text.
+Engine 9 may read:
+- The context objects passed to it (Scene, Capsule, Retrieval).
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If Engine 9 cannot propose safely:
-- MUST propose a no-write outcome.
-- MUST NOT fabricate content.
-
-If tool limits are exceeded:
-- MUST stop proposing tool requests.
+Engine 9 must NEVER read:
+- Raw ledger.
+- System logs.
+- Anything not explicitly passed in context.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 9 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 9 MUST pass:
+- **LLM Failure**: Retry or return No-Op.
+- **Context Limit**: Fail (should be handled by Engine 5).
 
-T1. No ledger access.
-T2. Proposals only, no commits.
-T3. Can return explicit silence.
-T4. Tool requests routed through Engine 7.
-T5. No knowledge leakage.
-T6. No narrative shortcuts.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 9 INTERFACE

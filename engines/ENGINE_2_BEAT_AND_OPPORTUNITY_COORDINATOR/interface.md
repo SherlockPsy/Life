@@ -101,107 +101,51 @@ Engine 2 MUST NOT emit:
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `open_beat(invocation_envelope) -> beat_context`
-Inputs:
-- invocation_envelope (validated)
-
-Behavior:
-- Assign a new beat_id.
-- Determine beat_kind:
-  - NORMAL if invocation.mode.kind == "BEAT"
-  - NO_OP if invocation.mode.kind == "NO_OP"
-- Attach invocation_envelope unchanged.
-- Return beat_context.
-
-### 5.2 `close_beat(beat_context, outcome)`
-Inputs:
-- beat_context
-- outcome (one of):
-  - committed write bundle
-  - explicit no-write
-  - error
-
-Behavior:
-- Ensure exactly one outcome occurs.
-- Mark beat as closed.
-- Prevent reuse of beat_context.
-
-No other operations are permitted.
+### 5.1 `start_beat(invocation_envelope) -> projection_output`
+- Orchestrates the beat lifecycle.
+- Calls other engines in sequence.
+- Returns final projection.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 2 MAY call:
-- ENGINE 3 (Time & Calendar) to ask:
-  - whether time should advance mechanically at beat boundary.
-- ENGINE 5 (Scene Anchor & Rehydration) to ask:
-  - whether rehydration is required at this boundary.
-
-Engine 2 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 8 (Retrieval)
-- ENGINE 7 (Tools)
-- ENGINE 6 (Capsules)
-- ENGINE 12 (Projection)
-- ENGINE 0 (Ledger) directly
-
-Engine 2 coordinates, it does not act.
+Engine 2 may call:
+- Engine 3 (Time) - to get current time.
+- Engine 5 (Scene/Rehydration) - to ensure context.
+- Engine 9 (LLM Writer) - to solicit proposals.
+- Engine 10 (Write Acceptance) - to validate proposals.
+- Engine 0 (Reality Ledger) - to commit accepted bundles.
+- Engine 12 (Projection) - to render the result.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 2 MAY read:
-- invocation envelope
-- beat sequence metadata (mechanical)
-
-Engine 2 MAY write:
-- beat sequence metadata (non-world, mechanical only)
-
-Engine 2 MUST NOT write:
-- ledger entries
-- time state
-- scene state
-- cache state
+Engine 2 must NEVER call:
+- Engine 7 (Tool Request) - Tools are called by LLM, not Coordinator.
+- Engine 8 (Retrieval) - Retrieval is called by consumers, not Coordinator.
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 2 MUST NEVER:
-- Decide that something “should happen.”
-- Force a response when silence is valid.
-- Advance time implicitly.
-- Allow mid-beat writes.
-- Re-open a closed beat.
-- Skip beats to “catch up.”
+Engine 2 may read:
+- Invocation Envelope.
+- Status returns from called engines.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If beat cannot be opened:
-- MUST fail explicitly.
-- MUST NOT proceed to any downstream engine.
-
-If close_beat is called more than once:
-- MUST reject.
-- MUST NOT allow partial outcomes.
+Engine 2 must NEVER read:
+- Ledger content (text).
+- Private knowledge.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 2 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 2 MUST pass:
+- **Orchestration Failure**: If any step fails, abort beat and return error.
+- **Timeout**: If beat takes too long, abort.
 
-T1. Every invocation opens exactly one beat.
-T2. No writes occur outside a beat.
-T3. Beat allows no-write outcome.
-T4. NO_OP beat produces no write attempts.
-T5. Beat cannot be reused after close.
-T6. Beat ordering is monotonic.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 2 INTERFACE

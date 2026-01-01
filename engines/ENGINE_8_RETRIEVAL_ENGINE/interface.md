@@ -98,98 +98,45 @@ Engine 8 MUST NOT emit:
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
 ### 5.1 `execute_retrieval(tool_request, knowledge_surface) -> retrieval_result_pack`
-Inputs:
-- tool_request (validated)
-- knowledge_surface (from Engine 4)
-
-Behavior:
-- Restrict search to entries visible in knowledge_surface.
-- Apply mechanical constraints:
-  - time_window
-  - limit
-  - person_id (if present)
-- Retrieve matching ledger entries.
-- Extract verbatim excerpts.
-- Attach provenance.
-- Set empty=true if no results.
-
-No other operations are permitted.
+- Executes the query.
+- Filters by knowledge surface.
+- Returns evidence.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 8 MAY call:
-- ENGINE 0 (Reality Ledger) to:
-  - fetch entries
-  - enumerate candidate entry_ids
-- ENGINE 11 (Infrastructure) for:
-  - database queries
-  - vector search (Qdrant), if used
-  - cache access (Redis), if used
-
-Engine 8 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 6 (Capsules)
-- ENGINE 5 (Rehydration)
-- ENGINE 12 (Projection)
-- ENGINE 3 (Time)
-- ENGINE 2 (Beat)
+Engine 8 may call:
+- Engine 11 (Infrastructure) - for DB/Vector search.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 8 MAY read:
-- ledger entries
-- vector indexes (if present)
-- cache layers (as acceleration only)
-
-Engine 8 MAY write:
-- retrieval caches (non-authoritative)
-
-Engine 8 MUST NOT write:
-- ledger entries
-- summaries
-- derived semantic state
-- capsule content
+Engine 8 must NEVER call:
+- Engine 9 (LLM Writer).
+- Engine 0 (Reality Ledger) - It reads via Infra, does not call Engine 0 logic.
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 8 MUST NEVER:
-- Paraphrase or rewrite evidence.
-- Summarize multiple entries into “what happened”.
-- Infer motives, intent, or causality.
-- Return entries outside knowledge surface.
-- Hide provenance.
-- Decide relevance beyond mechanical constraints.
+Engine 8 may read:
+- Ledger content (via Engine 11).
+- Knowledge surface constraints.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If no matching entries:
-- MUST return retrieval_result_pack with empty=true.
-
-If ledger access fails:
-- MUST fail explicitly.
-- MUST NOT fabricate results.
+Engine 8 must NEVER read:
+- Uncommitted proposals.
+- Private data outside the provided knowledge surface.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 8 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 8 MUST pass:
+- **No Results**: Return empty pack (not error).
+- **DB Error**: Return error.
 
-T1. Verbatim excerpts match ledger text exactly.
-T2. Provenance always attached.
-T3. Knowledge boundary enforced.
-T4. Empty result handled explicitly.
-T5. Deterministic ordering for identical queries.
-T6. No summarization occurs.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 8 INTERFACE

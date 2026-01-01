@@ -99,62 +99,33 @@ No other operations are permitted.
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 14 MAY call:
-- ENGINE 11 (Infrastructure) for:
-  - test execution
-  - CI integration
-
-Engine 14 MUST NOT call:
-- Runtime engines
-- LLMs
-- UI components
+Engine 14 may call:
+- All engines (via test harness) to verify behavior.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 14 MAY read:
-- code
-- contracts
-- engine interfaces
-- test definitions
-
-Engine 14 MAY write:
-- test reports
-- CI status flags
-
-Engine 14 MUST NOT write:
-- runtime state
-- ledger entries
-- caches
+Engine 14 must NEVER call:
+- None (it is the test engine).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 14 MUST NEVER:
-- Allow partial compliance.
-- Skip tests.
-- Mark failures as warnings.
-- Be bypassed for “speed”.
+Engine 14 may read:
+- Everything (it is the auditor).
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If any test fails:
-- MUST block merge and deployment.
-- MUST require explicit fix before proceeding.
-
-----------------------------------------------------------------------
-
-## 10) CONTRACT TEST REQUIREMENTS (SELF-REFERENTIAL)
-
-Engine 14 MUST test itself for:
-- completeness of contract coverage,
-- prohibition coverage,
-- immutability of contracts without version bump.
+Engine 14 must NEVER read:
+- None.
 
 ----------------------------------------------------------------------
 
-END OF ENGINE 14 INTERFACE
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
+
+- **Test Failure**: Block everything.
+

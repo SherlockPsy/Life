@@ -102,117 +102,45 @@ Engine 10 MUST NOT emit:
 
 ## 5) EXPORTED OPERATIONS (THE ONLY LEGAL API)
 
-### 5.1 `validate_bundle(bundle, beat_context) -> ACCEPTED|REJECTED`
-Inputs:
-- bundle (WriteBundle)
-- beat_context
-
-Validation steps (non-exhaustive, all mandatory):
-
-Structural:
-- bundle.request_id present and matches invocation.
-- wrote=true implies entries non-empty.
-- wrote=false implies entries empty.
-- All entries structurally valid (`write_entry.md`).
-
-Constitutional:
-- No entry introduces forbidden constructs (examples):
-  - implicit time skips,
-  - retroactive corrections,
-  - hidden system meta (“rehydrating…”, “context…”),
-  - system-directed narration.
-- Channel rules respected:
-  - USER entries must match verbatim operator input.
-  - PEOPLE entries must have explicit author_id.
-- Visibility rules respected:
-  - PRIVATE entries have explicit visibility list.
-
-Beat-bound:
-- Validate write occurs within an open beat.
-- Reject any mid-beat or post-beat proposal.
-
-Behavior:
-- If ANY rule fails → REJECT entire bundle.
-- No partial acceptance.
-- No auto-repair.
-
-No other operations are permitted.
+### 5.1 `validate_proposal(write_bundle, context) -> accepted_bundle | rejected_bundle`
+- Validates structure.
+- Validates constraints.
+- Returns verdict.
 
 ----------------------------------------------------------------------
 
 ## 6) ALLOWED CALLS (OUTBOUND DEPENDENCIES)
 
-Engine 10 MAY call:
-- ENGINE 4 (Knowledge Surface) to:
-  - validate visibility constraints.
-- ENGINE 3 (Time) to:
-  - validate created_at_world consistency (read-only).
-- ENGINE 11 (Infrastructure) for:
-  - logging/audit.
-
-Engine 10 MUST NOT call:
-- ENGINE 9 (LLM Writer)
-- ENGINE 0 (Ledger) directly
-- ENGINE 5 (Rehydration)
-- ENGINE 6 (Capsules)
-- ENGINE 7 (Tools)
-- ENGINE 8 (Retrieval)
-- ENGINE 12 (Projection)
+Engine 10 may call:
+- Engine 0 (Reality Ledger) - to check constraints (e.g. uniqueness) if needed, but usually validation is stateless or context-based.
 
 ----------------------------------------------------------------------
 
-## 7) ALLOWED READS / WRITES (DATA BOUNDARY)
+## 7) FORBIDDEN CALLS (EXPLICIT PROHIBITIONS)
 
-Engine 10 MAY read:
-- proposed bundles
-- beat context
-- invocation envelope
-- constitutional rule configuration (static)
-
-Engine 10 MAY write:
-- rejection audit logs (non-world)
-
-Engine 10 MUST NOT write:
-- ledger entries
-- cache entries treated as authority
-- modified write bundles
+Engine 10 must NEVER call:
+- Engine 9 (LLM Writer) - No negotiation.
+- Engine 12 (Projection).
 
 ----------------------------------------------------------------------
 
-## 8) MUST NEVER DO (FORBIDDEN BEHAVIOR)
+## 8) ALLOWED DATA ACCESS (READ SCOPE)
 
-Engine 10 MUST NEVER:
-- Rewrite proposed text.
-- “Fix” bundles to make them pass.
-- Negotiate with the LLM.
-- Accept “almost valid” proposals.
-- Create new entries itself.
-- Decide meaning or intention.
+Engine 10 may read:
+- The proposed bundle.
+- The context.
 
 ----------------------------------------------------------------------
 
-## 9) FAILURE MODES (EXPLICIT)
+## 9) FORBIDDEN DATA ACCESS (READ PROHIBITIONS)
 
-If validation fails:
-- MUST reject explicitly.
-- MUST NOT forward to Engine 0.
-
-If constitutional rules are unavailable:
-- MUST fail closed (reject).
+Engine 10 must NEVER read:
+- Private knowledge not relevant to validation.
 
 ----------------------------------------------------------------------
 
-## 10) CONTRACT TEST REQUIREMENTS (ENGINE 14 OWNERSHIP; ENGINE 10 SUBJECT)
+## 10) FAILURE MODES (MECHANICAL RESPONSE)
 
-Engine 10 MUST pass:
+- **Validation Error**: Reject bundle.
+- **System Error**: Reject bundle.
 
-T1. Reject invalid structural bundles.
-T2. Reject mid-beat writes.
-T3. Reject forbidden narrative constructs.
-T4. Reject visibility violations.
-T5. Reject USER text mismatches.
-T6. Accept valid bundles unchanged.
-
-----------------------------------------------------------------------
-
-END OF ENGINE 10 INTERFACE
