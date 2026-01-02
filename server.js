@@ -27,6 +27,7 @@ app.post('/invocations', async (req, res) => {
 
   const client = await pool.connect();
 
+  let debugPayload = null;
   try {
     // 1. IDEMPOTENCY CHECK
     const existingInv = await client.query('SELECT * FROM invocations WHERE request_id = $1', [requestId]);
@@ -54,12 +55,25 @@ app.post('/invocations', async (req, res) => {
     // B. Resolve Time (Engine 3) - EXPLICIT ONLY
     let worldTime;
     const overrides = envelope.declared_overrides || {};
-    const timeDeclared = overrides.time && (overrides.time.declared_world_time !== undefined || overrides.time.advance_by !== undefined);
+    
+    const declaredTime = overrides.time?.declared_world_time;
+    const advanceBy = overrides.time?.advance_by;
+    let timeDeclared = false;
 
-    if (overrides.time && overrides.time.declared_world_time !== undefined) {
-      worldTime = await Engine3.setTime(client, overrides.time.declared_world_time);
-    } else if (overrides.time && overrides.time.advance_by !== undefined) {
-      worldTime = await Engine3.advanceTime(client, overrides.time.advance_by);
+    if (declaredTime !== undefined && declaredTime !== null) {
+      if (!Number.isInteger(declaredTime) || declaredTime < 0) {
+        await client.query('ROLLBACK');
+        return res.status(400).json({ error: "Invalid declared_world_time", details: "Must be a non-negative integer" });
+      }
+      worldTime = await Engine3.setTime(client, declaredTime);
+      timeDeclared = true;
+    } else if (advanceBy !== undefined && advanceBy !== null) {
+      if (!Number.isInteger(advanceBy) || advanceBy < 0) {
+        await client.query('ROLLBACK');
+        return res.status(400).json({ error: "Invalid advance_by", details: "Must be a non-negative integer" });
+      }
+      worldTime = await Engine3.advanceTime(client, advanceBy);
+      timeDeclared = true;
     } else {
       // No change, just read for the beat record
       worldTime = await Engine3.getWorldTime(client);
@@ -143,6 +157,7 @@ app.post('/invocations', async (req, res) => {
       if (validation.status === 'ACCEPTED') {
         // 4. Commit AI Write
         const aiBundlePayload = validation.payload;
+        debugPayload = aiBundlePayload;
         // Assign IDs if not present (Engine 9 might propose null IDs)
         if (!aiBundlePayload.bundle_id) aiBundlePayload.bundle_id = uuidv4();
         
@@ -151,7 +166,13 @@ app.post('/invocations', async (req, res) => {
         
         await client.query(
           'INSERT INTO bundles (request_id, bundle_id, proposed_by, wrote, rejection) VALUES ($1, $2, $3, $4, $5)',
-          [aiBundlePayload.request_id, aiBundlePayload.bundle_id, aiBundlePayload.proposed_by, aiBundlePayload.wrote, aiBundlePayload.rejection]
+          [
+            aiBundlePayload.request_id, 
+            aiBundlePayload.bundle_id, 
+            JSON.stringify(aiBundlePayload.proposed_by || { engine: "UNKNOWN", actor: "UNKNOWN" }), 
+            aiBundlePayload.wrote, 
+            aiBundlePayload.rejection ? JSON.stringify(aiBundlePayload.rejection) : null
+          ]
         );
 
         if (aiBundlePayload.wrote && aiBundlePayload.entries) {
@@ -168,7 +189,16 @@ app.post('/invocations', async (req, res) => {
 
             await client.query(
               'INSERT INTO entries (entry_id, bundle_id, request_id, created_at_world, author, visibility, channel, text) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-              [entry.entry_id, entry.bundle_id, entry.request_id, entry.created_at_world, authorObj, entry.visibility, channel, text]
+              [
+                entry.entry_id, 
+                entry.bundle_id, 
+                entry.request_id, 
+                entry.created_at_world, 
+                JSON.stringify(authorObj), 
+                JSON.stringify(entry.visibility), 
+                channel, 
+                text
+              ]
             );
             
             // Add to projection entries
