@@ -90,7 +90,8 @@ app.post('/invocations', async (req, res) => {
     } else {
       // DEFAULT TICK: +1 per invocation if no override
       worldTime = await Engine3.advanceTime(client, 1);
-      timeDeclared = false;
+      // PATCH: Treat default tick as a time change so it appears in the projection
+      timeDeclared = true;
     }
 
     // C. Coordinate Beat (Engine 2)
