@@ -285,10 +285,6 @@ app.post('/invocations', async (req, res) => {
 
     // 3. RETURN PROJECTION
     // Only expose time if explicitly declared/modified
-    // DEBUG: Expose internal state to verify patch
-    extraDebug.time_declared_internal = timeDeclared;
-    extraDebug.beat_context_has_time = beatContext ? (beatContext.world_time !== undefined) : false;
-    
     res.json(constructProjection(requestId, bundle, entries, beatContext, timeDeclared, extraDebug));
 
   } catch (e) {
