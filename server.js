@@ -5,6 +5,8 @@ const { v4: uuidv4 } = require('uuid');
 const Engine2 = require('./engines/ENGINE_2_BEAT_AND_OPPORTUNITY_COORDINATOR/core');
 const Engine3 = require('./engines/ENGINE_3_TIME_AND_CALENDAR_ENGINE/core');
 const Engine5 = require('./engines/ENGINE_5_SCENE_ANCHOR_AND_REHYDRATION_ENGINE/core');
+const Engine9 = require('./engines/ENGINE_9_LLM_WRITER_ENGINE/core');
+const Engine10 = require('./engines/ENGINE_10_WRITE_ACCEPTANCE_AND_INTEGRITY_ENGINE/core');
 
 const app = express();
 app.use(bodyParser.json());
@@ -116,9 +118,88 @@ app.post('/invocations', async (req, res) => {
 
     await client.query('COMMIT');
 
+    // PHASE 8: ENGINE 9 (LLM WRITER)
+    // 1. Construct Context
+    const llmContext = {
+      requestId: requestId,
+      beat: beatContext,
+      input: {
+        text: inputText,
+        channel: "USER"
+      },
+      // TODO: Add history/anchors when available
+    };
+
+    // 2. Generate Proposal
+    const proposal = await Engine9.generateProposal(llmContext);
+    let aiBundle = null;
+
+    let extraDebug = {};
+
+    if (proposal && proposal.type === 'proposed_write_bundle') {
+      // 3. Validate (Engine 10)
+      const validation = Engine10.validateWriteBundle(proposal.payload, llmContext);
+      
+      if (validation.status === 'ACCEPTED') {
+        // 4. Commit AI Write
+        const aiBundlePayload = validation.payload;
+        // Assign IDs if not present (Engine 9 might propose null IDs)
+        if (!aiBundlePayload.bundle_id) aiBundlePayload.bundle_id = uuidv4();
+        
+        // Start new transaction
+        await client.query('BEGIN');
+        
+        await client.query(
+          'INSERT INTO bundles (request_id, bundle_id, proposed_by, wrote, rejection) VALUES ($1, $2, $3, $4, $5)',
+          [aiBundlePayload.request_id, aiBundlePayload.bundle_id, aiBundlePayload.proposed_by, aiBundlePayload.wrote, aiBundlePayload.rejection]
+        );
+
+        if (aiBundlePayload.wrote && aiBundlePayload.entries) {
+          for (const entry of aiBundlePayload.entries) {
+            if (!entry.entry_id) entry.entry_id = uuidv4();
+            entry.bundle_id = aiBundlePayload.bundle_id;
+            entry.request_id = requestId;
+            entry.created_at_world = worldTime; // Use same time as beat
+            
+            // Map content to text/channel for legacy schema
+            const text = entry.content.text || "";
+            const channel = "PEOPLE"; 
+            const authorObj = { author_id: entry.source.actor };
+
+            await client.query(
+              'INSERT INTO entries (entry_id, bundle_id, request_id, created_at_world, author, visibility, channel, text) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+              [entry.entry_id, entry.bundle_id, entry.request_id, entry.created_at_world, authorObj, entry.visibility, channel, text]
+            );
+            
+            // Add to projection entries
+            entries.push({
+              entry_id: entry.entry_id,
+              created_at_world: entry.created_at_world,
+              channel: channel,
+              author: { author_id: entry.source.actor }, // Keep object for projection
+              text: text
+            });
+          }
+        }
+        
+        await client.query('COMMIT');
+        aiBundle = aiBundlePayload;
+      } else {
+        console.log("ENGINE 10: Rejected AI Bundle", validation);
+      }
+    } else if (proposal && proposal.type === 'tool_request') {
+      // 3. Validate Tool (Engine 7)
+      // Engine 7 does not exist historically.
+      console.log("ENGINE 9: Tool Request emitted but Engine 7 does not exist.");
+      extraDebug = { error: "tool_request unsupported because Engine 7 does not exist historically" };
+    } else {
+      // Failure or No-Write
+      console.log("ENGINE 9: No Action (Silence or Failure)");
+    }
+
     // 3. RETURN PROJECTION
     // Only expose time if explicitly declared/modified
-    res.json(constructProjection(requestId, bundle, entries, beatContext, timeDeclared));
+    res.json(constructProjection(requestId, bundle, entries, beatContext, timeDeclared, extraDebug));
 
   } catch (e) {
     await client.query('ROLLBACK');
@@ -129,7 +210,7 @@ app.post('/invocations', async (req, res) => {
   }
 });
 
-function constructProjection(requestId, bundle, entries, beatContext = null, timeDeclared = false) {
+function constructProjection(requestId, bundle, entries, beatContext = null, timeDeclared = false, extraDebug = {}) {
   return {
     request_id: requestId,
     stream: {
@@ -155,7 +236,8 @@ function constructProjection(requestId, bundle, entries, beatContext = null, tim
     debug: {
       wrote: bundle ? bundle.wrote : false,
       bundle_id: bundle ? bundle.bundle_id : null,
-      beat_id: beatContext ? beatContext.beat_id : null
+      beat_id: beatContext ? beatContext.beat_id : null,
+      ...extraDebug
     }
   };
 }
