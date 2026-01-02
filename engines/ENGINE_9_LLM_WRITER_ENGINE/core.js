@@ -12,6 +12,19 @@ async function generateProposal(context) {
     return null;
   }
 
+  // TEST HOOK: Force tool request for verification
+  if (context.input && context.input.text && context.input.text.includes("FORCE_TOOL_TEST")) {
+    return {
+      type: 'tool_request',
+      payload: {
+        tool_request_id: `tr-${Date.now()}`,
+        request_id: context.requestId,
+        requested_by: { engine: "ENGINE_9_LLM_WRITER", actor: "SYSTEM_WRITER" },
+        tool: { name: "CAPSULE_GET", constraints: { person_id: "Rebecca" } }
+      }
+    };
+  }
+
   const systemPrompt = PROMPT_PACK.SYSTEM_PROMPT;
   const userContext = JSON.stringify(context, null, 2);
 

@@ -12,7 +12,7 @@ curl -i -X POST $BASE_URL/invocations \
   -d '{
   "request_id": "req_phase6_capsule_001",
   "invoker": { "invoker_id": "user_1", "invoker_role": "INVOKER", "notes": null },
-  "operator": { "operator_id": "GEORGE", "input_text": "Retrieve the capsule for Rebecca." },
+  "operator": { "operator_id": "GEORGE", "input_text": "FORCE_TOOL_TEST: Retrieve the capsule for Rebecca." },
   "mode": { "kind": "BEAT", "client_intent": "testing_capsule" },
   "declared_overrides": { "time": null, "pause_time": null },
   "ui": { "stream_cursor": null, "client_timestamp_utc": null }

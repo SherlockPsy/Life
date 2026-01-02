@@ -110,7 +110,7 @@ app.post('/invocations', async (req, res) => {
     const shouldWrite = inputText.length > 0; 
 
     const bundle = {
-      bundle_id: shouldWrite ? bundleId : null,
+      bundle_id: bundleId
       request_id: requestId,
       proposed_by: { engine: "ENGINE_1_INVOCATION", actor: "SYSTEM_INVOKER" },
       wrote: shouldWrite,
