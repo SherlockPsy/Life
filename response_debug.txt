@@ -1,0 +1,11 @@
+HTTP/2 200 
+content-type: application/json; charset=utf-8
+date: Fri, 02 Jan 2026 21:42:01 GMT
+etag: W/"1be-yvjMSOAM2JNHaQzxDCf76rzS24E"
+server: railway-edge
+x-powered-by: Express
+x-railway-edge: railway/europe-west4-drams3a
+x-railway-request-id: _jA7CA6yTjiE6Nz9m3z_FQ
+content-length: 446
+
+{"request_id":"req_debug_check_006","stream":{"cursor_before":null,"cursor_after":null,"entries":[{"entry_id":"219641d0-79d9-4b49-867c-fe9363d31ee9","created_at_world":1000,"channel":"USER","author_label":null,"text":"Hello world."}]},"pocket":{"is_available":false,"clock":{"world_time":null,"timezone":null},"calendar":{"items":[]},"messages":{"items":[]}},"debug":{"wrote":true,"bundle_id":"055627e7-405e-4067-bb71-6e3348136275","beat_id":34}}

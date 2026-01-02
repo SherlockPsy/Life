@@ -5,6 +5,9 @@ const { v4: uuidv4 } = require('uuid');
 const Engine2 = require('./engines/ENGINE_2_BEAT_AND_OPPORTUNITY_COORDINATOR/core');
 const Engine3 = require('./engines/ENGINE_3_TIME_AND_CALENDAR_ENGINE/core');
 const Engine5 = require('./engines/ENGINE_5_SCENE_ANCHOR_AND_REHYDRATION_ENGINE/core');
+const Engine6 = require('./engines/ENGINE_6_CAPSULE_ENGINE/core');
+const Engine7 = require('./engines/ENGINE_7_TOOL_REQUEST_ENGINE/core');
+const Engine8 = require('./engines/ENGINE_8_RETRIEVAL_ENGINE/core');
 const Engine9 = require('./engines/ENGINE_9_LLM_WRITER_ENGINE/core');
 const Engine10 = require('./engines/ENGINE_10_WRITE_ACCEPTANCE_AND_INTEGRITY_ENGINE/core');
 
@@ -229,10 +232,26 @@ app.post('/invocations', async (req, res) => {
       }
     } else if (proposal && proposal.type === 'tool_request') {
       // 3. Validate Tool (Engine 7)
-      // Engine 7 does not exist historically.
-      // FORCE DEPLOY: Ensure this message is updated in production.
-      console.log("ENGINE 9: Tool Request emitted but Engine 7 does not exist.");
-      extraDebug = { error: "tool_request unsupported because Engine 7 does not exist historically" };
+      const validation = Engine7.validateToolRequest(proposal.payload);
+      
+      if (validation.valid) {
+        // 4. Execute Tool (Engine 8 or 6)
+        const toolRequest = proposal.payload;
+        let toolResult = null;
+
+        if (toolRequest.tool.name === 'LEDGER_SEARCH' || toolRequest.tool.name === 'LEDGER_GET') {
+          toolResult = await Engine8.executeRetrieval(client, toolRequest);
+        } else if (toolRequest.tool.name === 'CAPSULE_GET') {
+          toolResult = await Engine6.executeCapsule(client, toolRequest);
+        } else {
+          toolResult = { error: "Tool execution not implemented for this tool type" };
+        }
+
+        extraDebug = { tool_execution: { tool: toolRequest.tool.name, status: "EXECUTED", result: toolResult } };
+      } else {
+        console.log("ENGINE 7: Rejected Tool Request", validation);
+        extraDebug = { error: `Tool Request Rejected: ${validation.error}` };
+      }
     } else {
       // Failure or No-Write
       console.log("ENGINE 9: No Action (Silence or Failure)");

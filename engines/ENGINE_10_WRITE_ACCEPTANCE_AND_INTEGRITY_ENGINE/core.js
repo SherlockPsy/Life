@@ -17,6 +17,14 @@ function validateWriteBundle(bundle, context) {
     return reject(bundle, "Request ID mismatch");
   }
 
+  // 3.5 Proposed By Validation
+  if (!bundle.proposed_by || typeof bundle.proposed_by !== 'object') {
+    return reject(bundle, "Missing or invalid 'proposed_by'");
+  }
+  if (!bundle.proposed_by.engine || !bundle.proposed_by.actor) {
+    return reject(bundle, "Incomplete 'proposed_by' (needs engine, actor)");
+  }
+
   // 4. Entry Validation (if wrote=true)
   if (bundle.wrote) {
     for (const entry of bundle.entries) {
@@ -25,6 +33,11 @@ function validateWriteBundle(bundle, context) {
       if (!entry.target) return reject(bundle, "Missing target");
       if (!entry.content) return reject(bundle, "Missing content");
       
+      // Visibility Validation
+      if (entry.visibility && typeof entry.visibility !== 'object') {
+        return reject(bundle, "Visibility must be an object");
+      }
+
       // Content Type Check
       if (!['VOICE', 'ACTION', 'THOUGHT'].includes(entry.content.type)) {
         // Allow other types? The prompt says "VOICE and PEOPLE text".
