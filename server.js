@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const { v4: uuidv4 } = require('uuid');
+
+// DEBUG: Git SHA for deployment verification (TEMPORARY)
+const GIT_SHA = '4ab3175';
 const Engine2 = require('./engines/ENGINE_2_BEAT_AND_OPPORTUNITY_COORDINATOR/core');
 const Engine3 = require('./engines/ENGINE_3_TIME_AND_CALENDAR_ENGINE/core');
 const Engine5 = require('./engines/ENGINE_5_SCENE_ANCHOR_AND_REHYDRATION_ENGINE/core');
@@ -285,6 +288,11 @@ app.post('/invocations', async (req, res) => {
 
     // 3. RETURN PROJECTION
     // Only expose time if explicitly declared/modified
+    // DEBUG: Add debug fields (TEMPORARY)
+    extraDebug.timeDeclared = timeDeclared;
+    extraDebug.beatWorldTime = beatContext ? beatContext.world_time : null;
+    
+    res.set('X-LIFE-GIT-SHA', GIT_SHA);
     res.json(constructProjection(requestId, bundle, entries, beatContext, timeDeclared, extraDebug));
 
   } catch (e) {
