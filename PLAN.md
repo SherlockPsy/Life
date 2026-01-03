@@ -1,320 +1,425 @@
-# EXECUTION PLAN — HARDENED, CONTRACT-FIRST, UI-DRIVEN
-# AUTHORITATIVE BASIS: NON_NEGOTIABLE_SYSTEM_DECISIONS.md
-# STATUS: CANDIDATE FOR LOCKING
+# LIFE SYSTEM — CAPABILITIES-COMPLETE EXECUTION PLAN
+STATUS: AUTHORITATIVE BUILD PLAN
+SCOPE: DELIVER 100% OF NON_NEGOTIABLE_SYSTEM_DECISIONS.md
+ASSUMPTION: PHASES 0–9 FOUNDATIONAL MECHANICS EXIST
+            (LEDGER, TIME ENGINE, SCENE ENGINE, LLM WRITER, ACCEPTANCE, PROJECTION)
 
-This plan is written to eliminate execution risk, not just architectural error.
-No step relies on developer restraint, Copilot goodwill, or “we’ll fix it later”.
+THIS PLAN DELIVERS:
+- Full lived continuity without human dependence
+- Autonomous reality progression
+- Human-indifferent orchestration
+- Emergent experience via enforcement, not scripting
+- Zero remaining structural work after completion
+  (only tuning and content calibration)
 
-----------------------------------------------------------------------
-GLOBAL EXECUTION PRINCIPLES (BINDING)
-----------------------------------------------------------------------
-
-G1. Nothing is implemented without a contract.
-G2. Nothing runs without passing its contract tests.
-G3. No engine may call another engine except through an explicit, versioned contract.
-G4. UI behavior is treated as a constitutional surface, not a convenience layer.
-G5. If a step cannot be mechanically enforced, it is not considered complete.
-
-----------------------------------------------------------------------
-PHASE 0 — CONTRACTS AS PHYSICS (MUST HAPPEN FIRST)
-----------------------------------------------------------------------
-
-Purpose:
-Prevent Copilot (or humans) from inventing protocols, shortcuts, or implicit behavior.
-
-0.1 Create `/contracts/` as a top-level, immutable directory
-- This directory is read-only after creation.
-- Any change to a contract file requires:
-  - explicit version bump,
-  - explicit rationale,
-  - re-running the full contract test suite.
-
-0.2 Create the following contract files (MANDATORY, BEFORE ANY CODE):
-
-- invocation_envelope.md
-- write_entry.md
-- write_bundle.md
-- projection_output.md
-- tool_request.md
-- retrieval_result_pack.md
-- scene_anchor_pack.md
-- rehydration_pack.md
-- capsule_pack.md
-
-Each contract file MUST contain:
-- Purpose (1 paragraph, declarative)
-- Allowed inputs (exact fields, required/optional)
-- Allowed outputs (exact fields)
-- MUST rules
-- MUST NOT rules
-- Explicit forbidden examples
-- At least one valid example payload
-- At least one invalid example payload
-
-0.3 Contract immutability gate
-- No implementation code is allowed to exist unless:
-  - all contracts exist,
-  - all contracts are internally consistent,
-  - all contracts are referenced by engine specs.
-
-Acceptance condition:
-- A reviewer can delete all implementation code and still fully understand system behavior from contracts alone.
+THIS PLAN DOES NOT:
+- Add philosophy
+- Add convenience abstractions
+- Add user workflows
+- Add UI or client design decisions
+- Add illustrative examples that could be misread as requirements
 
 ----------------------------------------------------------------------
-PHASE 1 — ENGINE INTERFACES (NO IMPLEMENTATION YET)
+GLOBAL ABSOLUTES (BINDING)
 ----------------------------------------------------------------------
 
-Purpose:
-Eliminate inter-engine ambiguity and overlap BEFORE code exists.
-
-1.1 For each engine in ENGINE_INVENTORY.md, create an interface file:
-`/engines/ENGINE_<ID>_<NAME>/interface.md`
-
-Each interface.md MUST define:
-- Owned responsibilities (verbatim from traceability matrix)
-- Inputs accepted (only via contracts)
-- Outputs produced (only via contracts)
-- Engines it may call (explicit list)
-- Engines it must NEVER call
-- Data it may read
-- Data it must NEVER read
-- Failure modes (what happens when it cannot act)
-
-1.2 Explicit inter-engine call graph
-Create `/architecture/engine_call_graph.md` defining:
-- Allowed call directions (A → B)
-- Forbidden call directions (A ✕→ B)
-- Rationale for every allowed call
-
-This file is binding.
-Any implementation that violates it is invalid.
-
-Acceptance condition:
-- There exists a single, unambiguous directed graph of engine interactions.
-- No engine has “implicit access” to another engine.
+- Reality MUST exist and progress without George interaction.
+- Reality MUST remain valid if George is silent indefinitely.
+- Reality MUST remain valid if no human traffic occurs.
+- No fact may depend on being queried to exist.
+- No subsystem may infer meaning, importance, relevance, or intent.
+- All requirements in NON_NEGOTIABLE_SYSTEM_DECISIONS.md
+  MUST be mechanically enforced, never assumed.
 
 ----------------------------------------------------------------------
-PHASE 2 — CONTRACT TESTS (BEFORE REAL CODE)
+ORGANIZING STRATEGY
 ----------------------------------------------------------------------
 
-Purpose:
-Turn philosophy into executable law.
+This plan is organized by **capability strata**, not by document sections.
 
-2.1 Create `/tests/contracts/`
-For EACH contract:
-- Write tests that assert:
-  - valid payloads pass,
-  - invalid payloads fail,
-  - forbidden behaviors are rejected.
+Each stratum:
+- introduces exactly one class of capability
+- locks invariants immediately
+- exposes reuse points for later strata
+- forbids duplication or reinterpretation
 
-2.2 Create `/tests/prohibitions/`
-Tests that explicitly assert the system CANNOT:
-- infer missing facts,
-- write partial bundles,
-- advance time implicitly,
-- rehydrate mid-beat,
-- render facts not in ledger,
-- bypass knowledge boundaries,
-- force responses,
-- fabricate continuity.
-
-These tests must fail loudly.
-
-2.3 CI gate
-- CI must fail if:
-  - any contract test fails,
-  - any prohibition test fails.
-- CI failure blocks all merges, including refactors.
-
-Acceptance condition:
-- The system cannot be run without passing the constitutional test suite.
-- Tests, not humans, enforce discipline.
+Later strata MUST NOT re-implement or override earlier ones.
 
 ----------------------------------------------------------------------
-PHASE 3 — UI FIRST, BUT CONTRACT-BOUND
+STRATUM 1 — CONTINUOUS AUTONOMOUS REALITY PROGRESSION
 ----------------------------------------------------------------------
 
-Purpose:
-Give you lived confidence early without creating a fake system.
+OBJECTIVE:
+Reality MUST advance even if no human ever invokes again.
 
-3.1 Build UI shell strictly against `projection_output` contract
-- UI may only render what the contract allows.
-- UI must not infer or decorate missing data.
-- UI must support:
-  - perceptual stream,
-  - USER / VOICE / PEOPLE channels,
-  - pocket overlay,
-  - stable scroll position.
+DELIVERABLES:
 
-3.2 Stub backend that ONLY returns contract-valid projection_output
-- No ledger yet.
-- No LLM yet.
-- All outputs must still pass contract validation.
+1. AUTONOMOUS BEAT SOURCE (ABS)
+   - Runtime-owned scheduler controlled by the orchestrator.
+   - Emits beats at deterministic wall-clock intervals.
+   - Starts automatically on deploy.
+   - Survives restarts.
+   - Emits beats even with zero HTTP traffic.
+   - Cannot be disabled by feature flags or environment toggles.
 
-3.3 UI contract tests
-- UI rendering must be testable:
-  - no popups in stream,
-  - pocket isolated,
-  - silence renders as silence,
-  - no synthetic filler.
+2. BEAT PROVENANCE TAGGING
+   - Beats are mechanically tagged as:
+     - HUMAN_INVOKED
+     - AUTONOMOUS
+   - Tags are non-semantic.
+   - Used only for audit and enforcement.
 
-Acceptance condition:
-- You can interact with the UI.
-- Everything you see is structurally valid, even if dumb.
+3. HARD INVARIANT
+   - Absence of ABS MUST prevent system startup.
+   - This forbids regression to “reality begins on invocation”.
 
-----------------------------------------------------------------------
-PHASE 4 — REALITY LEDGER + ATOMICITY
-----------------------------------------------------------------------
+REUSE:
+- Engine 2 (Beat Coordinator)
+- Engine 3 (Time Engine)
 
-Purpose:
-Make the system real before it becomes intelligent.
-
-4.1 Implement ENGINE 0 (Reality Ledger)
-- Append-only.
-- Bundle-based atomic commits.
-- No updates, no deletes.
-- Idempotency enforced via request_id.
-
-4.2 Replace UI stub with ledger-backed data
-- UI now renders ONLY ledger-derived projection_output.
-- Refreshing the page does not change reality.
-
-4.3 Ledger contract tests
-- Partial writes must fail.
-- Duplicate invocations must not duplicate reality.
-- Replay must return identical output.
-
-Acceptance condition:
-- Reality persists.
-- Bugs cannot be hidden by refresh or restart.
+FORBIDDEN:
+- No semantic gating
+- No idle-only shortcuts
+- No dependence on traffic volume
 
 ----------------------------------------------------------------------
-PHASE 5 — TIME & BEATS (MECHANICAL, NOT NARRATIVE)
+STRATUM 2 — TIME AS AN INDEPENDENT FORCE WITH RATE COUPLING
 ----------------------------------------------------------------------
 
-Purpose:
-Make time binding without turning it into a story tool.
+OBJECTIVE:
+Time progresses independently of attention and at a fixed,
+configurable rate relative to wall-clock time.
 
-5.1 Implement ENGINE 3 (Time & Calendar)
-- Single monotonic clock.
-- Explicit advancement only.
-- No narrative shortcuts.
+DELIVERABLES:
 
-5.2 Implement ENGINE 2 (Beat & Opportunity Coordinator)
-- Beats are mechanical boundaries.
-- Opportunities surface but never resolve themselves.
+1. WORLD TIME DEFINITION
+   - world_time unit is **MINUTES**.
+   - Stored as BIGINT.
+   - Monotonic, irreversible.
 
-5.3 Hard tests for time violations
-- Any implicit time jump fails tests.
-- Any “later that day” phrasing fails tests.
+2. TIME RATE COUPLING
+   - Autonomous beats occur on wall-clock cadence.
+   - Each autonomous beat advances world_time by
+     WORLD_MINUTES_PER_BEAT.
+   - Default:
+     - ABS interval: 60 seconds (1 OS minute)
+     - WORLD_MINUTES_PER_BEAT: 3
+   - Therefore: 1 OS minute → 3 world minutes.
+   - Rate is configurable via environment variables.
+   - Defaults MUST enforce 3× progression.
 
-Acceptance condition:
-- Time can pass while nothing happens.
-- Nothing happens because time passed.
+3. HUMAN INVOCATIONS
+   - Human-invoked beats do NOT define the rate.
+   - They may advance time, but never control cadence.
 
-----------------------------------------------------------------------
-PHASE 6 — KNOWLEDGE, RETRIEVAL, TOOLS
-----------------------------------------------------------------------
+4. TIME VISIBILITY SEPARATION
+   - Time existence is independent of projection visibility.
+   - Hiding time in projection MUST NOT affect reality.
 
-Purpose:
-Prevent omniscience and leakage.
+5. FAILURE MODE
+   - Failure to advance time MUST hard-fail runtime.
+   - Silent freezing is forbidden.
 
-6.1 Implement ENGINE 4 (Knowledge Surface)
-- Visibility rules enforced mechanically.
-- Storage ≠ knowledge.
-
-6.2 Implement ENGINE 8 (Retrieval)
-- Ledger-backed only.
-- Verbatim excerpts only.
-- Provenance mandatory.
-
-6.3 Implement ENGINE 7 (Tool Requests)
-- Tools are questions, not helpers.
-- Bounded loops.
-- No write authority.
-
-Acceptance condition:
-- The system can say “I don’t know” and mean it.
-- Retrieval cannot invent.
+REUSE:
+- Engine 3 exclusively
 
 ----------------------------------------------------------------------
-PHASE 7 — SCENES, ANCHORS, REHYDRATION
+STRATUM 3 — AUTHORITATIVE PAUSE AND RESUME
 ----------------------------------------------------------------------
 
-Purpose:
-Prevent drift without breaking immersion.
+OBJECTIVE:
+Reality can be intentionally paused and resumed
+without corruption or drift.
 
-7.1 Implement ENGINE 5 (Scene Anchor & Rehydration)
-- Natural language only.
-- Beat-boundary only.
-- Atomic or abort.
+DELIVERABLES:
 
-7.2 Token budget monitor (mechanical trigger only)
-- No semantic judgement.
-- No “this seems long” logic.
+1. PAUSE SEMANTICS
+   - Pausing stops ABS emission.
+   - No beats → no time advancement → no reality progression.
+   - Ledger remains readable.
+   - No background progression occurs.
 
-7.3 Tests for invisibility
-- Any mention of hydration fails tests.
-- Any mid-action rehydration fails tests.
+2. RESUME SEMANTICS
+   - Resuming restarts ABS.
+   - Time continues from last committed world_time.
+   - No catch-up or compression is permitted.
 
-Acceptance condition:
-- Continuity survives context limits invisibly.
+3. INVARIANTS
+   - Pause does NOT modify world_time.
+   - Pause does NOT alter scene state.
+   - Pause is explicit and reversible.
 
-----------------------------------------------------------------------
-PHASE 8 — LLM WRITER (LAST, NOT FIRST)
-----------------------------------------------------------------------
-
-Purpose:
-Introduce intelligence without giving it power.
-
-8.1 LLM outputs ONLY:
-- tool_request
-- proposed_write_bundle
-- no_write
-
-8.2 ENGINE 10 validates, does not negotiate
-- Structural checks only.
-- Failure > fabrication.
-
-8.3 Prompt packs are versioned artifacts
-- Tested.
-- Reviewed.
-- Never “tuned live”.
-
-Acceptance condition:
-- The LLM cannot break physics even if it tries.
+REUSE:
+- ABS control layer
+- Engine 3
 
 ----------------------------------------------------------------------
-PHASE 9 — CHARACTER PAYLOADS (REBECCA, OTHERS)
+STRATUM 4 — ALWAYS-ON SCENE CONTINUITY
 ----------------------------------------------------------------------
 
-Purpose:
-Add richness without contaminating law.
+OBJECTIVE:
+There is never “no scene”.
 
-9.1 Rebecca packs feed:
-- capsules,
-- prompts,
-- behavior constraints.
+DELIVERABLES:
 
-9.2 Rebecca packs do NOT:
-- alter ledger rules,
-- alter time,
-- alter knowledge boundaries.
+1. SCENE GUARANTEE
+   - Every beat resolves a scene anchor.
+   - Anchor may be empty but never absent.
 
-Acceptance condition:
-- Rebecca can be removed and the system still works.
+2. RESOLUTION ORDER
+   - Latest scene anchor
+   - Else latest written entry
+   - Else explicit EMPTY SCENE token
 
-----------------------------------------------------------------------
-PHASE 10 — LOCK & OPERATE
-----------------------------------------------------------------------
+3. IMMUTABILITY
+   - Anchors are replaced wholesale.
+   - No diffs.
+   - No partial updates.
 
-10.1 Freeze contracts, engine interfaces, tests.
-10.2 Any change requires:
-- explicit amendment,
-- re-traceability,
-- full test pass.
-
-SYSTEM IS NOW LIVE.
+REUSE:
+- Engine 5 (Scene & Rehydration)
 
 ----------------------------------------------------------------------
+STRATUM 5 — WORLD AS INTERRUPTING FORCE (NOT AGENT)
+----------------------------------------------------------------------
+
+OBJECTIVE:
+The world can intrude without intention.
+
+DELIVERABLES:
+
+1. WORLD INTERRUPTION ELIGIBILITY
+   - World events eligible on autonomous beats only.
+   - Eligibility is mechanical, not semantic.
+
+2. CONSTRAINTS
+   - Must intersect current scene materially.
+   - Must specify where, what, who can perceive.
+   - Must not encode outcomes or intent.
+
+3. FREQUENCY BOUNDS
+   - Minimum silence window enforced.
+   - Maximum dormancy enforced.
+   - Prevents spam and stasis.
+
+REUSE:
+- Engine 9 for proposal only
+- Engine 10 for acceptance
+
+----------------------------------------------------------------------
+STRATUM 6 — PEOPLE AUTONOMY WITHOUT PROMPTS
+----------------------------------------------------------------------
+
+OBJECTIVE:
+People act or remain silent without being asked.
+
+DELIVERABLES:
+
+1. AUTONOMOUS ELIGIBILITY
+   - On autonomous beats, each present person is eligible to act.
+   - Eligibility does not guarantee action.
+
+2. SILENCE
+   - Silence is treated as non-action.
+   - It is not privileged.
+   - It is not deprioritized.
+   - It has no special weighting beyond eligibility effects.
+
+3. NO TURN MECHANICS
+   - No ordering.
+   - No fairness.
+   - No expectation of response.
+
+REUSE:
+- Person payloads
+- Engine 9 proposer
+
+----------------------------------------------------------------------
+STRATUM 7 — COMMITMENTS AS PERSISTENT REALITY
+----------------------------------------------------------------------
+
+OBJECTIVE:
+Future-oriented statements persist.
+
+DELIVERABLES:
+
+1. COMMITMENT CREATION
+   - Any written future-oriented statement creates a commitment.
+
+2. PERSISTENCE
+   - Commitments persist until explicitly resolved in writing.
+
+3. RESURFACING
+   - Commitments may resurface via:
+     - autonomous beats
+     - calendar pressure
+     - world intrusion
+
+REUSE:
+- Ledger only
+
+----------------------------------------------------------------------
+STRATUM 8 — CALENDAR AS LIVED PRESSURE
+----------------------------------------------------------------------
+
+OBJECTIVE:
+Calendar entries matter without querying.
+
+DELIVERABLES:
+
+1. CALENDAR FACTS
+   - Calendar entries are written facts.
+   - Not reminders.
+   - Not queries.
+
+2. PRESSURE MECHANICS
+   - As world_time approaches entries,
+     related actions gain eligibility.
+
+3. FAILURE MODE
+   - Calendar entries that never influence behavior
+     MUST be rejected at write-time.
+
+REUSE:
+- Ledger
+- Engine 9 logic
+
+----------------------------------------------------------------------
+STRATUM 9 — STORY POOL & BACKGROUND CONTINUITY
+----------------------------------------------------------------------
+
+OBJECTIVE:
+Unfinished things continue existing.
+
+DELIVERABLES:
+
+1. STORY POOL
+   - Background stories exist independent of scene.
+
+2. PROGRESSION
+   - Stories may progress, intersect, stall, or expire.
+   - All transitions must be written.
+
+3. NO SILENT DISAPPEARANCE
+   - Expiry must be written.
+
+REUSE:
+- Ledger
+- World interruption system
+
+----------------------------------------------------------------------
+STRATUM 10 — NEW PEOPLE INTRODUCTION
+----------------------------------------------------------------------
+
+OBJECTIVE:
+New people enter lawfully.
+
+DELIVERABLES:
+
+1. ENTRY CONDITIONS
+   - Location
+   - Reason
+   - Grounding
+
+2. ARCHETYPE
+   - One dominant archetype.
+   - Immutable.
+
+3. CONTINUITY
+   - No teleportation.
+
+REUSE:
+- Archetype loader
+- Scene system
+
+----------------------------------------------------------------------
+STRATUM 11 — KNOWLEDGE, IGNORANCE, MISALIGNMENT
+----------------------------------------------------------------------
+
+OBJECTIVE:
+People do not know everything.
+
+DELIVERABLES:
+
+1. KNOWLEDGE GATING
+   - Only load what a person plausibly knows.
+
+2. MISALIGNMENT
+   - Contradictory beliefs may coexist.
+
+3. FAILURE
+   - Knowledge leakage aborts writes.
+
+REUSE:
+- Engine 4
+
+----------------------------------------------------------------------
+STRATUM 12 — PROJECTION AS DERIVATIVE ONLY
+----------------------------------------------------------------------
+
+OBJECTIVE:
+Display never becomes reality.
+
+DELIVERABLES:
+
+1. STREAM VS POCKET
+   - Stream: lived text
+   - Pocket: auxiliary facts
+
+2. NO REPAIR
+   - Projection cannot fill gaps.
+
+3. NO EXPLANATION
+   - System never explains itself.
+
+REUSE:
+- Engine 12
+
+----------------------------------------------------------------------
+STRATUM 13 — ENFORCEMENT & REGRESSION PROTECTION
+----------------------------------------------------------------------
+
+OBJECTIVE:
+Nothing breaks quietly.
+
+DELIVERABLES:
+
+1. RUNTIME ASSERTIONS
+   - ABS present
+   - Time advances at correct rate
+   - Scene always exists
+
+2. CONTRACT TESTS
+   - Removal of any stratum causes failure.
+
+3. SWAPPABILITY
+   - LLMs replaceable without semantic drift.
+
+REUSE:
+- Engine 14
+
+----------------------------------------------------------------------
+FINAL GUARANTEE
+----------------------------------------------------------------------
+
+If ALL strata are implemented:
+
+- Reality does not begin with George.
+- Reality continues during silence.
+- Time advances at enforced rate.
+- Time can be paused and resumed safely.
+- World intrudes lawfully.
+- People act autonomously.
+- Commitments and calendars matter.
+- Stories persist.
+- New people arrive naturally.
+- Projection never lies.
+
+NO STRUCTURAL WORK REMAINS AFTER THIS PLAN.
+
+ONLY:
+- Synthetic data removal
+- Day-0 data loading
+- Lived fine-tuning
+
 END OF PLAN
